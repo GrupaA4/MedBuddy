@@ -5,6 +5,7 @@ import '../../fonts/Bebas_Neue/BebasNeue-Regular.ttf';
 import BrainVector from '../../images/brain_vector.svg';
 import TechImg from '../../images/tech_image.svg';
 import Header from '../../_components/header/page';
+import Footer from '../../_components/footer/page'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -135,7 +136,8 @@ export default function Home(){
                 </form>
             </section>
             </>
-}
+        }
+        <Footer/>
         </>
     );
 }
