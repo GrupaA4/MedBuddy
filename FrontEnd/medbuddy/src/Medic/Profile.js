@@ -10,7 +10,7 @@ function Profile() {
     <div className="Profile">
       
       <div className="navbar">
-      <img src={logo} className="logo" alt="logo" />
+      <img src={logo} className="logo" alt="logo"  />
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
