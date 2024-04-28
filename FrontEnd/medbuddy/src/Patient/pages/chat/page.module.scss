@@ -28,6 +28,7 @@
         display: flex;
         flex-direction: column;
         align-items: end;
+        //justify-content: flex-end;
 
         .page__message {
             background-color: #069DAE;
@@ -36,7 +37,7 @@
             width: auto;
             word-wrap: break-word;
             display: block;
-            margin: 0.6rem 0.6rem;
+            margin: 0.6rem 1.6rem;
             padding: 0.8rem 0.8rem;
             border-radius: 0.8rem 0 0.8rem 0.8rem;
             font-family: "Oswald_font";
@@ -124,6 +125,9 @@
 
 @media screen and (max-width: 1000px){
     .page__message_area{
+        .page__message_container {
+            height: 24rem;
+        }
         .page__message_buttons{
             width: 70%;
             margin-top: 2rem;

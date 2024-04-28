@@ -1,12 +1,13 @@
 import styles from "./page.module.scss";
 import Send from "../../images/send-msg.svg";
 import Choose from "../../images/add-files.svg";
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 
 export default function ChatPage() {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [isNewMessage, setIsNewMessage] = useState(false); 
+    const messageContainerRef = useRef(null);
 
     const handleMessageChange = (e) => {
         setMessage(e.target.value);
@@ -30,16 +31,20 @@ export default function ChatPage() {
             setTimeout(() => {
                 setIsNewMessage(false);
             }, 2000);
+
+            if (messageContainerRef.current) {
+                messageContainerRef.current.scrollTop = messageContainerRef.current.scrollHeight;
+            }
         }
     };
 
     const handleNewConvo = () => {
-        // handle sending the message and file here
+        // handle sending the message and file 
     };
     return(
         <>
             <div className={`${styles.page__message_area}`}>
-            <div className={`${styles.page__message_container} `}>
+            <div ref={messageContainerRef} className={`${styles.page__message_container} `}>
                     {messages.map((msg) => (
                             <div key={msg.id}  className={styles.page__message}>{msg.text}</div>
                     ))}
