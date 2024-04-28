@@ -24,6 +24,8 @@ public class Database {
     public static void createConnection() {
         try {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            //Might have to set this to true because the db is a bit finicky without commits
+            //Should be discussed as I'm not very sure
             connection.setAutoCommit(false);
         } catch (SQLException e) {
             System.err.println(e);

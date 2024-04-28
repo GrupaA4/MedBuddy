@@ -24,7 +24,7 @@ public class MessagerieDAO {
             pstmt.executeUpdate();
         }
         catch (SQLException e) {
-            System.out.println(2);
+            e.printStackTrace();
         }
     }
     //The doc said only convo id provided, but I reckon all these should be added
@@ -37,6 +37,8 @@ public class MessagerieDAO {
         int id = random.nextInt(10000);
         //Didn't add the date as it isn't in the provided model and am unsure as to how the integration would be
         //Subject to change
+        //UPDATE: As the date is always the SYSDATE we can get away with it here
+        //Is still an issue for data manipulation
         try (PreparedStatement pstmt = con.prepareStatement(
                 "insert into message (id, senderId, conversationId, message, timesent, isRead, imagePath, repliesTo, isFromMedBuddy, isDeleted) values (?, ?, ?, ?, SYSDATE, ?, ?, ?, ?, ?)"
         )){
@@ -52,6 +54,30 @@ public class MessagerieDAO {
             pstmt.setInt(8, isFromMedBuddy);
             pstmt.setInt(9, nullValue);
             pstmt.executeUpdate();
+        }
+    }
+    public void deleteMessageFromDatabase(int messageId) throws SQLException {
+        Connection con = Database.getConnection();
+        try (PreparedStatement pstmt = con.prepareStatement(
+                "delete from message where id = ?"
+        )){
+            pstmt.setInt(1, messageId);;
+            pstmt.executeUpdate();
+        }
+        catch (SQLException e) {
+             e.printStackTrace();
+        }
+    }
+    public void softDeleteMessage(int messageId) throws SQLException {
+        Connection con = Database.getConnection();
+        try (PreparedStatement pstmt = con.prepareStatement(
+                "update message set isDeleted = 1 where id = ?"
+        )){
+            pstmt.setInt(1, messageId);;
+            pstmt.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

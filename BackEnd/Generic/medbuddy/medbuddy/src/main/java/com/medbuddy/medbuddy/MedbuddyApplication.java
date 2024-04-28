@@ -12,6 +12,7 @@ public class MedbuddyApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MedbuddyApplication.class, args);
+
 	}
 
 
