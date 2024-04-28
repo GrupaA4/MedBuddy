@@ -15,33 +15,86 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    position: relative;
 
-    .page__message_container {
+    .page__main_container {
         width: 76vw;
-        height: 26rem;
+        height: auto;
         border: 0.15rem solid #87B6C1;
         border-radius: 1rem;
-        margin-top: 0.5rem;
-        overflow-y: scroll;
-        scrollbar-width: none;
-        padding: 2rem;
         display: flex;
-        flex-direction: column;
-        align-items: end;
-        //justify-content: flex-end;
-
-        .page__message {
-            background-color: #069DAE;
-            color: white;
-            max-width: 68vw;
-            width: auto;
-            word-wrap: break-word;
-            display: block;
-            margin: 0.6rem 1.6rem;
-            padding: 0.8rem 0.8rem;
-            border-radius: 0.8rem 0 0.8rem 0.8rem;
-            font-family: "Oswald_font";
-            font-weight: 300;
+        padding-bottom: 1rem;
+        margin-top: 0.5rem;
+        .page__message_header {
+            position: fixed; 
+            top: 0.65rem; 
+            display: flex;
+            gap: 0.7rem;
+            width: 76vw;
+            background-color: #fff;
+            padding: 1.3rem 0; 
+            z-index: 1000;
+            border-radius: 1rem 1rem 0 0;
+            box-shadow: 0 8px 8px -4px rgb(190, 194, 195);
+    
+            .page__message_header__img {
+                margin-left: 2.6rem;
+                width: 1.6rem;
+            }
+            .page__message_header__status {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                h3 {
+                    color: #069DAE;
+                    font-size: 0.9rem;
+                    font-family: "Oswald_font";
+                    margin: 0;
+                }
+                .header__status {
+                    display: flex;
+                    gap: 0.3rem;
+                    p {
+                        color: #3ABF38;
+                        font-family: "Oswald_font";
+                        margin: 0;
+                        font-size: 0.8rem;
+                    }
+                    .status__icon {
+                        width: 0.3rem;
+                        color: #3ABF38;
+                        font-weight: 200;
+                    }
+                }
+                
+            }
+            
+        }
+    
+        .page__message_container {
+            width: 76vw;
+            height: 26rem;
+            border-radius: 1rem;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+    
+            .page__message {
+                background-color: #069DAE;
+                color: white;
+                max-width: 68vw;
+                width: auto;
+                word-wrap: break-word;
+                display: block;
+                margin: 0.6rem 1.6rem;
+                padding: 0.8rem 0.8rem;
+                border-radius: 0.8rem 0 0.8rem 0.8rem;
+                font-family: "Oswald_font";
+                font-weight: 300;
+            }
         }
     }
 
@@ -125,9 +178,12 @@
 
 @media screen and (max-width: 1000px){
     .page__message_area{
-        .page__message_container {
-            height: 24rem;
+        .page__main_container {
+            .page__message_container {
+                height: 24rem;
+            }
         }
+       
         .page__message_buttons{
             width: 70%;
             margin-top: 2rem;
@@ -168,6 +224,11 @@
 
 @media screen and (max-width: 500px){
     .page__message_area{
+        .page__main_container {
+            .page__message_container {
+                padding: 1rem;
+            }
+        }
         .page__message_buttons{
             width: 70%;
             margin-top: 2rem;

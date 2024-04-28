@@ -1,7 +1,10 @@
 import styles from "./page.module.scss";
 import Send from "../../images/send-msg.svg";
 import Choose from "../../images/add-files.svg";
+import Robo_icon from "../../images/robo_icon.svg";
 import React, { useState, useRef } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default function ChatPage() {
     const [message, setMessage] = useState('');
@@ -9,13 +12,14 @@ export default function ChatPage() {
     const [isNewMessage, setIsNewMessage] = useState(false); 
     const messageContainerRef = useRef(null);
 
+    
     const handleMessageChange = (e) => {
         setMessage(e.target.value);
     };
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault(); // Evită comportamentul implicit al apăsării tastei Enter (de a face un newline)
+            e.preventDefault(); 
             handleSend(); // Trimite mesajul
         }
     };
@@ -27,7 +31,6 @@ export default function ChatPage() {
             setMessage(''); // Resetează caseta de text după trimitere
 
             setIsNewMessage(true);
-            // Resetarea state-ului isNewMessage după 2 secunde
             setTimeout(() => {
                 setIsNewMessage(false);
             }, 2000);
@@ -39,16 +42,33 @@ export default function ChatPage() {
     };
 
     const handleNewConvo = () => {
-        // handle sending the message and file 
+      
     };
     return(
         <>
             <div className={`${styles.page__message_area}`}>
-            <div ref={messageContainerRef} className={`${styles.page__message_container} `}>
-                    {messages.map((msg) => (
-                            <div key={msg.id}  className={styles.page__message}>{msg.text}</div>
-                    ))}
+                <div className={styles.page__main_container} >
+                    <div className={styles.page__message_header}>
+                        <img 
+                            className={`${styles.page__message_header__img}`} 
+                            src={Robo_icon}
+                            alt="robot icon"
+                        />
+                        <div className={styles.page__message_header__status}>
+                            <h3>MedBuddy</h3>
+                            <div className={styles.header__status}>
+                                <FontAwesomeIcon icon={faCircle} className={styles.status__icon}/>
+                                <p>Online</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div ref={messageContainerRef} className={`${styles.page__message_container} `}>
+                            {messages.map((msg) => (
+                                    <div key={msg.id}  className={styles.page__message}>{msg.text}</div>
+                            ))}
+                    </div>
                 </div>
+                
                 <div className={`${styles.page__message_buttons}`}>
                     <button className={`${styles.page__message_buttons_action}`} to="/">
                         Back to Homepage
