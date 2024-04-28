@@ -9,7 +9,7 @@ function Profile() {
   return (
 
     <div className="Profile">
-      
+      <div className="body">
       <div className='navbar-container'>
         <Navbar/>
       </div>
@@ -26,6 +26,7 @@ function Profile() {
         </div>
     
           </div>
+          
           <div className="general-information">
             <h2>
               GENERAL INFORMATION
@@ -54,10 +55,9 @@ function Profile() {
             </div>
           </div>
         </div>
-
-        <div className="footer-container"><Footer/>
+        
+        <div className="footer-container"><Footer/></div>
         </div>
-
         
 
 
