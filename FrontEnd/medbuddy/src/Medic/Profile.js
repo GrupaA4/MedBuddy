@@ -1,6 +1,7 @@
-import logo from './logo.png';
+
 import './Profile.css';
 import Footer from './Footer' ;
+import Navbar from './Navbar' ;
 
 
 
@@ -9,16 +10,9 @@ function Profile() {
 
     <div className="Profile">
       
-      <div className="navbar">
-      <img src={logo} className="logo" alt="logo" />
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Settings</a></li>
-            </ul>
-
-        </div>
+      <div className='navbar-container'>
+        <Navbar/>
+      </div>
 
         <div className="content">
 
