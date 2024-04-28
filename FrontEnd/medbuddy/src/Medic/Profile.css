@@ -108,8 +108,26 @@
   background-color: #069DAE;
   border-radius: 20px;
   align-items: center;
+  display: flex;
+  
 }
 
+.left-container{
+  display: flex;
+  flex-direction: column;
+  height:50%;
+  width: 30%;
+}
+
+.profile-picture{
+  width:100%;
+  border-radius: 50%;
+  background-color: #002845;
+}
+.buttons-container{
+  display: flex;
+  flex-direction: column;
+}
 .footer-container{
     width: 100%;
   }
