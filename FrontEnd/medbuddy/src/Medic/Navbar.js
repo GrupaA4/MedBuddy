@@ -71,7 +71,7 @@ const Navbar = () => {
         </Box>
       </Drawer>
     </nav>
-  );
+   );
 };
 
-export default Navbar;
+export default Navbar; 
