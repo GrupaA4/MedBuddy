@@ -105,28 +105,47 @@
   height: 500px;
   width: 70%;
   margin-top: 5%;
-  background-color: #069DAE;
+ 
   border-radius: 20px;
   align-items: center;
   display: flex;
-  
+  flex-wrap: wrap;
 }
 
 .left-container{
   display: flex;
   flex-direction: column;
-  height:50%;
+  justify-content: space-evenly;
   width: 30%;
+  height:95%;
 }
 
 .profile-picture{
-  width:100%;
+  width:100px;
+  height:350px;
+  margin-left: 10%;
+ 
+}
+.profile-picture img{
+  width:200px;
+  height: auto;
+  padding: 20px;
+  background-color: #069dae;
   border-radius: 50%;
-  background-color: #002845;
 }
 .buttons-container{
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+.button{
+  padding: 15px;
+  margin:10px;
+  width:50%;
+  background-color: #369986;
+  border-radius: 10px;
+  color:azure;
+  text-decoration: none;
 }
 .footer-container{
     width: 100%;

@@ -16,14 +16,15 @@ function Profile() {
 
         <div className="content">
           <div className="left-container">
-          <div className="profile-picture">p
-          </div>
+          <div className="profile-picture">
+        <img src={Logo} alt="pfp" />
+        </div>
         <div className="buttons-container">
         <a href="#" className="button">Edit Profile</a>
         <a href="#" className="button">Change Password</a>
         <a href="#" className="button">Delete Account</a>
         </div>
-      
+    
           </div>
           <div className="general-information"></div>
         </div>
