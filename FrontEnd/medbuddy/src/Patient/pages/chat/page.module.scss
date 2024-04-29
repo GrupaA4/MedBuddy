@@ -19,7 +19,7 @@
 
     .page__main_container {
         width: 76vw;
-        height: auto;
+        height: calc(100vh - 18rem);
         border: 0.15rem solid #87B6C1;
         border-radius: 1rem;
         display: flex;
@@ -180,7 +180,7 @@
 @media screen and (max-width: 1000px){
     .page__message_area{
         .page__main_container {
-            height: 24rem;
+            height: calc(100vh - 22rem);
         }
        
         .page__message_buttons{
@@ -224,7 +224,7 @@
 @media screen and (max-width: 500px){
     .page__message_area{
         .page__main_container {
-            height: 17rem;
+            height: calc(100vh - 23.5rem);
             .page__message_container {
                 padding: 1rem;
             }
