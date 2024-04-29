@@ -1,10 +1,15 @@
 package com.medbuddy.medbuddy.daos;
 
 import com.medbuddy.medbuddy.database.Database;
+import com.medbuddy.medbuddy.models.Conversation;
+import com.medbuddy.medbuddy.rowmappers.ConversationRowMapper;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class MessagerieDAO {
@@ -78,6 +83,23 @@ public class MessagerieDAO {
         }
         catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+    public List<Conversation> getUsersConversations(int userId) throws SQLException {
+        Connection con = Database.getConnection();
+        try (PreparedStatement pstmt = con.prepareStatement(
+                "select * from conversation where userId1 = ? or userId2 = ?"
+        )){
+            pstmt.setInt(1, userId);
+            pstmt.setInt(2, userId);
+            ResultSet rs = pstmt.executeQuery();
+            List<Conversation> conversationList = new ArrayList<>();
+            while(rs.next()) conversationList.add(ConversationRowMapper.mapRow(rs));
+            return conversationList;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            return null;
         }
     }
 }
