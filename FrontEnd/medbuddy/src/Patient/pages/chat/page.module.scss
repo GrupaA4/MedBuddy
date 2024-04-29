@@ -23,7 +23,8 @@
         border: 0.15rem solid #87B6C1;
         border-radius: 1rem;
         display: flex;
-        padding-bottom: 1rem;
+        padding-top: 3rem;
+        padding-bottom: 0.5rem;
         margin-top: 0.5rem;
         .page__message_header {
             position: fixed; 
@@ -32,7 +33,7 @@
             gap: 0.7rem;
             width: 76vw;
             background-color: #fff;
-            padding: 1.3rem 0; 
+            padding: 1rem 0; 
             z-index: 1000;
             border-radius: 1rem 1rem 0 0;
             box-shadow: 0 8px 8px -4px rgb(190, 194, 195);
@@ -73,7 +74,7 @@
     
         .page__message_container {
             width: 76vw;
-            height: 26rem;
+            height: 23rem;
             border-radius: 1rem;
             overflow-y: scroll;
             scrollbar-width: none;
@@ -124,7 +125,7 @@
         }
     }
     .page__message_input{
-        height: 6rem;
+        height: 5rem;
         background-color: #DEF9F1;
         color: #87B6C1;
         border: 0.15rem solid #87B6C1;
@@ -135,7 +136,7 @@
         justify-content: space-around;
         align-items: center;
         margin-bottom: 1rem;
-        margin-top: 1.5rem;
+        margin-top: 1rem;
         .page__message_area_question{
             width: 80%;
             height: 4rem;
@@ -179,9 +180,7 @@
 @media screen and (max-width: 1000px){
     .page__message_area{
         .page__main_container {
-            .page__message_container {
-                height: 24rem;
-            }
+            height: 24rem;
         }
        
         .page__message_buttons{
@@ -225,6 +224,7 @@
 @media screen and (max-width: 500px){
     .page__message_area{
         .page__main_container {
+            height: 17rem;
             .page__message_container {
                 padding: 1rem;
             }
