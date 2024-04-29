@@ -5,13 +5,18 @@ import Robo_icon from "../../images/robo_icon.svg";
 import React, { useState, useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
+//import { useHistory } from 'react-router-dom';
 
 export default function ChatPage() {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [isNewMessage, setIsNewMessage] = useState(false); 
     const messageContainerRef = useRef(null);
+    // const history = useHistory();
 
+    // const handleBackToHomepage = () => {
+    //     history.push('/'); // Navigate to the homepage
+    // };
     
     const handleMessageChange = (e) => {
         setMessage(e.target.value);
@@ -70,7 +75,7 @@ export default function ChatPage() {
                 </div>
                 
                 <div className={`${styles.page__message_buttons}`}>
-                    <button className={`${styles.page__message_buttons_action}`} to="/">
+                    <button className={`${styles.page__message_buttons_action}`} >
                         Back to Homepage
                     </button>
                     <button className={`${styles.page__message_buttons_action}`} onClick={handleNewConvo}>

@@ -74,7 +74,7 @@
     
         .page__message_container {
             width: 76vw;
-            height: 23rem;
+            height: calc(100vh - 23rem);
             border-radius: 1rem;
             overflow-y: scroll;
             scrollbar-width: none;
@@ -181,6 +181,9 @@
     .page__message_area{
         .page__main_container {
             height: calc(100vh - 22rem);
+            .page__message_container{
+                height: calc(100vh - 27rem);
+            }
         }
        
         .page__message_buttons{
@@ -227,6 +230,7 @@
             height: calc(100vh - 23.5rem);
             .page__message_container {
                 padding: 1rem;
+                height: calc(100vh - 26rem);
             }
         }
         .page__message_buttons{
