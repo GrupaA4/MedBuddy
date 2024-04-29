@@ -12,12 +12,7 @@ public class ConversationRowMapper {
         conversation.setUserId1(rs.getInt("userId1"));
         conversation.setUserId2(rs.getInt("userId2"));
         conversation.setLastMessageId(rs.getInt("lastMessageId"));
-        if(rs.getInt("isDeleted") == 1){
-            conversation.setDeleted(true);
-        }
-        else {
-            conversation.setDeleted(false);
-        }
+        conversation.setDeleted(rs.getInt("isDeleted") == 1);
         return conversation;
     }
 }
