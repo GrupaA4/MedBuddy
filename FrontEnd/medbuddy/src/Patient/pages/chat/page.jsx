@@ -32,8 +32,8 @@ export default function ChatPage() {
     const handleSend = () => {
         if (message.trim() !== '') {
             const newMessage = { id: Date.now(), text: message };
-            setMessages([...messages, newMessage]); // Adaugă noul mesaj în array-ul de mesaje
-            setMessage(''); // Resetează caseta de text după trimitere
+            setMessages([...messages, newMessage]); 
+            setMessage(''); 
 
             setIsNewMessage(true);
             setTimeout(() => {
@@ -47,7 +47,7 @@ export default function ChatPage() {
     };
 
     const handleNewConvo = () => {
-      
+        setMessages([]); 
     };
     return(
         <>
@@ -75,7 +75,8 @@ export default function ChatPage() {
                 </div>
                 
                 <div className={`${styles.page__message_buttons}`}>
-                    <button className={`${styles.page__message_buttons_action}`} >
+                    <button className={`${styles.page__message_buttons_action}`}
+                    onClick={() => window.location.href = '/'} >
                         Back to Homepage
                     </button>
                     <button className={`${styles.page__message_buttons_action}`} onClick={handleNewConvo}>
