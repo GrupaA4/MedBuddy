@@ -1,23 +1,17 @@
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./page.module.scss";
 import Send from "../../images/send-msg.svg";
 import Choose from "../../images/add-files.svg";
 import Robo_icon from "../../images/robo_icon.svg";
-import React, { useState, useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
-//import { useHistory } from 'react-router-dom';
 
 export default function ChatPage() {
     const [message, setMessage] = useState('');
-    const [messages, setMessages] = useState([]);
-    const [isNewMessage, setIsNewMessage] = useState(false); 
+    const [userMessages, setUserMessages] = useState([]);
+    const [responseMessages, setResponseMessages] = useState([]);
     const messageContainerRef = useRef(null);
-    // const history = useHistory();
 
-    // const handleBackToHomepage = () => {
-    //     history.push('/'); // Navigate to the homepage
-    // };
-    
     const handleMessageChange = (e) => {
         setMessage(e.target.value);
     };
@@ -25,91 +19,115 @@ export default function ChatPage() {
     const handleKeyPress = (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault(); 
-            handleSend(); // Trimite mesajul
+            handleSend(); 
         }
     };
 
     const handleSend = () => {
         if (message.trim() !== '') {
-            const newMessage = { id: Date.now(), text: message };
-            setMessages([...messages, newMessage]); 
-            setMessage(''); 
+            setUserMessages([...userMessages, { id: Date.now(), sender: 'user', text: message }]);
+            setMessage('');
+            simulateResponse(); 
+        }
+    };
 
-            setIsNewMessage(true);
-            setTimeout(() => {
-                setIsNewMessage(false);
-            }, 2000);
+    const simulateResponse = () => {
+        setTimeout(() => {
+            setResponseMessages([...responseMessages, { id: Date.now(), sender: 'other', text: "Hello. I am MedBuddy!" }]);
+        }, 1500); 
+    };
 
-            if (messageContainerRef.current) {
-                messageContainerRef.current.scrollTop = messageContainerRef.current.scrollHeight;
-            }
+    useEffect(() => {
+        scrollToBottom();
+    }, [userMessages, responseMessages]);
+
+    const scrollToBottom = () => {
+        if (messageContainerRef.current) {
+            messageContainerRef.current.scrollTop = messageContainerRef.current.scrollHeight;
         }
     };
 
     const handleNewConvo = () => {
-        setMessages([]); 
+        setUserMessages([]); 
+        setResponseMessages([]);
     };
+    
+    const combinedMessages = [];
+    const totalMessages = Math.max(userMessages.length, responseMessages.length);
+    for (let i = 0; i < totalMessages; i++) {
+        if (userMessages[i]) {
+            combinedMessages.push(userMessages[i]);
+        }
+        if (responseMessages[i]) {
+            combinedMessages.push(responseMessages[i]);
+        }
+    }
+
     return(
-        <>
-            <div className={`${styles.page__message_area}`}>
-                <div className={styles.page__main_container} >
-                    <div className={styles.page__message_header}>
-                        <img 
-                            className={`${styles.page__message_header__img}`} 
-                            src={Robo_icon}
-                            alt="robot icon"
-                        />
-                        <div className={styles.page__message_header__status}>
-                            <h3>MedBuddy</h3>
-                            <div className={styles.header__status}>
-                                <FontAwesomeIcon icon={faCircle} className={styles.status__icon}/>
-                                <p>Online</p>
-                            </div>
+        <div className={styles.page__message_area}>
+            <div className={styles.page__main_container}>
+                <div className={styles.page__message_header}>
+                    <img 
+                        className={styles.page__message_header__img} 
+                        src={Robo_icon}
+                        alt="robot icon"
+                    />
+                    <div className={styles.page__message_header__status}>
+                        <h3>MedBuddy</h3>
+                        <div className={styles.header__status}>
+                            <FontAwesomeIcon icon={faCircle} className={styles.status__icon}/>
+                            <p>Online</p>
                         </div>
                     </div>
-                    <div ref={messageContainerRef} className={`${styles.page__message_container} `}>
-                            {messages.map((msg) => (
-                                    <div key={msg.id}  className={styles.page__message}>{msg.text}</div>
-                            ))}
-                    </div>
                 </div>
-                
-                <div className={`${styles.page__message_buttons}`}>
-                    <button className={`${styles.page__message_buttons_action}`}
-                    onClick={() => window.location.href = '/'} >
-                        Back to Homepage
-                    </button>
-                    <button className={`${styles.page__message_buttons_action}`} onClick={handleNewConvo}>
-                        New Discussion
-                    </button>
-                </div>
-                <div className={`${styles.page__message_input}`}>
-                    <textarea 
-                        className={`${styles.page__message_area_question}`} 
-                        placeholder="Ask your question" value={message}
-                        onChange={handleMessageChange} onKeyPress={handleKeyPress} />
-                    <div className={`${styles.page__message_area_actions}`}>
-                        <label className={`${styles.page__message_area_file}`}>
-                            <img 
-                                className={`${styles.page__message_area_file_img}`} 
-                                src={Choose}
-                                alt="choose file"
-                            />
-                            <input 
-                                type="file" 
-                                className={`${styles.page__message_area_file_in}`} 
-                                >
-                            </input>
-                        </label>
-                        <button 
-                            onClick={handleSend}
-                            className={`${styles.page__message_area_button}`}
+                <div ref={messageContainerRef} className={styles.page__message_container}>
+                    {/* toate mesajele combinate unul dupa altul si in ordine*/}
+                    {combinedMessages.map((msg) => (
+                        <div 
+                            key={msg.id} 
+                            className={`${styles.page__msg} ${msg.sender === 'user' ? styles.page__message : styles.page__response}`}
                         >
-                            <img className={`${styles.page__message_area_send}`} alt="Send" src={Send}/>
-                        </button>
-                    </div>
+                            {msg.text}
+                        </div>
+                    ))}
                 </div>
             </div>
-        </>
+            <div className={styles.page__message_buttons}>
+                <button className={styles.page__message_buttons_action} onClick={() => window.location.href = '/'}>
+                    Back to Homepage
+                </button>
+                <button className={styles.page__message_buttons_action} onClick={handleNewConvo}>
+                    New Discussion
+                </button>
+            </div>
+            <div className={styles.page__message_input}>
+                <textarea 
+                    className={styles.page__message_area_question} 
+                    placeholder="Ask your question" 
+                    value={message}
+                    onChange={handleMessageChange} 
+                    onKeyPress={handleKeyPress} 
+                />
+                <div className={styles.page__message_area_actions}>
+                    <label className={styles.page__message_area_file}>
+                        <img 
+                            className={styles.page__message_area_file_img} 
+                            src={Choose}
+                            alt="choose file"
+                        />
+                        <input 
+                            type="file" 
+                            className={styles.page__message_area_file_in} 
+                        />
+                    </label>
+                    <button 
+                        onClick={handleSend}
+                        className={styles.page__message_area_button}
+                    >
+                        <img className={styles.page__message_area_send} alt="Send" src={Send}/>
+                    </button>
+                </div>
+            </div>
+        </div>
     )
 }

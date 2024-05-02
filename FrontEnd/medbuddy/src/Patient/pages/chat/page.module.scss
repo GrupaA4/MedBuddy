@@ -68,8 +68,7 @@
                     }
                 }
                 
-            }
-            
+            }  
         }
     
         .page__message_container {
@@ -78,23 +77,31 @@
             border-radius: 1rem;
             overflow-y: scroll;
             scrollbar-width: none;
-            padding: 2rem;
+            padding: 2rem 2rem;
             display: flex;
             flex-direction: column;
             align-items: end;
-    
-            .page__message {
-                background-color: #069DAE;
-                color: white;
+
+            .page__msg {
                 max-width: 68vw;
                 width: auto;
                 word-wrap: break-word;
                 display: block;
-                margin: 0.6rem 1.6rem;
+                margin: 0.6rem 0;
                 padding: 0.8rem 0.8rem;
                 border-radius: 0.8rem 0 0.8rem 0.8rem;
                 font-family: "Oswald_font";
                 font-weight: 300;
+            }
+    
+            .page__message {
+                background-color: #069DAE;
+                color: white;
+            }
+            .page__response {
+                background-color: #EEEEEE;
+                color: #505050;
+                align-self: flex-start;
             }
         }
     }
