@@ -33,7 +33,13 @@ export default function ChatPage() {
 
     const simulateResponse = () => {
         setTimeout(() => {
-            setResponseMessages([...responseMessages, { id: Date.now(), sender: 'other', text: "Hello. I am MedBuddy!" }]);
+            setResponseMessages([...responseMessages, { id: Date.now(), sender: 'medbuddy', text: "Hello. I am MedBuddy!" }]);
+        }, 1500); 
+    };
+
+    const simulateResponseWithFile = () => {
+        setTimeout(() => {
+            setResponseMessages([...responseMessages, { id: Date.now(), sender: 'medbuddy', text: "I added the file to your documents!" }]);
         }, 1500); 
     };
 
@@ -46,6 +52,22 @@ export default function ChatPage() {
             messageContainerRef.current.scrollTop = messageContainerRef.current.scrollHeight;
         }
     };
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = () => {
+            const fileData = reader.result; 
+            const messageWithFile = { id: Date.now(), sender: 'user', text: message, file: fileData };
+            setUserMessages([...userMessages, messageWithFile]);
+            setMessage('');
+
+            simulateResponseWithFile();
+            //
+        };
+        reader.readAsDataURL(file);
+    };
+    
 
     const handleNewConvo = () => {
         setUserMessages([]); 
@@ -87,7 +109,14 @@ export default function ChatPage() {
                             key={msg.id} 
                             className={`${styles.page__msg} ${msg.sender === 'user' ? styles.page__message : styles.page__response}`}
                         >
-                            {msg.text}
+                            {msg.file ? (
+                                <div>
+                                    <a href={msg.file} download>File</a>
+                                    <div>{msg.text}</div>
+                                </div>
+                            ) : (
+                                <div>{msg.text}</div>
+                            )}
                         </div>
                     ))}
                 </div>
@@ -118,6 +147,7 @@ export default function ChatPage() {
                         <input 
                             type="file" 
                             className={styles.page__message_area_file_in} 
+                            onChange={handleFileChange} 
                         />
                     </label>
                     <button 
