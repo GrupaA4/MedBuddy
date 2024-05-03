@@ -58,7 +58,8 @@ export default function ChatPage() {
         const reader = new FileReader();
         reader.onload = () => {
             const fileData = reader.result; 
-            const messageWithFile = { id: Date.now(), sender: 'user', text: message, file: fileData };
+            const fileName = file.name;
+            const messageWithFile = { id: Date.now(), sender: 'user', text: message, file: fileData, fileName: fileName };
             setUserMessages([...userMessages, messageWithFile]);
             setMessage('');
 
@@ -111,7 +112,7 @@ export default function ChatPage() {
                         >
                             {msg.file ? (
                                 <div>
-                                    <a href={msg.file} download>File</a>
+                                    <a href={msg.file} download>{msg.fileName}</a>
                                     <div>{msg.text}</div>
                                 </div>
                             ) : (
