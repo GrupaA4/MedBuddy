@@ -2,6 +2,7 @@ import './App.css';
 import Home from './Patient/pages/home/page';
 import ChatPage from './Patient/pages/chat/page';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Diagnostic from './Patient/pages/diagnoses/page';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/chat" element={<ChatPage />} />
+            <Route path="/diagnostics" element={<Diagnostic />} />
           </Routes>
         </div>
       </div>
