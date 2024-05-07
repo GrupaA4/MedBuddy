@@ -1,0 +1,114 @@
+@font-face {
+  font-family: "Oswald_font";
+  src: local("Oswald"),
+   url("../../fonts/Oswald/Oswald-VariableFont_wght.ttf") format("truetype");
+}
+
+.page__header{
+    height: 6rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: "Oswald_font";
+    .page__header_logo  {
+        width: 4rem;
+        height: 4rem;
+        border: 0.15rem solid #86f4ce;
+        border-radius: 10rem;
+        padding: 0.5rem;
+    }
+    .page__header_navbar{
+        width: 30rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        .page__header_navbar_link{
+            text-decoration: none;
+            color: #002845;
+            font-size: 1.25rem;
+        }
+        .page__header_navbar_profilepic{
+            width: 3.5rem;
+            height: 3.5rem;
+        }
+    }
+    .page__header_menu_button{
+        display: none;
+    }
+    .pages{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .page__header {
+
+      .page__header_navbar {
+        display: none;
+      }
+      
+      .page__header_menu_button {
+        background-color: #fff;
+        border: none;
+        display: flex;
+        align-items: center;
+
+        .page__header_hamburger {
+          font-size: 3rem;
+        }
+      }
+
+      .pages {
+        display: none;
+      }
+      .pages_show{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        height: calc(100vh - 6.5rem);
+        background-color: #fff;
+        top: 6.5rem;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        .page{
+            text-decoration: none;
+            color: #002845;
+            margin: 0.5rem;
+            font-size: 2rem;
+        }
+      }
+    }
+
+}
+
+@media screen and (max-width: 375px) {
+  .page__header{
+    height: 5rem;
+    .page__header_logo{
+      height: 3rem;
+      width: 3rem;
+    }
+    .page__header_menu_button{
+      .page__header_hamburger{
+        font-size: 2rem;
+      }
+    }
+    .pages_show{
+      top: 5.5rem;
+      height: calc(100vh - 5.5rem);
+      .page{
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
