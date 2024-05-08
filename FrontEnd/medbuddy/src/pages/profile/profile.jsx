@@ -38,6 +38,11 @@ export default function Profile(){
 
     const [isEditing, setIsEditing] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
+    const [isChangingPassword, setIsChangingPassword] = useState(false);
+
+    const [oldPassword, setOldPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -85,6 +90,14 @@ export default function Profile(){
 
     const handleAlergiesChange = (event) => {
         setAlergies(event.target.value);
+    };
+
+    const handleNewPasswordChange = (event) => {
+        setNewPassword(event.target.value);
+    };
+
+    const handleConfirmPasswordChange = (event) => {
+        setConfirmPassword(event.target.value);
     };
     
     const handleSaveChanges = (event) => {
@@ -154,6 +167,29 @@ export default function Profile(){
         setIsDeleting(false);
     };
 
+    const handleCancelChangePassword = (event) => {
+        event.preventDefault();
+
+        setNewPassword(oldPassword);
+        setConfirmPassword(oldPassword);
+        setIsChangingPassword(false);
+    };
+
+    const handleChangePassword = (event) => {
+        event.preventDefault();
+
+        setOldPassword('Future API call');
+        if(newPassword!==oldPassword && newPassword===confirmPassword){
+            console.log({
+                password:newPassword
+            });
+        }
+
+        setNewPassword(oldPassword);
+        setConfirmPassword(oldPassword);
+        setIsChangingPassword(false);
+    };
+
     return (
         <>
             <Header/>
@@ -171,7 +207,15 @@ export default function Profile(){
                                 <button className={`${styles.buttons_container__edit_profile} ${styles.button}`} onClick={() => setIsEditing(true)}>Edit Profile</button><br /><br />
                             </>
                         )}
-                        <button className={`${styles.buttons_container__change_password} ${styles.button}`}>Change Password</button><br /><br />
+                        {isChangingPassword ? (
+                            <>
+                                <button className={`${styles.buttons_container__cancel_change_password} ${styles.button}`} onClick={handleCancelChangePassword}>Cancel Password Change</button><br /><br />
+                            </>
+                        ) : (
+                            <>
+                                <button className={`${styles.buttons_container__change_password} ${styles.button}`} onClick={() => setIsChangingPassword(true)}>Change Password</button><br /><br />
+                            </>
+                        )}
                         {isDeleting ? (
                             <>
                                 <button className={`${styles.buttons_container__cancel_delete} ${styles.button}`} onClick={handleCancelDelete}>Cancel Delete Account</button><br /><br />
@@ -183,7 +227,40 @@ export default function Profile(){
                             </>
                         )}
                     </div>
-                    <div className={`${styles.general_information_container}`}>
+                    {isChangingPassword ? (
+                        <>
+                            <div className={`${styles.form_container}`}>
+                                <h2 className={`${styles.form_container__title}`}>Change your password</h2>
+                                <form className={`${styles.form_container__form}`} onSubmit={handleChangePassword}>
+                                    <div>
+                                        <label htmlFor='newpassword'>New password: </label><br />
+                                        <input
+                                            type='password'
+                                            id='newpassword'
+                                            value={newPassword}
+                                            onChange={handleNewPasswordChange}
+                                            placeholder='Enter your new password:'
+                                            required
+                                        />
+                                    </div><br />
+                                    <div>
+                                        <label htmlFor='confirmpassword'>Confirm password: </label><br />
+                                        <input
+                                            type='password'
+                                            id='confirmpassword'
+                                            value={confirmPassword}
+                                            onChange={handleConfirmPasswordChange}
+                                            placeholder='Confirm your password:'
+                                            required
+                                        />
+                                    </div><br />
+                                    <button className={`${styles.form_container__form__submit} ${styles.button}`} type='submit'>Submit</button>
+                                </form>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                        <div className={`${styles.general_information_container}`}>
                         <section className={`${styles.general_information_container__section}`}>
                             <h2 className={`${styles.general_information_container__section__title}`}>General Information</h2>
                             {isEditing ? (
@@ -382,6 +459,8 @@ export default function Profile(){
                             )}
                         </section>
                     </div>
+                    </>
+                    )}
                 </div>
             <Footer/>
         </>

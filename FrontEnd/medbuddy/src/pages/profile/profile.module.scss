@@ -83,6 +83,13 @@ $font_oswald: "Oswald_font";
             position: sticky;
             top: 60vh;
         }
+
+        &__cancel_change_password{
+            background-color: $green-color;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 50vh;
+        }
     }
 
     .general_information_container{
@@ -212,6 +219,36 @@ $font_oswald: "Oswald_font";
             }
         }
     }
+
+    .form_container{
+        display: flex;
+        flex-direction: column;
+        margin-top: 5vh;
+
+        &__title{
+            font-family: $font_bebas;
+            font-size: 5vh;
+        }
+
+        &__form{
+            label{
+                font-family: $font_bebas;
+                font-size: 3vh;
+            }
+            
+            input{
+                font-family: $font_oswald;
+                font-size: 3vh;
+                height: 6vh;
+                width: 20vw;
+            }
+
+            &__submit{
+                background-color: $red-color;
+                margin-left: 5vw;
+            }
+        }
+    }
 }
 
 .button{
@@ -281,6 +318,19 @@ $font_oswald: "Oswald_font";
                 }
             }
         }
+
+        .form_container{
+            &__form{
+                input{
+                    width: 30vw;
+                }
+    
+                &__submit{
+                    background-color: $red-color;
+                    margin-left: 9vw;
+                }
+            }
+        }
     }
 
     .button{
@@ -324,6 +374,10 @@ $font_oswald: "Oswald_font";
             }
     
             &__delete_account{
+                top: 0vh;
+            }
+
+            &__cancel_change_password{
                 top: 0vh;
             }
         }
@@ -395,6 +449,20 @@ $font_oswald: "Oswald_font";
                         padding: 2vh 8vw;
                         font-size: 4vh;
                     }
+                }
+            }
+        }
+
+        .form_container{
+            margin-left: 22vw;
+
+            &__form{
+                input{
+                    width: 50vw;
+                }
+    
+                &__submit{
+                    margin-bottom: 4vh;
                 }
             }
         }
