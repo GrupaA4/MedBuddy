@@ -1,5 +1,6 @@
+
 import React, { useState } from "react";
-import Logo from './logo.png';
+import Logo from '../images/logoB.png';
 import { HiOutlineBars3 } from "react-icons/hi2";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -13,6 +14,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import SettingsIcon from '@mui/icons-material/Settings';
+import './Navbar.css';
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const menuOptions = [
