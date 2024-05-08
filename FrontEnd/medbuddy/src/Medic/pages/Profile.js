@@ -1,8 +1,8 @@
 
 import './Profile.css';
-import Footer from './Footer' ;
-import Navbar from './Navbar' ;
-import Logo from './logo.png';
+import Footer from '../components/Footer' ;
+import Navbar from '../components/Navbar' ;
+import Logo from '../images/logoB.png';
 
 
 function Profile() {
