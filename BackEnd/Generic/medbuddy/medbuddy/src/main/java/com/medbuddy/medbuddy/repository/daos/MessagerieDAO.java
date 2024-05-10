@@ -1,3 +1,4 @@
+/*
 package com.medbuddy.medbuddy.daos;
 
 import com.medbuddy.medbuddy.database.Database;
@@ -103,3 +104,4 @@ public class MessagerieDAO {
         }
     }
 }
+*/

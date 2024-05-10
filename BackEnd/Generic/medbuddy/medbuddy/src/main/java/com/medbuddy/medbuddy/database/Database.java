@@ -1,3 +1,4 @@
+/*
 package com.medbuddy.medbuddy.database;
 
 //Might be a bit scuffed
@@ -36,3 +37,4 @@ public class Database {
         connection.close();
     }
 }
+*/

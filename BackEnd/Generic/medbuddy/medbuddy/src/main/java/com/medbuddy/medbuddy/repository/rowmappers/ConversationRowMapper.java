@@ -1,3 +1,4 @@
+/*
 package com.medbuddy.medbuddy.rowmappers;
 
 import com.medbuddy.medbuddy.models.Conversation;
@@ -16,3 +17,4 @@ public class ConversationRowMapper {
         return conversation;
     }
 }
+*/

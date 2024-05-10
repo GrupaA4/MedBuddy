@@ -1,52 +1,28 @@
 package com.medbuddy.medbuddy.models;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
+@Data
 public class Message {
-    @Setter
-    @Getter
     private int id;
-    @Setter
-    @Getter
     private int senderId;
-    @Setter
-    @Getter
     private int conversationId;
-    @Setter
-    @Getter
     private String message;
-    @Setter
-    @Getter
     private String imagePath;
     private Boolean isRead;
-    @Setter
-    @Getter
     private int repliesTo;
     private Boolean isFromMedBuddy;
     private Boolean isDeleted;
 
-    public Boolean getRead() {
-        return isRead;
-    }
-
-    public void setRead(Boolean read) {
-        isRead = read;
-    }
-
-    public Boolean getFromMedBuddy() {
-        return isFromMedBuddy;
-    }
-
-    public void setFromMedBuddy(Boolean fromMedBuddy) {
-        isFromMedBuddy = fromMedBuddy;
-    }
-
-    public Boolean getDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(Boolean deleted) {
-        isDeleted = deleted;
+    public Message(int id, int senderId, int conversationId, String message, String imagePath, Boolean isRead, int repliesTo, Boolean isFromMedBuddy, Boolean isDeleted) {
+        this.id = id;
+        this.senderId = senderId;
+        this.conversationId = conversationId;
+        this.message = message;
+        this.imagePath = imagePath;
+        this.isRead = isRead;
+        this.repliesTo = repliesTo;
+        this.isFromMedBuddy = isFromMedBuddy;
+        this.isDeleted = isDeleted;
     }
 }
