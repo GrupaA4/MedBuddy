@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.UUID;
 
 public class MedicalHistoryRowMapper implements RowMapper<MedicalHistoryEntry> {
 
@@ -14,9 +15,9 @@ public class MedicalHistoryRowMapper implements RowMapper<MedicalHistoryEntry> {
     public MedicalHistoryEntry mapRow(final ResultSet rs, final int rowNum) throws SQLException {
         final MedicalHistoryEntry medicalHistory = new MedicalHistoryEntry();
 
-        medicalHistory.setId(rs.getInt("ID"));
-        medicalHistory.setMedicId(rs.getInt("medicId"));
-        medicalHistory.setPatientId(rs.getInt("patientId"));
+        medicalHistory.setId(UUID.fromString(rs.getString("ID")));
+        medicalHistory.setMedicId(UUID.fromString(rs.getString("medicId")));
+        medicalHistory.setPatientId(UUID.fromString(rs.getString("patientId")));
         medicalHistory.setDiagnosis(rs.getString("diagnosis"));
         medicalHistory.setPeriod(rs.getString("period"));
         medicalHistory.setTreatment(rs.getString("treatment"));

@@ -2,11 +2,13 @@ package com.medbuddy.medbuddy.models;
 
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 public class MedicalHistoryEntry {
-    private int id;
-    private int medicId;
-    private int patientId;
+    private UUID id;
+    private UUID medicId;
+    private UUID patientId;
     private String diagnosis;
     private String period;
     private String treatment;

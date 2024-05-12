@@ -3,10 +3,11 @@ package com.medbuddy.medbuddy.models;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Data
 public class User {
-    private int id;
+    private UUID id;
     private String email;
     private String password;
     private String lastName;
@@ -24,7 +25,7 @@ public class User {
     private Boolean isAdmin;
     private Boolean isDeleted;
 
-    public User(int id, String email, String password, String lastName, String firstName, Boolean gender, String pronoun1, String pronoun2, Date dateOfBirth, String language, String country, String city, int postalNumber, int phoneNumber, String profileImagePath, Boolean isAdmin, Boolean isDeleted) {
+    public User(UUID id, String email, String password, String lastName, String firstName, Boolean gender, String pronoun1, String pronoun2, Date dateOfBirth, String language, String country, String city, int postalNumber, int phoneNumber, String profileImagePath, Boolean isAdmin, Boolean isDeleted) {
         this.id = id;
         this.email = email;
         this.password = password;

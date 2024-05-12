@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 public class MedicalHistoryDAO {
@@ -21,7 +22,7 @@ public class MedicalHistoryDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<MedicalHistoryEntry> getMedicalHistoryForAUser (int userId){
+    public List<MedicalHistoryEntry> getMedicalHistoryForAUser (UUID userId){
         return jdbcTemplate.query(
                 "SELECT * FROM MedicalHistory WHERE userId = ?",
                 new MedicalHistoryRowMapper(),
@@ -31,7 +32,14 @@ public class MedicalHistoryDAO {
 
     public int createMedicalHistoryEntry(MedicalHistoryEntry medicalHistoryEntry) {
         return jdbcTemplate.update(
-                "INSERT INTO MedicalHistory()"
-        )
+                "INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)",
+                medicalHistoryEntry.getId(),
+                medicalHistoryEntry.getMedicId(),
+                medicalHistoryEntry.getPatientId(),
+                medicalHistoryEntry.getDiagnosis(),
+                medicalHistoryEntry.getPeriod(),
+                medicalHistoryEntry.getTreatment(),
+                medicalHistoryEntry.isDeleted()
+        );
     }
 }
