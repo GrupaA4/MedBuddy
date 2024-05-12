@@ -1,21 +1,23 @@
 
 import './App.css';
-import Profile from './Medic/Profile' ;
+import Profile from './Medic/Profile';
+import Conversation from './Medic/navigation/Conversation/pages/Conversation';
 
-import Register from './Medic/pages/Register';
+import Register from './Medic/navigation/Register/Register';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <div className="App">
-<<<<<<< HEAD
 
-      <Register />
 
-=======
-        <Profile/>
+      {/* <Register /> */}
 
-    
->>>>>>> 5e570a9a15f4935661ee30cb42b75f0cfd6174c2
+      {/* <Profile /> */}
+
+      <Conversation />
+
+
     </div>
   );
 }

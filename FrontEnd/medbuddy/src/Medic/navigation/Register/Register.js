@@ -1,6 +1,6 @@
-import logo from '../images/logo.png';
-import cover from '../images/image.png';
-import Form from '../components/Form';
+import logo from './images/logo.png';
+import cover from './images/image.png';
+import Form from './components/Form';
 import './Register.css';
 
 
