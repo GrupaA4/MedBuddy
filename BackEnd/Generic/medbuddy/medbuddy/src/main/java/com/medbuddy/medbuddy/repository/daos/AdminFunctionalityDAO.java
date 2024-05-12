@@ -1,8 +1,9 @@
 package com.medbuddy.medbuddy.repository.daos;
 
-/*import com.medbuddy.medbuddy.models.Reports;
-import com.medbuddy.medbuddy.rowmappers.AdminFunctionalityRowMapper;
-import com.medbuddy.medbuddy.rowmappers.ReportsRowMapper;*/
+import com.medbuddy.medbuddy.repository.rowmappers.UserRowMapper;
+import com.medbuddy.medbuddy.models.User;
+import com.medbuddy.medbuddy.repository.rowmappers.ReportRowMapper;
+import com.medbuddy.medbuddy.models.Report;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -18,17 +19,17 @@ public class AdminFunctionalityDAO{
         this.jdbcTemplate=jdbcTemplate;
     }
 
-    /*public List<Integer> getOldestUsers(int fromId, int toId) {
-        return jdbcTemplate.query("SELECT id FROM user WHERE id>=fromId AND id<=toId", new AdminFunctionalityRowMapper());
-    }*/
+    public List<User> getOldestUsers(int fromId, int toId) {
+        return jdbcTemplate.query("SELECT id FROM user WHERE id>=fromId AND id<=toId", new UserRowMapper());
+    }
 
     public int reportUser(int currentUserId, int reportedUserId, String reportMessage) {
         return jdbcTemplate.update("INSERT INTO reports(REPORTEDUSER, REPORTEDBY, REPORTMESSAGE) VALUES (?, ?, ?)", reportedUserId, currentUserId, reportMessage);
     }
 
-    /*public List<Reports> getReports(int fromId, int toId) {
-        return jdbcTemplate.query("SELECT reportedUser, reportedBy, reportMessage FROM reports WHERE id>=fromId AND id<=toId", new ReportsRowMapper());
-    }*/
+    public List<Report> getReports(int fromId, int toId) {
+        return jdbcTemplate.query("SELECT reportedUser, reportedBy, reportMessage FROM reports WHERE id>=fromId AND id<=toId", new ReportRowMapper());
+    }
 
     public boolean allowMedic(int medicId)
     {

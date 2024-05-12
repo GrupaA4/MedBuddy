@@ -14,6 +14,7 @@ public class MedicalHistoryDAO {
 
     /**
      * Spring will insert the JdbcTemplate bean here
+     *
      * @param jdbcTemplate a bean inserted by Spring
      */
     @Autowired
@@ -21,7 +22,7 @@ public class MedicalHistoryDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<MedicalHistoryEntry> getMedicalHistoryForAUser (int userId){
+    public List<MedicalHistoryEntry> getMedicalHistoryForAUser(int userId) {
         return jdbcTemplate.query(
                 "SELECT * FROM MedicalHistory WHERE userId = ?",
                 new MedicalHistoryRowMapper(),
@@ -29,9 +30,9 @@ public class MedicalHistoryDAO {
         );
     }
 
-    public int createMedicalHistoryEntry(MedicalHistoryEntry medicalHistoryEntry) {
+    /*public int createMedicalHistoryEntry(MedicalHistoryEntry medicalHistoryEntry) {
         return jdbcTemplate.update(
                 "INSERT INTO MedicalHistory()"
         )
-    }
+    }*/
 }
