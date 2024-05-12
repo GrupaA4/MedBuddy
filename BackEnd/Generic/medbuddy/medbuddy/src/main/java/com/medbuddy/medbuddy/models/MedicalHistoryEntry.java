@@ -3,7 +3,7 @@ package com.medbuddy.medbuddy.models;
 import lombok.Data;
 
 @Data
-public class MedicalHistory {
+public class MedicalHistoryEntry {
     private int id;
     private int medicId;
     private int patientId;
