@@ -21,8 +21,18 @@ public class UserDAO {
     }
 
     public void loginUser(String email, String password) {
-        // logging in a user
-        // involve querying the database to check if the email and password match
+        //check if the email and password match
+        String sql = "SELECT COUNT(*) FROM appuser WHERE email = ? AND password = ?";
+
+        // execute the query
+        int count = jdbcTemplate.queryForObject(sql, Integer.class, email, password);
+
+        // check if a user with the provided email and password exists
+        if (count == 1) {
+            System.out.println("Login successful!");
+        } else {
+            System.out.println("Invalid email or password. Please try again.");
+        }
     }
 
     public int getUserId(String email) {
