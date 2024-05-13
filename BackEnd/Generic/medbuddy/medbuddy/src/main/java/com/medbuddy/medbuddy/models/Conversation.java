@@ -19,4 +19,8 @@ public class Conversation {
         this.lastMessageId = lastMessageId;
         this.isDeleted = isDeleted;
     }
+    public Conversation(){
+
+    }
+
 }
