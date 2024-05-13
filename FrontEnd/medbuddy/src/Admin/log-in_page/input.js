@@ -2,7 +2,41 @@ let Email;
 
 let Password;
 
-document.getElementById("login").onclick = function(){
+const emails = [];
+
+const passwords = [];
+
+function extractCredentials(){
+    try {
+        return fetch("users.json")
+            .then(response => response.json())
+            .then(users => {
+                const emails = [];
+                const passwords = [];
+                users.forEach(user => {
+                    emails.push(user.email);
+                    passwords.push(user.password);
+                });
+                return { emails, passwords }; 
+            })
+            .catch(error => {
+                console.error("A apărut o eroare:", error);
+                throw error; 
+            });
+    } catch (error) {
+        console.error('A apărut o eroare:', error);
+        throw error; 
+    }
+
+}
+
+
+document.getElementById("login").onclick = async function(){
+
+    document.getElementById("myWarning").style.color = "red";
+
+    const {emails, passwords} = await extractCredentials();
+
     Email = document.getElementById("email").value;
     Password = document.getElementById("password").value;
     if(!Email && !Password){
@@ -18,9 +52,44 @@ document.getElementById("login").onclick = function(){
         document.getElementById("myWarning").textContent = `You must enter your password!`;
     }
     else{
-        document.getElementById("myWarning").textContent = ``;
-    }
+        
+        let i = 0;
+        let j = 0;
 
-    console.log(Email);
-    console.log(Password);
+        let okEmail = false;
+        let okPassword = false;
+        let okFinal = false;
+
+        for(let email of emails){
+            i++;
+
+            if(Email === email){
+                okEmail = true;
+                break;
+            }
+        }
+    
+        for(let password of passwords){
+            j++
+
+            if(Password === password){
+                okPassword = true;
+                break;
+            }
+        }
+        
+        if(i == j){
+            okFinal = true;
+        }
+
+        if(!okEmail || !okPassword || !okFinal){
+            document.getElementById("myWarning").textContent = `The user doesn't exist`;
+        }
+        else{
+            document.getElementById("myWarning").style.color = "green";
+            document.getElementById("myWarning").textContent = `The user exists`;
+        }
+
+        
+    }
 }

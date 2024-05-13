@@ -1,0 +1,60 @@
+[{
+    "email": "ion12@yahoo.com",
+    "password": "ceva",
+    "lastName": "Ion",
+    "firstName": "Popa",
+    "gender": "male",
+    "dateofbirth": "01.07.1997",
+    "language": "romanian",
+    "country": "Romania",
+    "city": "Iasi",
+    "phoneNumber": "0712345698"
+},
+{
+    "email": "marcela30@yahoo.com",
+    "password": "probabil",
+    "lastName": "Marcela",
+    "firstName": "Popa",
+    "gender": "female",
+    "dateofbirth": "01.08.2002",
+    "language": "english",
+    "country": "England",
+    "city": "London",
+    "phoneNumber": "0123456789"
+},
+{
+    "email": "ionel24@gmail.com",
+    "password": "poate",
+    "lastName": "Ionel",
+    "firstName": "Vasilescu",
+    "gender": "male",
+    "dateofbirth": "02.09.2005",
+    "language": "german",
+    "country": "Germany",
+    "city": "Berlin",
+    "phoneNumber": "0325891526"
+},
+{
+    "email": "diana17@gmail.com",
+    "password": "interesant",
+    "lastName": "Diana",
+    "firstName": "Verde",
+    "gender": "female",
+    "dateofbirth": "10.07.2000",
+    "language": "german",
+    "country": "Austria",
+    "city": "Vienna",
+    "phoneNumber": "0123456789"
+},
+{
+    "email": "stefan27@gmail.com",
+    "password": "minunat",
+    "lastName": "Stefan",
+    "firstName": "Albastru",
+    "gender": "male",
+    "dateofbirth": "27.05.2004",
+    "language": "english",
+    "country": "Australia",
+    "city": "Sydney",
+    "phoneNumber": "1234567894"
+}]
