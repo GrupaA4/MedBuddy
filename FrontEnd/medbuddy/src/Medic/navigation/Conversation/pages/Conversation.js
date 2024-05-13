@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import LeftMenu from "../components/LeftMenu";
 import ChatDetail from "../components/ChatDetail";
 import './Conversation.css';
-
+import Navbar from './../../common-components/Navbar';
 function Conversation() {
 
     return (
         <>
+        
             <div className="w-screen h-screen overflow-hidden">
                 {/* 2 components cointainer */}
                 <div className="flex justify-start whatsapp-bp:justify-center items-center bg-[#002845] h-screen">
