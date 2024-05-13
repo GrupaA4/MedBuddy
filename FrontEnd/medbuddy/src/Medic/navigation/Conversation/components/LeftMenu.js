@@ -19,13 +19,6 @@ function LeftMenu() {
                 {/* Profile picture */}
                 <img src={chat10} alt="profile_picture" className="rounded-full w-[40px]" />
 
-                {/* Profile nav buttons */}
-                <div className="flex justify-between w-[175px]">
-                    <RoundedBtn icon={<MdPeopleAlt />} />
-                    <RoundedBtn icon={<TbCircleDashed />} />
-                    <RoundedBtn icon={<BsFillChatLeftTextFill />} />
-                    <RoundedBtn icon={<HiDotsVertical />} />
-                </div>
             </div>
 
             {/* Search and filter */}

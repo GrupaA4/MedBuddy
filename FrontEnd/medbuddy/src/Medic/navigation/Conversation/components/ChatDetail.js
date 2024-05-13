@@ -9,6 +9,7 @@ import { AiOutlinePaperClip } from "react-icons/ai";
 import { BsFillMicFill } from "react-icons/bs";
 import { chat9, cs2 } from "../assets/conversation";
 import { getTime } from "../logic/conversation";
+import { LuSendHorizonal } from "react-icons/lu";
 
 function ChatDetail() {
     const [messages, setMessages] = useState(messagesData);
@@ -86,16 +87,16 @@ function ChatDetail() {
                     {/* Info */}
                     <div>
                         {/* Contact */}
-                        <h1 className="text-white text-lg font-medium ">Sarah</h1>
+                        <h1 className="text-white text-lg font-medium mt-2">Sarah</h1>
 
                     </div>
                 </div>
 
-                {/* Buttons */}
+                {/* Buttons
                 <div className="flex justify-end items-center w-[85px]">
 
                     <RoundedBtn icon={<HiDotsVertical />} />
-                </div>
+                </div> */}
             </div>
 
             {/* Messages section */}
@@ -132,6 +133,9 @@ function ChatDetail() {
                     onChange={handleInputChange}
                     ref={inputRef}
                 />
+                <span className="mr-2">
+                    <RoundedBtn icon={<LuSendHorizonal />} />
+                </span>
 
             </div>
         </div>
