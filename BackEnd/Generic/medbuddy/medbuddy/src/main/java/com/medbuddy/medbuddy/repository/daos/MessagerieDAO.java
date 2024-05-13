@@ -25,18 +25,12 @@ public class MessagerieDAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     //public MessagerieDAO(JdbcTemplate jdbcTemplate) {this.jdbcTemplate = jdbcTemplate;}
-    public void createConversationBetween(UUID loggedUserId, UUID conversedWithUserId) throws SQLException {
-        Random random = new Random();
-        int nId = random.nextInt(10000);
-        UUID id = UUID.fromString(String.valueOf(nId));
+    public void createConversationBetween(UUID id, UUID loggedUserId, UUID conversedWithUserId) throws SQLException {
         int nullValue = 0;
         jdbcTemplate.update("insert into conversation (id, userId1, userId2, lastMessageId, lastSentAt, isDeleted) values(?, ?, ?, NULL, NULL, ?)", id, loggedUserId, conversedWithUserId, nullValue);
     }
 
-    public void addMessageToConversation(UUID senderId, UUID conversationId, String message, String imagePath, UUID repliesTo, int isFromMedBuddy) throws SQLException {
-        Random random = new Random();
-        int nId = random.nextInt(10000);
-        UUID id = UUID.fromString(String.valueOf(nId));
+    public void addMessageToConversation(UUID id, UUID senderId, UUID conversationId, String message, String imagePath, UUID repliesTo, int isFromMedBuddy) throws SQLException {
         int nullValue = 0;
         jdbcTemplate.update("insert into message (id, senderId, conversationId, message, timesent, isRead, imagePath, repliesTo, isFromMedBuddy, isDeleted) values (?, ?, ?, ?, SYSDATE, ?, ?, ?, ?, ?)",
                 id, senderId, conversationId, message, nullValue, imagePath, repliesTo, isFromMedBuddy, nullValue);
