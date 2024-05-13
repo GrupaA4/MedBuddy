@@ -1,24 +1,26 @@
-/*
-package com.medbuddy.medbuddy.rowmappers;
+package com.medbuddy.medbuddy.repository.rowmappers;
 
 import com.medbuddy.medbuddy.models.Message;
+import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.UUID;
 
-public class MessageRowMapper {
-    public static Message mapRow(ResultSet rs) throws SQLException {
+public class MessageRowMapper implements RowMapper<Message> {
+    @Override
+    public Message mapRow(ResultSet rs, int rowNum) throws SQLException {
         Message message = new Message();
-        message.setId(rs.getInt("id"));
+        message.setId(UUID.fromString(rs.getString("id")));
         message.setMessage(rs.getString("message"));
-        message.setDeleted(rs.getInt("isDeleted") == 1);
-        message.setRead(rs.getInt("isRead") == 1);
-        message.setFromMedBuddy(rs.getInt("isFromMedBuddy") == 1);
-        message.setRepliesTo(rs.getInt("RepliesTo"));
-        message.setSenderId(rs.getInt("SenderId"));
+        message.setIsDeleted(rs.getInt("isDeleted") == 1);
+        message.setIsRead(rs.getInt("isRead") == 1);
+        message.setIsFromMedBuddy(rs.getInt("isFromMedBuddy") == 1);
+        message.setRepliesTo(UUID.fromString(rs.getString("RepliesTo")));
+        message.setSenderId(UUID.fromString(rs.getString("SenderId")));
         message.setImagePath(rs.getString("imagePath"));
-        message.setConversationId(rs.getInt("conversationId"));
+        message.setConversationId(UUID.fromString(rs.getString("conversationId")));
         return message;
     }
 }
-*/
+
