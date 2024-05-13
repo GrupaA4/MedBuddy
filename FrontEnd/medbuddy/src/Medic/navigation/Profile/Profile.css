@@ -40,7 +40,9 @@
       flex-direction: row;
     }
   }
-
+.body{
+  min-height: 100vh;
+}
   .content{
     height: 500px;
     width: 70%;
@@ -59,12 +61,13 @@
     justify-content: space-evenly;
     width: 20rem;
     height:95%;
+    margin-top: 0px;
   }
   
   .profile-picture{
-    width:100px;
-    height:350px;
-    margin-left: 10%;
+    width:200px;
+    height:auto;
+    margin-left: 22%;
    
   }
   .profile-picture img{
@@ -87,18 +90,22 @@
     border-radius: 10px;
     color:azure;
     text-decoration: none;
+    font-family: 'Oswald';
   }
 
 .general-information{
   height:80%;
-  width: 50%;
+  width: 60%;
+ margin-left: 40px;
+ margin-top: 10%;
 }
 
 h2{
   color: #002845;
   display: flex;
   align-self: flex-start;
-  margin-left: 20px;
+  margin-left: 100px;
+  font-family: 'Oswald';
 }
 
 .general-information-container{
@@ -114,6 +121,7 @@ h2{
   margin-bottom: 5px;
   margin-top: 5px;
   font-size: large;
+  font-family: 'Oswald';
   color:#069dae;
 }
 
@@ -123,13 +131,13 @@ h2{
   margin-bottom: 5px;
   margin-top: 5px;
   font-size: large;
+  font-family: 'Oswald';
   color: darkgray;
 }
 
 
 .footer-container{
    width: 100%;
- 
   }
 
   

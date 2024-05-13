@@ -8,6 +8,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    background-color: #DEF9F1;
 }
 
 .container1 {

@@ -1,8 +1,8 @@
 
 import './Profile.css';
-import Footer from '../components/Footer' ;
-import Navbar from '../components/Navbar' ;
-import Logo from '../images/logoB.png';
+import Footer from '../common-components/Footer' ;
+import Navbar from '../common-components/Navbar' ;
+import Logo from '../common-components/logoB.png';
 
 
 function Profile() {
@@ -10,9 +10,9 @@ function Profile() {
 
     <div className="Profile">
       <div className="body">
-      <div className='navbar-container'>
-        <Navbar/>
-      </div>
+         <div className='navbar-container'>
+            <Navbar/>
+          </div>
 
         <div className="content">
           <div className="left-container">
@@ -55,9 +55,9 @@ function Profile() {
             </div>
           </div>
         </div>
-        
-        <div className="footer-container"><Footer/></div>
         </div>
+        <div className="footer-container"><Footer/></div>
+       
         
 
 
