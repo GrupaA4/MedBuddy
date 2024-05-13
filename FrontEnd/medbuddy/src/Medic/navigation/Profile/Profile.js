@@ -10,9 +10,9 @@ function Profile() {
 
     <div className="Profile">
       <div className="body">
-         <div className='navbar-container'>
-            <Navbar/>
-          </div>
+      <div className='navbar-container'>
+        <Navbar/>
+      </div>
 
         <div className="content">
           <div className="left-container">
@@ -55,9 +55,9 @@ function Profile() {
             </div>
           </div>
         </div>
-        </div>
+        
         <div className="footer-container"><Footer/></div>
-       
+        </div>
         
 
 

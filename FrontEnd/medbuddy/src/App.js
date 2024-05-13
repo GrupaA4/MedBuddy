@@ -2,8 +2,8 @@
 import './App.css';
 
 import Conversation from './Medic/navigation/Conversation/pages/Conversation';
-import Register from './Medic/navigation/Register/Register';
 import Profile from './Medic/navigation/Profile/Profile';
+import Register from './Medic/navigation/Register/Register';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     <div className="App">
 
 
-      <Register/>
+      <Conversation />
 
     </div>
   );

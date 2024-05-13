@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import Logo from './logoB.png';
+import Logo from '../common-components/logoB.png';
 import { HiOutlineBars3 } from "react-icons/hi2";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
