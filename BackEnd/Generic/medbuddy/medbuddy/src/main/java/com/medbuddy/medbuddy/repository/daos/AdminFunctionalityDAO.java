@@ -1,13 +1,17 @@
 package com.medbuddy.medbuddy.repository.daos;
 
-/*import com.medbuddy.medbuddy.models.Reports;
-import com.medbuddy.medbuddy.rowmappers.AdminFunctionalityRowMapper;
-import com.medbuddy.medbuddy.rowmappers.ReportsRowMapper;*/
+import com.medbuddy.medbuddy.models.Medic;
+import com.medbuddy.medbuddy.repository.rowmappers.MedicRowMapper;
+import com.medbuddy.medbuddy.repository.rowmappers.UserRowMapper;
+import com.medbuddy.medbuddy.models.User;
+import com.medbuddy.medbuddy.repository.rowmappers.ReportRowMapper;
+import com.medbuddy.medbuddy.models.Report;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 public class AdminFunctionalityDAO{
@@ -18,24 +22,52 @@ public class AdminFunctionalityDAO{
         this.jdbcTemplate=jdbcTemplate;
     }
 
-    /*public List<Integer> getOldestUsers(int fromId, int toId) {
-        return jdbcTemplate.query("SELECT id FROM user WHERE id>=fromId AND id<=toId", new AdminFunctionalityRowMapper());
-    }*/
+    public List<User> getOldestUsers() {
+        return jdbcTemplate.query("SELECT * FROM user ORDER BY lastTimeLoggedOn ASC", new UserRowMapper());
+    }
 
-    public int reportUser(int currentUserId, int reportedUserId, String reportMessage) {
+    public List<User> findUserByName(String username) throws Exception {
+        if(!username.contains("+") || (username.startsWith("+") && username.endsWith("+")))
+            throw new Exception("Invalid format. (Make custom exception: findUserByName)");
+        String[] nameParts = username.split("\\+");
+
+        if (nameParts.length > 2)
+            throw new Exception("Invalid format, should only have 2 parts. (Make custom exception: findUserByName)");
+
+        String firstName = null;
+        String lastName = null;
+
+        if(nameParts.length == 1){
+            if(username.startsWith("+")){
+                lastName=nameParts[0];
+                return jdbcTemplate.query("SELECT * FROM user WHERE lastName = ?", new UserRowMapper(), lastName);
+            }
+            else{
+                firstName = nameParts[0];
+                return jdbcTemplate.query("SELECT * FROM user WHERE firstName = ?", new UserRowMapper(), firstName);
+            }
+        }
+        else{
+            lastName = nameParts[0];
+            firstName = nameParts[1];
+            return jdbcTemplate.query("SELECT * FROM user WHERE lastName = ? AND firstName = ?", new UserRowMapper(), lastName, firstName);
+        }
+    }
+
+    public int reportUser(UUID currentUserId, UUID reportedUserId, String reportMessage) {
         return jdbcTemplate.update("INSERT INTO reports(REPORTEDUSER, REPORTEDBY, REPORTMESSAGE) VALUES (?, ?, ?)", reportedUserId, currentUserId, reportMessage);
     }
 
-    /*public List<Reports> getReports(int fromId, int toId) {
-        return jdbcTemplate.query("SELECT reportedUser, reportedBy, reportMessage FROM reports WHERE id>=fromId AND id<=toId", new ReportsRowMapper());
-    }*/
-
-    public boolean allowMedic(int medicId)
-    {
-        // if(isValidCertificate)
-            return true;
-        // else
-        //  return false;
+    public List<Report> getReports() {
+        return jdbcTemplate.query("SELECT * FROM (SELECT * FROM reports ORDER BY timeCreated DESC) WHERE ROWNUM<=10", new ReportRowMapper());
     }
 
+    public int allowMedic(UUID medicId)
+    {
+        return jdbcTemplate.update("UPDATE medic SET isApproved=1 WHERE id = ?", medicId);
+    }
+
+    public List<Medic> getRequestingMedics() {
+        return jdbcTemplate.query("SELECT * FROM medic WHERE isApproved = 0", new MedicRowMapper());
+    }
 }
