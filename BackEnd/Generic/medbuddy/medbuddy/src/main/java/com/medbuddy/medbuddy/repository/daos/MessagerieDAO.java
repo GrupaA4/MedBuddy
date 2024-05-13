@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 @Repository
 public class MessagerieDAO {
@@ -24,32 +25,32 @@ public class MessagerieDAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     //public MessagerieDAO(JdbcTemplate jdbcTemplate) {this.jdbcTemplate = jdbcTemplate;}
-    public void createConversationBetween(String loggedUserId, String conversedWithUserId) throws SQLException {
+    public void createConversationBetween(UUID loggedUserId, UUID conversedWithUserId) throws SQLException {
         Random random = new Random();
         int nId = random.nextInt(10000);
-        String id = String.valueOf(nId);
+        UUID id = UUID.fromString(String.valueOf(nId));
         int nullValue = 0;
         jdbcTemplate.update("insert into conversation (id, userId1, userId2, lastMessageId, lastSentAt, isDeleted) values(?, ?, ?, NULL, NULL, ?)", id, loggedUserId, conversedWithUserId, nullValue);
     }
 
-    public void addMessageToConversation(String senderId, String conversationId, String message, String imagePath, Integer repliesTo, int isFromMedBuddy) throws SQLException {
+    public void addMessageToConversation(UUID senderId, UUID conversationId, String message, String imagePath, UUID repliesTo, int isFromMedBuddy) throws SQLException {
         Random random = new Random();
-        int nIid = random.nextInt(10000);
-        String id = String.valueOf(nIid);
+        int nId = random.nextInt(10000);
+        UUID id = UUID.fromString(String.valueOf(nId));
         int nullValue = 0;
         jdbcTemplate.update("insert into message (id, senderId, conversationId, message, timesent, isRead, imagePath, repliesTo, isFromMedBuddy, isDeleted) values (?, ?, ?, ?, SYSDATE, ?, ?, ?, ?, ?)",
                 id, senderId, conversationId, message, nullValue, imagePath, repliesTo, isFromMedBuddy, nullValue);
     }
-    public void deleteMessageFromDatabase(String messageId) throws SQLException {
+    public void deleteMessageFromDatabase(UUID messageId) throws SQLException {
         jdbcTemplate.update("delete from message where id = ?", messageId);
     }
-    public void softDeleteMessage(String messageId) throws SQLException {
+    public void softDeleteMessage(UUID messageId) throws SQLException {
         jdbcTemplate.update("update message set isDeleted = 1 where id = ?", messageId);
     }
-    public List<Conversation> getUsersConversations(String userId) throws SQLException {
+    public List<Conversation> getUsersConversations(UUID userId) throws SQLException {
         return jdbcTemplate.query("select * from conversation where userId1 = ? or userId2 = ?", new Object[]{userId, userId}, new ConversationRowMapper());
     }
-    public List<Message> getMessageInfo(String messageId) throws SQLException {
+    public List<Message> getMessageInfo(UUID messageId) throws SQLException {
         return  jdbcTemplate.query("select * from message where messageId = ?", new Object[]{messageId}, new MessageRowMapper());
     }
 }
