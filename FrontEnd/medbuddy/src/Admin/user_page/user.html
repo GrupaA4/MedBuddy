@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Page</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <img src="MedBuddy.png" class="header__image" alt="Your image" />
+
+      <div class="header__paragraph">
+        <a class="header__paragraph__part">Home</a>
+        <a class="header__paragraph__part">Report</a>
+        <a
+          class="header__paragraph__part"
+          onclick="redirectTop()"
+          style="text-decoration: underline; text-decoration-color: #369986"
+          >Manage Accounts</a
+        >
+      </div>
+    </div>
+
+    <div class="container1" id="current_users">
+      <div class="container1__header">
+        <p class="container1__header__text">Unverified accounts</p>
+        <div class="container1__buttons">
+          <button class="container1__before"><<</button>
+          <button class="container1__next">>></button>
+        </div>
+      </div>
+
+      <div class="container1__square1">
+        <div class="container1__square1__icon">
+          <p>PHOTO</p>
+        </div>
+
+        <p class="container1__square1__data">
+          NAME: <br />
+          EMAIL: <br />
+          MEDICAL LICENCE: <br />
+          <div class="container1__square1__data__buttons">
+            <button class="container1__button1" type="button" id="report">
+              Accept
+            </button>
+            <button class="container1__button2" type="button" id="report">
+              Deny
+            </button>
+            <button class="container1__button3" type="button" id="report">
+              Check License
+            </button>
+          </div>
+        </p>
+      </div>
+
+      <div class="container1__square2">
+        <div class="container1__square2__icon">
+          <p>PHOTO</p>
+        </div>
+
+        <p class="container1__square2__data">
+          NAME: <br />
+          EMAIL: <br />
+          MEDICAL LICENCE: <br />
+          <div class="container1__square1__data__buttons">
+            <button class="container1__button1" type="button" id="report">
+              Accept
+            </button>
+            <button class="container1__button2" type="button" id="report">
+              Deny
+            </button>
+            <button class="container1__button3" type="button" id="report">
+              Check License
+            </button>
+          </div>
+        </p>
+      </div>
+
+      <div class="container1__square3">
+        <div class="container1__square3__icon">
+          <p>PHOTO</p>
+        </div>
+
+        <p class="container1__square3__data">
+          NAME: <br />
+          EMAIL: <br />
+          MEDICAL LICENCE: <br />
+        </p>
+      </div>
+
+      <div class="container1__square4">
+        <div class="container1__square4__icon">
+          <p>PHOTO</p>
+        </div>
+
+        <p class="container1__square4__data">
+          NAME: <br />
+          EMAIL: <br />
+          MEDICAL LICENCE: <br />
+        </p>
+      </div>
+    </div>
+
+    <div class="container2">
+      <!--
+      <p class="container2__title">
+        Welcome back, <br>
+           &emsp; Admin! 
+      </p>
+    -->
+      <div class="icon__and__text">
+        <div class="container2__square1__icon">
+          <p>PHOTO</p>
+        </div>
+        <br />
+
+        <div class="container2__text">NAME: Example of name</div>
+      </div>
+
+      <button class="container2__button1" type="button" id="report">
+        Accept
+      </button>
+
+      <button class="container2__button2" type="button" id="manageAccounts">
+        Deny
+      </button>
+
+      <button class="container2__button3" type="button" id="manageAccounts">
+        VERIFY LICENSE
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="input.js"></script>
+    <script src="write.js"></script>
+  </body>
+</html>
