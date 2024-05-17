@@ -17,11 +17,8 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: "Oswald_font";
     .page__header_logo  {
-        width: 4rem;
-        height: 4rem;
-        // border: 0.15rem solid #86f4ce;
-        // border-radius: 10rem;
-        //padding: 0.5rem;
+        width: 5rem;
+        height: 5rem;
     }
     .page__header_navbar{
         width: 30rem;
@@ -29,6 +26,9 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        .active {
+          border-bottom: 0.25rem solid #12D6BF;
+        }
         .page__header_navbar_link{
             text-decoration: none;
             color: #002845;
