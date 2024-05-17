@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Main Page</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="report_page.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
@@ -13,23 +13,23 @@
 
 <body>
   <div class="header">
-    <img src="MedBuddy.png" class="header__image" alt="Your image" />
+    <img src="../assets/MedBuddy.png" class="header__image" alt="Your image" />
 
     <div class="header__paragraph">
-      <a class="header__paragraph__part" onclick="window.location.href='../admin_main_page/index.html';">Home</a>
-      <a class="header__paragraph__part" onclick="window.location.href='../report_page/index.html';">Report</a>
-      <a class="header__paragraph__part" onclick="redirectTop()"
-        style="text-decoration: underline; text-decoration-color: #369986">Manage Accounts</a>
+      <a class="header__paragraph__part"
+        onclick="window.location.href='../admin_main_page/admin_main_page.html';">Home</a>
+      <a onclick="redirectTop()" class="header__paragraph__part"
+        style="text-decoration: underline; text-decoration-color: #369986">Report</a>
+      <a class="header__paragraph__part" onclick="window.location.href='../user_page/user_page.html';">Manage
+        Accounts</a>
     </div>
   </div>
 
   <div class="container1" id="current_users">
     <div class="container1__header">
-      <p class="container1__header__text">Unverified accounts</p>
-      <div class="container1__buttons">
-        <button class="container1__before">
-        </button>
-        <button class="container1__next">>></button>
+      <p class="container1__header__text">USERS</p>
+      <div class="search__bar">
+        <input type="text" placeholder="Search..." />
       </div>
     </div>
 
@@ -38,22 +38,14 @@
         <p>PHOTO</p>
       </div>
 
-      <p class="container1__square1__data">
+      <div class="container1__square1__data">
         NAME: <br />
         EMAIL: <br />
-        MEDICAL LICENCE: <br />
-      <div class="container1__square1__data__buttons">
+        PHONE:<br />
         <button class="container1__button1" type="button" id="report">
-          Accept
-        </button>
-        <button class="container1__button2" type="button" id="report">
-          Deny
-        </button>
-        <button class="container1__button3" type="button" id="report">
-          Check License
+          DELETE
         </button>
       </div>
-      </p>
     </div>
 
     <div class="container1__square2">
@@ -61,22 +53,14 @@
         <p>PHOTO</p>
       </div>
 
-      <p class="container1__square2__data">
+      <div class="container1__square2__data">
         NAME: <br />
         EMAIL: <br />
-        MEDICAL LICENCE: <br />
-      <div class="container1__square1__data__buttons">
-        <button class="container1__button1" type="button" id="report">
-          Accept
-        </button>
+        PHONE:
         <button class="container1__button2" type="button" id="report">
-          Deny
-        </button>
-        <button class="container1__button3" type="button" id="report">
-          Check License
+          DELETE
         </button>
       </div>
-      </p>
     </div>
 
     <div class="container1__square3">
@@ -87,7 +71,7 @@
       <p class="container1__square3__data">
         NAME: <br />
         EMAIL: <br />
-        MEDICAL LICENCE: <br />
+        PHONE:
       </p>
     </div>
 
@@ -99,7 +83,7 @@
       <p class="container1__square4__data">
         NAME: <br />
         EMAIL: <br />
-        MEDICAL LICENCE: <br />
+        PHONE:
       </p>
     </div>
   </div>
@@ -121,21 +105,11 @@
     </div>
 
     <button class="container2__button1" type="button" id="report">
-      Accept
-    </button>
-
-    <button class="container2__button2" type="button" id="manageAccounts">
-      Deny
-    </button>
-
-    <button class="container2__button3" type="button" id="manageAccounts">
-      VERIFY LICENSE
+      DELETE
     </button>
   </div>
 
-  <script src="script.js"></script>
-  <script src="input.js"></script>
-  <script src="write.js"></script>
+  <script src="report_page.js"></script>
 </body>
 
 </html>

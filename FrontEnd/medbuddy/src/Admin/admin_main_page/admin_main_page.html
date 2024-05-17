@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin_main_page.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -18,8 +18,9 @@
 
         <div class="header__paragraph">
             <a onclick="redirectTop()" class="header__paragraph__part">Home</a>
-            <a class="header__paragraph__part" onclick="window.location.href='../report_page/index.html';">Report</a>
-            <a class="header__paragraph__part" onclick="window.location.href='../user_page/user.html';">Manage
+            <a class="header__paragraph__part"
+                onclick="window.location.href='../report_page/report_page.html';">Report</a>
+            <a class="header__paragraph__part" onclick="window.location.href='../user_page/user_page.html';">Manage
                 Accounts</a>
         </div>
 
@@ -252,15 +253,14 @@
         </p>
 
         <button class="container2__button1" type="button" id="report"
-            onclick="window.location.href='../report_page/index.html';"> REPORT </button><br><br>
+            onclick="window.location.href='../report_page/report_page.html';"> REPORT </button><br><br>
 
         <button class="container2__button2" type="button" id="manageAccounts"
-            onclick="window.location.href='../user_page/user.html';"> MANAGE ACCOUNTS </button>
+            onclick="window.location.href='../user_page/user_page.html';"> MANAGE ACCOUNTS </button>
 
     </div>
 
-    <script src="input.js"></script>
-    <script src="write.js"></script>
+    <script src="admin_main_page.js"></script>
 
 </body>
 
