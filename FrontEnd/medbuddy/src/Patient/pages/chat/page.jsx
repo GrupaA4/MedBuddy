@@ -126,8 +126,8 @@ export default function ChatPage() {
                 <button className={styles.page__message_buttons_action} onClick={() => window.location.href = '/'}>
                     Back to Homepage
                 </button>
-                <button className={styles.page__message_buttons_action} onClick={() => window.location.href = '/diagnostics'}>
-                    See Diagnostics
+                <button className={styles.page__message_buttons_action} onClick={() => window.location.href = '/diagnoses'}>
+                    See Diagnoses
                 </button>
                 <button className={styles.page__message_buttons_action} onClick={handleNewConvo}>
                     New Discussion
