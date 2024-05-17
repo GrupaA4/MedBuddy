@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import styles from './page.module.scss';
 import '../../fonts/Bebas_Neue/BebasNeue-Regular.ttf';
 import Panel from '../../images/panel.svg';
-import Header from '../../_components/header/page';
-import Footer from '../../_components/footer/page';
+import Header from '../../_componentsReusable/header/page';
+import Footer from '../../_componentsReusable/footer/page';
 
 export default function Diagnostic(){
 

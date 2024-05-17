@@ -452,7 +452,7 @@ export default function Profile(){
                                         <h3>Alergies </h3>
                                         <p>{alergies}</p>
                                     </div>
-                                    <Link className={`${styles.medical_data_container__section__non_editable_information__diagnostics_link}`} to="/pages/diagnostics">
+                                    <Link className={`${styles.medical_data_container__section__non_editable_information__diagnostics_link}`} to="/diagnoses">
                                         My Diagnoses
                                     </Link>
                                </div>
