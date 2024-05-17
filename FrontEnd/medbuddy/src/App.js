@@ -12,7 +12,7 @@ function App() {
     <div className="App">
 
 
-      <Conversation />
+      <MainPage />
 
     </div>
   );

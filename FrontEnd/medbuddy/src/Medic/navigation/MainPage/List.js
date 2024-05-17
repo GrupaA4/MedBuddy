@@ -1,5 +1,5 @@
 import "./List.css"
-import Avatar from '../../images/avatar.png';
+import Avatar from './avatar.png';
 import React, {useState} from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 
