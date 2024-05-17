@@ -39,7 +39,7 @@ export default function ChatPage() {
 
     const simulateResponseWithFile = () => {
         setTimeout(() => {
-            setResponseMessages([...responseMessages, { id: Date.now(), sender: 'medbuddy', text: "I added the file to your documents!" }]);
+            setResponseMessages([...responseMessages, { id: Date.now(), sender: 'medbuddy', text: "I added the file!" }]);
         }, 1500); 
     };
 
