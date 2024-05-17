@@ -190,9 +190,13 @@ export default function Profile(){
         setIsChangingPassword(false);
     };
 
+    const [isMobileMenu, setIsMobileMenu] = useState(false);
+
     return (
         <>
-            <Header/>
+            <Header setIsMobileMenu={setIsMobileMenu}/>
+            {!isMobileMenu &&
+            <>
                 <div className={`${styles.container}`}>
                     <div className={`${styles.buttons_container}`}>
                         <br /><br />
@@ -462,6 +466,8 @@ export default function Profile(){
                     </>
                     )}
                 </div>
+            </>
+        }
             <Footer/>
         </>
     );

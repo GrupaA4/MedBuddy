@@ -117,9 +117,13 @@ export default function SignIn(){
         setProfilePicture(null);
     };
 
+    const [isMobileMenu, setIsMobileMenu] = useState(false);
+
     return (
         <>
-            <Header />
+            <Header setIsMobileMenu={setIsMobileMenu}/>
+            {!isMobileMenu &&
+            <>
             <div className={`${styles.container}`}>
                 <div className={`${styles.images_container}`}>
                     <img className={`${styles.images_container__image1}`} src={MedBuddyLogo} alt='Med Buddy'/>
@@ -292,6 +296,8 @@ export default function SignIn(){
                     </form>
                 </div>
             </div>
+        </>
+    }
             <Footer />
         </>
     );
