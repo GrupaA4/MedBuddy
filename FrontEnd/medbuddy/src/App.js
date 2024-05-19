@@ -12,7 +12,8 @@ function App() {
     <div className="App">
 
 
-      <MainPage />
+      {/* <MainPage /> */}
+      <Profile/>
 
     </div>
   );
