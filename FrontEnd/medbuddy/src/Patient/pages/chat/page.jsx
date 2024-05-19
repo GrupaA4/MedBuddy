@@ -6,11 +6,15 @@ import Robo_icon from "../../images/robo_icon.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
+const userId = "c6028efa-d76c-4bc5-aa3f-c12f2b9dce9c"; 
+const conversationId = "2"; 
+
 export default function ChatPage() {
     const [message, setMessage] = useState('');
     const [userMessages, setUserMessages] = useState([]);
     const [responseMessages, setResponseMessages] = useState([]);
     const messageContainerRef = useRef(null);
+    const [image, setImage] = useState(null);
 
     const handleMessageChange = (e) => {
         setMessage(e.target.value);
@@ -23,18 +27,59 @@ export default function ChatPage() {
         }
     };
 
-    const handleSend = () => {
-        if (message.trim() !== '') {
-            setUserMessages([...userMessages, { id: Date.now(), sender: 'user', text: message }]);
+    const handleSend = async () => {
+        if (message.trim() !== '' || image) {
+            const newMessage = {
+                id: Date.now(),
+                sender: 'user',
+                text: message,
+                image: image,
+                repliesTo: null 
+            };
+            
+            setUserMessages([...userMessages, newMessage]);
             setMessage('');
-            simulateResponse(); 
+            setImage(null);
+
+            try {
+                const formData = new FormData();
+                formData.append('message', message);
+                if (image) {
+                    formData.append('image', image);
+                }
+                formData.append('repliesTo', null); 
+                const response = await fetch(`http://localhost:3001/messages/${conversationId}`, {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                simulateResponse();
+            } catch (error) {
+                console.error("Error sending message:", error);
+            }
         }
     };
 
-    const simulateResponse = () => {
-        setTimeout(() => {
-            setResponseMessages([...responseMessages, { id: Date.now(), sender: 'medbuddy', text: "Hello. I am MedBuddy!" }]);
-        }, 1500); 
+    const simulateResponse = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/messages');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            const newMessages = data.map(msg => ({
+                id: msg.id,
+                sender: 'medbuddy',
+                text: msg.text,
+            }));
+            setResponseMessages([...responseMessages, ...newMessages]);
+        } catch (error) {
+            console.error("Error fetching response messages:", error);
+        }
     };
 
     const simulateResponseWithFile = () => {
@@ -55,6 +100,7 @@ export default function ChatPage() {
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
+        setImage(file);
         const reader = new FileReader();
         reader.onload = () => {
             const fileData = reader.result; 
@@ -64,11 +110,9 @@ export default function ChatPage() {
             setMessage('');
 
             simulateResponseWithFile();
-            //
         };
         reader.readAsDataURL(file);
     };
-    
 
     const handleNewConvo = () => {
         setUserMessages([]); 
@@ -104,7 +148,6 @@ export default function ChatPage() {
                     </div>
                 </div>
                 <div ref={messageContainerRef} className={styles.page__message_container}>
-                    {/* toate mesajele combinate unul dupa altul si in ordine*/}
                     {combinedMessages.map((msg) => (
                         <div 
                             key={msg.id} 
