@@ -122,6 +122,7 @@ export default function SignIn(){
             const result= await response.json();
             console.log('Success:',result);
 
+            //retine mail+parola
             setEmail('');
             setPassword('');
             setLastName('');

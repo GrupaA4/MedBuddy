@@ -18,6 +18,8 @@ export default function Profile(){
     const [language, setLanguage] = useState('English');
     const [birthDate, setBirthDate] = useState('01/01/2000');
     const [homeAdress, setHomeAdress] = useState('House Nr. 00 Str. Example, City, Country');
+    const [profilePicture,setProfilePicture]=useState(null);
+    const [profilePicturePreview, setProfilePicturePreview]=useState(null);
 
     const [initialName, setInitialName] = useState('My Name');
     const [initialSurname, setInitialSurname] = useState('My Surname');
@@ -29,6 +31,8 @@ export default function Profile(){
     const [initialLanguage, setInitialLanguage] = useState('English');
     const [initialBirthDate, setInitialBirthDate] = useState('01/01/2000');
     const [initialHomeAdress, setInitialHomeAdress] = useState('House Nr. 00 Str. Example, City, Country');
+    const [initialProfilePicture, setInitialProfilePicture] = useState(null);
+    const [initialProfilePicturePreview, setinitialProfilePicturePreview]=useState(null);
 
     const [bloodGroup, setBloodGroup] = useState('00 Rh+');
     const [alergies, setAlergies] = useState('None');
@@ -92,6 +96,20 @@ export default function Profile(){
         setAlergies(event.target.value);
     };
 
+    const handleProfilePicChange= (event) =>{
+        const file=event.target.files[0];
+        const reader=new FileReader();
+
+        reader.onloadend= () =>{
+            setProfilePicture(new Uint8Array(reader.result));
+            setProfilePicturePreview(URL.createObjectURL(file));
+        };
+
+        if(file){
+            reader.readAsArrayBuffer(file);
+        }
+    };
+
     const handleNewPasswordChange = (event) => {
         setNewPassword(event.target.value);
     };
@@ -104,18 +122,20 @@ export default function Profile(){
         event.preventDefault();
 
         const data = {
+            email:email,
             name:name,
             surname:surname,
-            email:email,
-            phone:phone,
             gender:gender,
             pronoun1:pronoun1,
             pronoun2:pronoun2,
-            language:language,
             birthDate:birthDate,
-            homeAdress:homeAdress,
-            blood_group:bloodGroup,
-            alergies:alergies
+            language:language,
+            //eliminare homeAdress, inlocuire cu country si city(parsare homeAdress)
+            //homeAdress:homeAdress,
+            phone:phone,
+            profileImage:profilePicture,
+            //blood_group:bloodGroup,
+            //alergies:alergies
         };
 
         console.log('Data to be sent:', data);
@@ -155,6 +175,8 @@ export default function Profile(){
         setLanguage(initialLanguage);
         setBirthDate(initialBirthDate);
         setHomeAdress(initialHomeAdress);
+        setProfilePicture(initialProfilePicture);
+        setProfilePicturePreview(initialProfilePicturePreview);
         setBloodGroup(initialBloodGroup);
         setAlergies(initialAlergies);
         setIsEditing(false);
@@ -172,6 +194,8 @@ export default function Profile(){
             setInitialLanguage(language)
             setInitialBirthDate(birthDate)
             setInitialHomeAdress(homeAdress)
+            setInitialProfilePicture(profilePicture)
+            setinitialProfilePicturePreview(profilePicturePreview)
             setInitialBloodGroup(bloodGroup)
             setInitialAlergies(alergies)
         }
@@ -212,19 +236,41 @@ export default function Profile(){
         setIsChangingPassword(false);
     };
 
-    const handleChangePassword = (event) => {
+    const handleChangePassword = async (event) => {
         event.preventDefault();
 
-        setOldPassword('Future API call');
+        setOldPassword('access cookie/global variable');
         if(newPassword!==oldPassword && newPassword===confirmPassword){
-            console.log({
+            const data = {
                 password:newPassword
-            });
-        }
+            };
 
-        setNewPassword(oldPassword);
-        setConfirmPassword(oldPassword);
-        setIsChangingPassword(false);
+            console.log('Data to be sent:', data);
+
+            try {
+                const response = await fetch('medbuddy/changepassword(not real API name)', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if(!response.ok){
+                    throw new Error('Error sending password');
+                }
+
+                const result= await response.json();
+                console.log('Success:', result);
+
+                setIsChangingPassword(false);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        } else{
+            setNewPassword(oldPassword);
+            setConfirmPassword(oldPassword);
+        }
     };
 
     const [isMobileMenu, setIsMobileMenu] = useState(false);
@@ -237,7 +283,15 @@ export default function Profile(){
                 <div className={`${styles.container}`}>
                     <div className={`${styles.buttons_container}`}>
                         <br /><br />
-                        <img className={`${styles.buttons_container__image}`} src={profilePic} alt='Profile Pic' /><br /><br />
+                        {isEditing ? (
+                            <>
+
+                            </>
+                        ) : (
+                            <>
+                                <img className={`${styles.buttons_container__image}`} src={profilePic} alt='Profile Pic' /><br /><br />
+                            </>
+                        )}
                         {isEditing ? (
                             <>
                                 <button className={`${styles.buttons_container__cancel_changes} ${styles.button}`} onClick={handleCancelChanges}>Cancel Changes</button><br /><br />
@@ -411,6 +465,20 @@ export default function Profile(){
                                             value={homeAdress}
                                             onChange={handleHomeAdressChange}
                                         />
+                                    </div><br />
+                                    <div className={`${styles.general_information_container__section__editable_information__div}`}>
+                                        <label htmlFor='profilePicture'>Profile Picture </label>
+                                        <input
+                                            type='file'
+                                            id='profilePicture'
+                                            value={profilePicture ? profilePicture.name : ''}
+                                            onChange={handleProfilePicChange}
+                                        />
+                                    </div><br />
+                                    <div className={`${styles.general_information_container__section__editable_information__picture}`}>
+                                        {profilePicture && (
+                                            <img src={profilePicturePreview} alt='Profile Picture'/>
+                                        )}
                                     </div>
                                 </div>
                             ) : (

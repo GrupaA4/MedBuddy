@@ -120,6 +120,12 @@ $font_oswald: "Oswald_font";
                         font-size: 3vh;
                     }
                 }
+
+                &__picture{
+                    display: flex;
+                    justify-content: center;
+                    align-content: center;
+                }
             }
 
             &__non_editable_information{
