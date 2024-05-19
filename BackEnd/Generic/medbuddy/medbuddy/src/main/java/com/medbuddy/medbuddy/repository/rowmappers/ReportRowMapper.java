@@ -6,17 +6,18 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.UUID;
 
 public class ReportRowMapper implements RowMapper<Report> {
     @Override
     public Report mapRow(ResultSet rs, int rowNum) throws SQLException {
         Report report = new Report();
-        report.setId(rs.getInt(1));
-        report.setReportedUser(rs.getInt(2));
-        report.setReportedBy(rs.getInt(3));
+        report.setId(UUID.fromString(rs.getString(1)));
+        report.setReportedUser(UUID.fromString(rs.getString(2)));
+        report.setReportedBy(UUID.fromString(rs.getString(3)));
         report.setReportMessage(rs.getString(4));
-        report.setTimeCreated(rs.getString(5));
-        report.setDeleted(rs.getBoolean(6));
+        report.setTimeCreated(rs.getDate(5).toLocalDate());
+        report.setIsDeleted(rs.getBoolean(6));
         return report;
     }
 }
