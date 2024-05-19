@@ -100,10 +100,10 @@ export default function Profile(){
         setConfirmPassword(event.target.value);
     };
     
-    const handleSaveChanges = (event) => {
+    const handleSaveChanges = async (event) => {
         event.preventDefault();
 
-        console.log({
+        const data = {
             name:name,
             surname:surname,
             email:email,
@@ -116,8 +116,30 @@ export default function Profile(){
             homeAdress:homeAdress,
             blood_group:bloodGroup,
             alergies:alergies
-        });
-        setIsEditing(false);
+        };
+
+        console.log('Data to be sent:', data);
+
+        try {
+            const response = await fetch('/medbuddy/changeprofile/${userId}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if(!response.ok){
+                throw new Error('Error sending new data');
+            }
+
+            const result= await response.json();
+            console.log('Success:', result);
+
+            setIsEditing(false);
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
 
     const handleCancelChanges = (event) => {
@@ -159,8 +181,23 @@ export default function Profile(){
         setIsDeleting(true);
     };
 
-    const handleConfirmDelete = () => {
-        console.log('Account deleted!')
+    const handleConfirmDelete = async () => {
+        try{
+            const response= await fetch('/medbuddy/harddeleteuser/${userId}', {
+                method: 'DELETE'
+            });
+
+            if(response.ok) {
+                console.log('Account deleted!');
+            } else{
+                console.error('Failed to delete account');
+            }
+        } catch (error) {
+            console.error('Error deleting account:', error);
+        } finally {
+            setIsDeleting(false);
+            //window.location.href='/';
+        }
     };
 
     const handleCancelDelete = () => {
