@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,42 +9,37 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <div class="container">
+    <div class="container">  
+    
+        <img src="Logo.png" class="container__image1" alt="Your image">
 
-        <img src="../assets/logo.png" class="container__image1" alt="Your image">
-
-        <img src="../assets/doctors.png" class="container__image2" alt="Your image">
+        <img src="Doctors.png" class="container__image2" alt="Your image">
 
         <div class="square">
 
-            <p class="square__title">LOGIN</p>
+        <p class="square__title">LOGIN</p>
 
-            <form action="/action_page.php">
-                <div class="square__form">
-                    <label for="email" class="square__form__text">Email</label><br>
-                    <input type="text" class="square__form__label" placeholder="USER@EMAIL.COM" id="email"><br><br>
-                    <label for="password" class="square__form__text">Password</label><br>
-                    <input type="password" class="square__form__label" placeholder="Enter Password"
-                        id="password"><br><br>
-                    <button class="square__form__button1" type="button" id="login">
-                        LOGIN </button><br><br>
-                    <button class="square__form__button2" type="button" id="signupPacient">SIGN-UP AS PACIENT</button>
-                    <button class="square__form__button3" type="button" id="signupDoctor">SIGN-UP AS
-                        DOCTOR&ensp;</button>
-                </div>
-            </form>
+        <form action="/action_page.php">
+            <div class="square__form">
+            <label for="email" class="square__form__text">Email</label><br>
+            <input type="text" class="square__form__label" placeholder="USER@EMAIL.COM" id="email"><br><br>
+            <label for="password" class="square__form__text">Password</label><br>
+            <input type="password" class="square__form__label" placeholder="Enter Password" id="password"><br><br>
+            <button class="square__form__button1" type="button" id="login"> LOGIN </button><br><br>
+            <button class="square__form__button2" type="button" id="signupPacient">SIGN-UP AS PACIENT</button>
+            <button class="square__form__button3" type="button" id="signupDoctor">SIGN-UP AS DOCTOR&ensp;</button>
+            </div>
+        </form> 
 
-            <p class="square__warning" id="myWarning"></p>
+        <p class="square__warning" id="myWarning"></p>
 
         </div>
 
     </div>
 
     <script src="input.js"></script>
-    <script src="space.js"></script>
-
+    <!-- <script src="space.js"></script> -->
+    
 </body>
-
 </html>

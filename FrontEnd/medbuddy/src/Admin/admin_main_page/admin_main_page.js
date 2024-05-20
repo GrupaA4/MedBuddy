@@ -27,4 +27,8 @@ function writeText() {
     }
 }
 
+function redirectTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 setTimeout(writeText, 800);
