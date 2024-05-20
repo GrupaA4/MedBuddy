@@ -8,12 +8,14 @@ import com.medbuddy.medbuddy.repository.rowmappers.ReportRowMapper;
 import com.medbuddy.medbuddy.models.Report;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.UUID;
 
 @Repository
+@Component
 public class AdminFunctionalityDAO{
     private final JdbcTemplate jdbcTemplate;
 
@@ -26,36 +28,16 @@ public class AdminFunctionalityDAO{
         return jdbcTemplate.query("SELECT * FROM user ORDER BY lastTimeLoggedOn ASC", new UserRowMapper());
     }
 
-    public List<User> findUserByName(String username) throws Exception {
-        if(!username.contains("+") || (username.startsWith("+") && username.endsWith("+")))
-            throw new Exception("Invalid format. (Make custom exception: findUserByName)");
-        String[] nameParts = username.split("\\+");
-
-        if (nameParts.length > 2)
-            throw new Exception("Invalid format, should only have 2 parts. (Make custom exception: findUserByName)");
-
-        String firstName = null;
-        String lastName = null;
-
-        if(nameParts.length == 1){
-            if(username.startsWith("+")){
-                lastName=nameParts[0];
+    public List<User> findUserByName(String firstName, String lastName) throws Exception {
+        if(firstName == null && lastName != null)
                 return jdbcTemplate.query("SELECT * FROM user WHERE lastName = ?", new UserRowMapper(), lastName);
-            }
-            else{
-                firstName = nameParts[0];
+        if(lastName == null && firstName != null)
                 return jdbcTemplate.query("SELECT * FROM user WHERE firstName = ?", new UserRowMapper(), firstName);
-            }
-        }
-        else{
-            lastName = nameParts[0];
-            firstName = nameParts[1];
-            return jdbcTemplate.query("SELECT * FROM user WHERE lastName = ? AND firstName = ?", new UserRowMapper(), lastName, firstName);
-        }
+        return jdbcTemplate.query("SELECT * FROM user WHERE lastName = ? AND firstName = ?", new UserRowMapper(), lastName, firstName);
     }
 
-    public int reportUser(UUID currentUserId, UUID reportedUserId, String reportMessage) {
-        return jdbcTemplate.update("INSERT INTO reports(REPORTEDUSER, REPORTEDBY, REPORTMESSAGE) VALUES (?, ?, ?)", reportedUserId, currentUserId, reportMessage);
+    public int reportUser(UUID reportId, UUID currentUserId, UUID reportedUserId, String reportMessage) {
+        return jdbcTemplate.update("INSERT INTO reports(ID, REPORTEDUSER, REPORTEDBY, REPORTMESSAGE) VALUES (?, ?, ?, ?)", reportId, reportedUserId, currentUserId, reportMessage);
     }
 
     public List<Report> getReports() {
