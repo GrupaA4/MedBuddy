@@ -8,7 +8,7 @@ import { HiDotsVertical } from "react-icons/hi";
 import { BiFilter } from "react-icons/bi";
 import { chat10 } from "../assets/conversation";
 
-function LeftMenu() {
+function LeftMenu({ email, onSelectConversation }) {
     const [filter, setFilter] = useState(false);
 
     return (
@@ -43,7 +43,7 @@ function LeftMenu() {
             </div>
 
             {/* Chats */}
-            <Chats filter={filter} />
+            <Chats filter={filter} email={email} onSelectConversation={onSelectConversation} />
         </div>
     );
 }

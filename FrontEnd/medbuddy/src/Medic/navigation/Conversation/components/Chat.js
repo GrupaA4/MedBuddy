@@ -1,11 +1,12 @@
 import React from "react";
 
-function Chat({ pp, contact, msg, time, unreadMsgs, active }) {
+function Chat({ pp, contact, msg, time, unreadMsgs, active, onClick }) {
     return (
         // Chat container
         <div
             className={`flex justify-between items-center cursor-pointer w-100 h-[85px] px-3 hover:bg-[#202d33] ${active ? "bg-[#202d33]" : ""
                 }`}
+            onClick={onClick}
         >
             {/* Profile picture */}
             <img
