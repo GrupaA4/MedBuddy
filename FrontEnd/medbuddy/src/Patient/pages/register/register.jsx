@@ -40,7 +40,7 @@ export default function SignIn(){
     };
 
     const handleGenderChange= (event) =>{
-        setGender(event.target.checked);
+        setGender(event.target.value === 'true');
     };
 
     const handlePronoun1Change= (event) =>{
@@ -212,7 +212,8 @@ export default function SignIn(){
                                         type='radio'
                                         id='male'
                                         name='gender'
-                                        checked={!gender}
+                                        value={false}
+                                        checked={gender === false}
                                         onChange={handleGenderChange}
                                         required
                                     />
@@ -223,7 +224,8 @@ export default function SignIn(){
                                         type='radio'
                                         id='female'
                                         name='gender'
-                                        checked={gender}
+                                        value={true}
+                                        checked={gender === true}
                                         onChange={handleGenderChange}
                                     />
                                     Female
