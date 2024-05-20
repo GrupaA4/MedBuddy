@@ -2,6 +2,7 @@ package com.medbuddy.medbuddy.models;
 
 import lombok.Data;
 
+import java.util.Date;
 import java.util.UUID;
 
 @Data
@@ -13,10 +14,11 @@ public class Message {
     private String imagePath;
     private Boolean isRead;
     private UUID repliesTo;
+    private Date timeSent;
     private Boolean isFromMedBuddy;
     private Boolean isDeleted;
 
-    public Message(UUID id, UUID senderId, UUID conversationId, String message, String imagePath, Boolean isRead, UUID repliesTo, Boolean isFromMedBuddy, Boolean isDeleted) {
+    public Message(UUID id, UUID senderId, UUID conversationId, String message, String imagePath, Boolean isRead, Date timeSent, UUID repliesTo, Boolean isFromMedBuddy, Boolean isDeleted) {
         this.id = id;
         this.senderId = senderId;
         this.conversationId = conversationId;
@@ -26,6 +28,7 @@ public class Message {
         this.repliesTo = repliesTo;
         this.isFromMedBuddy = isFromMedBuddy;
         this.isDeleted = isDeleted;
+        this.timeSent = timeSent;
     }
     public Message(){
 

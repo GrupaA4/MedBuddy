@@ -18,6 +18,7 @@ public class MessageRowMapper implements RowMapper<Message> {
         message.setIsFromMedBuddy(rs.getInt("isFromMedBuddy") == 1);
         message.setRepliesTo(UUID.fromString(rs.getString("RepliesTo")));
         message.setSenderId(UUID.fromString(rs.getString("SenderId")));
+        message.setTimeSent(rs.getDate("timeSent"));
         message.setImagePath(rs.getString("imagePath"));
         message.setConversationId(UUID.fromString(rs.getString("conversationId")));
         return message;
