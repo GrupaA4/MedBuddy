@@ -48,7 +48,7 @@ export default function ChatPage() {
                     formData.append('image', image);
                 }
                 formData.append('repliesTo', null); 
-                const response = await fetch(`http://localhost:3001/messages/${conversationId}`, {
+                const response = await fetch(`https://f2ec3ef4-4b83-402f-8670-37886b51efcd.mock.pstmn.io/medbuddy/chat`, {
                     method: 'POST',
                     body: formData,
                 });
@@ -66,7 +66,11 @@ export default function ChatPage() {
 
     const simulateResponse = async () => {
         try {
-            const response = await fetch('http://localhost:3001/messages');
+            const response = await fetch('https://f2ec3ef4-4b83-402f-8670-37886b51efcd.mock.pstmn.io/medbuddy/chat',
+                // {method: 'GET'
+                
+                // }
+            );
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
