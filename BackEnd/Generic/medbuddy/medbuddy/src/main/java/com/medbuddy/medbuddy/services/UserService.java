@@ -54,7 +54,6 @@ public class UserService {
 
     public Medic getMedicProfile(UUID userId) {
         User user = userDAO.getUserById(userId);
-        // Assuming MedicProfile extends User with some additional fields
         return new Medic(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getProfileImagePath(), user.getSpecialization());
     }
 

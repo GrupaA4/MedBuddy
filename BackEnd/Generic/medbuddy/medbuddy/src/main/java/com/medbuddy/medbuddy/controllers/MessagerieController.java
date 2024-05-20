@@ -21,6 +21,7 @@ public class MessagerieController {
     public void createConversationBetween(@PathVariable UUID id) {
         messagerieService.createConversationBetween(UUID.randomUUID(), UUID.randomUUID(), id);
     }
+
     @PostMapping("/sendmessage/{id}")
     public void addMessageToConversation(@PathVariable UUID id, @RequestBody Message message) {
         int isFromMedBuddy;
@@ -28,6 +29,7 @@ public class MessagerieController {
         else isFromMedBuddy = 0;
         messagerieService.addMessageToConversation(UUID.randomUUID(), UUID.randomUUID(), id, message.getMessage(), message.getImagePath(), message.getRepliesTo(), isFromMedBuddy);
     }
+
     @GetMapping("/conversation/{conversationId}/{messageToStartFrom}/{messageToEndLoad}")
     public List<Message> getPastXMessages(@PathVariable UUID conversationId, @PathVariable int messageToEndLoad) {
         return messagerieService.getPastXMessages(conversationId, messageToEndLoad);
