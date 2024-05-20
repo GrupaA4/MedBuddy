@@ -54,7 +54,7 @@ public class UserService {
 
     public Medic getMedicProfile(UUID userId) {
         User user = userDAO.getUserById(userId);
-        return new Medic(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getProfileImagePath(), user.getSpecialization());
+        return new Medic();
     }
 
     public void updateUser(UUID userId, User userRequest) {

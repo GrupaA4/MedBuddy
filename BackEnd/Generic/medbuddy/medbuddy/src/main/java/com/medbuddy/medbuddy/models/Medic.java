@@ -23,4 +23,17 @@ public class Medic extends User{
         this.certificateImagePath = certificateImagePath;
         this.isApproved = isApproved;
     }
+
+    public Medic(User user, UUID id, String typeOfMedic, String clinic, String certificateImagePath, Boolean isApproved) {
+        super(user);
+        this.id = id;
+        this.typeOfMedic = typeOfMedic;
+        this.clinic = clinic;
+        this.certificateImagePath = certificateImagePath;
+        this.isApproved = isApproved;
+    }
+
+    public Medic() {
+
+    }
 }

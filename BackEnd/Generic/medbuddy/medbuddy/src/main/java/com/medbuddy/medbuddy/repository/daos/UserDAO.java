@@ -1,6 +1,10 @@
 package com.medbuddy.medbuddy.repository.daos;
 
+import com.medbuddy.medbuddy.exceptions.DatabaseExceptions;
+import com.medbuddy.medbuddy.exceptions.NotFoundExceptions;
+import com.medbuddy.medbuddy.models.Medic;
 import com.medbuddy.medbuddy.models.User;
+import com.medbuddy.medbuddy.repository.rowmappers.UserRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -24,8 +28,12 @@ public class UserDAO {
     public boolean loginUser(String email, String password) {
         // check if the email and password match
         String sql = "SELECT COUNT(*) FROM appuser WHERE email = ? AND password = ?";
-        int count = jdbcTemplate.queryForObject(sql, Integer.class, email, password);
-        return count == 1;
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, email, password);
+        if(count != null) {
+            return count == 1;
+        } else {
+            return false;
+        }
     }
 
     public UUID getUserId(String email) {
@@ -45,7 +53,19 @@ public class UserDAO {
 
     public User getUserById(UUID id) {
         String sql = "SELECT * FROM appuser WHERE id = ?";
-        return jdbcTemplate.queryForObject(sql, User.class, id);
+        List<User> users = jdbcTemplate.query(sql, new UserRowMapper(), id);
+        if(users.size() == 1) {
+            return users.get(0);
+        } else if(users.size() == 0) {
+            throw new NotFoundExceptions.UserNotFoundException("No user with id " + id + "found");
+        } else {
+            throw new DatabaseExceptions.NonUniqueIdentifier("Found more users with the same id!");
+        }
+    }
+
+    public Medic getMedicSpecificInfoByUserId(UUID userId) {
+        String sql = "SELECT * FROM medic WHERE userId = ?";
+        return null;
     }
 
     public void updateUser(User user) {

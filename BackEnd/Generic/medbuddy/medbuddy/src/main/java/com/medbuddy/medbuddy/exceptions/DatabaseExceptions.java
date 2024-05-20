@@ -12,4 +12,10 @@ public class DatabaseExceptions {
             super(message);
         }
     }
+
+    public static class NonUniqueIdentifier extends RuntimeException {
+        public NonUniqueIdentifier(String message) {
+            super(message);
+        }
+    }
 }
