@@ -90,7 +90,7 @@
 @media (max-width: 600px) {
   .forum--container {
     width: 300px;
-    left-margin: 300px;
+    margin-left: 300px;
   }
 
   .message input,

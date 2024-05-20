@@ -15,11 +15,12 @@ function Contact() {
   
           <div className="content">
             <div className="left-container">
-            <h3>Contact&Support</h3>
-                <p class="paragraph">Having some problems?
-                The MedBuddy team is eager to listen to you and provide a better experience to everyone.
-                Contact us: </p>
+            <h1>Contact&Support</h1>
+            <h3>Having some problems?</h3>
+                <p class="paragraph"> The MedBuddy team is eager to listen to you and provide a better experience to everyone.<br/>
+                 </p>
                 <ul class="para">
+                    <li>Contact us:</li>
                     <li>Email: support@MedBuddy.com</li>
                     <li>Phone: 123-456-7890</li>
                 </ul>
