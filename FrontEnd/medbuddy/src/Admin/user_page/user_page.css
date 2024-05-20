@@ -44,9 +44,9 @@ body::-webkit-scrollbar {
   font-family: "Bebas Neue", sans-serif;
   padding: 20px;
   line-height: 1.7;
-  font-size: 3.5vh;
+  font-size: 4vh;
   word-spacing: 2vw;
-  margin-left: 65vw;
+  margin-left: 70vw;
   margin-top: 0.5vh;
 }
 
@@ -71,7 +71,7 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   background-color: #def9f1;
- 
+
   top: 15vh;
   left: 35vw;
   height: 100vh;
@@ -197,8 +197,6 @@ body::-webkit-scrollbar {
   align-items: center;
 }
 
-
-
 .container1__square__icon {
   background-color: white;
   justify-self: left;
@@ -226,8 +224,6 @@ body::-webkit-scrollbar {
   left: 5.8vw;
   line-height: 3;
 }
-
-
 
 .container2 {
   position: absolute;
@@ -368,7 +364,6 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-
 @media only screen and (max-width: 1758px) {
   .header__image {
     align-self: left;
@@ -478,7 +473,7 @@ body::-webkit-scrollbar {
   }
 
   .container1__square {
-    background-color: #b8e0c6; 
+    background-color: #b8e0c6;
     position: relative;
     margin-left: 0px;
     width: 80vw;
@@ -526,8 +521,6 @@ body::-webkit-scrollbar {
     justify-content: space-around;
   }
 
-
-
   .container1__button1 {
     position: relative;
     width: 13vw;
@@ -566,8 +559,4 @@ body::-webkit-scrollbar {
     font-size: 1.5vh;
     color: white;
   }
-
-
- 
-
 }
