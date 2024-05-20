@@ -1,5 +1,6 @@
 package com.medbuddy.medbuddy.controllers;
 
+import com.medbuddy.medbuddy.controllers.requestbodies.MessageRequestBody;
 import com.medbuddy.medbuddy.models.Conversation;
 import com.medbuddy.medbuddy.models.Message;
 import com.medbuddy.medbuddy.repository.daos.MessagerieDAO;
@@ -23,11 +24,11 @@ public class MessagerieController {
     }
 
     @PostMapping("/sendmessage/{id}")
-    public void addMessageToConversation(@PathVariable UUID id, @RequestBody Message message) {
+    public void addMessageToConversation(@PathVariable UUID id, @RequestBody MessageRequestBody message) {
         int isFromMedBuddy;
         if(message.getIsFromMedBuddy()) isFromMedBuddy = 1;
         else isFromMedBuddy = 0;
-        messagerieService.addMessageToConversation(UUID.randomUUID(), UUID.randomUUID(), id, message.getMessage(), message.getImagePath(), message.getRepliesTo(), isFromMedBuddy);
+        messagerieService.addMessageToConversation(message.getId(), message.getSenderId(), id, message.getMessage(), message.getImagePath(), message.getRepliesTo(), isFromMedBuddy);
     }
 
     @GetMapping("/conversation/{conversationId}/{messageToStartFrom}/{messageToEndLoad}")
