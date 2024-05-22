@@ -6,6 +6,7 @@ import MedBuddyLogo from '../../images/MedBuddyLogo2.png';
 import styles from './register.module.scss';
 import Header from '../../_componentsReusable/header/page';
 import Footer from '../../_componentsReusable/footer/page';
+import Cookies from 'js-cookie';
 
 export default function SignIn(){
     const [email,setEmail]=useState('');
@@ -122,7 +123,8 @@ export default function SignIn(){
             const result= await response.json();
             console.log('Success:',result);
 
-            //retine mail+parola
+            Cookies.set(`user_email`, email, {expires: 7});
+            Cookies.set(`user_pass`, password, {expires: 7});
             setEmail('');
             setPassword('');
             setLastName('');

@@ -1,4 +1,3 @@
-//fix gender(make it boolean)
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
@@ -8,12 +7,25 @@ import Header from '../../_componentsReusable/header/page';
 import Footer from '../../_componentsReusable/footer/page';
 import profilePic from '../../images/profile.svg';
 
+const getCookieValue = (name) => {
+    const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+    for(const cookie of cookies) {
+        if(cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1);
+        }
+    }
+    return null;
+}
+
 export default function Profile(){
+    const [userId, setUserId] = useState('');
+    const emailFromCookie = getCookieValue('user_email');
+
     const [name, setName] = useState('My Name');
     const [surname, setSurname] = useState('My Surname');
     const [email, setEmail] = useState('example@example.com');
     const [phone, setPhone] = useState('+0000000000');
-    const [gender, setGender] = useState('M/F');
+    const [gender, setGender] = useState(false);
     const [pronoun1, setPronoun1] = useState('....');
     const [pronoun2, setPronoun2] = useState('....');
     const [language, setLanguage] = useState('English');
@@ -26,7 +38,7 @@ export default function Profile(){
     const [initialSurname, setInitialSurname] = useState('My Surname');
     const [initialEmail, setInitialEmail] = useState('example@example.com');
     const [initialPhone, setInitialPhone] = useState('+0000000000');
-    const [initialGender, setInitialGender] = useState('M/F');
+    const [initialGender, setInitialGender] = useState(false);
     const [initialPronoun1, setInitialPronoun1] = useState('....');
     const [initialPronoun2, setInitialPronoun2] = useState('....');
     const [initialLanguage, setInitialLanguage] = useState('English');
@@ -49,6 +61,66 @@ export default function Profile(){
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    useEffect(() =>{
+        const fetchuserId = async () => {
+            try{
+                const response = await fetch(`/medbuddy/getuserid/${emailFromCookie}`, {
+                    method: 'GET'
+                });
+                if(!response.ok) {
+                    throw new Error('Error fetching user ID');
+                }
+                const data = await response.json();
+                setUserId(data.id);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        fetchuserId();
+    }, [emailFromCookie]);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            if(userId) {
+                try {
+                    const response = await fetch(`/medbuddy/viewprofile/${userId}`, {
+                        method: 'GET'
+                    });
+                    if(!response.ok) {
+                        throw new Error('Error fetching user data');
+                    }
+                    const userData = await response.json();
+                    setEmail(userData.email);
+                    setSurname(userData.lastName);
+                    setName(userData.firstName);
+                    setGender(userData.gender);
+                    setPronoun1(userData.pronoun1);
+                    setPronoun2(userData.pronoun2);
+                    setBirthDate(userData.dateOfBirth);
+                    setLanguage(userData.language);
+                    setHomeAdress(userData.city + ', ' + userData.country);
+                    setPhone(userData.phoneNumber);
+                    setProfilePicture(userData.profileImage);
+
+                    setInitialEmail(email);
+                    setInitialSurname(surname);
+                    setInitialName(name);
+                    setInitialGender(gender);
+                    setInitialPronoun1(pronoun1);
+                    setInitialPronoun2(pronoun2);
+                    setInitialBirthDate(birthDate);
+                    setInitialLanguage(language);
+                    setInitialHomeAdress(homeAdress);
+                    setInitialPhone(phone);
+                    setInitialProfilePicture(profilePicture);
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            }
+        };
+        fetchUserData();
+    }, [userId]);
+
     const handleNameChange = (event) => {
         setName(event.target.value);
     };
@@ -66,7 +138,7 @@ export default function Profile(){
     };
 
     const handleGenderChange = (event) => {
-        setGender(event.target.value);
+        setGender(event.target.value === 'true');
     };
 
     const handlePronoun1Change = (event) => {
@@ -122,6 +194,9 @@ export default function Profile(){
     const handleSaveChanges = async (event) => {
         event.preventDefault();
 
+        const addressParts = homeAdress.split(',');
+        const city = addressParts[1].trim();
+        const country = addressParts[2].trim();
         const data = {
             email:email,
             name:name,
@@ -131,8 +206,8 @@ export default function Profile(){
             pronoun2:pronoun2,
             birthDate:birthDate,
             language:language,
-            //eliminare homeAdress, inlocuire cu country si city(parsare homeAdress)
-            //homeAdress:homeAdress,
+            country:country,
+            city:city,
             phone:phone,
             profileImage:profilePicture,
             //blood_group:bloodGroup,
@@ -142,7 +217,7 @@ export default function Profile(){
         console.log('Data to be sent:', data);
 
         try {
-            const response = await fetch('/medbuddy/changeprofile/${userId}', {
+            const response = await fetch(`/medbuddy/changeprofile/${userId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -208,7 +283,7 @@ export default function Profile(){
 
     const handleConfirmDelete = async () => {
         try{
-            const response= await fetch('/medbuddy/harddeleteuser/${userId}', {
+            const response= await fetch(`/medbuddy/harddeleteuser/${userId}`, {
                 method: 'DELETE'
             });
 
@@ -240,7 +315,7 @@ export default function Profile(){
     const handleChangePassword = async (event) => {
         event.preventDefault();
 
-        setOldPassword('access cookie/global variable');
+        setOldPassword(getCookieValue('user_pass'));
         if(newPassword!==oldPassword && newPassword===confirmPassword){
             const data = {
                 password:newPassword
@@ -249,7 +324,7 @@ export default function Profile(){
             console.log('Data to be sent:', data);
 
             try {
-                const response = await fetch('medbuddy/changepassword(not real API name)', {
+                const response = await fetch(`medbuddy/changeprofile/${userId}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -405,7 +480,8 @@ export default function Profile(){
                                                     type='radio'
                                                     id='male'
                                                     name='gender'
-                                                    value={gender}
+                                                    value={false}
+                                                    checked={gender === false}
                                                     onChange={handleGenderChange}
                                                 />
                                                 Male
@@ -415,7 +491,8 @@ export default function Profile(){
                                                     type='radio'
                                                     id='female'
                                                     name='gender'
-                                                    value={gender}
+                                                    value={true}
+                                                    checked={gender === true}
                                                     onChange={handleGenderChange}
                                                 />
                                                 Female
@@ -502,7 +579,7 @@ export default function Profile(){
                                     </div>
                                     <div className={`${styles.general_information_container__section__non_editable_information__div}`}>
                                         <h3>Gender </h3>
-                                        <p>{gender}</p>
+                                        <p>{gender ? 'F' : 'M'}</p>
                                     </div>
                                     <div className={`${styles.general_information_container__section__non_editable_information__div}`}>
                                         <h3>Pronoun1 </h3>
