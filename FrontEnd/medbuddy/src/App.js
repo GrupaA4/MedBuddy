@@ -13,9 +13,8 @@ function App() {
     <div className="App">
 
 
-      <Contact />
-      {/* <MainPage /> */}
-      <Profile/>
+      
+      <Conversation/>
 
     </div>
   );
