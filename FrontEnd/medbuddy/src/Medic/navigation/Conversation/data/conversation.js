@@ -16,6 +16,8 @@ import {
     chat13,
 } from "../assets/conversation";
 
+export const email = "ceva@gamil.com";
+
 export const chatsData = [
 
     {
