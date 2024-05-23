@@ -14,6 +14,8 @@ function App() {
 
 
       <Contact />
+      {/* <MainPage /> */}
+      <Profile/>
 
     </div>
   );
