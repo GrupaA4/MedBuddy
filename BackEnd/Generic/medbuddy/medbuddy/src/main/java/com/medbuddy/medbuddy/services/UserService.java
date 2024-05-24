@@ -91,6 +91,18 @@ public class UserService {
         }
     }
 
+    public UUID getUserIdOfMedic(UUID medicId) {
+        UUID userId = userDAO.getUserIdOfMedic(medicId);
+
+        User user = userDAO.getUserById(userId);
+
+        if(EntityValidator.validate(user)) {
+            return userId;
+        } else {
+            throw new NotFoundExceptions.UserNotFound("Medic with id " + medicId + "was not found");
+        }
+    }
+
     public Medic getMedicProfile(UUID userId) {
         User user = userDAO.getUserById(userId);
 
@@ -98,34 +110,25 @@ public class UserService {
             throw new NotFoundExceptions.UserNotFound("No user with this id " + userId + " was found");
         }
 
-        Medic medic = userDAO.getMedicSpecificInfoByUserId(userId);
-
-        return new Medic();
+        return new Medic(user, userDAO.getMedicSpecificInfoByUserId(userId));
     }
 
     public void updateUser(UUID userId, User userRequest) {
         User user = userDAO.getUserById(userId);
-        user.setEmail(userRequest.getEmail());
-        user.setPassword(userRequest.getPassword());
-        user.setLastName(userRequest.getLastName());
-        user.setFirstName(userRequest.getFirstName());
-        user.setGender(userRequest.isGender());
-        user.setPronoun1(userRequest.getPronoun1());
-        user.setPronoun2(userRequest.getPronoun2());
-        user.setDateOfBirth(userRequest.getDateOfBirth());
-        user.setLanguage(userRequest.getLanguage());
-        user.setCountry(userRequest.getCountry());
-        user.setCity(userRequest.getCity());
-        user.setPhoneNumber(userRequest.getPhoneNumber());
-        user.setProfileImageNumber(userRequest.getProfileImageNumber());
-        user.setAdmin(userRequest.isAdmin());
-        user.setDeleted(userRequest.isDeleted());
 
-        userDAO.updateUser(user);
+        if(!EntityValidator.validate(user)) {
+            throw new NotFoundExceptions.UserNotFound("No user with this id " + userId + " was found");
+        }
+
+        userDAO.updateUser(userRequest, userId);
     }
 
     public void softDeleteUser(UUID userId) {
         userDAO.markUserAsDeleted(userId);
+        //delete conversations
+        //delete messages
+        //delete reports
+        //delete medical history
     }
 
     public void hardDeleteUser(UUID userId) {
@@ -133,9 +136,6 @@ public class UserService {
     }
 
     public boolean isMedic(UUID userId) {
-        JdbcTemplate jdbcTemplate = null;
-        String query = "SELECT COUNT(*) FROM medic WHERE id = ?";
-        Integer count = jdbcTemplate.queryForObject(query, new Object[]{userId}, Integer.class);
-        return count != null && count > 0;
+        return userDAO.isMedic(userId);
     }
 }

@@ -30,7 +30,7 @@ public class User implements Entity{
     protected String imageExtension;
     protected LocalDate lastTimeLoggedIn;
     protected boolean isAdmin;
-    private boolean isDeleted;
+    protected boolean isDeleted;
 
     public User(User user) {
         id = user.id;

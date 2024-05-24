@@ -1,15 +1,6 @@
-2024-05-24 18:08:58 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-05-24 18:08:58 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT COUNT(1) FROM appuser WHERE email = ?]
-2024-05-24 18:09:21 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-05-24 18:09:21 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT COUNT(1) FROM appuser WHERE email = ?]
-2024-05-24 18:09:21 DEBUG JdbcTemplate:453 - Executing SQL query [SELECT MAX(profileImageNumber) FROM appuser]
-2024-05-24 18:09:21 DEBUG JdbcTemplate:968 - Executing prepared SQL update
-2024-05-24 18:09:21 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
-2024-05-24 18:09:21 DEBUG JdbcTemplate:453 - Executing SQL query [SELECT MAX(profileImageNumber) FROM appuser]
-2024-05-24 18:09:21 DEBUG JdbcTemplate:968 - Executing prepared SQL update
-2024-05-24 18:09:21 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO medic (id, userId, typeOfMedic, clinic, certificateImageNumber, imageExtension, isApproved) VALUES(?, ?, ?, ?, ?, ?, ?)]
-2024-05-24 18:09:52 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-05-24 18:09:52 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT COUNT(1) FROM appuser WHERE email = ?]
-2024-05-24 18:09:52 DEBUG JdbcTemplate:453 - Executing SQL query [SELECT MAX(profileImageNumber) FROM appuser]
-2024-05-24 18:09:52 DEBUG JdbcTemplate:968 - Executing prepared SQL update
-2024-05-24 18:09:52 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-05-25 00:45:48 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-05-25 00:45:48 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT COUNT(1) FROM medic WHERE userId = ?]
+2024-05-25 00:46:14 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-05-25 00:46:14 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT COUNT(1) FROM medic WHERE userId = ?]
+2024-05-25 00:46:35 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-05-25 00:46:35 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT COUNT(1) FROM medic WHERE userId = ?]

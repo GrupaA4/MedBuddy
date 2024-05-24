@@ -1,6 +1,7 @@
 package com.medbuddy.medbuddy.controllers;
 
 import com.medbuddy.medbuddy.controllers.requestbodies.UserRequestBodies;
+import com.medbuddy.medbuddy.controllers.responsebodies.UserResponseBodies;
 import com.medbuddy.medbuddy.models.Medic;
 import com.medbuddy.medbuddy.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,47 +60,53 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    //works
     @GetMapping("/viewprofile/{userId}")
-    public ResponseEntity<User> viewProfile(@PathVariable UUID userId) {
-        User profile = userService.getUser(userId);
-        return ResponseEntity.ok(profile);
+    public UserResponseBodies.UserProfile viewProfile(@PathVariable UUID userId) {
+        return new UserResponseBodies.UserProfile(userService.getUser(userId), "placeholder");
     }
 
+    //works
     @GetMapping("/getbasicinfo/{userId}")
-    public ResponseEntity<User> getBasicInfo(@PathVariable UUID userId) {
-        User basicInfo = userService.getUser(userId);
-        return ResponseEntity.ok(basicInfo);
+    public UserResponseBodies.UserBasicInfo getBasicInfo(@PathVariable UUID userId) {
+        return new UserResponseBodies.UserBasicInfo(userService.getUser(userId), "placeholder");
     }
 
+    //works
+    @GetMapping("/getuseridofmedic/{medicId}")
+    public ResponseEntity<Map<String, UUID>> getUserIdOfMedic(@PathVariable UUID medicId) {
+        Map<String, UUID> idResponse = new HashMap<>();
+        idResponse.put("userId", userService.getUserIdOfMedic(medicId));
+        return ResponseEntity.ok(idResponse);
+    }
+
+    //works
     @GetMapping("/viewmedicprofile/{userId}")
-    public ResponseEntity<Medic> viewMedicProfile(@PathVariable UUID userId) {
-        Medic medicProfile = userService.getMedicProfile(userId);
-        return ResponseEntity.ok(medicProfile);
+    public UserResponseBodies.MedicProfile viewMedicProfile(@PathVariable UUID userId) {
+        return new UserResponseBodies.MedicProfile(userService.getMedicProfile(userId), "placeholder", "placeholder");
     }
 
+    //works (mostly, image problems)
     @PatchMapping("/changeprofile/{userId}")
-    public ResponseEntity<Void> changeProfile(@PathVariable UUID userId, @RequestBody User user) {
-        userService.updateUser(userId, user);
-        return ResponseEntity.noContent().build();
+    public void changeProfile(@PathVariable UUID userId, @RequestBody UserRequestBodies.UserChange newUserInfo) {
+        userService.updateUser(userId, new User(newUserInfo));
     }
 
+    //works
     @PatchMapping("/softdeleteuser/{userId}")
-    public ResponseEntity<Void> softDeleteUser(@PathVariable UUID userId) {
+    public void softDeleteUser(@PathVariable UUID userId) {
         userService.softDeleteUser(userId);
-        return ResponseEntity.noContent().build();
     }
 
+    //works
     @DeleteMapping("/harddeleteuser/{userId}")
-    public ResponseEntity<Void> hardDeleteUser(@PathVariable UUID userId) {
+    public void hardDeleteUser(@PathVariable UUID userId) {
         userService.hardDeleteUser(userId);
-        return ResponseEntity.noContent().build();
     }
 
+    //works
     @GetMapping("/ismedic/{userId}")
-    public ResponseEntity<Map<String, Boolean>> isMedic(@PathVariable UUID userId) {
-        boolean isMedic = userService.isMedic(userId);
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("isMedic", isMedic);
-        return ResponseEntity.ok(response);
+    public UserResponseBodies.IsMedic isMedic(@PathVariable UUID userId) {
+        return new UserResponseBodies.IsMedic(userService.isMedic(userId));
     }
 }

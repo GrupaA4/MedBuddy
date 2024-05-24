@@ -51,4 +51,7 @@ public class UserRequestBodies {
         //private MultipartFile certificateImage;
         private String certificateExtension;
     }
+
+    public static class UserChange extends UserSignup{
+    }
 }
