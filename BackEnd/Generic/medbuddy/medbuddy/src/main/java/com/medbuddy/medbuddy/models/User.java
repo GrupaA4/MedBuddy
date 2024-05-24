@@ -19,13 +19,13 @@ public class User {
     private String language;
     private String country;
     private String city;
-    private int postalNumber;
-    private int phoneNumber;
+    //private int postalNumber;
+    private String phoneNumber;
     private String profileImagePath;
     private Boolean isAdmin;
     private Boolean isDeleted;
 
-    public User(UUID id, String email, String password, String lastName, String firstName, Boolean gender, String pronoun1, String pronoun2, Date dateOfBirth, String language, String country, String city, int postalNumber, int phoneNumber, String profileImagePath, Boolean isAdmin, Boolean isDeleted) {
+    public User(UUID id, String email, String password, String lastName, String firstName, Boolean gender, String pronoun1, String pronoun2, Date dateOfBirth, String language, String country, String city, String phoneNumber, String profileImagePath, Boolean isAdmin, Boolean isDeleted) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -38,7 +38,7 @@ public class User {
         this.language = language;
         this.country = country;
         this.city = city;
-        this.postalNumber = postalNumber;
+        //this.postalNumber = postalNumber;
         this.phoneNumber = phoneNumber;
         this.profileImagePath = profileImagePath;
         this.isAdmin = isAdmin;

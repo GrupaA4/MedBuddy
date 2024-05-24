@@ -38,7 +38,7 @@ public class UserDAO {
         // implementation for user signup
         String sql = "INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImagePath, isAdmin, isDeleted) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, UUID.randomUUID(), user.getEmail(), user.getPassword(), user.getLastName(), user.getFirstName(), user.getGender(),
+        jdbcTemplate.update(sql, UUID.randomUUID().toString(), user.getEmail(), user.getPassword(), user.getLastName(), user.getFirstName(), user.getGender(),
                 user.getPronoun1(), user.getPronoun2(), user.getDateOfBirth(), user.getLanguage(), user.getCountry(),
                 user.getCity(), user.getPhoneNumber(), user.getProfileImagePath(), user.getIsAdmin(), user.getIsDeleted());
     }

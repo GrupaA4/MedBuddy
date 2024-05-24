@@ -27,7 +27,7 @@ public class UserRowMapper implements RowMapper<User> {
         user.setLanguage(rs.getString("language"));
         user.setCountry(rs.getString("country"));
         user.setCity(rs.getString("city"));
-        user.setPhoneNumber(rs.getInt("phoneNumber"));
+        user.setPhoneNumber(rs.getString("phoneNumber"));
         user.setProfileImagePath(rs.getString("profileImagePath"));
         user.setIsAdmin(rs.getBoolean("isAdmin"));
         user.setIsDeleted(rs.getBoolean("isDeleted"));
