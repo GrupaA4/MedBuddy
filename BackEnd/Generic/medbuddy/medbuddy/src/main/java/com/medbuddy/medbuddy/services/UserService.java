@@ -54,8 +54,12 @@ public class UserService {
 
     public Medic getMedicProfile(UUID userId) {
         User user = userDAO.getUserById(userId);
+        JdbcTemplate jdbcTemplate = null;
         // Assuming MedicProfile extends User with some additional fields
-        return new Medic(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getProfileImagePath(), user.getSpecialization());
+        if(!isMedic(userId))
+            return null;
+        String query = "SELECT * FROM medic WHERE id = ?";
+        return jdbcTemplate.queryForObject(query, new Object[]{userId}, Medic.class);
     }
 
     public void updateUser(UUID userId, User userRequest) {

@@ -11,4 +11,7 @@ public class Report {
     private UUID reportedBy;
     private Boolean isDeleted;
     private String reportMessage;
+    private String TimeCreated;
+    private boolean Deleted;
+
 }

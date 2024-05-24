@@ -67,4 +67,12 @@ public class UserDAO {
         jdbcTemplate.update(sql, id);
     }
 
+    public boolean isMedic(UUID userId) {
+        JdbcTemplate jdbcTemplate = null;
+        String query = "SELECT COUNT(*) FROM medic WHERE id = ?";
+        Integer count = jdbcTemplate.queryForObject(query, new Object[]{userId}, Integer.class);
+        return count != null && count > 0;
+    }
+
+
 }
