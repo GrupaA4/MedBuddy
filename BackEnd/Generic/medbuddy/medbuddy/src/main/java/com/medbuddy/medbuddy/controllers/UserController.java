@@ -1,5 +1,6 @@
 package com.medbuddy.medbuddy.controllers;
 
+import com.medbuddy.medbuddy.controllers.requestbodies.UserRequestBodies;
 import com.medbuddy.medbuddy.models.Medic;
 import com.medbuddy.medbuddy.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,17 @@ public class UserController {
         this.userService = userService;
     }
 
+    //works
+    @GetMapping("/login")
+    public ResponseEntity<Void> login() {
+        if(userService.loginUser("example@example.com", "passwordexample")) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+    }
+
+    //works
     @GetMapping("/getuserid/{email}")
     public ResponseEntity<Map<String, UUID>> getUserId(@PathVariable String email) {
         UUID userId = userService.getUserIdByEmail(email);
@@ -31,9 +43,19 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/signup")
-    public ResponseEntity<Void> signUp(@RequestBody User user) {
+    //works
+    @PutMapping("/signup")
+    public ResponseEntity<Void> signUp(@RequestBody UserRequestBodies.UserSignup userRequest) {
+        User user = new User(userRequest);
         userService.createUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    //works mostly (certificate image number is not right)
+    @PutMapping("/signupmedic")
+    public ResponseEntity<Void> signUpMedic(@RequestBody UserRequestBodies.MedicSignup medicRequest) {
+        Medic medic = new Medic(medicRequest);
+        userService.createMedic(medic);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 

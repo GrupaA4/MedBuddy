@@ -1,14 +1,14 @@
 package com.medbuddy.medbuddy.exceptions;
 
 public class NotFoundExceptions {
-    public static class MedicalHistoryNotFoundException extends RuntimeException {
-        public MedicalHistoryNotFoundException(String message) {
+    public static class MedicalHistoryNotFound extends RuntimeException {
+        public MedicalHistoryNotFound(String message) {
             super(message);
         }
     }
 
-    public static class UserNotFoundException extends RuntimeException {
-        public UserNotFoundException(String message) {
+    public static class UserNotFound extends RuntimeException {
+        public UserNotFound(String message) {
             super(message);
         }
     }

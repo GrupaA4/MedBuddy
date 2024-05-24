@@ -2,9 +2,7 @@ package com.medbuddy.medbuddy.controllers;
 
 import com.medbuddy.medbuddy.controllers.requestbodies.MedicalHistoryRequestBody;
 import com.medbuddy.medbuddy.controllers.responsebodies.MedicalHistoryResponseBodies;
-import com.medbuddy.medbuddy.models.MedicalHistoryEntry;
 import com.medbuddy.medbuddy.services.MedicalHistoryService;
-import com.medbuddy.medbuddy.utilitaries.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +18,7 @@ public class MedicalHistoryController {
 
     @GetMapping(value = "/getusermedicalhistory/{id}")
     public MedicalHistoryResponseBodies.GetMedicalHistory getMedicalHistory(@PathVariable UUID id) {
-        List<MedicalHistoryEntry> entries = service.getUserMedicalHistory(id);
+        List<MedicalHistoryResponseBodies.MedicalHistoryBasicFields> entries = service.getUserMedicalHistory(id);
         return new MedicalHistoryResponseBodies.GetMedicalHistory(entries.size(), entries);
     }
 

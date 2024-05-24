@@ -45,7 +45,7 @@ public class MedicalHistoryDAO {
                     userId.toString()
             );
         } catch (EmptyResultDataAccessException e) {
-            throw new NotFoundExceptions.MedicalHistoryNotFoundException("No medical history fond for user with id " + userId);
+            throw new NotFoundExceptions.MedicalHistoryNotFound("No medical history found for user with id " + userId);
         }
     }
 

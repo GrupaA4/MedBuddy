@@ -17,7 +17,7 @@ public class ReportRowMapper implements RowMapper<Report> {
         report.setReportedBy(UUID.fromString(rs.getString(3)));
         report.setReportMessage(rs.getString(4));
         report.setTimeCreated(rs.getDate(5).toLocalDate());
-        report.setIsDeleted(rs.getBoolean(6));
+        report.setDeleted(rs.getBoolean(6));
         return report;
     }
 }

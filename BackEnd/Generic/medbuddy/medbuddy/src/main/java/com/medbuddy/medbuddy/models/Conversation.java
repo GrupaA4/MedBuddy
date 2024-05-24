@@ -1,16 +1,18 @@
 package com.medbuddy.medbuddy.models;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
+@NoArgsConstructor
 @Data
-public class Conversation {
+public class Conversation implements Entity{
     private UUID id;
     private UUID userId1;
     private UUID userId2;
     private UUID lastMessageId;
-    private Boolean isDeleted;
+    private boolean isDeleted;
 
     public Conversation(UUID id, UUID userId1, UUID userId2, UUID lastMessageId, Boolean isDeleted) {
         this.id = id;
@@ -19,8 +21,4 @@ public class Conversation {
         this.lastMessageId = lastMessageId;
         this.isDeleted = isDeleted;
     }
-    public Conversation(){
-
-    }
-
 }

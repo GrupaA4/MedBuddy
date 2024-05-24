@@ -7,14 +7,14 @@ public class DatabaseExceptions {
         }
     }
 
-    public static class StringProblemInDatabase extends RuntimeException {
-        public StringProblemInDatabase(String message) {
+    public static class NonUniqueIdentifier extends RuntimeException {
+        public NonUniqueIdentifier(String message) {
             super(message);
         }
     }
 
-    public static class NonUniqueIdentifier extends RuntimeException {
-        public NonUniqueIdentifier(String message) {
+    public static class ErrorInExecutingStatement extends RuntimeException {
+        public ErrorInExecutingStatement(String message) {
             super(message);
         }
     }
