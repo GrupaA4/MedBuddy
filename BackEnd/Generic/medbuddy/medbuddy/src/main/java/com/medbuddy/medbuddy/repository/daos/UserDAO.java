@@ -10,6 +10,7 @@ import com.medbuddy.medbuddy.repository.rowmappers.MedicRowMapper;
 import com.medbuddy.medbuddy.repository.rowmappers.UserRowMapper;
 import com.medbuddy.medbuddy.utilitaries.DataConvertorUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +18,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -53,6 +55,15 @@ public class UserDAO {
         };
     }
 
+    public Optional<User> findByEmail(String email) {
+        try {
+            String sql = "SELECT * FROM appuser WHERE email = ?";
+            User user = jdbcTemplate.queryForObject(sql, new UserRowMapper(), email);
+            return Optional.ofNullable(user);
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
+    }
 
     public void updateLastTimeLoggedOn(UUID userId, LocalDate date) {
         String sql = "UPDATE appuser SET lastTimeLoggedIn = ? WHERE id = ?";

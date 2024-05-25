@@ -7,6 +7,7 @@ import com.medbuddy.medbuddy.repository.daos.UserDAO;
 import com.medbuddy.medbuddy.utilitaries.SecurityUtil;
 import com.medbuddy.medbuddy.utilitaries.validators.EntityValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -16,13 +17,10 @@ import java.util.UUID;
 
 @Service
 public class UserService {
-
-    private final UserDAO userDAO;
-
     @Autowired
-    public UserService(UserDAO userDAO) {
-        this.userDAO = userDAO;
-    }
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserDAO userDAO;
 
     public boolean loginUser(String email, String password) {
         return userDAO.loginUser(email, password);//throws exceptions if email doesn't exist
@@ -44,6 +42,8 @@ public class UserService {
         userDAO.checkIfUserWithEmailExists(userRequest.getEmail());//will throw exceptions if that happens
 
         userRequest.setId(SecurityUtil.getNewId());
+        String password = userRequest.getPassword();
+        userRequest.setPassword(passwordEncoder.encode(password));
 
         int imageNumber = userDAO.getMaxImageNumber() + 1;
         //add profile image to database
@@ -60,6 +60,8 @@ public class UserService {
         userDAO.checkIfUserWithEmailExists(medicRequest.getEmail());//will throw exceptions if that happens
 
         medicRequest.setId(SecurityUtil.getNewId());
+        String password = medicRequest.getPassword();
+        medicRequest.setPassword(passwordEncoder.encode(password));
 
         int imageNumber = userDAO.getMaxImageNumber() + 1;
         //add profile image to database
@@ -68,11 +70,11 @@ public class UserService {
         medicRequest.setLastTimeLoggedIn(LocalDate.now());
         medicRequest.setDeleted(false);
 
-        userDAO.signupUser(medicRequest);
+        userDAO.signupUser(medicRequest);//automatically maps to a user
 
         medicRequest.setMedicId(SecurityUtil.getNewId());
 
-        int certificateNumber = userDAO.getMaxImageNumber() + 1;
+        int certificateNumber = userDAO.getMaxCertificateNumber() + 1;
         //add certificate image to database
         medicRequest.setProfileImageNumber(certificateNumber);
 
@@ -119,6 +121,9 @@ public class UserService {
         if(!EntityValidator.validate(user)) {
             throw new NotFoundExceptions.UserNotFound("No user with this id " + userId + " was found");
         }
+
+        String password = userRequest.getPassword();
+        userRequest.setPassword(passwordEncoder.encode(password));
 
         userDAO.updateUser(userRequest, userId);
     }
