@@ -32,4 +32,9 @@ public class MedicalHistoryController {
                 body.getTreatment()
                 );
     }
+
+    @DeleteMapping(value = "/removemedicalhistoryentry/{id}")
+    public void deleteEntry(@PathVariable UUID id) {
+        service.deleteEntry(id);
+    }
 }

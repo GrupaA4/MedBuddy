@@ -39,4 +39,8 @@ public class MedicalHistoryService {
         entry.setDeleted(false);
         medicalHistoryRepository.createMedicalHistoryEntry(entry);
     }
+
+    public void deleteEntry(UUID entryId) {
+        medicalHistoryRepository.deleteEntry(entryId);
+    }
 }

@@ -21,12 +21,14 @@ public class MedicalHistoryResponseBodies {
 
     @Data
     public static class MedicalHistoryBasicFields {
+        private UUID entryId;
         private UUID medicId;
         private String diagnosis;
         private String period;
         private String treatment;
 
         public MedicalHistoryBasicFields(MedicalHistoryEntry entry) {
+            entryId = entry.getId();
             medicId = entry.getMedicId();
             diagnosis = entry.getDiagnosis();
             period = entry.getPeriod();
