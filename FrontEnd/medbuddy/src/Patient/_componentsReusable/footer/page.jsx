@@ -12,7 +12,7 @@ export default function Footer(){
         <>
             <footer className={styles.page__footer}>
                 <div className={`${styles.footer__main_info}`}>
-                    <Link className={styles.page__logoLink} to="/pages/home"><img className={styles.page__footer__logo} src={Logo} alt="MedBuddy logo"/></Link>
+                    <Link className={styles.page__logoLink} to="/"><img className={styles.page__footer__logo} src={Logo} alt="MedBuddy logo"/></Link>
                     <nav className={`${styles.page__footer__navbar}`}>
                         <Link className={`${styles.page__footer_navbar_link} ${location.pathname === "/" ? styles.active : ""}`} to='/'>Home</Link>
                         <Link className={`${styles.page__footer_navbar_link} ${location.pathname === "/about" ? styles.active : ""}`} to='/about'>About</Link>
