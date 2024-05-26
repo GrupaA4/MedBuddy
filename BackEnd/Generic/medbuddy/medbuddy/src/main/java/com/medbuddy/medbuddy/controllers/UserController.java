@@ -49,7 +49,7 @@ public class UserController {
     public ResponseEntity<Void> signUp(@RequestBody UserRequestBodies.UserSignup userRequest) {
         User user = new User(userRequest);
         userService.createUser(user);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     //works mostly (certificate image number is not right)

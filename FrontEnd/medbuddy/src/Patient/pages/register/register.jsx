@@ -102,18 +102,20 @@ export default function SignIn(){
             country:country,
             city:city,
             phoneNumber:phone,
-            profileImage:profilePicture
+            profileImage:profilePicture,
+            imageExtension:"png",
+            admin:false
         };
 
         console.log('Data to be sent:', data);
 
         try {
-            const response = await fetch('https://0462a4b4-2de7-465f-a03e-a1097daea12c.mock.pstmn.io/medbuddy/signup', {
-                method: 'POST',
+            const response = await fetch('http://localhost:7264/medbuddy/signup', {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(data),
             });
 
             if(!response.ok){
@@ -315,7 +317,7 @@ export default function SignIn(){
                                 id='profilePicture'
                                 value={profilePicture ? profilePicture.name : ''}
                                 onChange={handleProfilePicChange}
-                                required
+                                //required
                             />
                         </div><br />
                         <div className={`${styles.form_container__profile_pic}`}>
