@@ -1,72 +1,74 @@
 import React, { useState } from 'react';
-import './log-in_page.css';
+import { useNavigate } from 'react-router-dom';
+import styles from './log-in_page.module.css';
+import Logo2 from './Logo2.png';
+import Doctors from './Doctors.png';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [warning, setWarning] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Simulate form submission
     console.log('Email:', email);
     console.log('Password:', password);
 
-    // Example: Simple validation
     if (!email || !password) {
       setWarning('Please fill in both fields.');
     } else {
       setWarning('');
-      // Redirect or handle login logic here
+      // Redirect to admin main page
+      navigate('/admin');
     }
   };
 
   const handleSignUpAsPatient = () => {
-    // Handle sign-up as patient logic here
     console.log('Sign-up as Patient');
   };
 
   const handleSignUpAsDoctor = () => {
-    // Handle sign-up as doctor logic here
     console.log('Sign-up as Doctor');
   };
 
   return (
-    <div className="container">
-      <img src="Logo.png" className="container__image1" alt="Your image" />
-      <img src="Doctors.png" className="container__image2" alt="Your image" />
-      <div className="square">
-        <p className="square__title">LOGIN</p>
+    <div className={styles.body_login}>
+    <div className={styles.container}>
+      <img src={Logo2} className={styles.container__image1} alt="Logo2" />
+      <img src={Doctors} className={styles.container__image2} alt="Doctors" />
+      <div className={styles.square}>
+        <p className={styles.square__title}>LOGIN</p>
         <form onSubmit={handleLogin}>
-          <div className="square__form">
-            <label htmlFor="email" className="square__form__text">Email</label><br />
+          <div className={styles.square__form}>
+            <label htmlFor="email" className={styles.square__form__text}>Email</label><br />
             <input
               type="text"
-              className="square__form__label"
+              className={styles.square__form__label}
               placeholder="USER@EMAIL.COM"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             /><br /><br />
-            <label htmlFor="password" className="square__form__text">Password</label><br />
+            <label htmlFor="password" className={styles.square__form__text}>Password</label><br />
             <input
               type="password"
-              className="square__form__label"
+              className={styles.square__form__label}
               placeholder="Enter Password"
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             /><br /><br />
-            <button className="square__form__button1" type="submit">LOGIN</button><br /><br />
+            <button className={styles.square__form__button1} type="submit">LOGIN</button><br /><br />
             <button
-              className="square__form__button2"
+              className={styles.square__form__button2}
               type="button"
               onClick={handleSignUpAsPatient}
             >
               SIGN-UP AS PATIENT
             </button>
             <button
-              className="square__form__button3"
+              className={styles.square__form__button3}
               type="button"
               onClick={handleSignUpAsDoctor}
             >
@@ -74,8 +76,9 @@ const LoginPage = () => {
             </button>
           </div>
         </form>
-        {warning && <p className="square__warning" id="myWarning">{warning}</p>}
+        {warning && <p className={styles.square__warning} id="myWarning">{warning}</p>}
       </div>
+    </div>
     </div>
   );
 };

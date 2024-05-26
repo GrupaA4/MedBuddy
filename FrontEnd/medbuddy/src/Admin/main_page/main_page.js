@@ -1,25 +1,22 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import './main_page.css';
+import { useNavigate } from 'react-router-dom';
+import styles from './main_page.module.css';
 
 const MainPage = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const redirectToLogin = () => {
-    history.push('/login');
+    navigate('/login');
   };
 
   return (
-    <div className="bg">
-      <div className="container">
-        <button
-          className="button1"
-          onClick={redirectToLogin}
-        >
+    <div className={styles.bg}>
+      <div className={styles.container}>
+        <button className={styles.button1} onClick={redirectToLogin}>
           LOG IN
         </button>
-        <button className="button">SIGN UP AS PATIENT</button>
-        <button className="button">SIGN UP AS MEDIC</button>
+        <button className={styles.button}>SIGN UP AS PATIENT</button>
+        <button className={styles.button}>SIGN UP AS MEDIC</button>
       </div>
     </div>
   );
