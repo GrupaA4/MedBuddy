@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap");
+
+.title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.forum--container {
+  color: #002845;
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  justify-content: flex-start;
+  padding: 2em 2em 3em 1em;
+
+  background-color: #f7f9f7;
+  border-radius: 50px;
+  overflow-y: scroll;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px;
+}
+
+.full-name {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  margin-left: 30px;
+}
+.full-name input {
+  width: 190%;
+  border-style: solid;
+  border-color: hsl(65, 13%, 81%);
+  border-width: 2px;
+  border-radius: 7px;
+}
+
+.email {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  margin-left: 30px;
+}
+.email input {
+  width: 190%;
+  border-style: solid;
+  border-color: hsl(65, 13%, 81%);
+  border-width: 2px;
+  border-radius: 7px;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  margin-left: 30px;
+}
+.message input {
+  height: 120px;
+  width: 190%;
+  border-style: solid;
+  border-color: hsl(65, 13%, 81%);
+  border-width: 2px;
+  border-radius: 7px;
+}
+
+.submit--button {
+  background-color: #008bac;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.3rem;
+  width: 150px;
+  height: 40px;
+  border-style: none;
+  border-radius: 50px;
+  color: white;
+  margin-top: 2rem;
+  cursor: pointer;
+  margin-left: 34%;
+}
+
+.submit--button:hover {
+  background-color: #002845;
+}
+
+@media (max-width: 600px) {
+  .forum--container {
+    width: 300px;
+  }
+
+  .message input,
+  .email input,
+  .full-name input {
+    width: 100%;
+  }
+
+  .submit--button {
+    margin-left: 22%;
+  }
+}

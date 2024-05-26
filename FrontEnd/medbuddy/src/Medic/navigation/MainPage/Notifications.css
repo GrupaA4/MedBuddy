@@ -1,0 +1,60 @@
+.Notifications {
+  height: 75vh;
+  background-color: #069dae;
+  border-radius: 15px;
+  margin-right: 100px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 50vh;
+}
+
+.title-notif {
+  align-self: center;
+  color: #def9f1;
+}
+
+.list {
+  flex: 1;
+  overflow: scroll;
+}
+
+.single-notif {
+  background-color: #def9f1;
+  margin: 20px;
+  color: grey;
+  border-radius: 10px;
+}
+
+.single-notif p {
+  padding: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #def9f1; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners of the scrollbar thumb */
+}
+
+@media (max-width: 1000px) {
+  .Notifications {
+    width: 25vw;
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 800px) {
+  .Notifications {
+    width: 50vw;
+    margin-right: 40px;
+    height: 40vh;
+    margin-bottom: 10px;
+  }
+}
