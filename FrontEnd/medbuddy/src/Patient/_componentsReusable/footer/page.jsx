@@ -15,9 +15,9 @@ export default function Footer(){
                     <Link className={styles.page__logoLink} to="/pages/home"><img className={styles.page__footer__logo} src={Logo} alt="MedBuddy logo"/></Link>
                     <nav className={`${styles.page__footer__navbar}`}>
                         <Link className={`${styles.page__footer_navbar_link} ${location.pathname === "/" ? styles.active : ""}`} to='/'>Home</Link>
-                        <Link className={`${styles.page__footer_navbar_link} ${location.pathname === "/pages/about" ? styles.active : ""}`} to='/pages/about'>About</Link>
+                        <Link className={`${styles.page__footer_navbar_link} ${location.pathname === "/about" ? styles.active : ""}`} to='/about'>About</Link>
                         <Link className={`${styles.page__footer_navbar_link} ${location.pathname === "/pages/contact" ? styles.active : ""}`} to='/pages/contact'>Contact</Link>
-                        <Link className={`${styles.page__footer_navbar_link} ${location.pathname === "/pages/chat" ? styles.active : ""}`} to='/pages/chat'>MedBuddy</Link>
+                        <Link className={`${styles.page__footer_navbar_link} ${location.pathname === "/chat" ? styles.active : ""}`} to='/chat'>MedBuddy</Link>
                     </nav>
                     <div className={`${styles.footer__socials}`}>
                         <Link className={styles.page__footer__link} to="/"><img className={styles.footer__socials_link} src={facebook_icon} alt="Facebook icon"/></Link>
