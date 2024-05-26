@@ -5,7 +5,7 @@ import Navbar from './Navbar' ;
 import Logo from './logo.png';
 
 
-function Profile() {
+function ProfileMedic() {
   return (
 
     <div className="Profile">
@@ -66,4 +66,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default ProfileMedic;

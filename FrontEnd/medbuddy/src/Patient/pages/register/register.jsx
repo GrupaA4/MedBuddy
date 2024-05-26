@@ -24,6 +24,9 @@ export default function SignIn(){
     const [profilePicture,setProfilePicture]=useState(null);
     const [profilePicturePreview, setProfilePicturePreview]=useState(null);
 
+    const [profileImageExtension,setProfileImageExtension] = useState('');
+    const [admin,setAdmin] = useState(false);
+
     const handleEmailChange= (event) =>{
         setEmail(event.target.value);
     };
@@ -42,6 +45,7 @@ export default function SignIn(){
 
     const handleGenderChange= (event) =>{
         setGender(event.target.value === 'true');
+        setAdmin(false);
     };
 
     const handlePronoun1Change= (event) =>{
@@ -58,6 +62,7 @@ export default function SignIn(){
 
     const handleLanguageChange= (event) =>{
         setLanguage(event.target.value);
+        setProfileImageExtension(event.target.value);
     };
 
     const handleCountryChange= (event) =>{
@@ -102,14 +107,16 @@ export default function SignIn(){
             country:country,
             city:city,
             phoneNumber:phone,
-            profileImage:profilePicture
+            profileImage:profilePicture,
+            profileImageExtension:profileImageExtension,
+            admin:admin
         };
 
         console.log('Data to be sent:', data);
 
         try {
-            const response = await fetch('https://0462a4b4-2de7-465f-a03e-a1097daea12c.mock.pstmn.io/medbuddy/signup', {
-                method: 'POST',
+            const response = await fetch('http://localhost:7264/medbuddy/signup', {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -315,7 +322,6 @@ export default function SignIn(){
                                 id='profilePicture'
                                 value={profilePicture ? profilePicture.name : ''}
                                 onChange={handleProfilePicChange}
-                                required
                             />
                         </div><br />
                         <div className={`${styles.form_container__profile_pic}`}>
