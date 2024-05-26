@@ -1,27 +1,39 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './report_page.module.css';
+import styles from './user_page.module.css';
 import Logo from '../assets/MedBuddy.png';
 
-const ReportPage = () => {
+const UserPage = () => {
   const navigate = useNavigate();
 
   const redirectTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  useEffect(() => {
-    // Add any required effect here
-  }, []);
-
   return (
     <div>
       <div className={styles.header}>
-        <img src={Logo} className={styles.header__image} alt="Your image" />
+        <img src={Logo} className={styles.header__image} alt="Logo" />
         <div className={styles.header__paragraph}>
-          <a onClick={() => navigate('/admin')} className={styles.header__paragraph__part}>Home</a>
-          <a onClick={redirectTop} className={styles.header__paragraph__part} style={{ textDecoration: 'underline', textDecorationColor: '#369986' }}>Report</a>
-          <a onClick={() => navigate('/user')} className={styles.header__paragraph__part}>Manage Accounts</a>
+          <a
+            className={styles.header__paragraph__part}
+            onClick={() => navigate('/admin')}
+          >
+            Home
+          </a>
+          <a
+            className={styles.header__paragraph__part}
+            onClick={() => navigate('/report')}
+          >
+            Report
+          </a>
+          <a
+            className={styles.header__paragraph__part}
+            onClick={redirectTop}
+            style={{ textDecoration: 'underline', textDecorationColor: '#369986' }}
+          >
+            Manage Accounts
+          </a>
         </div>
       </div>
 
@@ -34,7 +46,7 @@ const ReportPage = () => {
           </div>
         </div>
 
-        {[...Array(5).keys()].map(i => (
+        {[...Array(5).keys()].map((i) => (
           <div key={i} className={styles.container1__square}>
             <div className={styles.container1__square__icon}>
               <p>PHOTO</p>
@@ -42,10 +54,12 @@ const ReportPage = () => {
             <p className={styles.container1__square__data}>
               NAME: <span className={styles.name}>Example Name {i + 1}</span><br />
               EMAIL: <span className={styles.email}>example{i + 1}@domain.com</span><br />
-              PHONE NUMBER: <span className={styles.phoneNumber}>123-456-789{i + 1}</span><br />
+              MEDICAL LICENCE: <span className={styles.medicalLicense}>123456</span><br />
             </p>
             <div className={styles.container1__square__data__buttons}>
-              <button className={styles.container1__button1} type="button">Report</button>
+              <button className={styles.container1__button1} type="button">Accept</button>
+              <button className={styles.container1__button2} type="button">Deny</button>
+              <button className={styles.container1__button3} type="button">Check License</button>
             </div>
           </div>
         ))}
@@ -58,10 +72,12 @@ const ReportPage = () => {
           </div>
           <div className={styles.container2__text}>NAME: Example of name</div>
         </div>
-        <button className={styles.container2__button1} type="button">Report</button>
+        <button className={styles.container2__button1} type="button">Accept</button>
+        <button className={styles.container2__button2} type="button">Deny</button>
+        <button className={styles.container2__button3} type="button">Verify License</button>
       </div>
     </div>
   );
 };
 
-export default ReportPage;
+export default UserPage;

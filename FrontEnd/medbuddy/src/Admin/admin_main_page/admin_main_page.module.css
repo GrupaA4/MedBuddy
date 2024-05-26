@@ -1,12 +1,26 @@
-body {
+
+.body_admin_main_page{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .header {
   display: flex;
   margin: 0;
   top: 0;
+  margin-left: 0;
   width: 100%;
   background-color: white;
   height: 10vh;
@@ -42,18 +56,14 @@ body {
   line-height: 1.7;
   font-size: 4vh;
   word-spacing: 2vw;
-  margin-left: 70vw;
+  margin-left: auto; /* Changed from specific value to auto */
+  margin-right: 1vw; /* Added to align the paragraph to the right */
   margin-top: 0.5vh;
 }
 
 .header__paragraph__part {
   word-spacing: normal;
 }
-
-/* .header__paragraph__part:first-child {
-  text-decoration: underline;
-  text-decoration-color: #369986;
-} */
 
 .header__paragraph__part:hover {
   color: #369986;
@@ -63,13 +73,12 @@ body {
 .container1 {
   position: absolute;
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Center horizontally */
   background-color: #def9f1;
   position: relative;
   top: 25vh;
-  left: 4vw;
   height: 185vh;
-  width: 60vw;
+  width: 60vw; /* Adjusted width */
   scroll-margin-top: 15vh;
   animation-name: appear;
   animation-duration: 1s;
@@ -79,7 +88,7 @@ body {
   opacity: 0;
 }
 
-.up-arrow {
+.upArrow {
   position: relative;
   top: 16vh;
   right: 20px;
@@ -94,11 +103,11 @@ body {
   border-radius: 50%;
 }
 
-.up-arrow:hover {
+.upArrow:hover {
   background-color: #369986;
 }
 
-.down-arrow {
+.downArrow {
   position: relative;
   top: 570vh;
   right: 20px;
@@ -113,7 +122,7 @@ body {
   border-radius: 50%;
 }
 
-.down-arrow:hover {
+.downArrow:hover {
   background-color: #369986;
 }
 
@@ -176,47 +185,47 @@ body {
   line-height: 3;
 }
 
-.user-square1 {
+.userSquare1 {
   top: 25vh;
 }
 
-.user-square2 {
+.userSquare2 {
   top: 80vh;
 }
 
-.user-square3 {
+.userSquare3 {
   top: 135vh;
 }
 
-.user-square4 {
+.userSquare4 {
   top: 190vh;
 }
 
-.user-square5 {
+.userSquare5 {
   top: 245vh;
 }
 
-.user-square6 {
+.userSquare6 {
   top: 300vh;
 }
 
-.user-square7 {
+.userSquare7 {
   top: 355vh;
 }
 
-.user-square8 {
+.userSquare8 {
   top: 410vh;
 }
 
-.user-square9 {
+.userSquare9 {
   top: 465vh;
 }
 
-.user-square10 {
+.userSquare10 {
   top: 520vh;
 }
 
-.user-square11 {
+.userSquare11 {
   top: 575vh;
 }
 
@@ -415,47 +424,47 @@ body {
     justify-self: center;
   }
 
-  .up-arrow {
+  .upArrow {
     left: 14px;
   }
 
-  .down-arrow {
+  .downArrow {
     top: 970vh;
   }
 
-  .user-square2 {
+  .userSquare2 {
     top: 120vh;
   }
 
-  .user-square3 {
+  .userSquare3 {
     top: 215vh;
   }
 
-  .user-square4 {
+  .userSquare4 {
     top: 310vh;
   }
 
-  .user-square5 {
+  .userSquare5 {
     top: 405vh;
   }
 
-  .user-square6 {
+  .userSquare6 {
     top: 500vh;
   }
 
-  .user-square7 {
+  .userSquare7 {
     top: 595vh;
   }
 
-  .user-square8 {
+  .userSquare8 {
     top: 690vh;
   }
 
-  .user-square9 {
+  .userSquare9 {
     top: 785vh;
   }
 
-  .user-square10 {
+  .userSquare10 {
     top: 880vh;
   }
 }
@@ -708,39 +717,39 @@ body {
     height: 74vh;
   }
 
-  .user-square2 {
+  .userSquare2 {
     top: 112vh;
   }
 
-  .user-square3 {
+  .userSquare3 {
     top: 199vh;
   }
 
-  .user-square4 {
+  .userSquare4 {
     top: 286vh;
   }
 
-  .user-square5 {
+  .userSquare5 {
     top: 373vh;
   }
 
-  .user-square6 {
+  .userSquare6 {
     top: 460vh;
   }
 
-  .user-square7 {
+  .userSquare7 {
     top: 547vh;
   }
 
-  .user-square8 {
+  .userSquare8 {
     top: 634vh;
   }
 
-  .user-square9 {
+  .userSquare9 {
     top: 721vh;
   }
 
-  .user-square10 {
+  .userSquare10 {
     top: 808vh;
   }
 
@@ -835,39 +844,39 @@ body {
     top: 17vh;
   }
 
-  .user-square2 {
+  .userSquare2 {
     top: 108vh;
   }
 
-  .user-square3 {
+  .userSquare3 {
     top: 191vh;
   }
 
-  .user-square4 {
+  .userSquare4 {
     top: 274vh;
   }
 
-  .user-square5 {
+  .userSquare5 {
     top: 357vh;
   }
 
-  .user-square6 {
+  .userSquare6 {
     top: 440vh;
   }
 
-  .user-square7 {
+  .userSquare7 {
     top: 523vh;
   }
 
-  .user-square8 {
+  .userSquare8 {
     top: 606vh;
   }
 
-  .user-square9 {
+  .userSquare9 {
     top: 689vh;
   }
 
-  .user-square10 {
+  .userSquare10 {
     top: 772vh;
   }
 
@@ -880,7 +889,7 @@ body {
     font-size: 3.2vh;
   }
 
-  .down-arrow {
+  .downArrow {
     top: 850vh;
   }
 }

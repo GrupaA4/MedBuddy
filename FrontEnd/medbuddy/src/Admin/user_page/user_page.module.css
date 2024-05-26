@@ -54,13 +54,6 @@ body::-webkit-scrollbar {
   word-spacing: normal;
 }
 
-/*
-.header__paragraph__part:first-child{
-    text-decoration: underline;
-    text-decoration-color: #369986;
-}
-*/
-
 .header__paragraph__part:hover {
   color: #369986;
   cursor: pointer;
@@ -71,7 +64,6 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   background-color: #def9f1;
-
   top: 15vh;
   left: 35vw;
   height: 100vh;
@@ -94,7 +86,7 @@ body::-webkit-scrollbar {
 .container1__header {
   position: relative;
   display: flex;
-  align-items: cen;
+  align-items: center;
   flex-direction: row;
   justify-content: space-between;
   margin: 0;
@@ -502,7 +494,6 @@ body::-webkit-scrollbar {
     font-family: "Bebas Neue", sans-serif;
     font-size: 3vh;
     color: #002845;
-    font-size: vh;
   }
 
   .container1__square__data {
