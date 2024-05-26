@@ -28,4 +28,13 @@ public class NotFoundAdvice {
         logger.debug(ex.getCause());
         return ex.getMessage();
     }
+
+    @ResponseBody
+    @ExceptionHandler(NotFoundExceptions.MedicNotFound.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String medicNotFoundHandler(NotFoundExceptions.MedicNotFound ex) {
+        Logger logger = LogManager.getLogger("AdvicesLogger");
+        logger.debug(ex.getCause());
+        return ex.getMessage();
+    }
 }

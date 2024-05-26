@@ -16,9 +16,29 @@ public class UserDidSomethingWrongAdvice {
     @ResponseBody
     @ExceptionHandler(UserDidSomethingWrongExceptions.UserWithEmailAlreadyExists.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
-    public String DatabaseProblemHandler(UserDidSomethingWrongExceptions.UserWithEmailAlreadyExists ex) {
+    public String userWithEmailAlreadyExistsHandler(UserDidSomethingWrongExceptions.UserWithEmailAlreadyExists ex) {
         Logger logger = LogManager.getLogger("AdvicesLogger");
         logger.debug(ex.getMessage());
         return ex.getMessage();
     }
+
+    @ResponseBody
+    @ExceptionHandler(UserDidSomethingWrongExceptions.TriedToGetAllUsers.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public String triedToGetAllUsersHandler(UserDidSomethingWrongExceptions.TriedToGetAllUsers ex) {
+        Logger logger = LogManager.getLogger("AdvicesLogger");
+        logger.debug(ex.getMessage());
+        return ex.getMessage();
+    }
+
+    @ResponseBody
+    @ExceptionHandler(UserDidSomethingWrongExceptions.TooManyParts.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public String tooManyPartsHandler(UserDidSomethingWrongExceptions.TooManyParts ex) {
+        Logger logger = LogManager.getLogger("AdvicesLogger");
+        logger.debug(ex.getMessage());
+        return ex.getMessage();
+    }
+
+
 }

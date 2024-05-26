@@ -17,41 +17,45 @@ public class AdminFunctionalityController {
     @Autowired
     private AdminFunctionalityService adminFunctionalityService;
 
-    @GetMapping(value = "/medbuddy/getoldestusers/{userToStartFrom}/{userToEndLoad}")
-    public AdminFunctionalityResponseBodies.GetOldestUsers getOldestUsers(@PathVariable int fromUser, @PathVariable int toUser) throws Exception {
-        List<User> entries = adminFunctionalityService.getOldestUsers(fromUser, toUser);
-        return new AdminFunctionalityResponseBodies.GetOldestUsers(entries.size(), entries);
-    }
-
-    @GetMapping(value = "/medbuddy/finduserbyname/{userName}")
-    public AdminFunctionalityResponseBodies.FindUserByName findUserByName(@PathVariable String username) throws Exception {
-        List<User> entries = adminFunctionalityService.findUserByName(username);
-        return new AdminFunctionalityResponseBodies.FindUserByName(entries.size(), entries);
-    }
-
+    //works
     @PostMapping(value = "/medbuddy/reportuser/{userToReportId}")
-    public void reportUser(@PathVariable UUID reportedUserId, @RequestBody AdminFunctionalityRequestBody body) {
+    public void reportUser(@PathVariable UUID userToReportId, @RequestBody AdminFunctionalityRequestBody body) {
         adminFunctionalityService.reportUser(
-                UUID.fromString("4ac54007-cc86-4a68-beb3-12a73b9a7d0b"),
-                reportedUserId,
-                body.getMessage()
+                userToReportId,
+                body.getReportMessage()
         );
     }
 
+    //works
     @GetMapping(value = "/medbuddy/getreports/{reportToStartWith}/{reportToEndLoad}")
-    public AdminFunctionalityResponseBodies.GetReports getReports(@PathVariable int fromReport, @PathVariable int toReport) throws Exception {
-        List<Report> entries = adminFunctionalityService.getReports(fromReport, toReport);
-        return new AdminFunctionalityResponseBodies.GetReports(entries.size(), entries);
+    public AdminFunctionalityResponseBodies.GetReports getReports(@PathVariable int reportToStartWith, @PathVariable int reportToEndLoad) {
+        List<Report> reports = adminFunctionalityService.getReports(reportToStartWith, reportToEndLoad);
+        return new AdminFunctionalityResponseBodies.GetReports(reports.size(), reports);
     }
 
+    //works
+    @GetMapping(value = "/medbuddy/getoldestusers/{userToStartFrom}/{userToEndLoad}")
+    public AdminFunctionalityResponseBodies.GetOldestUsers getOldestUsers(@PathVariable int userToStartFrom, @PathVariable int userToEndLoad) {
+        List<User> users = adminFunctionalityService.getOldestUsers(userToStartFrom, userToEndLoad);
+        return new AdminFunctionalityResponseBodies.GetOldestUsers(users.size(), users);
+    }
+
+    //works
     @PatchMapping(value = "/medbuddy/allowmedic/{medicId}")
     public void allowMedic(@PathVariable UUID medicId) {
         adminFunctionalityService.allowMedic(medicId);
     }
 
     @GetMapping(value = "/medbuddy/seerequestingmedics")
-    public AdminFunctionalityResponseBodies.GetRequestingMedics getRequestingMedics(@PathVariable int fromReport, @PathVariable int toReport) throws Exception {
+    public AdminFunctionalityResponseBodies.GetRequestingMedics getRequestingMedics() {
         List<Medic> entries = adminFunctionalityService.getRequestingMedics();
         return new AdminFunctionalityResponseBodies.GetRequestingMedics(entries.size(), entries);
+    }
+
+    //works
+    @GetMapping(value = "/medbuddy/finduserbyname/{userName}")
+    public AdminFunctionalityResponseBodies.FindUserByName findUserByName(@PathVariable String userName) {
+        List<User> users = adminFunctionalityService.findUserByName(userName);
+        return new AdminFunctionalityResponseBodies.FindUserByName(users.size(), users);
     }
 }
