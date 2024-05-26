@@ -48,7 +48,7 @@ export default function ChatPage() {
                     formData.append('image', image);
                 }
                 formData.append('repliesTo', null); 
-                const response = await fetch(`https://f2ec3ef4-4b83-402f-8670-37886b51efcd.mock.pstmn.io/medbuddy/chat`, {
+                const response = await fetch(`https://2e0181e9-dcc6-4113-a5fa-4d90638f077c.mock.pstmn.io/medbuddy/chat/send`, {
                     method: 'POST',
                     body: formData,
                 });
@@ -66,11 +66,9 @@ export default function ChatPage() {
 
     const simulateResponse = async () => {
         try {
-            const response = await fetch('https://f2ec3ef4-4b83-402f-8670-37886b51efcd.mock.pstmn.io/medbuddy/chat',
-                // {method: 'GET'
-                
-                // }
-            );
+            const response = await fetch('https://2e0181e9-dcc6-4113-a5fa-4d90638f077c.mock.pstmn.io/medbuddy/chat/receive', {
+                method: 'GET',
+            });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -85,6 +83,7 @@ export default function ChatPage() {
             console.error("Error fetching response messages:", error);
         }
     };
+    
 
     const simulateResponseWithFile = () => {
         setTimeout(() => {

@@ -59,14 +59,23 @@
         font-weight: bold;
         margin-bottom: 1.5rem;
         .diagnoses_section__diagnose_column{
+            width: 30vw;
             .diagnoses_section__diagnose_medication{
                 display: flex;
-                flex-direction: row;
+                flex-direction: flex-wrap;
                 padding-top: 0.25rem;
+                text-wrap:wrap;
+                word-wrap: break-word;
+                
                 .diagnoses_section__diagnose_medication_name{
                     font-weight: 100;
+                    padding-left: 0.5rem;
                 } 
             }
+        }
+        .diagnoses_section__diagnose_column{
+            width: 25vw;
+            justify-content: left;
         }
     }
 }
@@ -95,6 +104,11 @@
             width: 80vw;
             font-size: 0.85rem;
             .diagnoses_section__diagnose_column{
+                padding-top: 0.25rem;
+                width: 100%;
+            }
+            .diagnoses_section__diagnose_column_date{
+                width: 65vw;
                 padding-top: 0.25rem;
             }
         }
@@ -125,6 +139,7 @@
             flex-direction: column;
             width: 80vw;
             .diagnoses_section__diagnose_column{
+               
                 .diagnoses_section__diagnose_medication{
                     display: flex;
                     flex-direction: column;
