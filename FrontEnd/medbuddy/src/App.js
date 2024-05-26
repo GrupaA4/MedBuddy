@@ -4,7 +4,7 @@ import MainPage from './Admin/main_page/main_page';
 import LoginPage from './Admin/log-in_page/log-in_page';
 import AdminMainPage from './Admin/admin_main_page/admin_main_page';
 import ReportPage from './Admin/report_page/report_page';
-import UserPage from './Admin/user_page/user_page';
+import UserPage from './Admin/admin_user_page/admin_user_page';
 
 
 const App = () => {

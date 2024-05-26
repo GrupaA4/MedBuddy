@@ -10,13 +10,14 @@ const MainPage = () => {
   };
 
   return (
-    <div className={styles.bg}>
-      <div className={styles.container}>
-        <button className={styles.button1} onClick={redirectToLogin}>
+
+    <div className={styles.main_page_bg}>
+      <div className={styles.main_page_container}>
+        <button className={styles.main_page_button1} onClick={redirectToLogin}>
           LOG IN
         </button>
-        <button className={styles.button}>SIGN UP AS PATIENT</button>
-        <button className={styles.button}>SIGN UP AS MEDIC</button>
+        <button className={styles.main_page_button}>SIGN UP AS PATIENT</button>
+        <button className={styles.main_page_button}>SIGN UP AS MEDIC</button>
       </div>
     </div>
   );
