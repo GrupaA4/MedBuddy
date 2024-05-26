@@ -1,10 +1,10 @@
 import './App.css';
-import main_page from './Admin/main_page';
+import MainPage from './Admin/admin_main_page/admin_main_page';
 
 function App() {
   return (
     <div className="App">
-      <main_page/>
+      <MainPage />
     </div>
   );
 }

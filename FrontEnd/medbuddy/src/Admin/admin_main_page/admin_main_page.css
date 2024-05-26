@@ -50,10 +50,10 @@ body {
   word-spacing: normal;
 }
 
-.header__paragraph__part:first-child {
+/* .header__paragraph__part:first-child {
   text-decoration: underline;
   text-decoration-color: #369986;
-}
+} */
 
 .header__paragraph__part:hover {
   color: #369986;
