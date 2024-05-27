@@ -1,27 +1,31 @@
-2024-05-27 14:07:58 INFO  MedbuddyApplication:50 - Starting MedbuddyApplication using Java 21.0.2 with PID 4032 (D:\Facultate\Anul_II\Sem2\Ingineria_programarii\Proiect\MedBuddy\BackEnd\Generic\medbuddy\medbuddy\target\classes started by ghion in D:\Facultate\Anul_II\Sem2\Ingineria_programarii\Proiect\MedBuddy\BackEnd\Generic\medbuddy\medbuddy)
-2024-05-27 14:07:58 DEBUG MedbuddyApplication:51 - Running with Spring Boot v3.2.5, Spring v6.1.6
-2024-05-27 14:07:58 INFO  MedbuddyApplication:654 - No active profile set, falling back to 1 default profile: "default"
-2024-05-27 14:08:00 INFO  TomcatWebServer:109 - Tomcat initialized with port 7264 (http)
-2024-05-27 14:08:00 INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-7264"]
-2024-05-27 14:08:00 INFO  StandardService:173 - Starting service [Tomcat]
-2024-05-27 14:08:00 INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.20]
-2024-05-27 14:08:00 INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
-2024-05-27 14:08:00 INFO  ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 2144 ms
-2024-05-27 14:08:01 INFO  DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4645679e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3a0b6a, org.springframework.security.web.context.SecurityContextHolderFilter@3487442d, org.springframework.security.web.header.HeaderWriterFilter@2b999ee8, org.springframework.web.filter.CorsFilter@7f353a0f, org.springframework.security.web.authentication.logout.LogoutFilter@19662208, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5012c571, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3a3f96ab, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4def7d36, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@539c4830, org.springframework.security.web.access.ExceptionTranslationFilter@3e14d390, org.springframework.security.web.access.intercept.AuthorizationFilter@5dbab232]
-2024-05-27 14:08:02 INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-7264"]
-2024-05-27 14:08:02 INFO  TomcatWebServer:241 - Tomcat started on port 7264 (http) with context path ''
-2024-05-27 14:08:02 INFO  MedbuddyApplication:56 - Started MedbuddyApplication in 4.357 seconds (process running for 6.549)
-2024-05-27 14:08:38 INFO  [/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-05-27 14:08:38 INFO  DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
-2024-05-27 14:08:38 INFO  DispatcherServlet:554 - Completed initialization in 3 ms
-2024-05-27 14:08:38 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/signup
-2024-05-27 14:08:38 DEBUG FilterChainProxy:223 - Securing PUT /medbuddy/signup
-2024-05-27 14:08:38 DEBUG FilterChainProxy:227 - Secured PUT /medbuddy/signup
-2024-05-27 14:08:39 WARN  HikariConfig:1089 - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
-2024-05-27 14:08:39 INFO  HikariDataSource:110 - HikariPool-1 - Starting...
-2024-05-27 14:08:39 INFO  PoolBase:536 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
-2024-05-27 14:08:39 INFO  HikariPool:565 - HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@37e5801e
-2024-05-27 14:08:39 INFO  HikariDataSource:123 - HikariPool-1 - Start completed.
-2024-05-27 14:08:40 DEBUG AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
-2024-05-27 14:09:41 INFO  HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
-2024-05-27 14:09:41 INFO  HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2024-05-27 15:10:41 INFO  MedbuddyApplication:50 - Starting MedbuddyApplication using Java 21.0.2 with PID 9880 (D:\Facultate\Anul_II\Sem2\Ingineria_programarii\Proiect\MedBuddy\BackEnd\Generic\medbuddy\medbuddy\target\classes started by ghion in D:\Facultate\Anul_II\Sem2\Ingineria_programarii\Proiect\MedBuddy\BackEnd\Generic\medbuddy\medbuddy)
+2024-05-27 15:10:41 DEBUG MedbuddyApplication:51 - Running with Spring Boot v3.2.5, Spring v6.1.6
+2024-05-27 15:10:41 INFO  MedbuddyApplication:654 - No active profile set, falling back to 1 default profile: "default"
+2024-05-27 15:10:45 INFO  TomcatWebServer:109 - Tomcat initialized with port 7264 (http)
+2024-05-27 15:10:45 INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-7264"]
+2024-05-27 15:10:45 INFO  StandardService:173 - Starting service [Tomcat]
+2024-05-27 15:10:45 INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-27 15:10:45 INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
+2024-05-27 15:10:45 INFO  ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 3630 ms
+2024-05-27 15:10:47 INFO  DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3a0b6a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@539c4830, org.springframework.security.web.context.SecurityContextHolderFilter@530ee28b, org.springframework.security.web.header.HeaderWriterFilter@31ab1e67, org.springframework.web.filter.CorsFilter@7c0f28f8, org.springframework.security.web.authentication.logout.LogoutFilter@216c22ce, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6486fe7b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4def7d36, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@43c7fe8a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6f1fa1d0, org.springframework.security.web.access.ExceptionTranslationFilter@5eb87338, org.springframework.security.web.access.intercept.AuthorizationFilter@5939e24]
+2024-05-27 15:10:47 INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-7264"]
+2024-05-27 15:10:47 INFO  TomcatWebServer:241 - Tomcat started on port 7264 (http) with context path ''
+2024-05-27 15:10:48 INFO  MedbuddyApplication:56 - Started MedbuddyApplication in 7.562 seconds (process running for 11.043)
+2024-05-27 15:12:05 INFO  [/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-27 15:12:05 INFO  DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2024-05-27 15:12:05 INFO  DispatcherServlet:554 - Completed initialization in 4 ms
+2024-05-27 15:12:05 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/signup
+2024-05-27 15:12:05 DEBUG FilterChainProxy:223 - Securing PUT /medbuddy/signup
+2024-05-27 15:12:05 DEBUG FilterChainProxy:227 - Secured PUT /medbuddy/signup
+2024-05-27 15:12:05 WARN  HikariConfig:1089 - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2024-05-27 15:12:05 INFO  HikariDataSource:110 - HikariPool-1 - Starting...
+2024-05-27 15:12:06 INFO  PoolBase:536 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
+2024-05-27 15:12:06 INFO  HikariPool:565 - HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@19432517
+2024-05-27 15:12:06 INFO  HikariDataSource:123 - HikariPool-1 - Start completed.
+2024-05-27 15:12:06 DEBUG AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2024-05-27 15:13:50 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/signup
+2024-05-27 15:13:50 DEBUG FilterChainProxy:223 - Securing PUT /medbuddy/signup
+2024-05-27 15:13:50 DEBUG FilterChainProxy:227 - Secured PUT /medbuddy/signup
+2024-05-27 15:13:50 DEBUG AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2024-05-27 15:35:29 INFO  HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2024-05-27 15:35:29 INFO  HikariDataSource:352 - HikariPool-1 - Shutdown completed.
