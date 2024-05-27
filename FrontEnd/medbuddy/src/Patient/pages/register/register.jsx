@@ -23,6 +23,7 @@ export default function SignIn(){
     const [phone,setPhone]=useState('');
     const [profilePicture,setProfilePicture]=useState(null);
     const [profilePicturePreview, setProfilePicturePreview]=useState(null);
+    const [imageExtension, setImageExtension]=useState('');
 
     const handleEmailChange= (event) =>{
         setEmail(event.target.value);
@@ -79,6 +80,9 @@ export default function SignIn(){
         reader.onloadend= () =>{
             setProfilePicture(new Uint8Array(reader.result));
             setProfilePicturePreview(URL.createObjectURL(file));
+
+            const fileExtension=file.name.split('.').pop();
+            setImageExtension(fileExtension);
         };
 
         if(file){
@@ -102,26 +106,30 @@ export default function SignIn(){
             country:country,
             city:city,
             phoneNumber:phone,
-            profileImage:profilePicture
+            profileImage:profilePicture,
+            imageExtension:imageExtension,
+            admin:false
         };
 
         console.log('Data to be sent:', data);
+        const credentials = btoa(`test:test`);
 
         try {
-            const response = await fetch('https://0462a4b4-2de7-465f-a03e-a1097daea12c.mock.pstmn.io/medbuddy/signup', {
-                method: 'POST',
+            const response = await fetch('http://localhost:7264/medbuddy/signup', {
+                method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': null
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(data),
             });
 
-            if(!response.ok){
-                throw new Error('Response was not ok');
-            }
+            // if(!response.created){
+            //     throw new Error('Response was not ok');
+            // }
 
-            const result= await response.json();
-            console.log('Success:',result);
+            //const result= await response.json();
+            //console.log('Success:',result);
 
             Cookies.set(`user_email`, email, {expires: 7});
             Cookies.set(`user_pass`, password, {expires: 7});
@@ -315,7 +323,7 @@ export default function SignIn(){
                                 id='profilePicture'
                                 value={profilePicture ? profilePicture.name : ''}
                                 onChange={handleProfilePicChange}
-                                required
+                                //required
                             />
                         </div><br />
                         <div className={`${styles.form_container__profile_pic}`}>

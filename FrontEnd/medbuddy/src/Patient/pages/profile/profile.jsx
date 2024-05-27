@@ -20,6 +20,7 @@ const getCookieValue = (name) => {
 export default function Profile(){
     const [userId, setUserId] = useState('');
     const emailFromCookie = getCookieValue('user_email');
+    const passwordFromCookie = getCookieValue('user_pass');
 
     const [name, setName] = useState('My Name');
     const [surname, setSurname] = useState('My Surname');
@@ -33,6 +34,7 @@ export default function Profile(){
     const [homeAdress, setHomeAdress] = useState('House Nr. 00 Str. Example, City, Country');
     const [profilePicture,setProfilePicture]=useState(null);
     const [profilePicturePreview, setProfilePicturePreview]=useState(null);
+    const [imageExtension, setImageExtension]=useState('');
 
     const [initialName, setInitialName] = useState('My Name');
     const [initialSurname, setInitialSurname] = useState('My Surname');
@@ -64,9 +66,10 @@ export default function Profile(){
     useEffect(() =>{
         const fetchuserId = async () => {
             try{
-                const response = await fetch(`/medbuddy/getuserid/${emailFromCookie}`, {
+                const response = await fetch(`http://localhost:7264/medbuddy/getuserid/${emailFromCookie}`, {
                     method: 'GET'
                 });
+                console.log(response);
                 if(!response.ok) {
                     throw new Error('Error fetching user ID');
                 }
@@ -83,7 +86,7 @@ export default function Profile(){
         const fetchUserData = async () => {
             if(userId) {
                 try {
-                    const response = await fetch(`/medbuddy/viewprofile/${userId}`, {
+                    const response = await fetch(`http://localhost:7264/medbuddy/viewprofile/${userId}`, {
                         method: 'GET'
                     });
                     if(!response.ok) {
@@ -176,6 +179,9 @@ export default function Profile(){
         reader.onloadend= () =>{
             setProfilePicture(new Uint8Array(reader.result));
             setProfilePicturePreview(URL.createObjectURL(file));
+
+            const fileExtension=file.name.split('.').pop();
+            setImageExtension(fileExtension);
         };
 
         if(file){
@@ -199,17 +205,20 @@ export default function Profile(){
         const country = addressParts[2].trim();
         const data = {
             email:email,
-            name:name,
-            surname:surname,
+            password:passwordFromCookie,
+            lastName:surname,
+            firstName:name,
             gender:gender,
             pronoun1:pronoun1,
             pronoun2:pronoun2,
-            birthDate:birthDate,
+            dateOfBirth:birthDate,
             language:language,
             country:country,
             city:city,
-            phone:phone,
+            phoneNumber:phone,
             profileImage:profilePicture,
+            imageExtension:imageExtension,
+            admin:false
             //blood_group:bloodGroup,
             //alergies:alergies
         };
@@ -217,8 +226,8 @@ export default function Profile(){
         console.log('Data to be sent:', data);
 
         try {
-            const response = await fetch(`/medbuddy/changeprofile/${userId}`, {
-                method: 'POST',
+            const response = await fetch(`http://localhost:7264/medbuddy/changeprofile/${userId}`, {
+                method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -283,7 +292,7 @@ export default function Profile(){
 
     const handleConfirmDelete = async () => {
         try{
-            const response= await fetch(`/medbuddy/harddeleteuser/${userId}`, {
+            const response= await fetch(`http://localhost:7264/medbuddy/harddeleteuser/${userId}`, {
                 method: 'DELETE'
             });
 
@@ -314,18 +323,35 @@ export default function Profile(){
 
     const handleChangePassword = async (event) => {
         event.preventDefault();
+        const addressParts = homeAdress.split(',');
+        const city = addressParts[1].trim();
+        const country = addressParts[2].trim();
 
         setOldPassword(getCookieValue('user_pass'));
         if(newPassword!==oldPassword && newPassword===confirmPassword){
             const data = {
-                password:newPassword
+                email:email,
+                password:newPassword,
+                lastName:surname,
+                firstName:name,
+                gender:gender,
+                pronoun1:pronoun1,
+                pronoun2:pronoun2,
+                dateOfBirth:birthDate,
+                language:language,
+                country:country,
+                city:city,
+                phoneNumber:phone,
+                profileImage:profilePicture,
+                imageExtension:imageExtension,
+                admin:false
             };
 
             console.log('Data to be sent:', data);
 
             try {
-                const response = await fetch(`medbuddy/changeprofile/${userId}`, {
-                    method: 'POST',
+                const response = await fetch(`http://localhost:7264/medbuddy/changeprofile/${userId}`, {
+                    method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'
                     },
