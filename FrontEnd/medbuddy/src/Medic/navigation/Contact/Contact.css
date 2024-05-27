@@ -51,28 +51,27 @@
   margin-left: 200px;
 }
 
-.left-container h1{
+.left-container h1 {
   font-family: "Oswald";
 }
 
-.left-container h3{
+.left-container h3 {
   font-size: 1.5em;
-  color: #069DAE;
+  color: #069dae;
   margin-bottom: -50px;
   margin-top: -5px;
-  letter-spacing: .03em;
+  letter-spacing: 0.03em;
   font-family: "Oswald";
 }
 
- .paragraph{
+.paragraph {
   font-size: 1em;
   letter-spacing: 1.2px;
   line-height: 1.6;
   margin-top: -7px;
-  
 }
-.para{
-  margin-top:-7%;
+.para {
+  margin-top: -7%;
   font-size: 1.1em;
 }
 

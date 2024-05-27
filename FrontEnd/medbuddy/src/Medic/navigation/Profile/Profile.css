@@ -13,13 +13,13 @@
   align-items: center;
 }
 
-.body {
+.body-profile {
   width: 100%;
   min-height: 100%;
   display: flex;
   flex-direction: column;
 }
-.navbar-container {
+.navbar-container-profile {
   width: 100%;
   padding: 12px 0;
   border-bottom: 2px solid grey;
@@ -27,103 +27,199 @@
 }
 
 @media (max-width: 1000px) {
-  .content {
+  .content-profile {
     flex-direction: colums;
+  }
+
+  .general-information-profile {
   }
 }
 @media (max-width: 800px) {
-  .content {
+  .content-profile {
     flex-direction: row;
   }
 }
-.body {
+.body-profile {
   min-height: 100vh;
 }
-.content {
-  height: 500px;
-  width: 70%;
-  margin-top: 5%;
+.content-profile {
+  /* height: 500px; */
+  /* width: 70%; */
+  margin-top: 7.5rem;
   margin-left: 50px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   align-items: center;
   display: flex;
   flex-wrap: wrap;
 }
 
-.left-container {
+.left-container-profile {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   width: 20rem;
-  height: 95%;
+  /* height: 95%; */
 }
 
-.profile-picture {
-  width: 200px;
-  height: 350px;
-  margin-left: 25%;
+.profile-picture-profile {
+  width: 15rem;
+  height: auto;
+  margin-left: 5rem;
+  margin-bottom: 2rem;
 }
-.profile-picture img {
-  width: 200px;
+.profile-picture-profile img {
+  width: 15rem;
   height: auto;
   padding: 20px;
   background-color: #069dae;
   border-radius: 50%;
 }
-.buttons-container {
+.buttons-container-profile {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 7rem;
 }
-.button {
-  padding: 15px;
+.button-profile {
+  padding: 12px;
   margin: 10px;
-  width: 50%;
+  width: 15rem;
   background-color: #369986;
   border-radius: 10px;
   color: azure;
   text-decoration: none;
+  text-align: center;
+  font-family: "Oswald";
+  font-size: 20px;
 }
 
-.general-information {
-  height: 80%;
-  width: 60%;
-  margin-top: 30px;
+.general-information-profile {
+  height: 30rem;
+  width: 50rem;
+  margin-top: 0rem;
+  margin-left: 10rem;
 }
 
-h2 {
+.general-information-profile h2 {
   color: #002845;
   display: flex;
   align-self: flex-start;
-  margin-left: 100px;
+  margin-left: 5.5rem;
   font-family: "Oswald";
+  font-size: 36px;
 }
 
-.general-information-container {
+.general-information-container-profile {
   display: flex;
   flex-direction: row;
-  margin-left: 30px;
   justify-content: space-around;
 }
 
-.list-1 p {
+.list-1-profile p {
   display: flex;
   align-self: flex-start;
-  margin-bottom: 5px;
-  margin-top: 5px;
-  font-size: large;
+  margin-bottom: 9px;
+  margin-top: 9px;
+  font-size: 24px;
   color: #069dae;
 }
 
-.list-2 p {
+.list-2-profile {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+.list-2-profile p {
   display: flex;
   align-self: flex-start;
   margin-bottom: 5px;
   margin-top: 5px;
-  font-size: large;
+  font-size: 24px;
   color: darkgray;
 }
 
-.footer-container {
+.input_field {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  font-size: 20px;
+  color: darkgray;
+  font-family: "Oswald";
+}
+
+.edit-buttons-container-profile {
+  margin-left: 8rem;
+}
+
+.footer-container-profile {
   width: 100%;
+}
+
+.popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+}
+
+.close {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#confirmDelete:hover,
+#confirmDelete:focus {
+  background-color: #ed6a5a;
+
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#cancelDelete:hover,
+#cancelDelete:focus {
+  background-color: #369986;
+
+  text-decoration: none;
+  cursor: pointer;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.popup-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  ext-decoration: none;
+  color: black;
+  font-family: "Oswald";
+  background-color: #b8e0c6;
+  border: none;
+  border-radius: 4px;
+  display: inline-block;
 }
