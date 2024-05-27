@@ -119,17 +119,17 @@ export default function SignIn(){
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Basic ${credentials}`
+                    'Authorization': null
                 },
                 body: JSON.stringify(data),
             });
 
-            if(!response.ok){
+            if(!response.created){
                 throw new Error('Response was not ok');
             }
 
-            const result= await response.json();
-            console.log('Success:',result);
+            //const result= await response.json();
+            //console.log('Success:',result);
 
             Cookies.set(`user_email`, email, {expires: 7});
             Cookies.set(`user_pass`, password, {expires: 7});
