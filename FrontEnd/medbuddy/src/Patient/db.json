@@ -1,0 +1,24 @@
+{
+  "messages": [
+    {
+      "id": 1,
+      "sender": "medbuddy",
+      "text": "Salut!"
+    },
+    {
+      "id": 2,
+      "sender": "medbuddy",
+      "text": "How are you?"
+    },
+    {
+      "id": 3,
+      "sender": "medbuddy",
+      "text": "Nooo"
+    },
+    {
+      "id": 4,
+      "sender": "medbuddy",
+      "text": "Daa"
+    }
+  ]
+}

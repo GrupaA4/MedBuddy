@@ -9,10 +9,11 @@
   display: flex;
   margin: 0;
   top: 0;
+  margin-left: 0;
   width: 100%;
   background-color: white;
-  height: 15vh;
-  box-shadow: 8px 1px 5px 7px grey;
+  height: 10vh;
+  box-shadow: 10px 10px 20px 10px lightgray;
   position: fixed;
   z-index: 1000;
   animation-name: moveLeft;
@@ -30,9 +31,9 @@
 .header__image__admin__main__page {
   align-self: left;
   position: absolute;
-  height: 12vh;
-  width: 6vw;
-  top: 1.7vh;
+  height: 4.4vw;
+  width: 5vw;
+  top: 1vh;
   left: 1vw;
 }
 
@@ -41,15 +42,16 @@
   color: #002845;
   padding: 20px;
   line-height: 1.7;
-  font-size: 4.5vh;
+  font-size: 4vh;
   word-spacing: 2vw;
-  margin-left: auto;
-  margin-right: 1vw;
-  margin-top: 3vh; 
+  margin-left: auto; /* Changed from specific value to auto */
+  margin-right: 1vw; /* Added to align the paragraph to the right */
+  margin-top: 0.5vh;
 }
 
 .header__paragraph__admin__main__page__part {
   word-spacing: normal;
+  padding: 1vw;
 }
 
 .header__paragraph__admin__main__page__part:first-child {
@@ -67,7 +69,7 @@
   display: flex;
   background-color: #def9f1;
   flex-direction: column;
-  top: 25vh;
+  top: 20vh;
   left: 4vw;
   height: 185vh;
   width: 60vw;
@@ -153,9 +155,9 @@
   display: flex;
   justify-content: center;
   background-color: #def9f1;
-  top: 25vh;
+  top: 20vh;
   left: 68vw;
-  height: 85vh;
+  height: 70vh;
   width: 28vw;
   bottom: 20vh;
   scroll-margin-top: 15vh;
@@ -175,16 +177,17 @@
 
 .container2__button1 {
   position: absolute;
-  margin-top: 40vh;
+  margin-top: 35vh;
   width: 18vw;
   height: 7vh;
   border-radius: 4vh;
   border: none;
   background-color: #369986;
   cursor: pointer;
-  font-size: 4vh;
+  font-size: 3vh;
   color: #002845;
   box-shadow: 5px 7px #b8e0c6;
+  font-weight: bold;
 }
 
 .container2__button1:hover {
@@ -198,16 +201,17 @@
 
 .container2__button2 {
   position: absolute;
-  margin-top: 60vh;
+  margin-top: 50vh;
   width: 18vw;
   height: 7vh;
   border-radius: 4vh;
   border: none;
   background-color: #369986;
   cursor: pointer;
-  font-size: 4vh;
+  font-size: 3vh;
   color: #002845;
   box-shadow: 5px 7px #b8e0c6;
+  font-weight: bold;
 }
 
 .container2__button2:hover {

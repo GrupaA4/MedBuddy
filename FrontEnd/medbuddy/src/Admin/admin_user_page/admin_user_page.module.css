@@ -8,6 +8,7 @@
   display: flex;
   margin: 0;
   top: 0;
+  margin-left: 0;
   width: 100%;
   background-color: white;
   height: 10vh;
@@ -36,19 +37,21 @@
 }
 
 .admin_user_page_header__paragraph {
+  font-family: "Bebas Neue", sans-serif;
   align-self: right;
   color: #002845;
-  font-family: "Bebas Neue", sans-serif;
   padding: 20px;
   line-height: 1.7;
   font-size: 4vh;
   word-spacing: 2vw;
-  margin-left: 70vw;
+  margin-left: auto; /* Changed from specific value to auto */
+  margin-right: 1vw; /* Added to align the paragraph to the right */
   margin-top: 0.5vh;
 }
 
 .admin_user_page_header__paragraph__part {
   word-spacing: normal;
+  padding: 1vw;
 }
 
 .admin_user_page_header__paragraph__part:hover {

@@ -1,0 +1,110 @@
+.Contact {
+  margin: 0;
+  padding: 0;
+  font-family: "Oswald";
+  width: 100%;
+  height: 100%;
+  /* height: 100vh; */
+  background-size: cover;
+  background-position: center;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.navbar-container {
+  width: 100%;
+  padding: 5px 0;
+  border-bottom: 2px solid grey;
+  border-radius: 10px;
+}
+
+.content {
+  height: 100%;
+  width: 95%;
+  margin-top: none;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
+  overflow-x: hidden; /* 
+  border-width: 5px;
+  border-color: black;
+  border-style: solid;*/
+}
+
+.left-container {
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  width: 20em;
+
+  margin-right: 150px;
+  margin-left: 200px;
+}
+
+.left-container h1{
+  font-family: "Oswald";
+}
+
+.left-container h3{
+  font-size: 1.5em;
+  color: #069DAE;
+  margin-bottom: -50px;
+  margin-top: -5px;
+  letter-spacing: .03em;
+  font-family: "Oswald";
+}
+
+ .paragraph{
+  font-size: 1em;
+  letter-spacing: 1.2px;
+  line-height: 1.6;
+  margin-top: -7px;
+  
+}
+.para{
+  margin-top:-7%;
+  font-size: 1.1em;
+}
+
+.forum-container {
+  height: 650px;
+  width: 500px;
+  padding-bottom: none;
+}
+.footer-container {
+  width: 100%;
+}
+Footer {
+  margin-top: auto;
+}
+
+@media (max-width: 600px) {
+  .content {
+    width: 80%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .left-container {
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    width: 20em;
+
+    margin-right: 1px;
+    margin-left: 1px;
+  }
+  .forum-container {
+    margin-left: 5%;
+  }
+}

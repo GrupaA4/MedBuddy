@@ -111,7 +111,7 @@ const AdminMainPage = () => {
 
   useEffect(() => {
     const titleElement = document.querySelector(`.${styles.container2__title}`);
-    const texts = ["Welcome back,", "Admin!"];
+    const texts = ["Welcome back,", "     Admin!"];
     let index = 0;
     let textIndex = 0;
     let finalText = ''; // Variable to hold the final text

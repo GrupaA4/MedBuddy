@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 import styles from './log-in_page.module.css';
 import Logo2 from './Logo2.png';
 import Doctors from './Doctors.png';
@@ -25,11 +25,11 @@ const LoginPage = () => {
   };
 
   const handleSignUpAsPatient = () => {
-    console.log('Sign-up as Patient');
+    navigate('/registerPatient')
   };
 
   const handleSignUpAsDoctor = () => {
-    console.log('Sign-up as Doctor');
+    navigate('/register')
   };
 
   return (

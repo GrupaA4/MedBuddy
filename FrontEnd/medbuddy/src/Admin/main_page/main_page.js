@@ -8,7 +8,13 @@ const MainPage = () => {
   const redirectToLogin = () => {
     navigate('/login');
   };
-
+  const redirectToLoginPatient = ()=>{
+    navigate('/registerPatient')
+  }
+  const redirectToLoginMedic = ()=>{
+    navigate('/register')
+  }
+ 
   return (
 
     <div className={styles.main_page_bg}>
@@ -16,8 +22,8 @@ const MainPage = () => {
         <button className={styles.main_page_button1} onClick={redirectToLogin}>
           LOG IN
         </button>
-        <button className={styles.main_page_button}>SIGN UP AS PATIENT</button>
-        <button className={styles.main_page_button}>SIGN UP AS MEDIC</button>
+        <button className={styles.main_page_button} onClick={redirectToLoginPatient}>SIGN UP AS PATIENT</button>
+        <button className={styles.main_page_button} onClick={redirectToLoginMedic}>SIGN UP AS MEDIC</button>
       </div>
     </div>
   );
