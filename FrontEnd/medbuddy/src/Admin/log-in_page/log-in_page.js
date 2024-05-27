@@ -34,49 +34,49 @@ const LoginPage = () => {
 
   return (
     <div className={styles.body_login}>
-    <div className={styles.container}>
-      <img src={Logo2} className={styles.container__image1} alt="Logo2" />
-      <img src={Doctors} className={styles.container__image2} alt="Doctors" />
-      <div className={styles.square}>
-        <p className={styles.square__title}>LOGIN</p>
+    <div className={styles.login_container}>
+      <img src={Logo2} className={styles.login_container__image1} alt="Logo2" />
+      <img src={Doctors} className={styles.login_container__image2} alt="Doctors" />
+      <div className={styles.login_square}>
+        <p className={styles.login_square__title}>LOGIN</p>
         <form onSubmit={handleLogin}>
-          <div className={styles.square__form}>
-            <label htmlFor="email" className={styles.square__form__text}>Email</label><br />
+          <div className={styles.login_square__form}>
+            <label htmlFor="email" className={styles.login_square__form__text}>Email</label><br />
             <input
               type="text"
-              className={styles.square__form__label}
+              className={styles.login_square__form__label}
               placeholder="USER@EMAIL.COM"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             /><br /><br />
-            <label htmlFor="password" className={styles.square__form__text}>Password</label><br />
+            <label htmlFor="password" className={styles.login_square__form__text}>Password</label><br />
             <input
               type="password"
-              className={styles.square__form__label}
+              className={styles.login_square__form__label}
               placeholder="Enter Password"
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             /><br /><br />
-            <button className={styles.square__form__button1} type="submit">LOGIN</button><br /><br />
+            <button className={styles.login_square__form__button1} type="submit">LOGIN</button><br /><br />
             <button
-              className={styles.square__form__button2}
+              className={styles.login_square__form__button2}
               type="button"
               onClick={handleSignUpAsPatient}
             >
               SIGN-UP AS PATIENT
             </button>
             <button
-              className={styles.square__form__button3}
+              className={styles.login_square__form__button3}
               type="button"
               onClick={handleSignUpAsDoctor}
             >
-              SIGN-UP AS DOCTOR&ensp;
+              SIGN-UP AS DOCTOR
             </button>
           </div>
         </form>
-        {warning && <p className={styles.square__warning} id="myWarning">{warning}</p>}
+        {warning && <p className={styles.login_square__warning} id="myWarning">{warning}</p>}
       </div>
     </div>
     </div>
