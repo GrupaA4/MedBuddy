@@ -52,11 +52,11 @@ const AdminReportPage = () => {
       </div>
 
       <div className={styles.container2_admin_report_page}>
-        <div className={styles.icon__and__text}>
-          <div className={styles.container2_admin_report_page__square1__icon}>
+        <div className={styles.icon__and__text_admin_report_page}>
+          <div className={styles.container2_admin_report_page__icon}>
             <p>PHOTO</p>
           </div>
-          <div className={styles.container2_admin_report_page__text}>NAME: Example of name</div>
+          <div className={styles.admin_report_page__text_container2}>NAME: Example of name</div>
         </div>
         <button className={styles.container2_admin_report_page__button1} type="button">Report</button>
       </div>

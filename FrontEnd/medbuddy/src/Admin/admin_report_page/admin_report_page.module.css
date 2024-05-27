@@ -237,6 +237,7 @@
   height: 65vh;
   width: 28vw;
   bottom: 20vh;
+  padding: 0px;
   scroll-margin-top: 15vh;
   animation-name: appear;
   animation-duration: 1s;
@@ -281,12 +282,12 @@
   transform: translateY(8px);
 }
 
-.icon__and__text {
+.icon__and__text_admin_report_page {
   display: flex;
   flex-direction: column;
 }
 
-.container2_admin_report_page__square1__icon {
+.container2_admin_report_page__icon {
   background-color: white;
   justify-self: left;
   display: flex;
@@ -299,17 +300,19 @@
   border-radius: 50%;
   display: flex;
   align-items: center;
+  font-family: "Bebas Neue", sans-serif;
   color: #002845;
   font-size: 5vh;
 }
 
-.container2_admin_report_page__text {
-  color: #002845;
+.admin_report_page__text_container2 {
+  color:#002845;
   position: relative;
   justify-self: right;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 4vh;
   margin-top: 6vh;
-  left: 0;
+  left: 0.5vw;
 }
 
 .container1_admin_report_page__square__data__buttons {
