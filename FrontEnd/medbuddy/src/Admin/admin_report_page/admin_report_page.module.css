@@ -1,17 +1,30 @@
-body {
+.body_admin_report_page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   margin: 0;
   padding: 0;
-  background-color: #def9f1;
+  width: 100%;
+  height: 100%;
+  font-family: "Bebas Neue", sans-serif;
+  background-color: white;
 }
 
-body::-webkit-scrollbar {
+.body::-webkit-scrollbar {
   width: 0px;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .header {
   display: flex;
   margin: 0;
   top: 0;
+  margin-left: 0;
   width: 100%;
   background-color: white;
   height: 10vh;
@@ -33,7 +46,7 @@ body::-webkit-scrollbar {
 .header__image {
   align-self: left;
   position: absolute;
-  height: 9vh;
+  height: 4.4vw;
   width: 5vw;
   top: 1vh;
   left: 1vw;
@@ -42,17 +55,18 @@ body::-webkit-scrollbar {
 .header__paragraph {
   align-self: right;
   color: #002845;
-  font-family: "Bebas Neue", sans-serif;
   padding: 20px;
   line-height: 1.7;
   font-size: 4vh;
   word-spacing: 2vw;
-  margin-left: 70vw;
+  margin-left: auto; /* Changed from specific value to auto */
+  margin-right: 1vw; /* Added to align the paragraph to the right */
   margin-top: 0.5vh;
 }
 
 .header__paragraph__part {
   word-spacing: normal;
+  padding: 1vw;
 }
 
 .header__paragraph__part:hover {
@@ -60,7 +74,7 @@ body::-webkit-scrollbar {
   cursor: pointer;
 }
 
-.container1 {
+.container1_admin_report_page {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -80,11 +94,11 @@ body::-webkit-scrollbar {
   opacity: 0;
 }
 
-.container1::-webkit-scrollbar {
+.container1_admin_report_page::-webkit-scrollbar {
   width: 0px;
 }
 
-.container1__header {
+.container1_admin_report_page__header {
   position: relative;
   display: flex;
   align-items: center;
@@ -98,15 +112,14 @@ body::-webkit-scrollbar {
   height: 12vh;
 }
 
-.container1__header__text {
+.container1_admin_report_page__header__text {
   color: #002845;
-  font-family: "Bebas Neue", sans-serif;
   font-size: 3.5vh;
   margin-left: 2vw;
   align-self: left;
 }
 
-.container1__buttons {
+.container1_admin_report_page__buttons {
   margin: 0;
   padding: 0;
   margin-top: 30px;
@@ -114,10 +127,9 @@ body::-webkit-scrollbar {
   align-self: baseline;
 }
 
-.container1__next {
+.container1_admin_report_page__next {
   position: relative;
   width: 40px;
-  font-family: "Bebas Neue", sans-serif;
   height: 40px;
   top: 4vh;
   bottom: 1vh;
@@ -129,19 +141,18 @@ body::-webkit-scrollbar {
   color: white;
 }
 
-.container1__next:hover {
+.container1_admin_report_page__next:hover {
   scale: 1.1;
 }
 
-.container1__next:active {
+.container1_admin_report_page__next:active {
   box-shadow: 0 30px #b8e0c6;
   transform: translateY(8px);
 }
 
-.container1__before {
+.container1_admin_report_page__before {
   position: relative;
   width: 40px;
-  font-family: "Bebas Neue", sans-serif;
   height: 40px;
   top: 4vh;
   bottom: 1vh;
@@ -155,11 +166,11 @@ body::-webkit-scrollbar {
   color: white;
 }
 
-.container1__before:hover {
+.container1_admin_report_page__before:hover {
   scale: 1.1;
 }
 
-.container1__before:active {
+.container1_admin_report_page__before:active {
   box-shadow: 0 30px #b8e0c6;
   transform: translateY(8px);
 }
@@ -176,7 +187,7 @@ body::-webkit-scrollbar {
   padding: 8px;
 }
 
-.container1__square {
+.container1_admin_report_page__square {
   background-color: #b8e0c6;
   position: relative;
   margin-left: 15px;
@@ -190,7 +201,7 @@ body::-webkit-scrollbar {
   align-items: center;
 }
 
-.container1__square__icon {
+.container1_admin_report_page__square__icon {
   background-color: white;
   justify-self: left;
   display: flex;
@@ -203,22 +214,20 @@ body::-webkit-scrollbar {
   border-radius: 50%;
   display: flex;
   align-items: center;
-  font-family: "Bebas Neue", sans-serif;
   color: #002845;
   font-size: 5vh;
 }
 
-.container1__square__data {
+.container1_admin_report_page__square__data {
   color: #002845;
   position: relative;
   justify-self: right;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 4vh;
+  font-size: 2.7vh;
   left: 5.8vw;
   line-height: 3;
 }
 
-.container2 {
+.container2_admin_report_page {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -242,19 +251,17 @@ body::-webkit-scrollbar {
   }
 }
 
-.container2__title {
+.container2_admin_report_page__title {
   position: absolute;
   line-height: 1.5;
   color: #002845;
   font-size: 5vh;
-  font-family: "Bebas Neue", sans-serif;
 }
 
-.container2__button1 {
+.container2_admin_report_page__button1 {
   position: absolute;
   margin-top: 45vh;
   width: 18vw;
-  font-family: "Bebas Neue", sans-serif;
   height: 7vh;
   top: 7vh;
   border-radius: 4vh;
@@ -265,11 +272,11 @@ body::-webkit-scrollbar {
   color: white;
 }
 
-.container2__button1:hover {
+.container2_admin_report_page__button1:hover {
   scale: 1.1;
 }
 
-.container2__button1:active {
+.container2_admin_report_page__button1:active {
   box-shadow: 0 30px #b8e0c6;
   transform: translateY(8px);
 }
@@ -279,35 +286,34 @@ body::-webkit-scrollbar {
   flex-direction: column;
 }
 
-.container2__square1__icon {
+.container2_admin_report_page__square1__icon {
   background-color: white;
   justify-self: left;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  left: 6vh;
   top: 4vh;
   height: 34vh;
   width: 34vh;
   border-radius: 50%;
   display: flex;
   align-items: center;
-  font-family: "Bebas Neue", sans-serif;
   color: #002845;
   font-size: 5vh;
 }
 
-.container2__text {
+.container2_admin_report_page__text {
   color: #002845;
   position: relative;
   justify-self: right;
-  font-family: "Bebas Neue", sans-serif;
   font-size: 4vh;
   margin-top: 6vh;
   left: 0;
 }
 
-.container1__square__data__buttons {
+.container1_admin_report_page__square__data__buttons {
   display: none;
 }
 
@@ -321,24 +327,23 @@ body::-webkit-scrollbar {
     left: 1vw;
   }
 
-  .container2__square1__icon {
+  .container2_admin_report_page__square1__icon {
     background-color: white;
     justify-self: left;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    left: 10px;
+    left: 60px;
     right: 10px;
     height: 20vh;
     width: 20vh;
   }
 
-  .container2__button1 {
+  .container2_admin_report_page__button1 {
     position: absolute;
     margin-top: 45vh;
     width: 18vw;
-    font-family: "Bebas Neue", sans-serif;
     height: 7vh;
     top: 1vh;
     border-radius: 3vh;
@@ -349,11 +354,10 @@ body::-webkit-scrollbar {
     color: white;
   }
 
-  .container2__text {
+  .container2_admin_report_page__text {
     color: #002845;
     position: relative;
     justify-self: center;
-    font-family: "Bebas Neue", sans-serif;
     font-size: 3vh;
     margin-top: 6vh;
     left: 10px;
@@ -366,11 +370,11 @@ body::-webkit-scrollbar {
     margin-left: 60vw;
   }
 
-  .container2 {
+  .container2_admin_report_page {
     display: none;
   }
 
-  .container1 {
+  .container1_admin_report_page {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -392,7 +396,7 @@ body::-webkit-scrollbar {
     opacity: 0;
   }
 
-  .container1__square {
+  .container1_admin_report_page__square {
     background-color: #b8e0c6;
     position: relative;
     margin-left: 0px;
@@ -405,7 +409,7 @@ body::-webkit-scrollbar {
     align-items: start;
   }
 
-  .container1__square__icon {
+  .container1_admin_report_page__square__icon {
     background-color: white;
     justify-self: left;
     display: flex;
@@ -419,31 +423,28 @@ body::-webkit-scrollbar {
     border-radius: 50%;
     display: flex;
     align-items: center;
-    font-family: "Bebas Neue", sans-serif;
     font-size: 3vh;
     color: #002845;
   }
 
-  .container1__square__data {
+  .container1_admin_report_page__square__data {
     color: #002845;
     position: relative;
     flex-direction: row;
     justify-self: right;
-    font-family: "Bebas Neue", sans-serif;
     font-size: 3vh;
     left: 5.8vw;
     line-height: 3;
   }
 
-  .container1__square__data__buttons {
+  .container1_admin_report_page__square__data__buttons {
     display: flex;
     justify-content: space-evenly;
   }
 
-  .container1__button1 {
+  .container1_admin_report_page__button1 {
     position: relative;
     width: 13vw;
-    font-family: "Bebas Neue", sans-serif;
     height: 4vh;
     border-radius: 4vh;
     border: none;
@@ -453,10 +454,9 @@ body::-webkit-scrollbar {
     color: white;
   }
 
-  .container1__button2 {
+  .container1_admin_report_page__button2 {
     position: relative;
     width: 13vw;
-    font-family: "Bebas Neue", sans-serif;
     height: 4vh;
     border-radius: 4vh;
     border: none;
@@ -466,10 +466,9 @@ body::-webkit-scrollbar {
     color: white;
   }
 
-  .container1__button3 {
+  .container1_admin_report_page__button3 {
     position: relative;
     width: 13vw;
-    font-family: "Bebas Neue", sans-serif;
     height: 4vh;
     border-radius: 4vh;
     border: none;
