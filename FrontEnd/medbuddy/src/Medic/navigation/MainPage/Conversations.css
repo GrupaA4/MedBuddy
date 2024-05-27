@@ -2,11 +2,11 @@
   margin: 0;
   padding: 0;
   font-family: "Oswald";
-  width: 100vw;
+  width: 100%;
   height: 100%;
   /* height: 100vh; */
-  background-size: cover;
-  background-position: center;
+  /* background-size: cover;
+  background-position: center; */
   background-color: aliceblue;
   display: flex;
   flex-direction: column;
@@ -19,42 +19,41 @@
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  
 }
-.navbar-container {
+/* .navbar-container {
   width: 100%;
   padding: 12px 0;
   border-bottom: 2px solid grey;
   border-radius: 10px;
-}
+} */
 
 .conversations-container {
-  width: 200vw;
+  
   height: 70vh;
   display: flex;
   margin-top: 50px;
-  margin-left: 80px;
+  width: 100%;
   margin-bottom: 50px;
-  margin-right: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
-/* .notifications-container{
-       width: 50vh;
-      border-radius: 15px;
-      margin-right: 100px; 
-    } */
 
 .list-container {
-  width: 120vw;
-  height: 75vh;
+  width: 70%;
+  height: 80vh;
   border-radius: 15px;
   border-style: solid;
   border-width: 3px;
   border-color: #a5bcae;
   background-color: #def9f1;
   backdrop-filter: blur(19px) saturate(180%);
+
+
 }
 
-@media (max-width: 1000px) {
+/* @media (max-width: 1000px) {
   .Conversations {
     height: 40%;
   }
@@ -64,10 +63,7 @@
     margin-left: 30px;
   }
 
-  /* .notifications-container{
-        width: 30vw;
-        margin-right: 0px;
-      } */
+ 
 
   .list-container {
     width: 60vw;
@@ -76,8 +72,8 @@
   .footer-container {
     margin-top: 10px;
   }
-}
-@media (max-width: 800px) {
+} */
+/* @media (max-width: 800px) {
   .Conversations {
     overflow-x: hidden;
     height: 180vh;
@@ -106,4 +102,4 @@
 
 .footer-container {
   width: 100%;
-}
+} */

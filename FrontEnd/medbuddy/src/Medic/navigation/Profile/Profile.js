@@ -28,7 +28,7 @@ function Profile() {
           </div>
           
           <div className="general-information">
-            <h2>
+            <h2 className="general-information-title">
               GENERAL INFORMATION
             </h2>
             <div className='general-information-container'>

@@ -1,50 +1,71 @@
 package com.medbuddy.medbuddy.models;
 
+import com.medbuddy.medbuddy.controllers.requestbodies.UserRequestBodies;
+import com.medbuddy.medbuddy.utilitaries.DataConvertorUtil;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class User {
-    private UUID id;
-    private String email;
-    private String password;
-    private String lastName;
-    private String firstName;
-    private Boolean gender;
-    private String pronoun1;
-    private String pronoun2;
-    private Date dateOfBirth;
-    private String language;
-    private String country;
-    private String city;
-    private int postalNumber;
-    private int phoneNumber;
-    private String profileImagePath;
-    private Boolean isAdmin;
-    private Boolean isDeleted;
+public class User implements Entity{
+    protected UUID id;
+    protected String email;
+    protected String password;
+    protected String lastName;
+    protected String firstName;
+    protected boolean gender;
+    protected String pronoun1;
+    protected String pronoun2;
+    protected LocalDate dateOfBirth;
+    protected String language;
+    protected String country;
+    protected String city;
+    protected String phoneNumber;
+    protected Integer profileImageNumber;
+    protected String imageExtension;
+    protected LocalDate lastTimeLoggedIn;
+    protected boolean isAdmin;
+    protected boolean isDeleted;
 
-    public User(UUID id, String email, String password, String lastName, String firstName, Boolean gender, String pronoun1, String pronoun2, Date dateOfBirth, String language, String country, String city, int postalNumber, int phoneNumber, String profileImagePath, Boolean isAdmin, Boolean isDeleted) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.gender = gender;
-        this.pronoun1 = pronoun1;
-        this.pronoun2 = pronoun2;
-        this.dateOfBirth = dateOfBirth;
-        this.language = language;
-        this.country = country;
-        this.city = city;
-        this.postalNumber = postalNumber;
-        this.phoneNumber = phoneNumber;
-        this.profileImagePath = profileImagePath;
-        this.isAdmin = isAdmin;
-        this.isDeleted = isDeleted;
+    public User(User user) {
+        id = user.id;
+        email = user.email;
+        password = user.password;
+        lastName = user.lastName;
+        firstName = user.firstName;
+        gender = user.gender;
+        pronoun1 = user.pronoun1;
+        pronoun2 = user.pronoun2;
+        dateOfBirth = user.dateOfBirth;
+        language = user.language;
+        country = user.country;
+        city = user.city;
+        phoneNumber = user.phoneNumber;
+        profileImageNumber = user.profileImageNumber;
+        imageExtension = user.imageExtension;
+        lastTimeLoggedIn = user.lastTimeLoggedIn;
+        isAdmin = user.isAdmin;
+        isDeleted = user.isDeleted;
     }
-
-    public User() {
+    
+    public User(UserRequestBodies.UserSignup userRequest) {
+        email = userRequest.getEmail();
+        password = userRequest.getPassword();
+        lastName = userRequest.getLastName();
+        firstName = userRequest.getFirstName();
+        gender = userRequest.isGender();
+        pronoun1 = userRequest.getPronoun1();
+        pronoun2 = userRequest.getPronoun2();
+        dateOfBirth = DataConvertorUtil.turnDDMMYYYYToLocalDate(userRequest.getDateOfBirth());
+        language = userRequest.getLanguage();
+        country = userRequest.getCountry();
+        city = userRequest.getCity();
+        phoneNumber = userRequest.getPhoneNumber();
+        imageExtension = userRequest.getImageExtension();
     }
 }

@@ -1,9 +1,8 @@
-body {
-    margin: 0;
-    background-color: #DEF9F1;
-}
+
 
 .Register {
+   
+     background-color: #DEF9F1; 
     text-align: center;
     display: flex;
     flex-direction: row;

@@ -21,7 +21,7 @@ import java.util.UUID;
 
 @Repository
 public class MessagerieDAO {
-    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+    //@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     private JdbcTemplate jdbcTemplate;
     //public MessagerieDAO(JdbcTemplate jdbcTemplate) {this.jdbcTemplate = jdbcTemplate;}
@@ -46,6 +46,9 @@ public class MessagerieDAO {
     }
     public List<Message> getMessageInfo(UUID messageId) throws SQLException {
         return  jdbcTemplate.query("select * from message where messageId = ?", new Object[]{messageId}, new MessageRowMapper());
+    }
+    public List<Message> getPastXMessages(UUID conversationId, int x) throws SQLException {
+        return jdbcTemplate.query("select * from (select * from message where conversationId = ? ORDER BY timesent DESC) where rownum <= ?", new Object[]{conversationId, x}, new MessageRowMapper());
     }
 }
 

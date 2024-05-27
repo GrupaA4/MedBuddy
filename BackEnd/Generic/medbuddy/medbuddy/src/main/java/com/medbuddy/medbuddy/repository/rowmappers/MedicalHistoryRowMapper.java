@@ -3,6 +3,8 @@ package com.medbuddy.medbuddy.repository.rowmappers;
 import com.medbuddy.medbuddy.exceptions.DatabaseExceptions;
 import com.medbuddy.medbuddy.models.MedicalHistoryEntry;
 import com.medbuddy.medbuddy.utilitaries.DataConvertorUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -10,6 +12,12 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 public class MedicalHistoryRowMapper implements RowMapper<MedicalHistoryEntry> {
+
+    private final Logger logger;
+
+    public MedicalHistoryRowMapper() {
+        logger = LogManager.getLogger("Database");
+    }
 
     @Override
     public MedicalHistoryEntry mapRow(final ResultSet rs, final int rowNum) throws SQLException {
@@ -28,7 +36,7 @@ public class MedicalHistoryRowMapper implements RowMapper<MedicalHistoryEntry> {
                     )
             );
         } catch (DatabaseExceptions.BooleanProblemInDatabase e) {
-            System.err.println(e);
+            logger.error("Problem with boolean in database: {}", e.getMessage());
         }
 
         return medicalHistory;
