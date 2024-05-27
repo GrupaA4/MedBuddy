@@ -1,22 +1,40 @@
-
 import './App.css';
-
-import Conversation from './Medic/navigation/Conversation/pages/Conversation';
-import Profile from './Medic/navigation/Profile/Profile';
-import Register from './Medic/navigation/Register/Register';
+import Home from './Patient/pages/home/page';
+import ChatPage from './Patient/pages/chat/page';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Diagnoses from './Patient/pages/diagnoses/page';
+import Register from './Patient/pages/register/register';
+import Profile from './Patient/pages/profile/profile';
+import Contact from './Patient/pages/contact/page';
+import About from './Patient/pages/about/page';
+import RegisterMedic from './Medic/navigation/Register/Register';
+import ProfileMedic from './Medic/navigation/Profile/Profile';
 import MainPage from './Medic/navigation/MainPage/Conversations';
-import Contact from './Medic/navigation/Contact/Contact';
-import "bootstrap/dist/css/bootstrap.min.css";
+import ContactMedic from './Medic/navigation/Contact/Contact';
+import DiagnosesMedic from './Medic/navigation/Diagnoses/Diagnoses';
 
 function App() {
   return (
-    <div className="App">
-
-
-      
-      <Conversation/>
-
-    </div>
+    <Router>
+      <div className="App1">
+        <div className="content1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/chat" element={<ChatPage />} />
+            <Route path="/diagnoses" element={<Diagnoses />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/registermedic" element={< RegisterMedic/>} />
+            <Route path="/profilemedic" element={< ProfileMedic/>} />
+            <Route path="/mainpage" element={< MainPage/>} />
+            <Route path="/contactmedic" element={< ContactMedic/>} />
+            <Route path="/diagnoses-for-medic" element={< DiagnosesMedic/>} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 

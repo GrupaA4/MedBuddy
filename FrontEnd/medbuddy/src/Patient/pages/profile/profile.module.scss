@@ -1,0 +1,477 @@
+@font-face {
+    font-family: "Bebas_font";
+    src: local("Bebas_Neue"),
+     url("../../fonts/Bebas_Neue/BebasNeue-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Oswald_font";
+    src: local("Oswald"),
+    url("../../fonts/Oswald/Oswald-VariableFont_wght.ttf") format("truetype");
+}
+
+$white-color: #FFF;
+$green-color: #369986;
+$blue-color: #069DAE;
+$red-color: #F04242;
+$font_bebas: "Bebas_font";
+$font_oswald: "Oswald_font";
+
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+
+    .buttons_container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__image{
+            width: 20vw;
+            height: 20vh;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 3vh;
+        }
+
+        &__cancel_changes{
+            background-color: $green-color;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 30vh;
+        }
+
+        &__save_changes{
+            background-color: $red-color;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 40vh;
+        }
+
+        &__edit_profile{
+            background-color: $green-color;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 30vh;
+        }
+
+        &__change_password{
+            background-color: $green-color;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 50vh;
+        }
+
+        &__cancel_delete{
+            background-color: $green-color;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 60vh;
+        }
+
+        &__confirm_delete{
+            background-color: $red-color;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 70vh;
+        }
+
+        &__delete_account{
+            background-color: $red-color;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 60vh;
+        }
+
+        &__cancel_change_password{
+            background-color: $green-color;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 50vh;
+        }
+    }
+
+    .general_information_container{
+        margin-top: 10vh;
+        margin-bottom: 5vh;
+
+        &__section{
+            &__title{
+                font-family: $font_bebas;
+                font-size: 4vh;
+            }
+
+            &__editable_information{
+                &__div{
+                    display: flex;
+                    justify-content: space-between;
+
+                    label{
+                        font-family: $font_bebas;
+                        font-size: 3.5vh;
+                        color: $blue-color;
+                        font-weight: 100;
+                        margin-right: 2vw;
+                    }
+    
+                    input{
+                        font-family: $font_oswald;
+                        font-size: 3vh;
+                    }
+                }
+            }
+
+            &__non_editable_information{
+                &__div{
+                    display: flex;
+                    justify-content: space-between;
+
+                    h3{
+                        font-family: $font_bebas;
+                        font-size: 3.5vh;
+                        color: $blue-color;
+                        font-weight: 100;
+                        margin-right: 2vw;
+                        padding: 0;
+                    }
+    
+                    p{
+                        font-family: $font_oswald;
+                        font-size: 3vh;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .medical_data_container{
+        margin-top: 10vh;
+
+        &__section{
+            &__title{
+                font-family: $font_bebas;
+                font-size: 4vh;
+            }
+
+            &__editable_information{
+                &__div{
+                    display: flex;
+                    justify-content: space-between;
+
+                    label{
+                        font-family: $font_bebas;
+                        font-size: 2vh;
+                        color: $blue-color;
+                        font-weight: 100;
+                        margin-right: 2vw;
+                    }
+    
+                    input{
+                        font-family: $font_oswald;
+                        font-size: 2vh;
+                    }
+                }
+            }
+
+            &__non_editable_information{
+                &__div{
+                    display: flex;
+                    justify-content: space-between;
+
+                    h3{
+                        font-family: $font_bebas;
+                        font-size: 2vh;
+                        color: $blue-color;
+                        font-weight: 100;
+                        margin-right: 2vw;
+                        padding: 0;
+                    }
+    
+                    p{
+                        font-family: $font_oswald;
+                        font-size: 2vh;
+                        padding: 0;
+                    }
+                }
+
+                &__diagnostics_link{
+                    display: inline-block;
+                    padding: 2vh 4vw;
+                    border-radius: 3vh;
+                    background-color: $green-color;
+                    text-decoration: none;
+                    font-family: $font_oswald;
+                    color: $white-color;
+                    margin-left: 1vw;
+                    margin-top: 2vh;
+                    font-size: 2vh;
+
+                    &:hover{
+                        transform: translateY(-0.5vh);
+                    }
+    
+                    &:active{
+                        transform: translateY(0.5vh);
+                    }
+                }
+            }
+        }
+    }
+
+    .form_container{
+        display: flex;
+        flex-direction: column;
+        margin-top: 5vh;
+
+        &__title{
+            font-family: $font_bebas;
+            font-size: 5vh;
+        }
+
+        &__form{
+            label{
+                font-family: $font_bebas;
+                font-size: 3vh;
+            }
+            
+            input{
+                font-family: $font_oswald;
+                font-size: 3vh;
+                height: 6vh;
+                width: 20vw;
+            }
+
+            &__submit{
+                background-color: $red-color;
+                margin-left: 5vw;
+            }
+        }
+    }
+}
+
+.button{
+    width: 12vw;
+    height: 5vh;
+    border-radius: 3vh;
+    border-width: 0;
+    font-family: $font_oswald;
+    color: $white-color;
+    font-size: 2vh;
+    cursor: pointer;
+
+    &:hover{
+        transform: translateY(-0.5vh);
+    }
+
+    &:active{
+        transform: translateY(0.5vh);
+    }
+}
+
+@media screen and (max-width: 850px){
+    .container{
+        .buttons_container{
+            &__image{
+                width: 15vw;
+                height: 15vh;
+            }
+        }
+        
+        .general_information_container{
+            &__section{
+                &__title{
+                    font-size: 3vh;
+                }
+
+                &__editable_information{
+                    &__div{
+                        label{
+                            font-size: 2.5vh;
+                        }
+
+                        input{
+                            font-size: 2vh;
+                        }
+                    }
+                }
+
+                &__non_editable_information{
+                    &__div{
+                        h3{
+                            font-size: 2.5vh;
+                        }
+
+                        p{
+                            font-size: 2vh;
+                        }
+                    }
+                }
+            }
+        }
+
+        .medical_data_container{
+            &__section{
+                &__title{
+                    font-size: 3vh;
+                }
+            }
+        }
+
+        .form_container{
+            &__form{
+                input{
+                    width: 30vw;
+                }
+    
+                &__submit{
+                    background-color: $red-color;
+                    margin-left: 9vw;
+                }
+            }
+        }
+    }
+
+    .button{
+        font-size: 1.5vh;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .container{
+        flex-direction: column;
+
+        .buttons_container{
+            &__image{
+                width: 30vw;
+                height: 30vh;
+                position: relative;
+            }
+
+            &__cancel_changes{
+                top: 0vh;
+            }
+    
+            &__save_changes{
+                top: 0vh;
+            }
+    
+            &__edit_profile{
+                top: 0vh;
+            }
+    
+            &__change_password{
+                top: 0vh;
+            }
+    
+            &__cancel_delete{
+                top: 0vh;
+            }
+    
+            &__confirm_delete{
+                top: 0vh;
+            }
+    
+            &__delete_account{
+                top: 0vh;
+            }
+
+            &__cancel_change_password{
+                top: 0vh;
+            }
+        }
+        
+        .general_information_container{
+            &__section{
+                &__title{
+                    font-size: 5vh;
+                }
+
+                &__editable_information{
+                    &__div{
+                        label{
+                            font-size: 4vh;
+                        }
+
+                        input{
+                            font-size: 4vh;
+                        }
+                    }
+                }
+
+                &__non_editable_information{
+                    &__div{
+                        h3{
+                            font-size: 4vh;
+                        }
+
+                        p{
+                            font-size: 4vh;
+                        }
+                    }
+                }
+            }
+        }
+
+        .medical_data_container{
+            &__section{
+                &__title{
+                    font-size: 5vh;
+                }
+
+                &__editable_information{
+                    &__div{
+                        label{
+                            font-size: 4vh;
+                        }
+
+                        input{
+                            font-size: 4vh;
+                        }
+                    }
+                }
+
+                &__non_editable_information{
+                    &__div{
+                        h3{
+                            font-size: 4vh;
+                        }
+
+                        p{
+                            font-size: 4vh;
+                        }
+                    }
+
+                    &__diagnostics_link{
+                        margin-bottom: 4vh;
+                        margin-left: 26vw;
+                        padding: 2vh 8vw;
+                        font-size: 4vh;
+                    }
+                }
+            }
+        }
+
+        .form_container{
+            margin-left: 22vw;
+
+            &__form{
+                input{
+                    width: 50vw;
+                }
+    
+                &__submit{
+                    margin-bottom: 4vh;
+                }
+            }
+        }
+    }
+
+    .button{
+        font-size: 3vh;
+        width: 30vw;
+        height: 10vh;
+        border-radius: 5vh;
+    }
+}
