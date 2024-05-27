@@ -12,20 +12,20 @@
   flex-direction: column;
 }
 
-.body {
+.body-contat {
   width: 100%;
   min-height: 100%;
   display: flex;
   flex-direction: column;
 }
-.navbar-container {
+.navbar-container-contat {
   width: 100%;
   padding: 5px 0;
   border-bottom: 2px solid grey;
   border-radius: 10px;
 }
 
-.content {
+.content-contat {
   height: 100%;
   width: 95%;
   margin-top: none;
@@ -41,47 +41,51 @@
   border-style: solid;*/
 }
 
-.left-container {
+.left-container-contat {
   height: 650px;
   display: flex;
   flex-direction: column;
   width: 20em;
-
+  margin-top: 8rem;
   margin-right: 150px;
   margin-left: 200px;
 }
 
-.left-container h1{
+.left-container-contat h1 {
   font-family: "Oswald";
+  margin-bottom: 2rem;
+  margin-left: 1.5rem;
 }
 
-.left-container h3{
+.left-container-contat h3 {
   font-size: 1.5em;
-  color: #069DAE;
-  margin-bottom: -50px;
-  margin-top: -5px;
-  letter-spacing: .03em;
+  color: #069dae;
+  letter-spacing: 0.03em;
   font-family: "Oswald";
+  margin-bottom: 2rem;
+  margin-left: 1rem;
 }
 
- .paragraph{
+.paragraph-contat {
   font-size: 1em;
   letter-spacing: 1.2px;
   line-height: 1.6;
-  margin-top: -7px;
-  
+  margin-bottom: 2rem;
 }
-.para{
-  margin-top:-7%;
+.para-contat {
+  margin-top: -7%;
   font-size: 1.1em;
+  list-style: none;
 }
 
-.forum-container {
-  height: 650px;
-  width: 500px;
+.forum-container-contat {
+  width: 30rem;
+  height: auto;
   padding-bottom: none;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
-.footer-container {
+.footer-container-contat {
   width: 100%;
 }
 Footer {
@@ -89,13 +93,13 @@ Footer {
 }
 
 @media (max-width: 600px) {
-  .content {
+  .content-contat {
     width: 80%;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
   }
-  .left-container {
+  .left-container-contat {
     height: 650px;
     display: flex;
     flex-direction: column;
@@ -104,7 +108,7 @@ Footer {
     margin-right: 1px;
     margin-left: 1px;
   }
-  .forum-container {
+  .forum-container-contat {
     margin-left: 5%;
   }
 }

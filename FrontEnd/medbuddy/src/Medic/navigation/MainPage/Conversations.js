@@ -8,19 +8,19 @@ function Conversations() {
     return (
   
       <div className="Conversations">
-        <div className="body">
-        <div className='navbar-container'>
+        <div className="body-mainpage-medic">
+        <div className='navbar-container-mainpage-medic'>
           <Navbar/>
         </div>
 
-       <div className='conversations-container'>
-        <div className='list-container'>
+       <div className='conversations-container-mainpage-medic'>
+        <div className='list-container-mainpage-medic'>
         <List/>
         </div>
         </div>
       
 
-          <div className="footer-container"><Footer/></div>
+          <div className="footer-container-mainpage-medic"><Footer/></div>
           </div>
           
       </div>

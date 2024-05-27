@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
- 
+
   .search {
     display: flex;
     align-items: center;
@@ -11,7 +11,8 @@
     padding: 10px;
     width: 70%;
     height: 50px;
-
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     .searchBar {
       flex: 1;
       background-color: #b8e0c6;
@@ -48,19 +49,16 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-   
   }
 
-
   .item {
-   
     display: flex;
     align-items: center;
     gap: 20px;
     padding: 20px;
     cursor: pointer;
     height: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     width: 70%;
     background-color: #b8e0c6;
     border-radius: 20px;
@@ -80,7 +78,7 @@
       text-align: left;
       margin-top: 10px;
       margin-left: 15px;
-      .emailLink{
+      .emailLink {
         text-decoration: none;
       }
 
@@ -90,13 +88,11 @@
         color: rgb(93, 93, 93);
         margin-bottom: 0.5rem;
 
-        .userName{
+        .userName {
           font-size: 20px;
           color: #002845;
-
         }
       }
-
 
       .userEmail {
         font-size: 14px;
@@ -107,16 +103,14 @@
         height: 30px;
         display: flex;
         align-items: center;
-
       }
 
-      .userEmail:hover{
+      .userEmail:hover {
         color: white;
         background-color: #369986;
       }
-
     }
-    .diagnoses{
+    .diagnoses {
       padding: 8px 16px;
       background-color: #a1c7ae;
       border: 1px solid #002845;
@@ -125,17 +119,17 @@
       outline: none;
       margin-right: 10px;
       font-family: "Oswald";
+      margin-left: 10rem;
     }
-    .diagnoses:hover{
+    .diagnoses:hover {
       color: white;
       background-color: #369986;
     }
   }
-  .buttons-container{
+  .buttons-container {
     display: flex;
     flex-direction: row;
   }
-
 
   .buttons-container button {
     padding: 8px 16px;
@@ -156,37 +150,27 @@
 }
 
 @media only screen and (max-width: 720px) {
-
-  .List{
-    .item{
-
-      
-    img {
-      width: auto;
-      height: 40px;
-   
-    }
-
-    .texts{
-      margin-left: 0px;
-    span{
-      font-size: 12px;
-      .userName{
-       font-size: 15px;
+  .List {
+    .item {
+      img {
+        width: auto;
+        height: 40px;
       }
+
+      .texts {
+        margin-left: 0px;
+        span {
+          font-size: 12px;
+          .userName {
+            font-size: 15px;
+          }
+        }
+        .userEmail {
+          font-size: 12px;
+
+          height: 20px;
+        }
+      }
+    }
   }
-  .userEmail {
-    font-size: 12px;
-   
-    height: 20px;
- 
-  }
-}
-}
-}
-
-
-
-
-
 }
