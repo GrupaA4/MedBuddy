@@ -11,6 +11,7 @@ import RegisterMedic from './Medic/navigation/Register/Register';
 import ProfileMedic from './Medic/navigation/Profile/Profile';
 import MainPage from './Medic/navigation/MainPage/Conversations';
 import ContactMedic from './Medic/navigation/Contact/Contact';
+import DiagnosesHistory from './Medic/navigation/Diagnoses/Diagnoses';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/profilemedic" element={< ProfileMedic/>} />
             <Route path="/mainpage" element={< MainPage/>} />
             <Route path="/contactmedic" element={< ContactMedic/>} />
+            <Route path="/diagnosesmedic" element={<DiagnosesHistory/>} />
           </Routes>
         </div>
       </div>
