@@ -7,6 +7,7 @@ import Register from './Patient/pages/register/register';
 import Profile from './Patient/pages/profile/profile';
 import Contact from './Patient/pages/contact/page';
 import About from './Patient/pages/about/page';
+import ResetPassword from './Patient/pages/resetPassword/reset';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
+            <Route path="/resetPassword" element={<ResetPassword />} />
           </Routes>
         </div>
       </div>
