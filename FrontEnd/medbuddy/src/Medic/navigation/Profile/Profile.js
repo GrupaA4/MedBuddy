@@ -4,6 +4,7 @@ import Navbar from '../common-components/Navbar';
 import Logo from '../common-components/logoB.png';
 import React, { useState, useEffect } from 'react';
 
+/*
 export default function Profile() {
   const [profileData, setProfileData] = useState({
     firstName: 'My FirstName',
@@ -149,7 +150,7 @@ export default function Profile() {
     </div>
   );
 }
-
+*/
 
 
 // -------------------------------------------------------------------------------------------------------------
