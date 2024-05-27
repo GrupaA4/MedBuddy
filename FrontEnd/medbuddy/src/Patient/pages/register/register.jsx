@@ -23,6 +23,7 @@ export default function SignIn(){
     const [phone,setPhone]=useState('');
     const [profilePicture,setProfilePicture]=useState(null);
     const [profilePicturePreview, setProfilePicturePreview]=useState(null);
+    const [imageExtension, setImageExtension]=useState('');
 
     const handleEmailChange= (event) =>{
         setEmail(event.target.value);
@@ -79,6 +80,9 @@ export default function SignIn(){
         reader.onloadend= () =>{
             setProfilePicture(new Uint8Array(reader.result));
             setProfilePicturePreview(URL.createObjectURL(file));
+
+            const fileExtension=file.name.split('.').pop();
+            setImageExtension(fileExtension);
         };
 
         if(file){
@@ -103,17 +107,19 @@ export default function SignIn(){
             city:city,
             phoneNumber:phone,
             profileImage:profilePicture,
-            imageExtension:"png",
+            imageExtension:imageExtension,
             admin:false
         };
 
         console.log('Data to be sent:', data);
+        const credentials = btoa(`test:test`);
 
         try {
             const response = await fetch('http://localhost:7264/medbuddy/signup', {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Basic ${credentials}`
                 },
                 body: JSON.stringify(data),
             });
