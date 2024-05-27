@@ -3,7 +3,6 @@ import List from './List';
 import Footer from '../common-components/Footer' ;
 import Navbar from '../common-components/Navbar' ;
 import Logo from '../common-components/logoB.png';
-import Notifications from './Notifications';
 
 function Conversations() {
     return (
@@ -14,16 +13,12 @@ function Conversations() {
           <Navbar/>
         </div>
 
-        <div className='conversations-container'>
-
-        <div className='notifications-container'>
-        <Notifications/>
-        </div> 
-      
+       <div className='conversations-container'>
         <div className='list-container'>
         <List/>
         </div>
         </div>
+      
 
           <div className="footer-container"><Footer/></div>
           </div>

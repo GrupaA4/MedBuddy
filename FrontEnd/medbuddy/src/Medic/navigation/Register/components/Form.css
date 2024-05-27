@@ -94,7 +94,7 @@
     margin-left: 1rem;
 }
 
-.submit--button {
+.submit-button {
     background-color: #008BAC;
     font-family: "Bebas Neue", sans-serif;
     font-size: 1.5rem;
@@ -124,6 +124,23 @@
     margin-top: 0.5rem;
 }
 
+.upload--certificate input {
+    margin-top: 1rem;
+   
+}
+.upload--certificate{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 12rem;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+  
+
+}
+.upload--certificate label{
+    margin-left: -2rem;
+}
 
 
 
