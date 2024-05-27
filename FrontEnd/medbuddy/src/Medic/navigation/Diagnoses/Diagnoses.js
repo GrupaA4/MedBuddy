@@ -28,7 +28,9 @@ import EditableInput from './input/EditableInput';
 
 return (
     <>
+    <div class="navbar-container-diagnosis">
     <Navbar/>
+    </div>
     {!isMobileMenu &&(
             <>
                 <section className="introduction_section">
