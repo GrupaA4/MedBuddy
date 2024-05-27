@@ -1,5 +1,5 @@
-2024-05-27 13:50:29 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-05-27 13:50:29 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT COUNT(1) FROM appuser WHERE email = ?]
-2024-05-27 13:50:30 DEBUG JdbcTemplate:453 - Executing SQL query [SELECT MAX(profileImageNumber) FROM appuser]
-2024-05-27 13:50:30 DEBUG JdbcTemplate:968 - Executing prepared SQL update
-2024-05-27 13:50:30 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-05-27 14:08:39 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-05-27 14:08:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT COUNT(1) FROM appuser WHERE email = ?]
+2024-05-27 14:08:40 DEBUG JdbcTemplate:453 - Executing SQL query [SELECT MAX(profileImageNumber) FROM appuser]
+2024-05-27 14:08:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-05-27 14:08:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]

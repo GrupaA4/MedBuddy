@@ -124,9 +124,9 @@ export default function SignIn(){
                 body: JSON.stringify(data),
             });
 
-            if(!response.created){
-                throw new Error('Response was not ok');
-            }
+            // if(!response.created){
+            //     throw new Error('Response was not ok');
+            // }
 
             //const result= await response.json();
             //console.log('Success:',result);
