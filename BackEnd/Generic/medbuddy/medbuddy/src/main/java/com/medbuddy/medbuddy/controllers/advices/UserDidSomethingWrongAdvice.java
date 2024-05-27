@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.sql.SQLException;
-
 @ControllerAdvice
 public class UserDidSomethingWrongAdvice {
     @ResponseBody
@@ -40,5 +38,12 @@ public class UserDidSomethingWrongAdvice {
         return ex.getMessage();
     }
 
-
+    @ResponseBody
+    @ExceptionHandler(UserDidSomethingWrongExceptions.ConversationAlreadyExists.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public String tooManyPartsHandler(UserDidSomethingWrongExceptions.ConversationAlreadyExists ex) {
+        Logger logger = LogManager.getLogger("AdvicesLogger");
+        logger.debug(ex.getMessage());
+        return ex.getMessage();
+    }
 }
