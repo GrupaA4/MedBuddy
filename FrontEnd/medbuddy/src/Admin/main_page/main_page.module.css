@@ -1,23 +1,23 @@
-body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-}
 .bg {
   background-image: url(../assets/desktop.png);
   margin-top: 0;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20em;
+  padding-top: 0em;
 }
+
 .button {
   width: 22.4vw;
   font-family: "Oswald", sans-serif;
@@ -33,6 +33,7 @@ body {
   word-wrap: break-word;
   text-align: center;
 }
+
 .button1 {
   width: 22.4vw;
   font-family: "Oswald", sans-serif;
@@ -51,9 +52,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  .bg {
-    width: 100%;
-  }
   .button1,
   .button {
     width: 80%;

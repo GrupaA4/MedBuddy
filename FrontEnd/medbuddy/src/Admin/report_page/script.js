@@ -6,31 +6,36 @@ const jsonDataPages = [
         "photo": "photo1.png",
         "name": "John Doe",
         "email": "john@example.com",
-        "medicalLicense": "123456"
+        "medicalLicense": "123456",
+        "phoneNumber": "0756293715"
       },
       {
         "photo": "photo2.png",
         "name": "Jane Smith",
         "email": "jane@example.com",
-        "medicalLicense": "654321"
+        "medicalLicense": "654321",
+        "phoneNumber": "075694727384"
       },
       {
         "photo": "photo3.png",
         "name": "Alice Johnson",
         "email": "alice@example.com",
-        "medicalLicense": "112233"
+        "medicalLicense": "112233",
+        "phoneNumber": "075937165348"
       },
       {
         "photo": "photo4.png",
         "name": "Bob Brown",
         "email": "bob@example.com",
-        "medicalLicense": "445566"
+        "medicalLicense": "445566",
+        "phoneNumber": "07938376468"
       },
       {
         "photo": "photo5.png",
         "name": "Jannete",
         "email": "bob@example.com",
-        "medicalLicense": "445566"
+        "medicalLicense": "445566",
+        "phoneNumber": "07358394625"
       },
 
 
@@ -41,31 +46,36 @@ const jsonDataPages = [
         "photo": "photo6.png",
         "name": "Michael Wilson",
         "email": "michael@example.com",
-        "medicalLicense": "990011"
+        "medicalLicense": "990011",
+        "phoneNumber": "0756293715"
       },
       {
         "photo": "photo7.png",
         "name": "Michael Wilson",
         "email": "michael@example.com",
-        "medicalLicense": "990011"
+        "medicalLicense": "990011",
+        "phoneNumber": "0756293715"
       },
       {
         "photo": "phot8.png",
         "name": "Michael Wilson",
         "email": "michael@example.com",
-        "medicalLicense": "990011"
+        "medicalLicense": "990011",
+        "phoneNumber": "0756293715"
       },
       {
         "photo": "photo9.png",
         "name": "Michael Wilson",
         "email": "michael@example.com",
-        "medicalLicense": "990011"
+        "medicalLicense": "990011",
+        "phoneNumber": "0756293715"
       },
       {
         "photo": "photo10.png",
         "name": "Michael Wilson",
         "email": "michael@example.com",
-        "medicalLicense": "990011"
+        "medicalLicense": "990011",
+        "phoneNumber": "0756293715"
       },
 
     ]
@@ -82,7 +92,7 @@ const jsonDataPages = [
             const data = jsonData[index];
             container.querySelector('.name').textContent = data.name;
             container.querySelector('.email').textContent = data.email;
-            container.querySelector('.medicalLicense').textContent = data.medicalLicense;
+            container.querySelector('.phoneNumber').textContent = data.phoneNumber;
             container.querySelector('.container1__square__icon p').textContent = 'PHOTO: ' + data.photo;
            
         } else {
