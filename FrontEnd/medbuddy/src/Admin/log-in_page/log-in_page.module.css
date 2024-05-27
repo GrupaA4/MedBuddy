@@ -1,0 +1,453 @@
+.body_login {
+  margin: 0;
+  padding: 0;
+  background-color: #def9f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_container {
+  display: flex;
+  position: relative;
+  background-color: white;
+  border-radius: 5vh;
+  height: 72vh;
+  width: 80vw;
+  margin-top: 13vh;
+  align-items: center;
+  border: 3px solid #b8e0c6;
+}
+
+.login_container::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: 3px solid #b8e0c6;
+}
+
+.login_container__image1 {
+  position: absolute;
+  align-self: left;
+  height: 30vh;
+  width: 28vw;
+  top: 0;
+  margin-left: 5.7vw;
+}
+
+.login_container__image2 {
+  position: absolute;
+  align-self: left;
+  height: 37vh;
+  width: 30vw;
+  margin-left: 4vw;
+  margin-top: 12vh;
+}
+
+.login_square {
+  position: absolute;
+  display: flex;
+  align-self: right;
+  background-color: white;
+  border-radius: 2vh;
+  height: 52vh;
+  width: 32vw;
+  margin-right: 1vw;
+  margin-left: 44vw;
+  border: 3px solid #def9f1;
+  justify-content: center;
+}
+
+.login_square::after {
+  content: "";
+  position: absolute;
+  top: -7vh;
+  height: 15vh;
+  width: 15vh;
+  bottom: 7.5vh;
+  font-size: 20px;
+  text-align: center;
+  padding: 0 10px;
+  background-image: url(Heart_Icon.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #def9f1;
+  border-radius: 50%;
+}
+
+.login_square__title {
+  position: absolute;
+  color: #002845;
+  font-family: "Bebas Neue", sans-serif;
+  top: 2vh;
+  font-weight: 400;
+  font-size: 7vh;
+}
+
+.login_square__form {
+  margin-top: 20vh;
+}
+
+.login_square__form__text {
+  color: #002845;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: 2.7vh;
+}
+
+.login_square__form__label {
+  width: 22vw;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  height: 3vh;
+  font-size: 2vh;
+  border-width: 1px;
+}
+
+.login_square__form__label::placeholder {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: 2vh;
+  color: #e0e0e0;
+}
+
+.login_square__form__button1 {
+  width: 22.4vw;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  height: 5vh;
+  border-radius: 2vh;
+  border: none;
+  background-color: #b8e0c6;
+  cursor: pointer;
+  font-size: 3vh;
+  color: white;
+  box-shadow: 5px 5px #369986;
+}
+
+.login_square__form__button1:hover {
+  scale: 1.1;
+}
+
+.login_square__form__button1:active {
+  box-shadow: 0 5px #369986;
+  transform: translateY(4px);
+}
+
+.login_square__form__button2 {
+  width: 11.2vw;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  height: 6vh;
+  border-radius: 2vh;
+  border: none;
+  background-color: #069dae;
+  cursor: pointer;
+  font-size: 2.5vh;
+  color: white;
+  box-shadow: 5px 5px #b8e0c6;
+}
+
+.login_square__form__button2:hover {
+  scale: 1.1;
+}
+
+.login_square__form__button2:active {
+  box-shadow: 0 5px #369986;
+  transform: translateY(4px);
+}
+
+.login_square__form__button3 {
+  width: 11.2vw;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  height: 6vh;
+  border-radius: 2vh;
+  border: none;
+  background-color: #069dae;
+  cursor: pointer;
+  font-size: 2.5vh;
+  color: white;
+  box-shadow: 5px 5px #b8e0c6;
+}
+
+.login_square__form__button3:hover {
+  scale: 1.1;
+}
+
+.login_square__form__button3:active {
+  box-shadow: 0 5px #369986;
+  transform: translateY(4px);
+}
+
+.login_square__warning {
+  position: absolute;
+  align-self: right;
+  top: 54vh;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.5vh;
+  color: red;
+}
+
+@media only screen and (max-height: 1280px) and (max-width: 1875px) {
+  .login_square__form__button2 {
+    height: 6vh;
+  }
+  .login_square__form__button3 {
+    height: 6vh;
+  }
+}
+
+@media only screen and (max-height: 1370px) and (max-width: 1200px) {
+  .login_square__form__button2 {
+    height: 6.2vh;
+  }
+  .login_square__form__button3 {
+    height: 6.2vh;
+  }
+}
+
+@media only screen and (max-width: 1223px) {
+  .login_square__form__button2 {
+    font-size: 2vh;
+  }
+
+  .login_square__form__button3 {
+    font-size: 2vh;
+  }
+
+  .login_container__image2 {
+    height: 35vh;
+    width: 30vw;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .login_container__image1 {
+    height: 27vh;
+    width: 28vw;
+  }
+
+  .login_container__image2 {
+    height: 32vh;
+    width: 30vw;
+  }
+
+  .login_square__warning {
+    font-size: 2.3vh;
+  }
+}
+
+@media only screen and (max-width: 1075px) {
+  .login_container__image1 {
+    display: none;
+  }
+
+  .login_container__image2 {
+    display: none;
+  }
+
+  .login_container::after {
+    display: none;
+  }
+
+  .login_square {
+    align-self: center;
+    margin-left: 10vw;
+    width: 58.5vw;
+  }
+
+  .login_square__form__text {
+    bottom: 7vh;
+    font-size: 3vh;
+  }
+
+  .login_square__warning {
+    font-size: 2.7vh;
+  }
+
+  .login_square__form__label {
+    width: 34vw;
+  }
+
+  .login_square__form__button1 {
+    width: 34vw;
+  }
+
+  .login_square__form__button2 {
+    width: 17vw;
+    font-size: 2.5vh;
+  }
+
+  .login_square__form__button3 {
+    width: 17vw;
+    font-size: 2.5vh;
+  }
+}
+
+@media only screen and (max-height: 1100px) {
+  .login_square__form {
+    margin-top: 18vh;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .login_square__form__button2 {
+    font-size: 2.2vh;
+  }
+
+  .login_square__form__button3 {
+    font-size: 2.2vh;
+  }
+}
+
+@media only screen and (max-height: 780px) {
+  .login_square__form {
+    margin-top: 17vh;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .login_square__form__button2 {
+    font-size: 2.2vh;
+  }
+
+  .login_square__form__button3 {
+    font-size: 2.2vh;
+  }
+}
+
+@media only screen and (max-height: 700px) {
+  .login_square__form {
+    margin-top: 16vh;
+  }
+}
+
+@media only screen and (max-width: 740px) {
+  .login_square__form__button2 {
+    font-size: 2.1vh;
+  }
+
+  .login_square__form__button3 {
+    font-size: 2.1vh;
+  }
+}
+
+@media only screen and (max-width: 710px) {
+  .login_square__form__button2 {
+    font-size: 2vh;
+  }
+
+  .login_square__form__button3 {
+    font-size: 2vh;
+  }
+}
+
+@media only screen and (max-height: 650px) {
+  .login_square__form {
+    margin-top: 15vh;
+  }
+}
+
+@media only screen and (max-height: 600px) {
+  .login_square__form {
+    margin-top: 14vh;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .login_square__warning {
+    font-size: 2.4vh;
+  }
+
+  .login_square__form__button1 {
+    font-size: 2.5vh;
+  }
+}
+
+@media only screen and (max-height: 550px) {
+  .login_square__form {
+    margin-top: 13vh;
+  }
+  .login_square__title {
+    font-size: 6vh;
+  }
+  .login_square::after {
+    height: 14vh;
+    width: 14vh;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .login_square::after {
+    height: 14vh;
+    width: 14vh;
+  }
+
+  .login_square__title {
+    font-size: 6vh;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .login_square__form__button2 {
+    font-size: 1.7vh;
+  }
+
+  .login_square__form__button3 {
+    font-size: 1.7vh;
+  }
+}
+
+@media only screen and (max-width: 510px) {
+  .login_square__form__label {
+    font-size: 1.5vh;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .login_square__warning {
+    font-size: 2.1vh;
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  .login_square__warning {
+    font-size: 2vh;
+  }
+}
+
+@media only screen and (max-width: 450px) and (max-height: 1150px) {
+  .login_square__form__button2 {
+    font-size: 1.5vh;
+  }
+
+  .login_square__form__button3 {
+    font-size: 1.5vh;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .login_square__warning {
+    font-size: 1.9vh;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .login_square__warning {
+    font-size: 1.8vh;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .login_square__warning {
+    font-size: 1.7vh;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .login_square__warning {
+    font-size: 1.6vh;
+  }
+}

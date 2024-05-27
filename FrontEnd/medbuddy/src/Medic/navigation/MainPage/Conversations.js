@@ -1,8 +1,8 @@
-import './Conversations.css';
-import List from './List';
-import Footer from '../common-components/Footer' ;
-import Navbar from '../common-components/Navbar' ;
-import Logo from '../common-components/logoB.png';
+import "./Conversations.css";
+import List from "./List";
+import Footer from "../common-components/Footer";
+import Navbar from "../common-components/Navbar";
+import Logo from "../common-components/logoB.png";
 
 function Conversations() {
     return (

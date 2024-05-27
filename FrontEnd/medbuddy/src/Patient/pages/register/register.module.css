@@ -1,0 +1,184 @@
+@font-face {
+  font-family: "Bebas_font";
+  src: local("Bebas_Neue"), url("../../fonts/Bebas_Neue/BebasNeue-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Oswald_font";
+  src: local("Oswald"), url("../../fonts/Oswald/Oswald-VariableFont_wght.ttf") format("truetype");
+}
+.container {
+  background-color: #DEF9F1;
+  display: flex;
+  justify-content: space-evenly;
+}
+.container .images_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+.container .images_container__image1 {
+  margin-top: 5vh;
+  position: sticky;
+  top: 0;
+}
+.container .images_container__image2 {
+  height: 100vh;
+  width: 40vw;
+  position: sticky;
+  top: 20vh;
+}
+.container .form_container {
+  background-color: #FFF;
+  padding: 5vh;
+  margin-bottom: 10vh;
+  margin-top: 10vh;
+  border: 0.5vh solid #B8E0C6;
+  border-radius: 2vh;
+  width: 30vw;
+}
+.container .form_container__profile_pic {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-right: 2.5vw;
+}
+.container .form_container__profile_pic img {
+  width: 10vw;
+  height: 10vh;
+  border: 0.2vw solid #B8E0C6;
+  border-radius: 5vh;
+}
+.container .form_container__title {
+  text-align: center;
+  font-family: "Bebas_font";
+  font-size: 3vw;
+  color: #002845;
+}
+.container .form_container__form {
+  font-family: "Bebas_font";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  font-size: 2vw;
+  margin-left: 3vw;
+  color: #002845;
+}
+.container .form_container__form input {
+  font-family: "Oswald_font";
+  width: 25vw;
+  height: 5vh;
+  font-size: 1.5vw;
+}
+.container .form_container__form__gender {
+  font-size: 1.2vw;
+}
+.container .form_container__form__gender__option input[type=radio] {
+  width: 3vw;
+  height: 3vh;
+}
+.container .form_container__form__submit {
+  font-family: "Bebas_font";
+  background-color: #002845;
+  width: 15vw;
+  height: 8vh;
+  font-size: 3vh;
+  color: #FFF;
+  margin-left: 5vw;
+  cursor: pointer;
+}
+.container .form_container__form__submit:hover {
+  transform: translateY(-0.5vh);
+}
+.container .form_container__form__submit:active {
+  transform: translateY(0.5vh);
+}
+
+@media screen and (max-width: 850px) {
+  .container .images_container__image1 {
+    width: 40vw;
+  }
+  .container .form_container__title {
+    font-size: 7vw;
+  }
+  .container .form_container__form {
+    font-size: 5vw;
+    margin-left: 0;
+  }
+  .container .form_container__form input {
+    width: 28vw;
+    height: 6.5vh;
+    font-size: 2.2vw;
+  }
+  .container .form_container__form__gender {
+    font-size: 2.5vw;
+  }
+  .container .form_container__form__gender__option input[type=radio] {
+    width: 3.5vw;
+    height: 3.5vh;
+  }
+  .container .form_container__form__submit {
+    width: 20vw;
+  }
+  .container .form_container__profile_pic img {
+    width: 12vw;
+    height: 10vh;
+    border: 0.6vw solid #B8E0C6;
+    margin-left: 2vw;
+  }
+}
+@media screen and (max-width: 600px) {
+  .container .images_container {
+    display: none;
+  }
+  .container .form_container {
+    width: 60vw;
+  }
+  .container .form_container__title {
+    font-size: 8vw;
+  }
+  .container .form_container__form {
+    font-size: 6vw;
+  }
+  .container .form_container__form input {
+    width: 55vw;
+    height: 8vh;
+    font-size: 4vw;
+  }
+  .container .form_container__form__gender {
+    font-size: 4vw;
+  }
+  .container .form_container__form__gender__option input[type=radio] {
+    width: 4vw;
+    height: 4vh;
+  }
+  .container .form_container__form__submit {
+    width: 32vw;
+    font-size: 4vh;
+    margin-left: 14vw;
+  }
+  .container .form_container__profile_pic img {
+    width: 15vw;
+    height: 12vh;
+    border: 0.8vw solid #B8E0C6;
+    margin-left: 2vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  .container .images_container {
+    display: none;
+  }
+  .container .form_container__form input {
+    width: 60vw;
+  }
+  .container .form_container__form__submit {
+    font-size: 3.5vh;
+    margin-left: 15vw;
+  }
+  .container .form_container__profile_pic img {
+    width: 15vw;
+    height: 12vh;
+    border: 1vw solid #B8E0C6;
+  }
+}/*# sourceMappingURL=register.module.css.map */

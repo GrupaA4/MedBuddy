@@ -1,8 +1,8 @@
-import './Contact.css';
-import Footer from '../common-components/Footer' ;
-import Navbar from '../common-components/Navbar' ;
-import Logo from '../common-components/logoB.png';
-import Forum from './Forum';
+import "./Contact.css";
+import Footer from "../common-components/Footer";
+import Navbar from "../common-components/Navbar";
+import Logo from "../common-components/logoB.png";
+import Forum from "./Forum";
 
 function Contact() {
     return (

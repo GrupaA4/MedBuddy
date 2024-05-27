@@ -1,6 +1,5 @@
-
 import React, { useState } from "react";
-import Logo from '../common-components/logoB.png';
+import Logo from "../common-components/logoB.png";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -13,41 +12,61 @@ import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
-import SettingsIcon from '@mui/icons-material/Settings';
-import './Navbar.css';
+import SettingsIcon from "@mui/icons-material/Settings";
+import "./Navbar.css";
+import { useNavigate } from "react-router-dom";
+
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
   const [openMenu, setOpenMenu] = useState(false);
   const menuOptions = [
     {
       text: "Home",
       icon: <HomeIcon />,
+      path: "/homeMedic",
     },
     {
       text: "About",
       icon: <InfoIcon />,
+      path: "",
     },
     {
       text: "Contact",
       icon: <PhoneRoundedIcon />,
+      path: "/contact",
     },
     {
       text: "Settings",
       icon: <SettingsIcon />,
+      path: "/settingsMedic",
     },
   ];
+
   return (
     <nav>
       <div className="nav-logo-container">
-        <img src={Logo} alt="" />
+        <img src={Logo} alt="Logo" />
       </div>
       <div className="navbar-links-container">
-          <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Settings</a></li>
-            </ul>
-
+        <ul>
+          <li>
+            <a onClick={() => handleNavigation("/homeMedic")}>Home</a>
+          </li>
+          <li>
+            <a onClick={() => handleNavigation("")}>About</a>
+          </li>
+          <li>
+            <a onClick={() => handleNavigation("/contact")}>Contact</a>
+          </li>
+          <li>
+            <a onClick={() => handleNavigation("/settingsMedic")}>Settings</a>
+          </li>
+        </ul>
       </div>
       <div className="navbar-menu-container">
         <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
@@ -62,7 +81,7 @@ const Navbar = () => {
           <List>
             {menuOptions.map((item) => (
               <ListItem key={item.text} disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={() => handleNavigation(item.path)}>
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.text} />
                 </ListItemButton>
@@ -73,7 +92,7 @@ const Navbar = () => {
         </Box>
       </Drawer>
     </nav>
-   );
+  );
 };
 
-export default Navbar; 
+export default Navbar;
