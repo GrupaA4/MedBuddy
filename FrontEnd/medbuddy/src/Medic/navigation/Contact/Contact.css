@@ -12,7 +12,7 @@
   flex-direction: column;
 }
 
-.body {
+.body-contact {
   width: 100%;
   min-height: 100%;
   display: flex;
@@ -25,7 +25,7 @@
   border-radius: 10px;
 }
 
-.content {
+.content-contact {
   height: 100%;
   width: 95%;
   margin-top: none;
@@ -41,7 +41,7 @@
   border-style: solid;*/
 }
 
-.left-container {
+.left-container-contact {
   height: 650px;
   display: flex;
   flex-direction: column;
@@ -89,7 +89,7 @@ Footer {
 }
 
 @media (max-width: 600px) {
-  .content {
+  .content-contact {
     width: 80%;
     flex-direction: column;
     justify-content: flex-start;
