@@ -29,16 +29,22 @@ const Container = () => {
       <h1 className={styles.container__title}>About MedBuddy</h1>
       <div className={styles.container__cards}>
         <Section 
-          title="Who are we?" 
-          content="MedBuddy is a revolutionary health technology company committed to making healthcare accessible and efficient for everyone. Our team includes top-tier doctors, skilled engineers, and dedicated support staff who are passionate about integrating advanced technology with healthcare. We aim to empower individuals with the tools they need to manage their health effectively." 
-        />
-        <Section 
           title="What do we do?" 
           content="Our primary offering is a virtual assistant that leverages AI to provide diagnostic insights based on user conversations. The virtual assistant is designed to help users understand their symptoms and guide them towards appropriate medical care." 
         />
         <Section 
-          title="What is our mission?" 
-          content="MedBuddy combines cutting-edge technology with a user-friendly interface to deliver personalized healthcare guidance. We prioritize user privacy and data security, ensuring that your health information is safe. Our goal is to empower individuals with the knowledge they need to make informed health decisions." 
+          title="How It Works" 
+          content={
+            <ul>
+              <li><strong>Chat with MEdBuddy:</strong> Our virtual assistant, MedBuddy, is available 24/7 to discuss your symptoms. MedBuddy can provide preliminary diagnoses based on the information you provide.</li>
+              <li><strong>Receive a Diagnosis:</strong> After your interaction with MedBuddy, you will receive a suggested diagnosis that helps you understand your potential health issues. After this, you can continue the discussion with the right doctor using your email.</li>
+              <li><strong>Medical Review:</strong> Your diagnosis is then reviewed,verified and updated by a licensed medical professional to ensure accuracy and provide you with the best possible care.</li>
+            </ul>
+          }
+        />
+        <Section 
+          title="Who are we?" 
+          content="MedBuddy is a revolutionary health technology company committed to making healthcare accessible and efficient for everyone. Our team includes top-tier doctors, skilled engineers, and dedicated support staff who are passionate about integrating advanced technology with healthcare. We aim to empower individuals with the tools they need to manage their health effectively." 
         />
       </div>
     </div>

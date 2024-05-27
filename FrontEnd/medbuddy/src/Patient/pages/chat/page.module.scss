@@ -195,7 +195,7 @@
        
         .page__message_buttons{
             width: 70%;
-            margin-top: 2rem;
+            margin-top: 1rem;
             .page__message_buttons_action{
                 width: 20vw;
                 height: 2.5rem;
@@ -242,13 +242,15 @@
         }
         .page__message_buttons{
             width: 70%;
-            margin-top: 2rem;
+            margin-top: 1rem;
             display: flex;
+            gap: 0.5rem;
             flex-direction: column;
             justify-content: space-around;
-            height: 6rem;
             .page__message_buttons_action{
                 width: 40vw;
+                padding-top: 0.3rem;
+                padding-bottom: 0.3rem;
             }
         }
         .page__message_input{
