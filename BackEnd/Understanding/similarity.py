@@ -113,29 +113,6 @@ print(similar_words)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 doc = nlp("Last night i had shivers, i started coughing 2 days ago extremely hard and since i've met my mother, i felt dizzy and i have breath shortness regulary i cant eat anymore because im so weak and sometimes i even have high fever, should i visit a doctor and together with that i vomited a lot?")
 
 for entity in doc.ents:

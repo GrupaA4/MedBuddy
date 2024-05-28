@@ -1,0 +1,118 @@
+T1	Age 18 27	34-yr-old
+T2	Sex 28 31	man
+T3	Clinical_event 36 45	presented
+E1	Clinical_event:T3 
+T4	Sign_symptom 65 70	fever
+E2	Sign_symptom:T4 
+T5	Sign_symptom 85 90	cough
+E3	Sign_symptom:T5 
+T7	History 101 107	smoker
+T8	History 118 151	history of pulmonary tuberculosis
+E4	Disease_disorder:T9 
+T10	Biological_structure 129 138	pulmonary
+E7	Diagnostic_procedure:T13 
+E8	Diagnostic_procedure:T14 
+T15	Sign_symptom 241 248	nodules
+E9	Sign_symptom:T15 
+T18	Biological_structure 252 262	both lungs
+E10	Diagnostic_procedure:T19 
+T20	Biological_structure 280 284	lung
+T22	Biological_structure 311 327	right upper lobe
+E11	Diagnostic_procedure:T23 
+T24	Sign_symptom 376 379	LCH
+E12	Sign_symptom:T24 
+#1	AnnotatorNotes E12	Langerhans cell histiocytosis
+T25	Coreference 385 396	tumor cells
+E13	Coreference:T25 
+T26	Biological_structure 423 429	nuclei
+T27	Texture 415 422	grooved
+T29	Biological_structure 466 488	around the bronchioles
+T30	Coreference 502 513	tumor cells
+E14	Coreference:T30 
+E15	Diagnostic_procedure:T31 
+#2	AnnotatorNotes E15	This is a Diagnostic Procedure because a test had to be run to detect presence of this protein.
+E16	Diagnostic_procedure:T32 
+E17	Diagnostic_procedure:T33 
+E18	Diagnostic_procedure:T34 
+T36	Severity 519 527	strongly
+T37	Biological_attribute 447 452	small
+T38	Biological_attribute 453 465	aggregations
+T39	Biological_structure 609 620	lymphocytes
+T40	Biological_structure 625 636	eosinophils
+T41	Coreference 648 659	tumor cells
+E19	Coreference:T41 
+T42	Biological_structure 592 605	infiltrations
+E20	Diagnostic_procedure:T43 
+T44	Sign_symptom 713 756	no other organs were thought to be involved
+E21	Sign_symptom:T44 
+T45	Activity 761 773	quit smoking
+E22	Activity:T45 
+#3	AnnotatorNotes E22	Note that this is an activity here though it was history before.
+T46	Sign_symptom 827 831	well
+E23	Sign_symptom:T46 
+T47	Duration 832 858	for the following one year
+E24	Duration:T47 
+E25	Diagnostic_procedure:T48 
+T49	Shape 922 932	4 cm-sized
+T50	Sign_symptom 933 937	mass
+E26	Sign_symptom:T50 
+T51	Biological_structure 945 960	left lower lobe
+T52	Biological_structure 1006 1016	both lungs
+T55	Sign_symptom 995 1002	nodules
+E27	Sign_symptom:T55 
+E28	Diagnostic_procedure:T56 
+T58	Sign_symptom 1064 1088	possibility of a sarcoma
+E29	Sign_symptom:T58 
+T59	Therapeutic_procedure 1103 1112	lobectomy
+E30	Therapeutic_procedure:T59 
+T60	Shape 1139 1149	4 cm-sized
+T63	Color 1181 1191	gray-white
+T64	Sign_symptom 1192 1196	mass
+E31	Sign_symptom:T64 
+T67	Sign_symptom 1253 1260	nodules
+E32	Sign_symptom:T67 
+T68	Coreference 1272 1281	main mass
+E33	Coreference:T68 
+E34	Diagnostic_procedure:T69 
+T70	Coreference 1304 1315	tumor cells
+E35	Coreference:T70 
+T72	Biological_structure 1367 1386	infiltrative growth
+T73	Coreference 1426 1437	tumor cells
+E36	Coreference:T73 
+T76	Coreference 1497 1508	tumor cells
+E38	Coreference:T76 
+T74	Biological_attribute 1392 1410	cytologic features
+T77	Biological_attribute 1534 1552	cytologic features
+T79	Biological_structure 1588 1594	nuclei
+T80	Biological_attribute 1609 1617	nucleoli
+T82	Biological_structure 1646 1663	tumor giant cells
+T85	Biological_structure 1701 1716	mitotic figures
+T88	Sign_symptom 1811 1822	typical LCH
+E37	Sign_symptom:T88 
+E39	Diagnostic_procedure:T91 
+T92	Severity 1904 1912	strongly
+E40	Diagnostic_procedure:T94 
+E41	Diagnostic_procedure:T95 
+E42	Diagnostic_procedure:T97 
+E43	Diagnostic_procedure:T100 
+E44	Diagnostic_procedure:T102 
+E45	Diagnostic_procedure:T103 
+E46	Diagnostic_procedure:T104 
+E47	Diagnostic_procedure:T105 
+E48	Diagnostic_procedure:T106 
+T107	Sign_symptom 2178 2220	failed to demonstrate any Birbeck granules
+E49	Sign_symptom:T107 
+E50	Diagnostic_procedure:T108 
+T109	Biological_structure 2228 2237	cytoplasm
+T110	Sign_symptom 2245 2256	tumor cells
+E51	Sign_symptom:T110 
+T111	Date 2266 2283	five months after
+E52	Date:T111 
+#4	AnnotatorNotes E52	Note that this is a date due to the "after" (not a duration, as those are continuous)
+T112	Coreference 2284 2293	lobectomy
+E53	Coreference:T112 
+T113	Outcome 2310 2320	doing well
+E54	Outcome:T113 
+T114	Sign_symptom 2326 2374	no significant change in the radiologic findings
+E55	Sign_symptom:T114 
+A4	TREND E55 STAY

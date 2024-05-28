@@ -1,0 +1,201 @@
+### General Medical Condition
+Can you describe any recent changes in your overall health and how they have affected your daily activities?
+Have you experienced any new or worsening symptoms that you haven't mentioned before? Please describe them in detail.
+Can you provide a timeline of any significant health events in the past year?
+Have you noticed any changes in your energy levels throughout the day? Describe any patterns you’ve observed.
+Have there been any changes in your sleep patterns? Please elaborate on the quality and duration of your sleep.
+Can you describe any new or worsening pain? Include details about the location, intensity, and frequency of the pain.
+Have you experienced any changes in your appetite or weight? Please explain in detail.
+Are there any activities you can no longer perform due to health issues? Describe how these limitations have affected your daily life.
+Have you noticed any changes in your mental health, such as increased stress or anxiety? Please provide details.
+
+### Oncological Diseases
+Have you noticed any unusual lumps, unexplained weight loss, or persistent fatigue? Please describe any other symptoms you’ve been experiencing in detail.
+Can you describe any changes in your skin, such as new moles or changes in existing moles?
+Have you experienced any new or worsening pain that you can't explain? Describe the pain in detail.
+Have you had any unexplained fevers or night sweats? Please provide details about their frequency and intensity.
+Can you describe any changes in your appetite or digestive issues you have been facing?
+Have you experienced any difficulty swallowing or a persistent sore throat? Please elaborate.
+Can you describe any changes in your bowel or bladder habits?
+Have you noticed any unusual bleeding or discharge? Please provide detailed information.
+Can you describe any shortness of breath or persistent cough you have experienced?
+Have you experienced any significant changes in your physical strength or mobility?
+
+### Neurological Disorders
+Can you describe any difficulties you’ve had with coordination, balance, or changes in your mental state, such as memory issues or mood swings?
+Have you experienced any episodes of dizziness or vertigo? Please describe the circumstances and frequency.
+Can you provide details about any headaches you’ve been experiencing, including their location and intensity?
+Have you noticed any changes in your vision, such as blurred vision or double vision? Please elaborate.
+Can you describe any sensations of numbness or tingling you have experienced? Include the location and duration.
+Have you experienced any changes in your speech or ability to communicate? Please provide details.
+Can you describe any episodes of muscle weakness or paralysis? Include information about the affected areas and duration.
+Have you noticed any changes in your sense of smell or taste? Please elaborate.
+Can you describe any episodes of confusion or disorientation you have experienced?
+Have you experienced any involuntary movements, such as tremors or muscle spasms? Please provide details.
+
+### Infectious Diseases
+Have you experienced any symptoms such as fever, chills, or night sweats? Please elaborate on any recent infections or illnesses and their progression.
+Can you describe any respiratory symptoms you have experienced, such as coughing or difficulty breathing?
+Have you noticed any unusual rashes or skin changes? Please provide details.
+Can you describe any gastrointestinal symptoms, such as diarrhea or abdominal pain, you have experienced?
+Have you experienced any persistent or recurring headaches? Please elaborate on their frequency and intensity.
+Can you describe any joint or muscle pain you have experienced during or after an illness?
+Have you noticed any changes in your energy levels or experienced persistent fatigue? Please provide details.
+Can you describe any changes in your sense of taste or smell during your illness?
+Have you experienced any swollen lymph nodes or unusual lumps? Please elaborate.
+Can you describe any recent travel history and any symptoms you experienced during or after your travels?
+
+### Cardiovascular Diseases
+Can you describe any chest pain, shortness of breath, or palpitations you’ve experienced? Detail any associated symptoms like swelling or fatigue.
+Have you noticed any changes in your blood pressure? Please provide recent readings if available.
+Can you describe any episodes of dizziness or fainting you have experienced?
+Have you experienced any swelling in your legs, ankles, or feet? Please provide details about the severity and duration.
+Can you describe any pain or discomfort in your arms, back, neck, or jaw?
+Have you noticed any changes in your heart rate, such as it being unusually fast or slow? Please elaborate.
+Can you describe any episodes of shortness of breath that occur during rest or physical activity?
+Have you experienced any new or worsening fatigue? Please provide details.
+Can you describe any episodes of feeling lightheaded or experiencing a sensation of fluttering in your chest?
+Have you noticed any unusual sweating, especially if it occurs without physical exertion?
+
+### Hematological Diseases
+Have you noticed any unusual bruising, bleeding, or persistent fatigue? Please describe any changes in your energy levels or physical condition.
+Can you describe any episodes of excessive bleeding, such as nosebleeds or bleeding gums?
+Have you experienced any unusual pallor or changes in skin color? Please elaborate.
+Can you describe any persistent or recurring infections you have experienced?
+Have you noticed any changes in your blood counts, such as low red or white blood cells? Please provide details.
+Can you describe any episodes of dizziness, fainting, or feeling lightheaded?
+Have you experienced any unusual or excessive menstrual bleeding? Please elaborate.
+Can you describe any pain or swelling in your joints or bones?
+Have you noticed any changes in your energy levels or experienced persistent fatigue? Please provide details.
+Can you describe any episodes of shortness of breath or difficulty breathing?
+
+### Dermatological Diseases
+Can you describe any changes in your skin, such as rashes, lesions, or persistent itching? Include details about the location and appearance of any affected areas.
+Have you noticed any new moles or changes in existing moles? Please provide details about their appearance.
+Can you describe any episodes of skin dryness, cracking, or peeling?
+Have you experienced any hair loss or changes in hair texture? Please elaborate.
+Can you describe any nail changes, such as discoloration or abnormal growth?
+Have you noticed any changes in your skin’s sensitivity or any allergic reactions? Please provide details.
+Can you describe any persistent or recurring acne or other skin conditions?
+Have you experienced any unusual or excessive sweating? Please elaborate.
+Can you describe any episodes of skin pain or discomfort?
+Have you noticed any changes in your skin’s texture or elasticity? Please provide details.
+
+### Pulmonary Disorders
+Can you describe any breathing difficulties you’ve had, such as shortness of breath, persistent cough, or wheezing? Please include any environmental factors that may affect these symptoms.
+Have you noticed any changes in your ability to perform physical activities? Please elaborate.
+Can you describe any episodes of chest tightness or pain you have experienced?
+Have you experienced any coughing up of blood or unusual mucus? Please provide details.
+Can you describe any episodes of noisy breathing or stridor?
+Have you noticed any changes in your sleep patterns due to breathing difficulties? Please elaborate.
+Can you describe any episodes of feeling short of breath while lying down?
+Have you experienced any recurrent respiratory infections? Please provide details.
+Can you describe any episodes of wheezing or whistling sounds when you breathe?
+Have you noticed any changes in your voice, such as hoarseness? Please provide details.
+
+### Gastrointestinal Disorders
+Have you experienced any changes in your digestion, such as pain, bloating, or changes in bowel habits? Please provide details about any discomfort or abnormal symptoms.
+Can you describe any episodes of nausea or vomiting you have experienced?
+Have you noticed any changes in your appetite or weight? Please elaborate.
+Can you describe any episodes of heartburn or acid reflux you have experienced?
+Have you experienced any abdominal pain or cramping? Please provide details about the location and intensity.
+Can you describe any episodes of diarrhea or constipation you have experienced?
+Have you noticed any changes in the color or consistency of your stool? Please elaborate.
+Can you describe any episodes of blood in your stool or black, tarry stools?
+Have you experienced any difficulty swallowing or a feeling of food getting stuck? Please provide details.
+
+### Ear, Nose, and Throat Disorders (ENT)
+Can you describe any issues with your hearing, sense of smell, or throat discomfort? Include any instances of infections, blockages, or persistent pain.
+Have you experienced any ringing in your ears or tinnitus? Please elaborate.
+Can you describe any episodes of ear pain or discharge you have experienced?
+Have you noticed any changes in your voice, such as hoarseness or loss of voice? Please provide details.
+Can you describe any episodes of nasal congestion or sinus pain?
+Have you experienced any sore throats or difficulty swallowing? Please elaborate.
+Can you describe any episodes of nosebleeds or nasal discharge?
+Have you noticed any changes in your sense of taste or smell? Please provide details.
+Can you describe any episodes of dizziness or balance issues you have experienced?
+Have you experienced any jaw pain or discomfort? Please elaborate.
+
+### Renal and Urological Disorders
+Have you experienced any changes in your urination, such as frequency, pain, or changes in color? Please describe any other related symptoms you’ve noticed.
+Can you describe any episodes of urinary incontinence or difficulty controlling your bladder?
+Have you noticed any changes in the amount or odor of your urine? Please provide details.
+Can you describe any episodes of blood in your urine or unusual discharge?
+Have you experienced any pain or discomfort in your lower abdomen or back? Please elaborate.
+Can you describe any episodes of frequent urination at night or urgency to urinate?
+Have you noticed any changes in your sexual function or libido? Please provide details.
+Can you describe any episodes of urinary tract infections or kidney infections you have experienced?
+Have you experienced any swelling in your legs, ankles, or feet? Please elaborate.
+Can you describe any episodes of feeling thirsty or dehydrated despite drinking fluids?
+
+### Ophthalmological Disorders
+Can you describe any changes in your vision, such as blurred vision, double vision, or sensitivity to light? Include details about any discomfort or eye pain.
+Have you experienced any episodes of eye redness or swelling? Please provide details.
+Can you describe any episodes of eye discharge or excessive tearing?
+Have you noticed any changes in your ability to see at night or in low light conditions? Please elaborate.
+Can you describe any episodes of eye floaters or flashes of light?
+Have you experienced any difficulty focusing or reading? Please provide details.
+Can you describe any episodes of eye dryness or irritation?
+Have you noticed any changes in the appearance of your eyes, such as bulging or sunken eyes? Please elaborate.
+Can you describe any episodes of double vision or difficulty with depth perception?
+Have you experienced any episodes of eye pain or discomfort? Please provide details.
+
+### Musculoskeletal Disorders
+Have you experienced any joint pain, muscle weakness, or difficulty with movement? Please describe the severity and impact of these symptoms on your daily activities.
+Can you describe any episodes of back pain or stiffness you have experienced?
+Have you noticed any changes in your posture or alignment? Please provide details.
+Can you describe any episodes of muscle cramps or spasms?
+Have you experienced any difficulty performing everyday tasks, such as walking or lifting objects? Please elaborate.
+Can you describe any episodes of swelling or inflammation in your joints?
+Have you noticed any changes in your ability to grip or hold objects? Please provide details.
+Can you describe any episodes of numbness or tingling in your limbs?
+Have you experienced any changes in your physical strength or endurance? Please elaborate.
+Can you describe any episodes of joint stiffness or limited range of motion?
+
+### Metabolic Disorders
+Can you describe any changes in your weight, energy levels, or appetite? Include details about any related symptoms such as excessive thirst or frequent urination.
+Have you noticed any changes in your skin, such as darkening or thickening? Please provide details.
+Can you describe any episodes of feeling excessively hungry or thirsty?
+Have you experienced any changes in your tolerance to cold or heat? Please elaborate.
+Can you describe any episodes of rapid or irregular heartbeat?
+Have you noticed any changes in your hair or nails? Please provide details.
+Can you describe any episodes of feeling shaky or experiencing tremors?
+Have you experienced any changes in your vision or eye health? Please elaborate.
+Can you describe any episodes of feeling dizzy or faint?
+Have you noticed any changes in your menstrual cycle or reproductive health? Please provide details.
+
+### Psychiatric Disorders
+Can you describe any changes in your mood, behavior, or thought patterns? Include details about any anxiety, depression, or other mental health symptoms you’ve been experiencing.
+Have you experienced any episodes of feeling excessively anxious or panicked? Please provide details.
+Can you describe any changes in your ability to concentrate or focus?
+Have you noticed any changes in your sleep patterns, such as insomnia or excessive sleeping? Please elaborate.
+Can you describe any episodes of feeling hopeless or having thoughts of self-harm?
+Have you experienced any changes in your social interactions or relationships? Please provide details.
+Can you describe any episodes of feeling unusually irritable or angry?
+Have you noticed any changes in your appetite or weight? Please elaborate.
+Can you describe any episodes of feeling disconnected from reality or experiencing hallucinations?
+Have you experienced any significant changes in your energy levels or motivation? Please provide details.
+
+### Autoimmune Diseases
+Have you experienced any persistent pain, fatigue, or unusual symptoms that seem to affect multiple parts of your body? Please provide detailed descriptions of these symptoms.
+Can you describe any episodes of joint stiffness or swelling?
+Have you noticed any changes in your skin, such as rashes or lesions? Please provide details.
+Can you describe any episodes of muscle weakness or fatigue?
+Have you experienced any changes in your ability to perform physical activities? Please elaborate.
+Can you describe any episodes of feeling unusually cold or hot?
+Have you noticed any changes in your digestive health, such as abdominal pain or diarrhea? Please provide details.
+Can you describe any episodes of feeling short of breath or experiencing chest pain?
+Have you experienced any changes in your vision or eye health? Please provide details.
+Can you describe any episodes of feeling lightheaded or dizzy?
+
+### Reproductive Health Issues
+Can you describe any changes in your reproductive health, such as irregular periods, pain, or any other unusual symptoms? Include details about any discomfort or concerns.
+Have you experienced any changes in your menstrual cycle, such as frequency or duration? Please provide details.
+Can you describe any episodes of pelvic pain or discomfort?
+Have you noticed any changes in your libido or sexual function? Please elaborate.
+Can you describe any episodes of unusual discharge or odor?
+Have you experienced any pain or discomfort during intercourse? Please provide details.
+Can you describe any episodes of breast pain or changes in breast tissue?
+Have you noticed any changes in your ability to conceive or maintain a pregnancy? Please elaborate.
+Can you describe any episodes of urinary incontinence or difficulty controlling your bladder?
+Have you experienced any changes in your overall physical health that you believe are related to your reproductive health? Please provide details.
