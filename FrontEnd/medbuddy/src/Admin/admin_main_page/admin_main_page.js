@@ -110,7 +110,7 @@ const AdminMainPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const titleElement = document.querySelector(`.${styles.container2__title}`);
+    const titleElement = document.querySelector(`.${styles.container2__admin__main__page__title}`);
     const texts = ["Welcome back,", "     Admin!"];
     let index = 0;
     let textIndex = 0;
@@ -173,14 +173,14 @@ const AdminMainPage = () => {
 
       <div className={styles.container1__admin__main__page} id="current_users">
         <div className={styles.container1__header__admin__main__page}>
-          <p className={styles.container1__header__text}>CURRENT USERS</p>
+          <p className={styles.container1__header__admin__main__text}>CURRENT USERS</p>
         </div>
         {[...Array(10).keys()].map(i => (
-          <div key={i} className={styles.container1__square}>
-            <div className={styles.container1__square__icon}>
+          <div key={i} className={styles.container1__admin__main__page__square}>
+            <div className={styles.container1__admin__main__page__square__icon}>
               <p>PHOTO</p>
             </div>
-            <p className={styles.container1__square__data}>
+            <p className={styles.container1__admin__main__page__square__data}>
               NAME: <span className={styles.name}></span><br />
               EMAIL: <span className={styles.email}></span><br />
               PHONE: <span className={styles.phone}></span>
@@ -189,10 +189,10 @@ const AdminMainPage = () => {
         ))}
       </div>
 
-      <div className={styles.container2}>
-        <p className={styles.container2__title}></p>
-        <button className={styles.container2__button1} type="button" onClick={handleReportClick}>REPORT</button><br /><br />
-        <button className={styles.container2__button2} type="button" onClick={handleManageAccountsClick}>MANAGE ACCOUNTS</button>
+      <div className={styles.container2__admin__main__page}>
+        <p className={styles.container2__admin__main__page__title}></p>
+        <button className={styles.container2__admin__main__page__button1} type="button" onClick={handleReportClick}>REPORT</button><br /><br />
+        <button className={styles.container2__admin__main__page__button2} type="button" onClick={handleManageAccountsClick}>MANAGE ACCOUNTS</button>
       </div>
     </div>
   );
