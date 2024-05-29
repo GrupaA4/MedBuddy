@@ -1,2 +1,0 @@
-2024-05-27 16:02:43 DEBUG AdvicesLogger:21 - ORA-01400: cannot insert NULL into ("MEDBUDDY"."CONVERSATION"."LASTSENTAT")
-
