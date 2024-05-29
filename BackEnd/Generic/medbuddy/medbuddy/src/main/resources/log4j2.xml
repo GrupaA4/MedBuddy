@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
     <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"/>
+        </Console>
         <File name="App" fileName="logs/app.log" append="false">
             <PatternLayout>
                 <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</pattern>
@@ -11,16 +14,41 @@
                 <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</pattern>
             </PatternLayout>
         </File>
+        <File name="Warnings" fileName="logs/warnings.log" append="false">
+            <PatternLayout>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</pattern>
+            </PatternLayout>
+        </File>
+        <File name="Advices" fileName="logs/advices.log" append="false">
+            <PatternLayout>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</pattern>
+            </PatternLayout>
+        </File>
     </Appenders>
     <Loggers>
         <Root level="info">
+            <AppenderRef ref="Console"/>
             <AppenderRef ref="App"/>
         </Root>
         <Logger name="org.springframework.jdbc.core.JdbcTemplate" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
             <AppenderRef ref="Database"/>
         </Logger>
+        <Logger name="org.springframework.security" level="debug" additivity="false">
+            <AppenderRef ref = "Console"/>
+            <AppenderRef ref = "App"/>
+        </Logger>
         <Logger name="com.medbuddy.medbuddy" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
             <AppenderRef ref="App"/>
+        </Logger>
+        <Logger name="DatabaseWarnings" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="Warnings"/>
+        </Logger>
+        <Logger name="AdvicesLogger" level="debug" additivity="false">
+            <AppenderRef ref = "Console"/>
+            <AppenderRef ref = "Advices"/>
         </Logger>
     </Loggers>
 </Configuration>

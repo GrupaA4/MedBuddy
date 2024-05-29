@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.UUID;
 
 @Data
-public class MedicalHistoryEntry {
+public class MedicalHistoryEntry implements Entity{
     private UUID id;
     private UUID medicId;
     private UUID patientId;

@@ -2,7 +2,10 @@ package com.medbuddy.medbuddy.utilitaries;
 
 import com.medbuddy.medbuddy.exceptions.DatabaseExceptions;
 
-public class DataConvertorUtil {
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public abstract class DataConvertorUtil {
     public static boolean turn0or1intoBoolean(int bool) throws DatabaseExceptions.BooleanProblemInDatabase {
         if (bool == 1) return true;
         else if (bool == 0) return false;
@@ -12,5 +15,15 @@ public class DataConvertorUtil {
     public static int turnBooleanInto0or1(boolean bool) {
         if (bool) return 1;
         else return 0;
+    }
+
+    public static LocalDate turnDDMMYYYYToLocalDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+        return LocalDate.parse(date, formatter);
+    }
+
+    public static String turnLocalDateToDDMMYYYY(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+        return date.format(formatter);
     }
 }

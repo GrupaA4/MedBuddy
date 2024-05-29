@@ -1,5 +1,6 @@
 package com.medbuddy.medbuddy.repository.daos;
 
+import com.medbuddy.medbuddy.exceptions.DatabaseExceptions;
 import com.medbuddy.medbuddy.exceptions.NotFoundExceptions;
 import com.medbuddy.medbuddy.models.MedicalHistoryEntry;
 import com.medbuddy.medbuddy.repository.rowmappers.MedicalHistoryRowMapper;
@@ -45,7 +46,7 @@ public class MedicalHistoryDAO {
                     userId.toString()
             );
         } catch (EmptyResultDataAccessException e) {
-            throw new NotFoundExceptions.MedicalHistoryNotFoundException("No medical history fond for user with id " + userId);
+            throw new NotFoundExceptions.MedicalHistoryNotFound("No medical history found for user with id " + userId);
         }
     }
 
@@ -69,5 +70,23 @@ public class MedicalHistoryDAO {
         } catch (DataAccessException e) {
             logger.error("Error executing query: ", e.getMessage());
         }
+    }
+
+    public void deleteEntry(UUID entryId) {
+        String sql = "DELETE FROM MedicalHistory WHERE id = ?";
+        int numberOfEntriesDeleted = jdbcTemplate.update(sql, entryId.toString());
+        switch (numberOfEntriesDeleted) {
+            case 0:
+                throw new NotFoundExceptions.MedicalHistoryNotFound("No medical history with id " + entryId + " was found");
+            case 1:
+                return;
+            default:
+                throw new DatabaseExceptions.NonUniqueIdentifier("More medical historyEntries with the same id (" + entryId + ") were found");
+        }
+    }
+
+    public void markEntriesAsDeleted(UUID userId) {
+        String sql = "UPDATE MedicalHistory SET isDeleted = 1 WHERE patientId = ?";
+        jdbcTemplate.update(sql, userId.toString());
     }
 }

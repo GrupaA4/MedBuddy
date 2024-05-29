@@ -1,26 +1,50 @@
 package com.medbuddy.medbuddy.models;
 
+import com.medbuddy.medbuddy.controllers.requestbodies.UserRequestBodies;
+import com.medbuddy.medbuddy.utilitaries.DataConvertorUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-import java.util.Date;
 import java.util.UUID;
 
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class Medic extends User{
-    private UUID id;
+    private UUID medicId;
     private String typeOfMedic;
     private String clinic;
-    private String certificateImagePath;
-    private Boolean isApproved;
+    private int certificateImageNumber;
+    private String certificateExtension;
+    private boolean isApproved;
 
-    public Medic(UUID id, String email, String password, String lastName, String firstName, Boolean gender, String pronoun1, String pronoun2, Date dateOfBirth, String language, String country, String city, String phoneNumber, String profileImagePath, Boolean isAdmin, Boolean isDeleted, UUID id1, String typeOfMedic, String clinic, String certificateImagePath, Boolean isApproved) {
-        super(id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImagePath, isAdmin, isDeleted);
-        this.id = id1;
-        this.typeOfMedic = typeOfMedic;
-        this.clinic = clinic;
-        this.certificateImagePath = certificateImagePath;
-        this.isApproved = isApproved;
+    public Medic(User user, Medic medic) {
+        super(user);
+        medicId = medic.medicId;
+        typeOfMedic = medic.typeOfMedic;
+        clinic = medic.clinic;
+        certificateImageNumber = medic.certificateImageNumber;
+        certificateExtension = medic.certificateExtension;
+        isApproved = medic.isApproved;
+    }
+
+    public Medic(UserRequestBodies.MedicSignup medic) {
+        email = medic.getEmail();
+        password = medic.getPassword();
+        lastName = medic.getLastName();
+        firstName = medic.getFirstName();
+        gender = medic.isGender();
+        pronoun1 = medic.getPronoun1();
+        pronoun2 = medic.getPronoun2();
+        dateOfBirth = DataConvertorUtil.turnDDMMYYYYToLocalDate(medic.getDateOfBirth());
+        language = medic.getLanguage();
+        country = medic.getCountry();
+        city = medic.getCity();
+        phoneNumber = medic.getPhoneNumber();
+        imageExtension = medic.getImageExtension();
+        typeOfMedic = medic.getTypeOfMedic();
+        clinic = medic.getClinic();
+        certificateExtension = medic.getImageExtension();
     }
 }
