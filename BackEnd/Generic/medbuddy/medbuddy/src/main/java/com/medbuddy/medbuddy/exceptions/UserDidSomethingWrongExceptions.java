@@ -24,4 +24,10 @@ public abstract class UserDidSomethingWrongExceptions {
             super(message);
         }
     }
+
+    public static class UserCredentialsNotFound extends RuntimeException {
+        public UserCredentialsNotFound(String message) {
+            super(message);
+        }
+    }
 }

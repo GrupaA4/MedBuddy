@@ -46,4 +46,13 @@ public class UserDidSomethingWrongAdvice {
         logger.debug(ex.getMessage());
         return ex.getMessage();
     }
+
+    @ResponseBody
+    @ExceptionHandler(UserDidSomethingWrongExceptions.UserCredentialsNotFound.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public String credentialsNotFoundAdvice(UserDidSomethingWrongExceptions.UserCredentialsNotFound ex) {
+        Logger logger = LogManager.getLogger("AdvicesLogger");
+        logger.debug(ex.getMessage());
+        return ex.getMessage();
+    }
 }

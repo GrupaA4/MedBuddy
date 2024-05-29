@@ -2,8 +2,11 @@ package com.medbuddy.medbuddy.controllers;
 
 import com.medbuddy.medbuddy.controllers.requestbodies.UserRequestBodies;
 import com.medbuddy.medbuddy.controllers.responsebodies.UserResponseBodies;
+import com.medbuddy.medbuddy.exceptions.UserDidSomethingWrongExceptions;
 import com.medbuddy.medbuddy.models.Medic;
 import com.medbuddy.medbuddy.models.User;
+import com.medbuddy.medbuddy.utilitaries.SecurityUtil;
+import com.medbuddy.medbuddy.utilitaries.validators.EntityValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,12 +30,30 @@ public class UserController {
 
     //works
     @GetMapping("/login")
-    public ResponseEntity<Void> login() {
-        if(userService.loginUser("example@example.com", "passwordexample")) {
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    public Map<String, String> login() {
+        String email = SecurityUtil.getEmail();
+        UUID id = userService.getUserIdByEmail(email);
+        User user = userService.getUser(id);
+
+        if(!EntityValidator.validate(user)) {
+            throw new UserDidSomethingWrongExceptions.UserCredentialsNotFound(null);
         }
+
+        Map<String, String> response = new HashMap<>();
+        if(user.isAdmin()) {
+            response.put("type", "Admin");
+            return response;
+        }
+        if(userService.isMedic(id)) {
+            Medic medic = userService.getMedicProfile(id);
+            if(!medic.isApproved()) {
+                throw new UserDidSomethingWrongExceptions.UserCredentialsNotFound(null);
+            }
+            response.put("type", "Medic");
+            return response;
+        }
+        response.put("type", "Patient");
+        return response;
     }
 
     //works
