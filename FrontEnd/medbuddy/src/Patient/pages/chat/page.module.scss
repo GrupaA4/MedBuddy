@@ -1,0 +1,280 @@
+@font-face {
+    font-family: "Bebas_font";
+    src: local("Bebas_Neue"),
+     url("../../fonts/Bebas_Neue/BebasNeue-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Oswald_font";
+    src: local("Oswald"),
+    url("../../fonts/Oswald/Oswald-VariableFont_wght.ttf") format("truetype");
+}
+
+.page__message_area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+
+    .page__main_container {
+        width: 76vw;
+        height: calc(100vh - 18rem);
+        border: 0.15rem solid #87B6C1;
+        border-radius: 1rem;
+        display: flex;
+        padding-top: 3rem;
+        padding-bottom: 0.5rem;
+        margin-top: 0.5rem;
+        .page__message_header {
+            position: fixed; 
+            top: 0.65rem; 
+            display: flex;
+            gap: 0.7rem;
+            width: 76vw;
+            background-color: #fff;
+            padding: 1rem 0; 
+            z-index: 1000;
+            border-radius: 1rem 1rem 0 0;
+            box-shadow: 0 8px 8px -4px rgb(190, 194, 195);
+    
+            .page__message_header__img {
+                margin-left: 2.6rem;
+                width: 1.6rem;
+            }
+            .page__message_header__status {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                h3 {
+                    color: #069DAE;
+                    font-size: 0.9rem;
+                    font-family: "Oswald_font";
+                    margin: 0;
+                }
+                .header__status {
+                    display: flex;
+                    gap: 0.3rem;
+                    p {
+                        color: #3ABF38;
+                        font-family: "Oswald_font";
+                        margin: 0;
+                        font-size: 0.8rem;
+                    }
+                    .status__icon {
+                        width: 0.3rem;
+                        color: #3ABF38;
+                        font-weight: 200;
+                    }
+                }
+                
+            }  
+        }
+    
+        .page__message_container {
+            width: 76vw;
+            height: calc(100vh - 23rem);
+            border-radius: 1rem;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            padding: 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+
+            .page__msg {
+                max-width: 68vw;
+                width: auto;
+                word-wrap: break-word;
+                display: block;
+                margin: 0.6rem 0;
+                padding: 0.8rem 0.8rem;
+                border-radius: 0.8rem 0 0.8rem 0.8rem;
+                font-family: "Oswald_font";
+                font-weight: 300;
+            }
+    
+            .page__message {
+                background-color: #069DAE;
+                color: white;
+            }
+            .page__response {
+                background-color: #EEEEEE;
+                color: #505050;
+                align-self: flex-start;
+            }
+        }
+    }
+
+    .page__message_buttons{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        width: 60%;
+        margin-top: 1.5rem;
+        .page__message_buttons_action{
+            background-color: #B8E0C6;
+            color: #369986;
+            width: 11vw;
+            height: 3rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1rem;
+            border: none;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            outline: none;
+        }
+        .page__message_buttons_action:hover{
+            width: 12vw;
+            height: 3.15rem;
+        }
+    }
+    .page__message_input{
+        height: 5rem;
+        background-color: #DEF9F1;
+        color: #87B6C1;
+        border: 0.15rem solid #87B6C1;
+        border-radius: 1rem;
+        width: 80vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        .page__message_area_question{
+            width: 80%;
+            height: 4rem;
+            background-color: #DEF9F1;
+            border: none;
+            text-indent: 0.5rem;
+            outline: none;
+            resize: none;
+            scrollbar-width: none;
+        }
+        .page__message_area_question::placeholder{
+            color: #87B6C1;
+            text-indent: 1rem;    
+        }
+        .page__message_area_actions{
+            display: flex;
+            justify-content: space-around;
+            width: 12%;
+            .page__message_area_file{
+                cursor: pointer;
+                .page__message_area_file_in{
+                    display: none;
+                }
+                .page__message_area_file_img{
+                    height: 3rem;
+                }
+            }
+            .page__message_area_button{
+                background-color: #DEF9F1;
+                border: none;
+                cursor: pointer;
+                .page__message_area_send{
+                    height: 3rem;
+                }
+            }
+        }    
+    }
+}
+
+
+@media screen and (max-width: 1000px){
+    .page__message_area{
+        .page__main_container {
+            height: calc(100vh - 22rem);
+            .page__message_container{
+                height: calc(100vh - 27rem);
+            }
+        }
+       
+        .page__message_buttons{
+            width: 70%;
+            margin-top: 2rem;
+            .page__message_buttons_action{
+                width: 20vw;
+                height: 2.5rem;
+                font-size: 0.85rem;
+            }
+            .page__message_buttons_action:hover{
+                width: 21vw;
+                height: 2.1rem;
+            }
+        }
+        .page__message_input{
+            height: 7rem;
+            width: 70vw;
+            margin-top: 2rem;
+            .page__message_area_question{
+                width: 70%;
+                height: 5rem;
+            }
+            .page__message_area_actions{
+                width: 25%;
+                .page__message_area_file{
+                    .page__message_area_file_img{
+                        height: 2.25rem;
+                    }
+                }
+                .page__message_area_button{
+                    .page__message_area_send{
+                        height: 2.25rem;
+                    }
+                }
+            }    
+        }
+    }
+}
+
+@media screen and (max-width: 500px){
+    .page__message_area{
+        .page__main_container {
+            height: calc(100vh - 23.5rem);
+            .page__message_container {
+                padding: 1rem;
+                height: calc(100vh - 26rem);
+            }
+        }
+        .page__message_buttons{
+            width: 70%;
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 6rem;
+            .page__message_buttons_action{
+                width: 40vw;
+            }
+        }
+        .page__message_input{
+            height: 6rem;
+            width: 70vw;
+            margin-top: 2rem;
+            .page__message_area_question{
+                width: 65%;
+                height: 4.5rem;
+            }
+            .page__message_area_question::placeholder{
+                font-size: 0.65rem;
+            }
+            .page__message_area_actions{
+                width: 30%;
+                .page__message_area_file{
+                    .page__message_area_file_img{
+                        height: 1.5rem;
+                    }
+                }
+                .page__message_area_button{
+                    .page__message_area_send{
+                        height: 1.5rem;
+                    }
+                }
+            }    
+        }
+    }
+}

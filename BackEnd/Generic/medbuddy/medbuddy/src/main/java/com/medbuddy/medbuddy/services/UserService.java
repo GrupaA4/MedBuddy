@@ -1,90 +1,139 @@
 package com.medbuddy.medbuddy.services;
 
+import com.medbuddy.medbuddy.exceptions.NotFoundExceptions;
 import com.medbuddy.medbuddy.models.Medic;
 import com.medbuddy.medbuddy.models.User;
 import com.medbuddy.medbuddy.repository.daos.UserDAO;
+import com.medbuddy.medbuddy.utilitaries.SecurityUtil;
+import com.medbuddy.medbuddy.utilitaries.validators.EntityValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.util.Map;
+import javax.xml.validation.Validator;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Service
 public class UserService {
-
-    private final UserDAO userDAO;
-
     @Autowired
-    public UserService(UserDAO userDAO) {
-        this.userDAO = userDAO;
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserDAO userDAO;
+
+    public boolean loginUser(String email, String password) {
+        return userDAO.loginUser(email, password);//throws exceptions if email doesn't exist
     }
 
     public UUID getUserIdByEmail(String email) {
-        return userDAO.getUserId(email);
+        UUID id = userDAO.getUserId(email);
+
+        User user = userDAO.getUserById(id);
+        if(EntityValidator.validate(user)) {
+            return id;
+        } else {
+            throw new NotFoundExceptions.UserNotFound("User with email " + email + " was not found");
+        }
     }
 
     public void createUser(User userRequest) {
-        User user = new User();
-        user.setEmail(userRequest.getEmail());
-        user.setPassword(userRequest.getPassword());
-        user.setLastName(userRequest.getLastName());
-        user.setFirstName(userRequest.getFirstName());
-        user.setGender(userRequest.getGender());
-        user.setPronoun1(userRequest.getPronoun1());
-        user.setPronoun2(userRequest.getPronoun2());
-        user.setDateOfBirth(userRequest.getDateOfBirth());
-        user.setLanguage(userRequest.getLanguage());
-        user.setCountry(userRequest.getCountry());
-        user.setCity(userRequest.getCity());
-        user.setPhoneNumber(userRequest.getPhoneNumber());
-        user.setProfileImagePath(userRequest.getProfileImagePath());
-        user.setIsAdmin(userRequest.getIsAdmin());
-        user.setIsDeleted(userRequest.getIsDeleted());
 
-        userDAO.signupUser(user);
+        userDAO.checkIfUserWithEmailExists(userRequest.getEmail());//will throw exceptions if that happens
+
+        userRequest.setId(SecurityUtil.getNewId());
+        String password = userRequest.getPassword();
+        userRequest.setPassword(passwordEncoder.encode(password));
+
+        int imageNumber = userDAO.getMaxImageNumber() + 1;
+        //add profile image to database
+        userRequest.setProfileImageNumber(imageNumber);
+
+        userRequest.setLastTimeLoggedIn(LocalDate.now());
+        userRequest.setDeleted(false);
+
+        userDAO.signupUser(userRequest);
+    }
+
+    public void createMedic(Medic medicRequest) {
+
+        userDAO.checkIfUserWithEmailExists(medicRequest.getEmail());//will throw exceptions if that happens
+
+        medicRequest.setId(SecurityUtil.getNewId());
+        String password = medicRequest.getPassword();
+        medicRequest.setPassword(passwordEncoder.encode(password));
+
+        int imageNumber = userDAO.getMaxImageNumber() + 1;
+        //add profile image to database
+        medicRequest.setProfileImageNumber(imageNumber);
+
+        medicRequest.setLastTimeLoggedIn(LocalDate.now());
+        medicRequest.setDeleted(false);
+
+        userDAO.signupUser(medicRequest);//automatically maps to a user
+
+        medicRequest.setMedicId(SecurityUtil.getNewId());
+
+        int certificateNumber = userDAO.getMaxCertificateNumber() + 1;
+        //add certificate image to database
+        medicRequest.setProfileImageNumber(certificateNumber);
+
+        medicRequest.setApproved(false);
+
+        userDAO.signupMedic(medicRequest);
     }
 
     public User getUser(UUID userId) {
-        return userDAO.getUserById(userId);
+        User user = userDAO.getUserById(userId);
+
+        if(EntityValidator.validate(user)) {
+            return user;
+        } else {
+            throw new NotFoundExceptions.UserNotFound("User with id " + userId + "was not found");
+        }
+    }
+
+    public UUID getUserIdOfMedic(UUID medicId) {
+        UUID userId = userDAO.getUserIdOfMedic(medicId);
+
+        User user = userDAO.getUserById(userId);
+
+        if(EntityValidator.validate(user)) {
+            return userId;
+        } else {
+            throw new NotFoundExceptions.UserNotFound("Medic with id " + medicId + "was not found");
+        }
     }
 
     public Medic getMedicProfile(UUID userId) {
         User user = userDAO.getUserById(userId);
-        JdbcTemplate jdbcTemplate = null;
-        // Assuming MedicProfile extends User with some additional fields
-        if(!isMedic(userId))
-            return null;
-        String query = "SELECT * FROM medic WHERE id = ?";
-        return jdbcTemplate.queryForObject(query, new Object[]{userId}, Medic.class);
+
+        if(!EntityValidator.validate(user)) {
+            throw new NotFoundExceptions.UserNotFound("No user with this id " + userId + " was found");
+        }
+
+        return new Medic(user, userDAO.getMedicSpecificInfoByUserId(userId));
     }
 
     public void updateUser(UUID userId, User userRequest) {
         User user = userDAO.getUserById(userId);
-        user.setEmail(userRequest.getEmail());
-        user.setPassword(userRequest.getPassword());
-        user.setLastName(userRequest.getLastName());
-        user.setFirstName(userRequest.getFirstName());
-        user.setGender(userRequest.getGender());
-        user.setPronoun1(userRequest.getPronoun1());
-        user.setPronoun2(userRequest.getPronoun2());
-        user.setDateOfBirth(userRequest.getDateOfBirth());
-        user.setLanguage(userRequest.getLanguage());
-        user.setCountry(userRequest.getCountry());
-        user.setCity(userRequest.getCity());
-        user.setPhoneNumber(userRequest.getPhoneNumber());
-        user.setProfileImagePath(userRequest.getProfileImagePath());
-        user.setIsAdmin(userRequest.getIsAdmin());
-        user.setIsDeleted(userRequest.getIsDeleted());
 
-        userDAO.updateUser(user);
+        if(!EntityValidator.validate(user)) {
+            throw new NotFoundExceptions.UserNotFound("No user with this id " + userId + " was found");
+        }
+
+        String password = userRequest.getPassword();
+        userRequest.setPassword(passwordEncoder.encode(password));
+
+        userDAO.updateUser(userRequest, userId);
     }
 
     public void softDeleteUser(UUID userId) {
         userDAO.markUserAsDeleted(userId);
+        //delete conversations
+        //delete messages
+        //delete reports
+        //delete medical history
     }
 
     public void hardDeleteUser(UUID userId) {
@@ -92,9 +141,6 @@ public class UserService {
     }
 
     public boolean isMedic(UUID userId) {
-        JdbcTemplate jdbcTemplate = null;
-        String query = "SELECT COUNT(*) FROM medic WHERE id = ?";
-        Integer count = jdbcTemplate.queryForObject(query, new Object[]{userId}, Integer.class);
-        return count != null && count > 0;
+        return userDAO.isMedic(userId);
     }
 }

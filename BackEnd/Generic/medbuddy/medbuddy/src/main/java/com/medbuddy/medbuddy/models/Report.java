@@ -2,16 +2,15 @@ package com.medbuddy.medbuddy.models;
 
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
-public class Report {
+public class Report implements Entity{
     private UUID id;
     private UUID reportedUser;
     private UUID reportedBy;
-    private Boolean isDeleted;
     private String reportMessage;
-    private String TimeCreated;
-    private boolean Deleted;
-
+    private LocalDate timeCreated;
+    private boolean isDeleted;
 }
