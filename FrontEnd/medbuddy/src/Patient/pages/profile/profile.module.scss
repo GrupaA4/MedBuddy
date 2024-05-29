@@ -156,80 +156,6 @@ $font_oswald: "Oswald_font";
         }
     }
 
-    .medical_data_container{
-        margin-top: 10vh;
-
-        &__section{
-            &__title{
-                font-family: $font_bebas;
-                font-size: 4vh;
-            }
-
-            &__editable_information{
-                &__div{
-                    display: flex;
-                    justify-content: space-between;
-
-                    label{
-                        font-family: $font_bebas;
-                        font-size: 2vh;
-                        color: $blue-color;
-                        font-weight: 100;
-                        margin-right: 2vw;
-                    }
-    
-                    input{
-                        font-family: $font_oswald;
-                        font-size: 2vh;
-                    }
-                }
-            }
-
-            &__non_editable_information{
-                &__div{
-                    display: flex;
-                    justify-content: space-between;
-
-                    h3{
-                        font-family: $font_bebas;
-                        font-size: 2vh;
-                        color: $blue-color;
-                        font-weight: 100;
-                        margin-right: 2vw;
-                        padding: 0;
-                    }
-    
-                    p{
-                        font-family: $font_oswald;
-                        font-size: 2vh;
-                        padding: 0;
-                    }
-                }
-
-                &__diagnostics_link{
-                    display: inline-block;
-                    padding: 2vh 4vw;
-                    border-radius: 3vh;
-                    background-color: $green-color;
-                    text-decoration: none;
-                    font-family: $font_oswald;
-                    color: $white-color;
-                    margin-left: 1vw;
-                    margin-top: 2vh;
-                    font-size: 2vh;
-
-                    &:hover{
-                        transform: translateY(-0.5vh);
-                    }
-    
-                    &:active{
-                        transform: translateY(0.5vh);
-                    }
-                }
-            }
-        }
-    }
-
     .form_container{
         display: flex;
         flex-direction: column;
@@ -317,14 +243,6 @@ $font_oswald: "Oswald_font";
                             font-size: 2vh;
                         }
                     }
-                }
-            }
-        }
-
-        .medical_data_container{
-            &__section{
-                &__title{
-                    font-size: 3vh;
                 }
             }
         }
@@ -419,45 +337,6 @@ $font_oswald: "Oswald_font";
                         p{
                             font-size: 4vh;
                         }
-                    }
-                }
-            }
-        }
-
-        .medical_data_container{
-            &__section{
-                &__title{
-                    font-size: 5vh;
-                }
-
-                &__editable_information{
-                    &__div{
-                        label{
-                            font-size: 4vh;
-                        }
-
-                        input{
-                            font-size: 4vh;
-                        }
-                    }
-                }
-
-                &__non_editable_information{
-                    &__div{
-                        h3{
-                            font-size: 4vh;
-                        }
-
-                        p{
-                            font-size: 4vh;
-                        }
-                    }
-
-                    &__diagnostics_link{
-                        margin-bottom: 4vh;
-                        margin-left: 26vw;
-                        padding: 2vh 8vw;
-                        font-size: 4vh;
                     }
                 }
             }

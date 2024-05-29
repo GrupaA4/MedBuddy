@@ -1,3 +1,4 @@
+//Reminder: add profile image after backend fix and remove comments at line 208
 import React, {useState} from 'react';
 
 import '../../fonts/Bebas_Neue/BebasNeue-Regular.ttf';
@@ -93,6 +94,50 @@ export default function SignIn(){
     const handleSubmit= async (event) =>{
         event.preventDefault();
 
+        const phoneRegex = /^\d{10}$/;
+        const languageRegex = /^[A-Z]{2}$/;
+        const textRegex = /^[a-zA-Z]+$/;
+        const firstNameRegex = /^[a-zA-Z-]+$/;
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+
+        if(!email.match(emailRegex)){
+            window.alert('Please enter a valid email address');
+            return;
+        }
+        if(!lastName.match(textRegex)){
+            window.alert('Last name should contain only letters');
+            return;
+       }
+       if(!firstName.match(firstNameRegex)){
+            window.alert('First name should contain only letters');
+            return;
+       }
+       if(!pronoun1.match(textRegex)){
+            window.alert('Pronoun 1 should contain only letters');
+            return;
+       }
+       if(!pronoun2.match(textRegex)){
+            window.alert('Pronoun 2 should contain only letters');
+            return;
+       }
+       if(!language.match(languageRegex)){
+            window.alert('Language should contain only 2 capital letters');
+            return;
+       }
+       if(!country.match(textRegex)){
+            window.alert('Country should contain only letters');
+            return;
+       }
+       if(!city.match(textRegex)){
+            window.alert('City should contain only letters');
+            return;
+       }
+       if(!phone.match(phoneRegex)){
+            window.alert('Phone number should contain only numbers and be exactly 10 digits long');
+            return;
+       }
+
         const data = {
             email:email,
             password:password,
@@ -112,7 +157,6 @@ export default function SignIn(){
         };
 
         console.log('Data to be sent:', data);
-        const credentials = btoa(`test:test`);
 
         try {
             const response = await fetch('http://localhost:7264/medbuddy/signup', {
@@ -124,12 +168,26 @@ export default function SignIn(){
                 body: JSON.stringify(data),
             });
 
-            // if(!response.created){
-            //     throw new Error('Response was not ok');
-            // }
-
-            //const result= await response.json();
-            //console.log('Success:',result);
+            if(response.status !== 201){
+                if(response.status === 418 || response.status === 500){
+                    throw new Error('Internal backend error');
+                }
+                else if(response.status === 401){
+                    throw new Error('Wrong email and password in the header');
+                }
+                else if(response.status === 400){
+                    throw new Error('Typo in the URL or not the right path variable type');
+                }
+                else if(response.status === 403){
+                    throw new Error('Another user with this email exists');
+                }
+                else{
+                    throw new Error('Unknown error');
+                }
+            }
+            else{
+                console.log('Successfull authentification');
+            }
 
             Cookies.set(`user_email`, email, {expires: 7});
             Cookies.set(`user_pass`, password, {expires: 7});
@@ -151,6 +209,7 @@ export default function SignIn(){
             //window.location.href='/';
         } catch (error) {
             console.error('Error',error);
+            window.alert('An error occured.Please try again later.');
         }
     };
 
