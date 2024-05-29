@@ -31,4 +31,6 @@ public class Message implements Entity{
         repliesTo = body.getRepliesTo();
         isFromMedBuddy = body.isFromMedbuddy();
     }
+
+
 }

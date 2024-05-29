@@ -33,7 +33,8 @@ public class UserDAO {
 
     /**
      * check to see if a user is in the database
-     * @param email email in the credentials
+     *
+     * @param email    email in the credentials
      * @param password password in the credentials
      * @return true if the credentials match a user, false if not
      */
@@ -41,7 +42,7 @@ public class UserDAO {
         String sql = "SELECT COUNT(1) FROM appuser WHERE email = ? AND password = ?";
         Integer count = jdbcTemplate.queryForObject(sql, Integer.class, email, password);
 
-        if(count == null) {
+        if (count == null) {
             throw new DatabaseExceptions.ErrorInExecutingStatement("Error executing login statement, no object returned!");
         }
 
@@ -81,6 +82,7 @@ public class UserDAO {
 
     /**
      * provides the id of a user based on their email
+     *
      * @param email email of the user
      * @return the userid as a UUID
      */
@@ -102,10 +104,10 @@ public class UserDAO {
         String sqlCheck = "SELECT COUNT(1) FROM appuser WHERE email = ?";
         Integer numberOfExistingUsers = jdbcTemplate.queryForObject(sqlCheck, Integer.class, email);
 
-        if(numberOfExistingUsers == null)
+        if (numberOfExistingUsers == null)
             throw new DatabaseExceptions.ErrorInExecutingStatement("Error while checking to see if a user already exists or not!");
 
-        if(numberOfExistingUsers > 0)
+        if (numberOfExistingUsers > 0)
             throw new UserDidSomethingWrongExceptions.UserWithEmailAlreadyExists("Error: User with this email already exists!");
     }
 
@@ -113,7 +115,7 @@ public class UserDAO {
         String sql = "SELECT MAX(profileImageNumber) FROM appuser";
         Integer maxImageNumber = jdbcTemplate.queryForObject(sql, Integer.class);
 
-        if(maxImageNumber == null) {
+        if (maxImageNumber == null) {
             return 0;
         }
 
@@ -200,13 +202,14 @@ public class UserDAO {
         };
     }
 
-    public UUID getUserIdOfMedic (UUID medicId) {
+    public UUID getUserIdOfMedic(UUID medicId) {
         String sql = "SELECT userId FROM medic WHERE id = ?";
         List<String> ids = jdbcTemplate.queryForList(sql, String.class, medicId.toString());
         return switch (ids.size()) {
             case 0 -> throw new NotFoundExceptions.UserNotFound("No medic with id " + medicId + " found");
             case 1 -> UUID.fromString(ids.get(0));
-            default -> throw new DatabaseExceptions.NonUniqueIdentifier("Found more medics with the same id: " + medicId);
+            default ->
+                    throw new DatabaseExceptions.NonUniqueIdentifier("Found more medics with the same id: " + medicId);
         };
     }
 
@@ -300,7 +303,7 @@ public class UserDAO {
         String sql = "SELECT COUNT(1) FROM medic WHERE userId = ?";
         Integer numberOfMedicsFound = jdbcTemplate.queryForObject(sql, Integer.class, userId.toString());
 
-        if(numberOfMedicsFound == null) {
+        if (numberOfMedicsFound == null) {
             throw new DatabaseExceptions.ErrorInExecutingStatement("Error while trying to determine weather a user is a medic");
         }
 
