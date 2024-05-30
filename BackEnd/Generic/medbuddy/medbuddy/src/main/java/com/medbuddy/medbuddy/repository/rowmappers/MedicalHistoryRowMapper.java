@@ -27,7 +27,7 @@ public class MedicalHistoryRowMapper implements RowMapper<MedicalHistoryEntry> {
         medicalHistory.setMedicId(UUID.fromString(rs.getString("medicId")));
         medicalHistory.setPatientId(UUID.fromString(rs.getString("patientId")));
         medicalHistory.setDiagnosis(rs.getString("diagnosis"));
-        medicalHistory.setPeriod(rs.getString("period"));
+        medicalHistory.setDate_diagnosis(rs.getDate("period").toLocalDate());
         medicalHistory.setTreatment(rs.getString("treatment"));
         try {
             medicalHistory.setDeleted(

@@ -3,6 +3,7 @@ package com.medbuddy.medbuddy.controllers;
 import com.medbuddy.medbuddy.controllers.requestbodies.MedicalHistoryRequestBody;
 import com.medbuddy.medbuddy.controllers.responsebodies.MedicalHistoryResponseBodies;
 import com.medbuddy.medbuddy.services.MedicalHistoryService;
+import com.medbuddy.medbuddy.utilitaries.DataConvertorUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,9 +18,8 @@ public class MedicalHistoryController {
     private MedicalHistoryService service;
 
     @GetMapping(value = "/getusermedicalhistory/{id}")
-    public MedicalHistoryResponseBodies.GetMedicalHistory getMedicalHistory(@PathVariable UUID id) {
-        List<MedicalHistoryResponseBodies.MedicalHistoryBasicFields> entries = service.getUserMedicalHistory(id);
-        return new MedicalHistoryResponseBodies.GetMedicalHistory(entries.size(), entries);
+    public List<MedicalHistoryResponseBodies.MedicalHistoryBasicFields> getMedicalHistory(@PathVariable UUID id) {
+        return service.getUserMedicalHistory(id);
     }
 
     @PostMapping(value = "/addmedicalhistoryentry/{id}")
@@ -28,7 +28,7 @@ public class MedicalHistoryController {
                 UUID.fromString("4ac54007-cc86-4a68-beb3-12a73b9a7d0b"),
                 id,
                 body.getDiagnosis(),
-                body.getPeriod(),
+                DataConvertorUtil.turnSlashDateToLocalDate(body.getPeriod()),
                 body.getTreatment()
                 );
     }

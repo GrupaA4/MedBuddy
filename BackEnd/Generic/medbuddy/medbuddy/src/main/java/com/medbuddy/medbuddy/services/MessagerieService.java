@@ -1,5 +1,6 @@
 package com.medbuddy.medbuddy.services;
 
+import com.medbuddy.medbuddy.controllers.responsebodies.MessageResponseBody;
 import com.medbuddy.medbuddy.exceptions.NotFoundExceptions;
 import com.medbuddy.medbuddy.exceptions.UserDidSomethingWrongExceptions;
 import com.medbuddy.medbuddy.models.Conversation;
@@ -8,6 +9,8 @@ import com.medbuddy.medbuddy.models.Message;
 import com.medbuddy.medbuddy.models.User;
 import com.medbuddy.medbuddy.repository.daos.MessagerieDAO;
 import com.medbuddy.medbuddy.repository.daos.UserDAO;
+import com.medbuddy.medbuddy.utilitaries.DataConvertorUtil;
+import com.medbuddy.medbuddy.utilitaries.MedbuddyUtil;
 import com.medbuddy.medbuddy.utilitaries.SecurityUtil;
 import com.medbuddy.medbuddy.utilitaries.validators.EntityValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,33 @@ import java.util.UUID;
 public class MessagerieService {
 
     @Autowired
+    MedbuddyUtil medbuddyUtil;
+    @Autowired
+    UserDAO userDAO;
+
+    public void closeConversation() {
+        UUID userId = userDAO.getUserId(SecurityUtil.getEmail());
+        medbuddyUtil.closeConversation(userId);
+    }
+
+    public Message receiveMessage(int flag) {
+        UUID userId = userDAO.getUserId(SecurityUtil.getEmail());
+
+        if(DataConvertorUtil.turn0or1intoBoolean(flag)) {
+            return new Message("Hello, " +
+                    userDAO.getUserById(userId).getLastName() + " " +
+                    userDAO.getUserById(userId).getFirstName() +
+                    "! I am Medbuddy, your personal assistant. Please tell me in great detail what you feel wrong at the moment.");
+        }
+
+        return medbuddyUtil.receiveMessageFromMedbuddy(userId);
+    }
+
+    public void sendMessageToMedbuddy() {
+        UUID userId = userDAO.getUserId(SecurityUtil.getEmail());
+    }
+
+    /*@Autowired
     private MessagerieDAO messagerieDAO;
     @Autowired
     private UserDAO userDAO;
@@ -80,5 +110,5 @@ public class MessagerieService {
 
     public List<Message> getPastXMessages(UUID conversationId, int x) {
         return messagerieDAO.getPastXMessages(conversationId, x);
-    }
+    }*/
 }

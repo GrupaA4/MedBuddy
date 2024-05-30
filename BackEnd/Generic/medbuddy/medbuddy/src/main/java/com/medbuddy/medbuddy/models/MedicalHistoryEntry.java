@@ -2,6 +2,7 @@ package com.medbuddy.medbuddy.models;
 
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
@@ -10,7 +11,7 @@ public class MedicalHistoryEntry implements Entity{
     private UUID medicId;
     private UUID patientId;
     private String diagnosis;
-    private String period;
+    private LocalDate date_diagnosis;
     private String treatment;
     private boolean isDeleted;
 }

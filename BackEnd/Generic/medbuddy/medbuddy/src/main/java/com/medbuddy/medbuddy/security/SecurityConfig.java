@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .cors(withDefaults())
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/medbuddy/signup", "/medbuddy/signupmedic", "/medbuddy/login").permitAll()
+                                .requestMatchers("/medbuddy/signup", "/medbuddy/signupmedic").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .httpBasic(withDefaults());

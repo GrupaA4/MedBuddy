@@ -1,8 +1,10 @@
 package com.medbuddy.medbuddy.controllers;
 
 import com.medbuddy.medbuddy.controllers.requestbodies.MessageRequestBodies;
+import com.medbuddy.medbuddy.controllers.responsebodies.MessageResponseBody;
 import com.medbuddy.medbuddy.models.Conversation;
 import com.medbuddy.medbuddy.models.Message;
+import com.medbuddy.medbuddy.repository.daos.UserDAO;
 import com.medbuddy.medbuddy.services.MessagerieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,11 +13,27 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/medbuddy")
+@RequestMapping("/medbuddy/chat")
 public class MessagerieController {
     @Autowired
     private MessagerieService messagerieService;
 
+    @GetMapping("/closeconversation")
+    public void closeConversation() {
+        messagerieService.closeConversation();
+    }
+
+    @GetMapping("/receive/{flag}")
+    public Message receiveMessageFromMedbuddy(@PathVariable int flag) {
+        return messagerieService.receiveMessage(flag);
+    }
+
+    @PostMapping("/send")
+    public void sendMessageToMedbuddy(@RequestBody Message message) {
+        messagerieService.sendMessageToMedbuddy();
+    }
+
+    /*
     //works
     @PutMapping("/createconversation/{id}")
     public void createConversationBetween(@PathVariable UUID id) {
@@ -51,4 +69,5 @@ public class MessagerieController {
     public void hardDeleteMessage(@PathVariable UUID messageId) {
         messagerieService.deleteMessageFromDatabase(messageId);
     }
+    */
 }

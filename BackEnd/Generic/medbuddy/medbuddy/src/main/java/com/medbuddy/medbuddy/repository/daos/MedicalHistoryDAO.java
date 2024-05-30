@@ -63,7 +63,7 @@ public class MedicalHistoryDAO {
                     medicalHistoryEntry.getMedicId().toString(),
                     medicalHistoryEntry.getPatientId().toString(),
                     medicalHistoryEntry.getDiagnosis(),
-                    medicalHistoryEntry.getPeriod(),
+                    medicalHistoryEntry.getDate_diagnosis(),
                     medicalHistoryEntry.getTreatment(),
                     DataConvertorUtil.turnBooleanInto0or1(medicalHistoryEntry.isDeleted())
             );

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -17,24 +18,26 @@ import java.util.UUID;
 public class MedicalHistoryService {
 
     @Autowired
+    UserService userService;
+    @Autowired
     private MedicalHistoryDAO medicalHistoryRepository;
 
     public List<MedicalHistoryResponseBodies.MedicalHistoryBasicFields> getUserMedicalHistory(UUID userId) {
         List<MedicalHistoryEntry> entries = medicalHistoryRepository.getMedicalHistoryForAUser(userId);
         List<MedicalHistoryResponseBodies.MedicalHistoryBasicFields> entriesWithBasicFields = new ArrayList<>();
         for(var entry : entries) {
-            entriesWithBasicFields.add(new MedicalHistoryResponseBodies.MedicalHistoryBasicFields(entry));
+            entriesWithBasicFields.add(new MedicalHistoryResponseBodies.MedicalHistoryBasicFields(userService, entry));
         }
         return entriesWithBasicFields;
     }
 
-    public void createNewMedicalHistoryEntry(UUID medicId, UUID patientId, String diagnosis, String period, String treatment) {
+    public void createNewMedicalHistoryEntry(UUID medicId, UUID patientId, String diagnosis, LocalDate period, String treatment) {
         MedicalHistoryEntry entry = new MedicalHistoryEntry();
         entry.setId(SecurityUtil.getNewId());
         entry.setMedicId(medicId);
         entry.setPatientId(patientId);
         entry.setDiagnosis(diagnosis);
-        entry.setPeriod(period);
+        entry.setDate_diagnosis(period);
         entry.setTreatment(treatment);
         entry.setDeleted(false);
         medicalHistoryRepository.createMedicalHistoryEntry(entry);
