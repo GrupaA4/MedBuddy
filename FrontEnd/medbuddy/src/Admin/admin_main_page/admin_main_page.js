@@ -1,4 +1,4 @@
-/* import React, { useEffect } from 'react';
+/*import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './admin_main_page.module.css';
 import Logo from '../assets/MedBuddy.png';
@@ -101,16 +101,21 @@ const AdminMainPage = () => {
 
 export default AdminMainPage; */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './admin_main_page.module.css';
 import Logo from './Logo.png';
 
 const AdminMainPage = () => {
   const navigate = useNavigate();
+  const [users, setUsers] = useState([]); 
+  const [userToStartFrom, setUserToStartFrom] = useState(null);
+  const [userToEndLoad, setUserToEndLoad] = useState(null);
+  let userIdsArray = [];
+  let usersAllArray = [];
 
   useEffect(() => {
-    const titleElement = document.querySelector(`.${styles.container2__title}`);
+    const titleElement = document.querySelector(`.${styles.container2__admin__main__page__title}`);
     const texts = ["Welcome back,", "     Admin!"];
     let index = 0;
     let textIndex = 0;
@@ -152,6 +157,97 @@ const AdminMainPage = () => {
     }
   };
 
+  /* useEffect(() => {
+    const fetchAllUsers = async () => {
+      try{
+        const responseAll = fetch(`http://localhost:7264/medbuddy/getoldestusers`,{
+          method:'GET'});
+
+          if(responseAll.ok){
+            const dataAll = await responseAll.json();
+            const userIds = dataAll.users;
+            usersAllArray = userIds;
+
+          }
+      } catch (error){
+        console.error('Error fetching all users:', error);
+      };
+      
+    }
+    fetchAllUsers();
+  }, []); */
+  
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const responseIds = await fetch(`http://localhost:7264/medbuddy/getoldestusers/${userToStartFrom}/${userToEndLoad}`,{
+          method:'GET', 
+        });
+
+        if (responseIds.ok) {
+          const data = await responseIds.json();
+          const userIds = data.users;
+          userIdsArray = userIds;
+
+          const startIndex = userIdsArray.indexOf(userToStartFrom);
+          const endIndex = userIdsArray.indexOf(userToEndLoad);
+
+          if (startIndex === -1 || endIndex === -1) {
+            throw new Error("The given ids aren't valid");
+          }
+          
+          if (startIndex > endIndex) {
+            let aux = startIndex;
+            startIndex = endIndex;
+            endIndex = aux;
+          }
+
+          let userMainDetailsPromises;
+          for(let i = startIndex; i <= endIndex; i++){
+            let userId = userIdsArray[i];
+            /* const responseUsers = await fetch(`http://localhost:7264/medbuddy/viewprofile/${userId}`,
+            {method:'GET'});
+
+            if(!responseUsers.ok){
+              throw new Error("Could not fetch the user information");
+            } */
+
+            const userMainDetailsPromises = data.users.map(
+              async (userId) => {
+                const userMainResponse = await fetch(`http://localhost:7264/medbuddy/viewprofile/${userId}`,
+                {method:'GET'})
+
+                if(userMainResponse.ok){
+                  const userInfo = await userMainResponse.json();
+
+                  return{
+                    Id: userId,
+                    userFirstName: userInfo.firstName,
+                    userLastName: userInfo.lastName,
+                    userEmail: userInfo.email,
+                    userPhone: userInfo.phoneNumber, 
+                  };
+                }
+                return null;
+              }
+            );
+          }
+
+          const userDetails = await Promise.all(
+            userMainDetailsPromises
+          );
+
+          setUsers(userDetails.filter((Id) => Id !== null));
+        } else {
+          console.error('Failed to fetch users information');
+        }
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    };
+    fetchUsers();
+  }, []);
+
   const handleReportClick = () => {
     navigate('/report');
   };
@@ -173,14 +269,15 @@ const AdminMainPage = () => {
 
       <div className={styles.container1__admin__main__page} id="current_users">
         <div className={styles.container1__header__admin__main__page}>
-          <p className={styles.container1__header__text}>CURRENT USERS</p>
+          <p className={styles.container1__header__admin__main__text}>CURRENT USERS</p>
         </div>
+
         {[...Array(10).keys()].map(i => (
-          <div key={i} className={styles.container1__square}>
-            <div className={styles.container1__square__icon}>
+          <div key={i} className={styles.container1__admin__main__page__square}>
+            <div className={styles.container1__admin__main__page__square__icon}>
               <p>PHOTO</p>
             </div>
-            <p className={styles.container1__square__data}>
+            <p className={styles.container1__admin__main__page__square__data}>
               NAME: <span className={styles.name}></span><br />
               EMAIL: <span className={styles.email}></span><br />
               PHONE: <span className={styles.phone}></span>
@@ -189,10 +286,10 @@ const AdminMainPage = () => {
         ))}
       </div>
 
-      <div className={styles.container2}>
-        <p className={styles.container2__title}></p>
-        <button className={styles.container2__button1} type="button" onClick={handleReportClick}>REPORT</button><br /><br />
-        <button className={styles.container2__button2} type="button" onClick={handleManageAccountsClick}>MANAGE ACCOUNTS</button>
+      <div className={styles.container2__admin__main__page}>
+        <p className={styles.container2__admin__main__page__title}></p>
+        <button className={styles.container2__admin__main__page__button1} type="button" onClick={handleReportClick}>REPORT</button><br /><br />
+        <button className={styles.container2__admin__main__page__button2} type="button" onClick={handleManageAccountsClick}>MANAGE ACCOUNTS</button>
       </div>
     </div>
   );
