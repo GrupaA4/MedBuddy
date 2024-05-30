@@ -108,7 +108,7 @@ import Logo from './Logo.png';
 
 const AdminMainPage = () => {
   const navigate = useNavigate();
-  const [users, setUsers] = useState([]); // Adăugat useState pentru a stoca utilizatorii
+  const [users, setUsers] = useState([]); 
   const [userToStartFrom, setUserToStartFrom] = useState(null);
   const [userToEndLoad, setUserToEndLoad] = useState(null);
   let userIdsArray = [];
@@ -181,7 +181,7 @@ const AdminMainPage = () => {
     const fetchUsers = async () => {
       try {
         const responseIds = await fetch(`http://localhost:7264/medbuddy/getoldestusers/${userToStartFrom}/${userToEndLoad}`,{
-          method:'GET'
+          method:'GET', 
         });
 
         if (responseIds.ok) {
@@ -205,12 +205,12 @@ const AdminMainPage = () => {
           let userMainDetailsPromises;
           for(let i = startIndex; i <= endIndex; i++){
             let userId = userIdsArray[i];
-            const responseUsers = await fetch(`http://localhost:7264/medbuddy/viewprofile/${userId}`,
+            /* const responseUsers = await fetch(`http://localhost:7264/medbuddy/viewprofile/${userId}`,
             {method:'GET'});
 
             if(!responseUsers.ok){
               throw new Error("Could not fetch the user information");
-            }
+            } */
 
             const userMainDetailsPromises = data.users.map(
               async (userId) => {
