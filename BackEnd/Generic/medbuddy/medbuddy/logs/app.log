@@ -1,62 +1,31 @@
-2024-05-30 19:19:40 INFO  MedbuddyApplication:50 - Starting MedbuddyApplication using Java 22.0.1 with PID 22872 (C:\UNIVERSITY STUFF\II-II Ingineria Programarii\Project\MedBuddy\BackEnd\Generic\medbuddy\medbuddy\target\classes started by vladm in C:\UNIVERSITY STUFF\II-II Ingineria Programarii\Project\MedBuddy\BackEnd\Generic\medbuddy\medbuddy)
-2024-05-30 19:19:40 DEBUG MedbuddyApplication:51 - Running with Spring Boot v3.2.5, Spring v6.1.6
-2024-05-30 19:19:40 INFO  MedbuddyApplication:654 - No active profile set, falling back to 1 default profile: "default"
-2024-05-30 19:19:41 INFO  TomcatWebServer:109 - Tomcat initialized with port 7264 (http)
-2024-05-30 19:19:41 INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-7264"]
-2024-05-30 19:19:41 INFO  StandardService:173 - Starting service [Tomcat]
-2024-05-30 19:19:41 INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.20]
-2024-05-30 19:19:41 INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
-2024-05-30 19:19:41 INFO  ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 1510 ms
-2024-05-30 19:19:42 INFO  DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3b4ef59f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@22cb3d59, org.springframework.security.web.context.SecurityContextHolderFilter@4a2bf50f, org.springframework.security.web.header.HeaderWriterFilter@7b9088f2, org.springframework.web.filter.CorsFilter@4f169009, org.springframework.security.web.authentication.logout.LogoutFilter@787988f4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2407a36c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2506b881, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5d7dd549, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@33e4b9c4, org.springframework.security.web.access.ExceptionTranslationFilter@3f6cce7f, org.springframework.security.web.access.intercept.AuthorizationFilter@6c835217]
-2024-05-30 19:19:42 INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-7264"]
-2024-05-30 19:19:42 INFO  TomcatWebServer:241 - Tomcat started on port 7264 (http) with context path ''
-2024-05-30 19:19:42 INFO  MedbuddyApplication:56 - Started MedbuddyApplication in 2.997 seconds (process running for 4.032)
-2024-05-30 19:19:47 INFO  [/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-05-30 19:19:47 INFO  DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
-2024-05-30 19:19:47 INFO  DispatcherServlet:554 - Completed initialization in 1 ms
-2024-05-30 19:19:47 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/login
-2024-05-30 19:19:47 WARN  HikariConfig:1089 - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
-2024-05-30 19:19:47 INFO  HikariDataSource:110 - HikariPool-1 - Starting...
-2024-05-30 19:19:48 INFO  PoolBase:536 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
-2024-05-30 19:19:48 INFO  HikariPool:565 - HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@48f8afa2
-2024-05-30 19:19:48 INFO  HikariDataSource:123 - HikariPool-1 - Start completed.
-2024-05-30 19:19:48 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-05-30 19:19:48 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=test@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
-2024-05-30 19:19:48 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/login
-2024-05-30 19:20:04 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/login
-2024-05-30 19:20:04 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-05-30 19:20:04 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
-2024-05-30 19:20:04 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/login
-2024-05-30 19:20:19 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/login
-2024-05-30 19:20:19 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-05-30 19:20:19 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=dummy@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
-2024-05-30 19:20:19 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/login
-2024-05-30 19:24:21 DEBUG FilterChainProxy:223 - Securing HEAD /medbuddy/chat/closeconversation
-2024-05-30 19:24:21 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-05-30 19:24:21 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=test@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
-2024-05-30 19:24:21 DEBUG FilterChainProxy:227 - Secured HEAD /medbuddy/chat/closeconversation
-2024-05-30 19:25:34 DEBUG FilterChainProxy:223 - Securing HEAD /medbuddy/chat/closeconversation
-2024-05-30 19:25:34 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-05-30 19:25:34 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=test@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
-2024-05-30 19:25:34 DEBUG FilterChainProxy:227 - Secured HEAD /medbuddy/chat/closeconversation
-2024-05-30 19:36:01 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/chat/receive/1
-2024-05-30 19:36:01 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-05-30 19:36:01 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=test@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
-2024-05-30 19:36:01 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/chat/receive/1
-2024-05-30 19:36:59 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/chat/receive/0
-2024-05-30 19:36:59 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-05-30 19:36:59 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=test@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
-2024-05-30 19:36:59 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/chat/receive/0
-2024-05-30 19:38:04 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/chat/send
-2024-05-30 19:38:04 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-05-30 19:38:04 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=test@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
-2024-05-30 19:38:04 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/chat/send
-2024-05-30 19:38:04 WARN  DefaultHandlerExceptionResolver:247 - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
-2024-05-30 19:38:04 DEBUG FilterChainProxy:223 - Securing GET /error
-2024-05-30 19:38:04 DEBUG FilterChainProxy:227 - Secured GET /error
-2024-05-30 19:38:32 DEBUG FilterChainProxy:223 - Securing POST /medbuddy/chat/send
-2024-05-30 19:38:32 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-05-30 19:38:32 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=test@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
-2024-05-30 19:38:32 DEBUG FilterChainProxy:227 - Secured POST /medbuddy/chat/send
-2024-05-30 19:39:21 INFO  HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
-2024-05-30 19:39:21 INFO  HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2024-05-30 21:24:00 INFO  MedbuddyApplication:50 - Starting MedbuddyApplication using Java 22.0.1 with PID 9188 (C:\UNIVERSITY STUFF\II-II Ingineria Programarii\Project\MedBuddy\BackEnd\Generic\medbuddy\medbuddy\target\classes started by vladm in C:\UNIVERSITY STUFF\II-II Ingineria Programarii\Project\MedBuddy\BackEnd\Generic\medbuddy\medbuddy)
+2024-05-30 21:24:00 DEBUG MedbuddyApplication:51 - Running with Spring Boot v3.2.5, Spring v6.1.6
+2024-05-30 21:24:00 INFO  MedbuddyApplication:654 - No active profile set, falling back to 1 default profile: "default"
+2024-05-30 21:24:01 INFO  TomcatWebServer:109 - Tomcat initialized with port 7264 (http)
+2024-05-30 21:24:01 INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-7264"]
+2024-05-30 21:24:01 INFO  StandardService:173 - Starting service [Tomcat]
+2024-05-30 21:24:01 INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-30 21:24:02 INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
+2024-05-30 21:24:02 INFO  ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 1139 ms
+2024-05-30 21:24:02 INFO  DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@586cc15d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6c835217, org.springframework.security.web.context.SecurityContextHolderFilter@22791b75, org.springframework.security.web.header.HeaderWriterFilter@2801827a, org.springframework.web.filter.CorsFilter@50b0afd7, org.springframework.security.web.authentication.logout.LogoutFilter@55877274, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2b43f314, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@37d28938, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7d0cd23c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4584304, org.springframework.security.web.access.ExceptionTranslationFilter@10b8b900, org.springframework.security.web.access.intercept.AuthorizationFilter@5a2ae1ab]
+2024-05-30 21:24:02 INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-7264"]
+2024-05-30 21:24:02 INFO  TomcatWebServer:241 - Tomcat started on port 7264 (http) with context path ''
+2024-05-30 21:24:02 INFO  MedbuddyApplication:56 - Started MedbuddyApplication in 2.429 seconds (process running for 3.319)
+2024-05-30 21:24:06 INFO  [/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-30 21:24:06 INFO  DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2024-05-30 21:24:06 INFO  DispatcherServlet:554 - Completed initialization in 1 ms
+2024-05-30 21:24:06 DEBUG FilterChainProxy:223 - Securing PATCH /medbuddy/verifydiagnosis/fc2b5fec-46d3-4975-83bd-026c05f2e682
+2024-05-30 21:24:07 WARN  HikariConfig:1089 - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2024-05-30 21:24:07 INFO  HikariDataSource:110 - HikariPool-1 - Starting...
+2024-05-30 21:24:07 INFO  PoolBase:536 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
+2024-05-30 21:24:07 INFO  HikariPool:565 - HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@a5b1ba
+2024-05-30 21:24:07 INFO  HikariDataSource:123 - HikariPool-1 - Start completed.
+2024-05-30 21:24:07 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-05-30 21:24:07 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=test@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-05-30 21:24:07 DEBUG FilterChainProxy:227 - Secured PATCH /medbuddy/verifydiagnosis/fc2b5fec-46d3-4975-83bd-026c05f2e682
+2024-05-30 21:24:15 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getusermedicalhistory/f49a6503-2a5d-46a5-a88b-71c6f7b61a4a
+2024-05-30 21:24:15 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-05-30 21:24:15 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=test@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-05-30 21:24:15 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getusermedicalhistory/f49a6503-2a5d-46a5-a88b-71c6f7b61a4a
+2024-05-30 21:25:10 INFO  HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2024-05-30 21:25:10 INFO  HikariDataSource:352 - HikariPool-1 - Shutdown completed.
