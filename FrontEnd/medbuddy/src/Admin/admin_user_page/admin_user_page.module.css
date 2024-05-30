@@ -176,9 +176,15 @@
   top: 6vh;
   border-radius: 5vh;
   display: flex;
-  align-items: center;
+  align-items: left;
+  flex-direction: column;
 }
 
+.admin_user_page_container1__square__icon_and_data{
+  display: flex;
+  flex-direction: row;
+  margin-bottom:5vh;
+}
 .admin_user_page_container1__square__icon {
   background-color: white;
   justify-self: left;
@@ -186,26 +192,62 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  height: 34vh;
-  width: 34vh;
+  height: 30vh;
+  width: 30vh;
+  top: 2vw;
   left: 2vw;
   border-radius: 50%;
   display: flex;
   align-items: center;
   font-family: "Bebas Neue", sans-serif;
+  font-size: 3vh;
+  margin-bottom: 0px;
+ padding: 0px;
   color: #002845;
-  font-size: 5vh;
 }
 
 .admin_user_page_container1__square__data {
   color: #002845;
   position: relative;
+  flex-direction: column;
   justify-self: right;
   font-family: "Bebas Neue", sans-serif;
-  font-size: 4vh;
+  font-size: 3vh;
   left: 5.8vw;
   line-height: 3;
+  margin: 0px;
+  padding: 0px;
 }
+
+.admin_user_page_container1__square__data__info{
+  margin-bottom: 2vh;
+}
+
+
+.admin_user_page_container1__square__data__buttons {
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-evenly;
+}
+
+.admin_user_page_container1__button1,
+.admin_user_page_container1__button2,
+.admin_user_page_container1__button3 {
+  position: relative;
+  width: 13vw;
+  font-family: "Bebas Neue", sans-serif;
+  height: 4vh;
+  border-radius: 4vh;
+  border: none;
+  background-color: #002845;
+  cursor: pointer;
+  font-size: 2vh;
+  color: white;
+  margin-top: 0px ;
+  padding-top: 0px;
+}
+
+
 
 .admin_user_page_container2 {
   position: absolute;
@@ -232,13 +274,40 @@
   }
 }
 
-.admin_user_page_container2__title {
-  position: absolute;
-  line-height: 1.5;
+
+.admin_user_page_container2__square1__icon {
+  background-color: white;
+  position: relative;
+  top: 4vh;
+  height: 34vh;
+  width: 34vh;
+  border-radius: 50%;
+  font-family: "Bebas Neue", sans-serif;
   color: #002845;
   font-size: 5vh;
-  font-family: "Bebas Neue", sans-serif;
 }
+
+.admin_user_page_container2__text1 {
+  color: #002845;
+  position: relative;
+  
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 4vh;
+  margin-top: 6vh;
+
+}
+
+.admin_user_page_container2__text2 {
+  color: #002845;
+  position: relative;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 4vh;
+  margin-top: 6vh;
+  margin-bottom: 3vh;
+  
+}
+
+
 
 .admin_user_page_container2__button1 {
   position: absolute;
@@ -310,42 +379,11 @@
   transform: translateY(8px);
 }
 
-.admin_user_page_container_icon__and__text {
-  display: flex;
-  flex-direction: column;
-}
 
-.admin_user_page_container2__square1__icon {
-  background-color: white;
-  justify-self: left;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  top: 4vh;
-  height: 34vh;
-  width: 34vh;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  font-family: "Bebas Neue", sans-serif;
-  color: #002845;
-  font-size: 5vh;
-}
 
-.admin_user_page_container2__text {
-  color: #002845;
-  position: relative;
-  justify-self: right;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 4vh;
-  margin-top: 6vh;
-  left: 0;
-}
 
-.admin_user_page_container1__square__data__buttons {
-  display: none;
-}
+
+
 
 @media only screen and (max-width: 1758px) {
   .admin_user_page_header__image {
@@ -496,11 +534,14 @@
     font-size: 3vh;
     left: 5.8vw;
     line-height: 3;
+    margin: 0px;
+    padding: 0px;
   }
 
   .admin_user_page_container1__square__data__buttons {
     display: flex;
-    justify-content: space-around;
+    margin: 0px;
+    padding: 0px;
   }
 
   .admin_user_page_container1__button1 {
