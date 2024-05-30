@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+##pentru a clona repozitoriul existent
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+git clone https://github.com/CristinaIuliaa/IP_2A4_Front_Pacient.git 
 
-## Available Scripts
+##pentru descarcare tooluri intrati pe linkul urmator si descarcati fisierul 
 
-In the project directory, you can run:
+https://nodejs.org/en/download/
 
-### `npm start`
+##pentru a verifica daca e instalat in cmd scrieti 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+node -v
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+npm -v
 
-### `npm test`
+##daca va arata versiunea e bine 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##inainte de a rula proiectul :
+##va mutati in mapa cu proiect utilizand terminalul de la editorul de cod
 
-### `npm run build`
+cd pacient
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##deschideti terminalul de la editorul de cod si scrieti comanda 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+##instalati sass din cmd
 
-### `npm run eject`
+npm install -g sass
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+##rulati utilizand 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+npm start 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+##daca rulati si aveti erori care spun ceva de genul ca nu gasesc font awesome sau react router rulati urmatoarele comenzi 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+##instalati react router
 
-## Learn More
+npm install react-router-dom
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+##instalati font-awesome pentru niste iconuri
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+npm i --save @fortawesome/fontawesome-svg-core
 
-### Code Splitting
+npm i --save @fortawesome/react-fontawesome@latest
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+##pentru a crea un branch nou si a va muta 
 
-### Analyzing the Bundle Size
+git branch your_branch_name
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+##pentru a verifica pe ce branch sunteti
 
-### Making a Progressive Web App
+git branch
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+##pentru a va muta pe un alt branch existent
 
-### Advanced Configuration
+git checkout your_branch_name
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+##pentru a trage schimbarile facute pe main
 
-### Deployment
+git pull
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+##pentru a trage schimbarile de pe un anumit branch 
 
-### `npm run build` fails to minify
+git pull origin your_branch_name
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+##pentru a vedea fisierele ce trebuie incarcate 
+
+git status
+
+##pentru a incarca toate fisierele modificate 
+
+git add .
+
+##pentru a face commit 
+
+git commit -m "mesajul pentru comit (un fel de eticheta)"
+
+##pentru a face push
+
+git push origin your_branch_name
+
+##pentru a combina schimbarile facute si a le imbina cu cele de pe main scriem comanda:
+
+git merge your_branch_main
+
+##alte resurse
+
+https://www.freecodecamp.org/news/git-branching-commands-explained/
+
+https://sass-lang.com/install/
+
+https://suzie.hashnode.dev/react-router-sass
+
+https://docs.fontawesome.com/web/use-with/react/
+
+
+

@@ -1,0 +1,192 @@
+.List {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+  .search {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    width: 70%;
+    height: 50px;
+
+    .searchBar {
+      flex: 1;
+      background-color: #b8e0c6;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-radius: 10px;
+      height: 40px;
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.311);
+
+      .searchIcon {
+        color: rgb(85, 94, 94);
+      }
+
+      input {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: rgb(46, 43, 43);
+        flex: 1;
+      }
+
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+   
+  }
+
+
+  .item {
+   
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    cursor: pointer;
+    height: 50px;
+    margin-bottom: 20px;
+    width: 70%;
+    background-color: #b8e0c6;
+    border-radius: 20px;
+    border-bottom: 2px solid grey;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .texts {
+      display: flex;
+      flex-direction: column;
+      width: 330px;
+      text-align: left;
+      margin-top: 10px;
+      margin-left: 15px;
+      .emailLink{
+        text-decoration: none;
+      }
+
+      span {
+        font-weight: 500;
+        font-size: 18.5px;
+        color: rgb(93, 93, 93);
+        margin-bottom: 0.5rem;
+
+        .userName{
+          font-size: 20px;
+          color: #002845;
+
+        }
+      }
+
+
+      .userEmail {
+        font-size: 14px;
+        font-weight: 300;
+        background-color: #a1c7ae;
+        border-radius: 20px;
+        padding-left: 10px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+
+      }
+
+      .userEmail:hover{
+        color: white;
+        background-color: #369986;
+      }
+
+    }
+    .diagnoses{
+      padding: 8px 16px;
+      background-color: #a1c7ae;
+      border: 1px solid #002845;
+      border-radius: 10px;
+      cursor: pointer;
+      outline: none;
+      margin-right: 10px;
+      font-family: "Oswald";
+    }
+    .diagnoses:hover{
+      color: white;
+      background-color: #369986;
+    }
+  }
+  .buttons-container{
+    display: flex;
+    flex-direction: row;
+  }
+
+
+  .buttons-container button {
+    padding: 8px 16px;
+    background-color: #369986;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    margin-right: 10px;
+    font-family: "Oswald";
+  }
+
+  .buttons-container button:disabled {
+    /* Stiluri pentru butoanele dezactivate */
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+
+  .List{
+    .item{
+
+      
+    img {
+      width: auto;
+      height: 40px;
+   
+    }
+
+    .texts{
+      margin-left: 0px;
+    span{
+      font-size: 12px;
+      .userName{
+       font-size: 15px;
+      }
+  }
+  .userEmail {
+    font-size: 12px;
+   
+    height: 20px;
+ 
+  }
+}
+}
+}
+
+
+
+
+
+}
