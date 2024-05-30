@@ -7,9 +7,13 @@ import Logo from '../assets/MedBuddy.png';
 
 const UserPage = () => {
   const[medics,setMedics]=useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [medicsPerPage] = useState(5);
-  const [selectedMedic, setSelectedMedic] = useState(null);
+  const [selectedMedic, setSelectedMedic] = useState([]);
+  const [medicId,setMedicId] = useState([]);
+  const [medicFirstName,setMedicFirstName]= useState([]);
+  const [medicLastName,setMedicLastName]= useState([]);
+  const [medicEmail,setMedicEmail]= useState([]);
+  const [medicLicense,setMedicLicense]= useState([]);
+
   const navigate = useNavigate();
 
   const redirectTop = () => {
@@ -34,13 +38,6 @@ const UserPage = () => {
             if (medicResponse.ok) {
               const medic = await medicResponse.json();
             
-              return {
-                id: medicId,
-                firstName: medic.firstName,
-                lastName: medic.lastName,
-                email: medic.email,
-                medicalLicense: medic.medicalLicense
-            }
           }
             return null;
           });
@@ -155,7 +152,7 @@ const UserPage = () => {
           </div>
         </div>
 
-        {medics.map((medic, i)=> (
+        {[...Array(5).keys()].map(i => (
           <div className={styles.admin_user_page_container1__square}>
             <div className={styles.admin_user_page_container1__square__icon_and_data}>
             <div className={styles.admin_user_page_container1__square__icon}>
