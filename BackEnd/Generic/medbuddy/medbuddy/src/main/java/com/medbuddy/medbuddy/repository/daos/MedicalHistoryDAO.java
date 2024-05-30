@@ -13,6 +13,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -62,7 +64,7 @@ public class MedicalHistoryDAO {
                     medicalHistoryEntry.getMedicId().toString(),
                     medicalHistoryEntry.getPatientId().toString(),
                     medicalHistoryEntry.getDiagnosis(),
-                    medicalHistoryEntry.getPeriod(),
+                    Date.valueOf(medicalHistoryEntry.getDate_diagnosis()),
                     medicalHistoryEntry.getTreatment(),
                     DataConvertorUtil.turnBooleanInto0or1(medicalHistoryEntry.isDeleted())
             );
@@ -87,5 +89,14 @@ public class MedicalHistoryDAO {
     public void markEntriesAsDeleted(UUID userId) {
         String sql = "UPDATE MedicalHistory SET isDeleted = 1 WHERE patientId = ?";
         jdbcTemplate.update(sql, userId.toString());
+    }
+
+    public void changeMedicalHistoryEntry(UUID entryId, String diagnosis, String treatment, LocalDate now) {
+        String sql = "UPDATE MedicalHistory SET diagnosis = ?, treatment = ?, diagnosisDate = ? WHERE id = ?";
+        jdbcTemplate.update(sql,
+                diagnosis,
+                treatment,
+                Date.valueOf(now),
+                entryId.toString());
     }
 }

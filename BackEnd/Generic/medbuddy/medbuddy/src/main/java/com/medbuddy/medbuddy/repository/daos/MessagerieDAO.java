@@ -16,6 +16,7 @@ import java.util.UUID;
 
 @Repository
 public class MessagerieDAO {
+    /*
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -104,5 +105,6 @@ public class MessagerieDAO {
     public List<Message> getPastXMessages(UUID conversationId, int x) {
         return jdbcTemplate.query("select * from (select * from message where conversationId = ? ORDER BY timesent DESC) where rownum <= ?", new Object[]{conversationId, x}, new MessageRowMapper());
     }
+    */
 }
 
