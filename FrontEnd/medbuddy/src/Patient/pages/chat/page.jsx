@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import styles from "./page.module.scss";
 import Send from "../../images/send-msg.svg";
 import Robo_icon from "../../images/robo_icon.svg";
@@ -10,8 +9,10 @@ export default function ChatPage() {
     const [message, setMessage] = useState('');
     const [userMessages, setUserMessages] = useState([]);
     const [responseMessages, setResponseMessages] = useState([]);
+    const [emailList, setEmailList] = useState([]);
     const messageContainerRef = useRef(null);
     const [image, setImage] = useState(null);
+    const [disableInput, setDisableInput] = useState(false);
 
 
     const sendCloseConversation = async () => {
@@ -77,16 +78,33 @@ export default function ChatPage() {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
+
             const data = await response.json();
             const newMessages = data.map(msg => ({
                 id: msg.id,
                 sender: "medbuddy",
                 text: msg.message,
             }));
+
             setResponseMessages([...responseMessages, ...newMessages]);
+            checkForEmails(newMessages);
         } catch (error) {
             console.error("Error fetching response messages:", error);
         }
+    };
+
+    const checkForEmails = (messages) => {
+        const foundEmails = [];
+        messages.forEach(msg => {
+            const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
+            const emailsFound = msg.text.match(emailRegex);
+            if (emailsFound) {
+                foundEmails.push(...emailsFound);
+                setDisableInput(true);
+                sendCloseConversation();
+            }
+        });
+        setEmailList(foundEmails);
     };
 
     useEffect(() => {
@@ -117,7 +135,8 @@ export default function ChatPage() {
         await receiveResponse(1);
         setUserMessages([]); 
         setResponseMessages([]);
-        
+        setEmailList([]);
+        setDisableInput(false);
     };
     
     const combinedMessages = [];
@@ -157,6 +176,18 @@ export default function ChatPage() {
                             <div>{msg.text}</div>
                         </div>
                     ))}
+                    {emailList.length > 0 && (
+                        <div className={styles.page__emails}>
+                            <div>Discuss your diagnosis with a doctor:</div>
+                            <ul>
+                                {emailList.map((email, index) => (
+                                    <li key={index}>
+                                                <a href={`mailto:${email}?subject=${encodeURIComponent('Diagnosis discussion')}`}>{email}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </div>
             <div className={styles.page__message_buttons}>
@@ -177,6 +208,7 @@ export default function ChatPage() {
                     value={message}
                     onChange={handleMessageChange} 
                     onKeyPress={handleKeyPress} 
+                    disabled={disableInput}
                 />
                 <div className={styles.page__message_area_actions}> 
                     <button 

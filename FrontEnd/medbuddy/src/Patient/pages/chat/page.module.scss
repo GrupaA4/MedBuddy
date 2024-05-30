@@ -93,6 +93,33 @@
                 font-family: "Oswald_font";
                 font-weight: 300;
             }
+            .page__emails {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 2rem auto 0;
+                font-family: "Oswald_font";
+                background-color: #a5d8de;
+                border-radius:  0 0 15px 15px;
+                padding: 0.8rem 0.8rem;
+                color: #505050;
+                font-weight: 500;
+
+                ul {
+                    list-style: circle;
+                    li {
+                        margin-left: -1rem;
+                        a {
+                            text-decoration: none;
+                            color: #505050;
+                            font-weight: 400;
+                        }
+                        a:hover {
+                            border-bottom: 2px solid #646464;
+                        }
+                    }
+                }
+            }
     
             .page__message {
                 background-color: #069DAE;
