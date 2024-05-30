@@ -1,12 +1,10 @@
 package com.medbuddy.medbuddy.controllers;
 
-import com.medbuddy.medbuddy.controllers.requestbodies.MessageRequestBody;
+import com.medbuddy.medbuddy.controllers.requestbodies.MessageRequestBodies;
 import com.medbuddy.medbuddy.models.Conversation;
 import com.medbuddy.medbuddy.models.Message;
-import com.medbuddy.medbuddy.repository.daos.MessagerieDAO;
 import com.medbuddy.medbuddy.services.MessagerieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,17 +16,15 @@ public class MessagerieController {
     @Autowired
     private MessagerieService messagerieService;
 
-    @PostMapping("/createconversation/{id}")
+    //works
+    @PutMapping("/createconversation/{id}")
     public void createConversationBetween(@PathVariable UUID id) {
-        messagerieService.createConversationBetween(UUID.randomUUID(), UUID.randomUUID(), id);
+        messagerieService.createConversationBetween(id);
     }
 
     @PostMapping("/sendmessage/{id}")
-    public void addMessageToConversation(@PathVariable UUID id, @RequestBody MessageRequestBody message) {
-        int isFromMedBuddy;
-        if(message.getIsFromMedBuddy()) isFromMedBuddy = 1;
-        else isFromMedBuddy = 0;
-        messagerieService.addMessageToConversation(message.getId(), message.getSenderId(), id, message.getMessage(), message.getImagePath(), message.getRepliesTo(), isFromMedBuddy);
+    public void addMessageToConversation(@PathVariable UUID id, @RequestBody MessageRequestBodies.MessageBody message) {
+        messagerieService.addMessageToConversation(new Message(message), id);
     }
 
     @GetMapping("/conversation/{conversationId}/{messageToStartFrom}/{messageToEndLoad}")

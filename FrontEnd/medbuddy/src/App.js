@@ -7,6 +7,7 @@ import ReportPage from './Admin/admin_report_page/admin_report_page';
 import UserPage from './Admin/admin_user_page/admin_user_page';
 import Register from './Medic/navigation/Register/Register'
 import RegisterPatient from './Patient/pages/register/register'
+import Conversations from './Medic/navigation/MainPage/Conversations';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/user" element={<UserPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/registerPatient" element={<RegisterPatient />} />
+        <Route path="/mainPageMedic" element={<Conversations />} />
       </Routes>
     </Router>
   );

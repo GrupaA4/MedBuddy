@@ -1,6 +1,6 @@
 package com.medbuddy.medbuddy.exceptions;
 
-public class DatabaseExceptions {
+public abstract class DatabaseExceptions {
     public static class BooleanProblemInDatabase extends RuntimeException {
         public BooleanProblemInDatabase(String message) {
             super(message);

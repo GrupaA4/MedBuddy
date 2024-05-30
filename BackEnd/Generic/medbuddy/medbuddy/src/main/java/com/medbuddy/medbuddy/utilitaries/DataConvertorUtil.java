@@ -5,7 +5,7 @@ import com.medbuddy.medbuddy.exceptions.DatabaseExceptions;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class DataConvertorUtil {
+public abstract class DataConvertorUtil {
     public static boolean turn0or1intoBoolean(int bool) throws DatabaseExceptions.BooleanProblemInDatabase {
         if (bool == 1) return true;
         else if (bool == 0) return false;
