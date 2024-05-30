@@ -1,13 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import styles from "./page.module.scss";
 import Send from "../../images/send-msg.svg";
-import Choose from "../../images/add-files.svg";
 import Robo_icon from "../../images/robo_icon.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
-
-const userId = "c6028efa-d76c-4bc5-aa3f-c12f2b9dce9c"; 
-const conversationId = "2"; 
 
 export default function ChatPage() {
     const [message, setMessage] = useState('');
@@ -15,6 +12,17 @@ export default function ChatPage() {
     const [responseMessages, setResponseMessages] = useState([]);
     const messageContainerRef = useRef(null);
     const [image, setImage] = useState(null);
+
+
+    const sendCloseConversation = async () => {
+        try {
+            await fetch(`https://2e0181e9-dcc6-4113-a5fa-4d90638f077c.mock.pstmn.io/medbuddy/chat/closeconversation`, {
+                method: 'HEAD'
+            });
+        } catch (error) {
+            console.error("Error closing conversation:", error);
+        }
+    };
 
     const handleMessageChange = (e) => {
         setMessage(e.target.value);
@@ -44,10 +52,7 @@ export default function ChatPage() {
             try {
                 const formData = new FormData();
                 formData.append('message', message);
-                if (image) {
-                    formData.append('image', image);
-                }
-                formData.append('repliesTo', null); 
+
                 const response = await fetch(`https://2e0181e9-dcc6-4113-a5fa-4d90638f077c.mock.pstmn.io/medbuddy/chat/send`, {
                     method: 'POST',
                     body: formData,
@@ -57,16 +62,16 @@ export default function ChatPage() {
                     throw new Error('Network response was not ok');
                 }
 
-                simulateResponse();
+                receiveResponse(0);
             } catch (error) {
                 console.error("Error sending message:", error);
             }
         }
     };
 
-    const simulateResponse = async () => {
+    const receiveResponse = async (flag) => {
         try {
-            const response = await fetch('https://2e0181e9-dcc6-4113-a5fa-4d90638f077c.mock.pstmn.io/medbuddy/chat/receive', {
+            const response = await fetch(`https://2e0181e9-dcc6-4113-a5fa-4d90638f077c.mock.pstmn.io/medbuddy/chat/receive/${flag}`, {
                 method: 'GET',
             });
             if (!response.ok) {
@@ -75,21 +80,18 @@ export default function ChatPage() {
             const data = await response.json();
             const newMessages = data.map(msg => ({
                 id: msg.id,
-                sender: 'medbuddy',
-                text: msg.text,
+                sender: "medbuddy",
+                text: msg.message,
             }));
             setResponseMessages([...responseMessages, ...newMessages]);
         } catch (error) {
             console.error("Error fetching response messages:", error);
         }
     };
-    
 
-    const simulateResponseWithFile = () => {
-        setTimeout(() => {
-            setResponseMessages([...responseMessages, { id: Date.now(), sender: 'medbuddy', text: "I added the file!" }]);
-        }, 1500); 
-    };
+    useEffect(() => {
+        handleNewConvo();
+    }, []);
 
     useEffect(() => {
         scrollToBottom();
@@ -101,29 +103,25 @@ export default function ChatPage() {
         }
     };
 
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        setImage(file);
-        const reader = new FileReader();
-        reader.onload = () => {
-            const fileData = reader.result; 
-            const fileName = file.name;
-            const messageWithFile = { id: Date.now(), sender: 'user', text: message, file: fileData, fileName: fileName };
-            setUserMessages([...userMessages, messageWithFile]);
-            setMessage('');
-
-            simulateResponseWithFile();
-        };
-        reader.readAsDataURL(file);
+    const handleBackToHomepage = async () => {
+        await sendCloseConversation();
+        window.location.href = '/';
     };
 
-    const handleNewConvo = () => {
+    const handleSeeDiagnoses = async () => {
+        await sendCloseConversation();
+        window.location.href = '/diagnoses';
+    };
+
+    const handleNewConvo = async () => {
+        await receiveResponse(1);
         setUserMessages([]); 
         setResponseMessages([]);
+        
     };
     
     const combinedMessages = [];
-    const totalMessages = Math.max(userMessages.length, responseMessages.length);
+    const totalMessages = Math.max(responseMessages.length, userMessages.length);
     for (let i = 0; i < totalMessages; i++) {
         if (userMessages[i]) {
             combinedMessages.push(userMessages[i]);
@@ -156,27 +154,20 @@ export default function ChatPage() {
                             key={msg.id} 
                             className={`${styles.page__msg} ${msg.sender === 'user' ? styles.page__message : styles.page__response}`}
                         >
-                            {msg.file ? (
-                                <div>
-                                    <a href={msg.file} download>{msg.fileName}</a>
-                                    <div>{msg.text}</div>
-                                </div>
-                            ) : (
-                                <div>{msg.text}</div>
-                            )}
+                            <div>{msg.text}</div>
                         </div>
                     ))}
                 </div>
             </div>
             <div className={styles.page__message_buttons}>
-                <button className={styles.page__message_buttons_action} onClick={() => window.location.href = '/'}>
+                <button className={styles.page__message_buttons_action} onClick={handleBackToHomepage}>
                     Back to Homepage
                 </button>
-                <button className={styles.page__message_buttons_action} onClick={() => window.location.href = '/diagnoses'}>
+                <button className={styles.page__message_buttons_action} onClick={handleSeeDiagnoses}>
                     See Diagnoses
                 </button>
                 <button className={styles.page__message_buttons_action} onClick={handleNewConvo}>
-                    New Discussion
+                    New Conversation
                 </button>
             </div>
             <div className={styles.page__message_input}>
@@ -187,19 +178,7 @@ export default function ChatPage() {
                     onChange={handleMessageChange} 
                     onKeyPress={handleKeyPress} 
                 />
-                <div className={styles.page__message_area_actions}>
-                    <label className={styles.page__message_area_file}>
-                        <img 
-                            className={styles.page__message_area_file_img} 
-                            src={Choose}
-                            alt="choose file"
-                        />
-                        <input 
-                            type="file" 
-                            className={styles.page__message_area_file_in} 
-                            onChange={handleFileChange} 
-                        />
-                    </label>
+                <div className={styles.page__message_area_actions}> 
                     <button 
                         onClick={handleSend}
                         className={styles.page__message_area_button}

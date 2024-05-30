@@ -127,8 +127,7 @@
             outline: none;
         }
         .page__message_buttons_action:hover{
-            width: 12vw;
-            height: 3.15rem;
+            background-color: #a2ddb6;
         }
     }
     .page__message_input{
@@ -140,8 +139,9 @@
         width: 80vw;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
+        padding: 0.3rem 0.4rem;
         margin-bottom: 1rem;
         margin-top: 1rem;
         .page__message_area_question{
@@ -162,15 +162,7 @@
             display: flex;
             justify-content: space-around;
             width: 12%;
-            .page__message_area_file{
-                cursor: pointer;
-                .page__message_area_file_in{
-                    display: none;
-                }
-                .page__message_area_file_img{
-                    height: 3rem;
-                }
-            }
+
             .page__message_area_button{
                 background-color: #DEF9F1;
                 border: none;
@@ -215,7 +207,7 @@
                 height: 5rem;
             }
             .page__message_area_actions{
-                width: 25%;
+
                 .page__message_area_file{
                     .page__message_area_file_img{
                         height: 2.25rem;
@@ -255,7 +247,7 @@
         }
         .page__message_input{
             height: 6rem;
-            width: 70vw;
+            width: 84vw;
             margin-top: 2rem;
             .page__message_area_question{
                 width: 65%;
@@ -265,7 +257,6 @@
                 font-size: 0.65rem;
             }
             .page__message_area_actions{
-                width: 30%;
                 .page__message_area_file{
                     .page__message_area_file_img{
                         height: 1.5rem;
