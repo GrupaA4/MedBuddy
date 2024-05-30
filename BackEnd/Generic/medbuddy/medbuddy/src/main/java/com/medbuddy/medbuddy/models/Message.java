@@ -1,5 +1,6 @@
 package com.medbuddy.medbuddy.models;
 
+import com.medbuddy.medbuddy.controllers.requestbodies.MessageRequestBodies;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,4 +24,11 @@ public class Message implements Entity{
     private LocalDate timeSent;
     private boolean isFromMedBuddy;
     private boolean isDeleted;
+
+    public Message(MessageRequestBodies.MessageBody body) {
+        message = body.getMessage();
+        imageExtension = body.getImageExtension();
+        repliesTo = body.getRepliesTo();
+        isFromMedBuddy = body.isFromMedbuddy();
+    }
 }

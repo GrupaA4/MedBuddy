@@ -51,7 +51,7 @@
   align-self: right;
   background-color: white;
   border-radius: 2vh;
-  height: 52vh;
+  height: 58vh;
   width: 32vw;
   margin-right: 1vw;
   margin-left: 44vw;
@@ -98,11 +98,11 @@
 
 .login_square__form__label {
   width: 22vw;
-  font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
   height: 3vh;
   font-size: 2vh;
   border-width: 1px;
+  text-transform: none;
 }
 
 .login_square__form__label::placeholder {

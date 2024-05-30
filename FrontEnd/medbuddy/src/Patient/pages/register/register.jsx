@@ -6,13 +6,14 @@ import MedBuddyLogo from '../../images/MedBuddyLogo2.png';
 import styles from './register.module.scss';
 import Header from '../../_componentsReusable/header/page';
 import Footer from '../../_componentsReusable/footer/page';
+import Cookies from 'js-cookie';
 
 export default function SignIn(){
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
     const [lastName,setLastName]=useState('');
     const [firstName,setFirstName]=useState('');
-    const [gender,setGender]=useState('');
+    const [gender,setGender]=useState(false);
     const [pronoun1,setPronoun1]=useState('');
     const [pronoun2,setPronoun2]=useState('');
     const [dob,setDoB]=useState('');
@@ -21,6 +22,7 @@ export default function SignIn(){
     const [city,setCity]=useState('');
     const [phone,setPhone]=useState('');
     const [profilePicture,setProfilePicture]=useState(null);
+    const [profilePicturePreview, setProfilePicturePreview]=useState(null);
 
     const handleEmailChange= (event) =>{
         setEmail(event.target.value);
@@ -39,7 +41,7 @@ export default function SignIn(){
     };
 
     const handleGenderChange= (event) =>{
-        setGender(event.target.value);
+        setGender(event.target.value === 'true');
     };
 
     const handlePronoun1Change= (event) =>{
@@ -75,18 +77,19 @@ export default function SignIn(){
         const reader=new FileReader();
 
         reader.onloadend= () =>{
-            setProfilePicture(reader.result);
+            setProfilePicture(new Uint8Array(reader.result));
+            setProfilePicturePreview(URL.createObjectURL(file));
         };
 
         if(file){
-            reader.readAsDataURL(file);
+            reader.readAsArrayBuffer(file);
         }
     };
 
-    const handleSubmit= (event) =>{
+    const handleSubmit= async (event) =>{
         event.preventDefault();
 
-        console.log({
+        const data = {
             email:email,
             password:password,
             lastName:lastName,
@@ -94,27 +97,53 @@ export default function SignIn(){
             gender:gender,
             pronoun1:pronoun1,
             pronoun2:pronoun2,
-            dob:dob,
+            dateOfBirth:dob,
             language:language,
             country:country,
             city:city,
-            phone:phone,
-            profilePicture:profilePicture
-        });
+            phoneNumber:phone,
+            profileImage:profilePicture
+        };
 
-        setEmail('');
-        setPassword('');
-        setLastName('');
-        setFirstName('');
-        setGender('');
-        setPronoun1('');
-        setPronoun2('');
-        setDoB('');
-        setLanguage('');
-        setCountry('');
-        setCity('');
-        setPhone('');
-        setProfilePicture(null);
+        console.log('Data to be sent:', data);
+
+        try {
+            const response = await fetch('https://0462a4b4-2de7-465f-a03e-a1097daea12c.mock.pstmn.io/medbuddy/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if(!response.ok){
+                throw new Error('Response was not ok');
+            }
+
+            const result= await response.json();
+            console.log('Success:',result);
+
+            Cookies.set(`user_email`, email, {expires: 7});
+            Cookies.set(`user_pass`, password, {expires: 7});
+            setEmail('');
+            setPassword('');
+            setLastName('');
+            setFirstName('');
+            setGender(false);
+            setPronoun1('');
+            setPronoun2('');
+            setDoB('');
+            setLanguage('');
+            setCountry('');
+            setCity('');
+            setPhone('');
+            setProfilePicture(null);
+            setProfilePicturePreview(null);
+
+            //window.location.href='/';
+        } catch (error) {
+            console.error('Error',error);
+        }
     };
 
     const [isMobileMenu, setIsMobileMenu] = useState(false);
@@ -185,7 +214,8 @@ export default function SignIn(){
                                         type='radio'
                                         id='male'
                                         name='gender'
-                                        value={gender}
+                                        value={false}
+                                        checked={gender === false}
                                         onChange={handleGenderChange}
                                         required
                                     />
@@ -196,7 +226,8 @@ export default function SignIn(){
                                         type='radio'
                                         id='female'
                                         name='gender'
-                                        value={gender}
+                                        value={true}
+                                        checked={gender === true}
                                         onChange={handleGenderChange}
                                     />
                                     Female
@@ -289,7 +320,7 @@ export default function SignIn(){
                         </div><br />
                         <div className={`${styles.form_container__profile_pic}`}>
                             {profilePicture && (
-                                <img src={profilePicture} alt='Profile Picture'/>
+                                <img src={profilePicturePreview} alt='Profile Picture'/>
                             )}
                         </div><br />
                         <button className={`${styles.form_container__form__submit}`} type='submit'>Register</button>
