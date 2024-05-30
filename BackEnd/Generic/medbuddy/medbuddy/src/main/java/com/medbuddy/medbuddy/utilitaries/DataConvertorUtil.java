@@ -18,7 +18,7 @@ public class DataConvertorUtil {
     }
 
     public static LocalDate turnDDMMYYYYToLocalDate(String date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
         return LocalDate.parse(date, formatter);
     }
 

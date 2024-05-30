@@ -7,6 +7,7 @@ import styles from './profile.module.scss';
 import Header from '../../_componentsReusable/header/page';
 import Footer from '../../_componentsReusable/footer/page';
 import profilePic from '../../images/profile.svg';
+import Cookies from 'js-cookie';
 
 const getCookieValue = (name) => {
     const cookies = document.cookie.split(';').map(cookie => cookie.trim());
@@ -220,6 +221,11 @@ export default function Profile(){
         }
     };
 
+    const transformDate = (date) => {
+        const [year, month, day] = date.split('-');
+        return `${day}.${month}.${year}`;
+    };
+
     const handleNewPasswordChange = (event) => {
         setNewPassword(event.target.value);
     };
@@ -278,7 +284,7 @@ export default function Profile(){
             window.alert('Address should contain exactly one comma (to separate City and Country)');
             return;
         }
-
+        const transformedDob = transformDate(birthDate);
         const city = addressParts[0];
         const country = addressParts[1];
         const data = {
@@ -289,7 +295,7 @@ export default function Profile(){
             gender:gender,
             pronoun1:pronoun1,
             pronoun2:pronoun2,
-            dateOfBirth:birthDate,
+            dateOfBirth:transformedDob,
             language:language,
             country:country,
             city:city,
@@ -435,7 +441,11 @@ export default function Profile(){
         setOldPassword(getCookieValue('user_pass'));
         if(newPassword!==oldPassword && newPassword===confirmPassword){
             const data = {
+                email:email,
                 password:newPassword,
+                lastName:surname,
+                firstName:name,
+                dateOfBirth:birthDate
             };
 
             console.log('Data to be sent:', data);
@@ -469,6 +479,7 @@ export default function Profile(){
                 }
                 else{
                     console.log('Changed password successfully');
+                    Cookies.set('user_pass', newPassword);
                 }
 
                 setIsChangingPassword(false);

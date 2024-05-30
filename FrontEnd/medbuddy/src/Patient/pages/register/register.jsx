@@ -91,6 +91,11 @@ export default function SignIn(){
         }
     };
 
+    const transformDate = (date) => {
+        const [year, month, day] = date.split('-');
+        return `${day}.${month}.${year}`;
+    };
+
     const handleSubmit= async (event) =>{
         event.preventDefault();
 
@@ -137,6 +142,7 @@ export default function SignIn(){
             window.alert('Phone number should contain only numbers and be exactly 10 digits long');
             return;
        }
+       const transformedDob = transformDate(dob);
 
         const data = {
             email:email,
@@ -146,7 +152,7 @@ export default function SignIn(){
             gender:gender,
             pronoun1:pronoun1,
             pronoun2:pronoun2,
-            dateOfBirth:dob,
+            dateOfBirth:transformedDob,
             language:language,
             country:country,
             city:city,
