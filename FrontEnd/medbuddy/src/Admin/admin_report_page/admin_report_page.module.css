@@ -227,6 +227,18 @@
   line-height: 3;
 }
 
+.container1_admin_report_page__button1 {
+  position: relative;
+  width: 13vw;
+  height: 4vh;
+  border-radius: 4vh;
+  border: none;
+  background-color: #002845;
+  cursor: pointer;
+  font-size: 2vh;
+  color: white;
+}
+
 .container2_admin_report_page {
   position: absolute;
   display: flex;
@@ -439,18 +451,6 @@
   .container1_admin_report_page__square__data__buttons {
     display: flex;
     justify-content: space-evenly;
-  }
-
-  .container1_admin_report_page__button1 {
-    position: relative;
-    width: 13vw;
-    height: 4vh;
-    border-radius: 4vh;
-    border: none;
-    background-color: #002845;
-    cursor: pointer;
-    font-size: 2vh;
-    color: white;
   }
 
   .container1_admin_report_page__button2 {
