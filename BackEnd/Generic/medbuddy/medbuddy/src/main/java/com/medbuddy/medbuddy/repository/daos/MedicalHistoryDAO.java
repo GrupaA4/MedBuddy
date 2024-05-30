@@ -32,7 +32,6 @@ public class MedicalHistoryDAO {
     public MedicalHistoryDAO(JdbcTemplate jdbcTemplate) {
         logger = LogManager.getLogger("Database");
         this.jdbcTemplate = jdbcTemplate;
-        jdbcTemplate.setQueryTimeout(10);
     }
 
     /**
