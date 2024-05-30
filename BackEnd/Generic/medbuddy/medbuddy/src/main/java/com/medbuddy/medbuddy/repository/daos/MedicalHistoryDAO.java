@@ -30,7 +30,6 @@ public class MedicalHistoryDAO {
     public MedicalHistoryDAO(JdbcTemplate jdbcTemplate) {
         logger = LogManager.getLogger("Database");
         this.jdbcTemplate = jdbcTemplate;
-        jdbcTemplate.setQueryTimeout(10);
     }
 
     /**
@@ -56,7 +55,7 @@ public class MedicalHistoryDAO {
      * @param medicalHistoryEntry the model of the entry to be added
      */
     public void createMedicalHistoryEntry(MedicalHistoryEntry medicalHistoryEntry) {
-        try {
+        //try {
             jdbcTemplate.update(
                     "INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)",
                     medicalHistoryEntry.getId().toString(),
@@ -67,9 +66,9 @@ public class MedicalHistoryDAO {
                     medicalHistoryEntry.getTreatment(),
                     DataConvertorUtil.turnBooleanInto0or1(medicalHistoryEntry.isDeleted())
             );
-        } catch (DataAccessException e) {
-            logger.error("Error executing query: ", e.getMessage());
-        }
+        //} catch (DataAccessException e) {
+            //logger.error("Error executing query: ", e.getMessage());
+       // }
     }
 
     public void deleteEntry(UUID entryId) {
