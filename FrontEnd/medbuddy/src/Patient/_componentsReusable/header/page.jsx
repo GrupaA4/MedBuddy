@@ -26,20 +26,20 @@ export default function Header({setIsMobileMenu}) {
       <Link className={styles.page} to="/" onClick={closeMobileMenu}><img className={styles.page__header_logo} src={Logo} alt="IMAGINE"/></Link>
         <nav className={`${styles.page__header_navbar} ${isMobileMenuOpen ? styles.show : ''}`}>
         <Link className={`${styles.page__header_navbar_link} ${location.pathname === "/" ? styles.active : ""}`} to='/' onClick={closeMobileMenu}>Home</Link>
-        <Link className={`${styles.page__header_navbar_link} ${location.pathname === "/pages/about" ? styles.active : ""}`} to='/pages/about' onClick={closeMobileMenu}>About</Link>
-        <Link className={`${styles.page__header_navbar_link} ${location.pathname === "/pages/contact" ? styles.active : ""}`} to='/pages/contact' onClick={closeMobileMenu}>Contact</Link>
+        <Link className={`${styles.page__header_navbar_link} ${location.pathname === "/about" ? styles.active : ""}`} to='/about' onClick={closeMobileMenu}>About</Link>
+        <Link className={`${styles.page__header_navbar_link} ${location.pathname === "/contact" ? styles.active : ""}`} to='/contact' onClick={closeMobileMenu}>Contact</Link>
         <Link className={`${styles.page__header_navbar_link} ${location.pathname === "/chat" ? styles.active : ""}`} to='/chat' onClick={closeMobileMenu}>MedBuddy</Link>
-        <Link className={styles.page} to="/pages/profile" onClick={closeMobileMenu}> <img className={styles.page__header_navbar_profilepic} src={profilePic} alt='profile pic'/></Link>
+        <Link className={styles.page} to="/profile" onClick={closeMobileMenu}> <img className={styles.page__header_navbar_profilepic} src={profilePic} alt='profile pic'/></Link>
         </nav>
         <div className={styles.page__header_menu_button} onClick={toggleMobileMenu}>
           <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} className={styles.page__header_hamburger} />
         </div>
         <div className={`${styles.pages} ${isMobileMenuOpen ? styles.pages_show : ''}`}>
           <Link className={styles.page} to="/" onClick={closeMobileMenu}>Home</Link>
-          <Link className={styles.page} to="/pages/about" onClick={closeMobileMenu}>About</Link>
-          <Link className={styles.page} to="/pages/contact" onClick={closeMobileMenu}>Contact</Link>
+          <Link className={styles.page} to="/about" onClick={closeMobileMenu}>About</Link>
+          <Link className={styles.page} to="/contact" onClick={closeMobileMenu}>Contact</Link>
           <Link className={styles.page} to="/chat" onClick={closeMobileMenu}>MedBuddy</Link>
-          <Link className={styles.page} to="/pages/profile" onClick={closeMobileMenu}>Profile</Link>
+          <Link className={styles.page} to="/profile" onClick={closeMobileMenu}>Profile</Link>
         </div>
       </header>
     </>

@@ -123,13 +123,6 @@ const UserPage = () => {
     
   };
 
-  //ASTA NU MERGE INCA
-  /*const handleLicenseCheck = async (medicId) => {
-    try {
-    
-    }
-  };*/
-
 
   return (
     <div className={styles.body_admin_user_page}>
