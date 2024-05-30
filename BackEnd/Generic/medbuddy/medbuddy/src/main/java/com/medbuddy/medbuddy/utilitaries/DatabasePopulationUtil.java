@@ -1,9 +1,7 @@
 package com.medbuddy.medbuddy.utilitaries;
 
-import com.medbuddy.medbuddy.models.Medic;
-import com.medbuddy.medbuddy.models.MedicalHistoryEntry;
-import com.medbuddy.medbuddy.models.Message;
-import com.medbuddy.medbuddy.models.User;
+import com.medbuddy.medbuddy.models.*;
+import com.medbuddy.medbuddy.repository.daos.AdminFunctionalityDAO;
 import com.medbuddy.medbuddy.repository.daos.MedicalHistoryDAO;
 import com.medbuddy.medbuddy.repository.daos.MessagerieDAO;
 import com.medbuddy.medbuddy.repository.daos.UserDAO;
@@ -21,11 +19,13 @@ public class DatabasePopulationUtil {
     private final MessagerieDAO messagerieDAO;
     private final UserDAO userDAO;
     private final MedicalHistoryDAO medicalHistoryDAO;
+    private final AdminFunctionalityDAO adminFunctionalityDAO;
 
-    public DatabasePopulationUtil(MessagerieDAO messagerieDAO, UserDAO userDAO, MedicalHistoryDAO medicalHistoryDAO) {
+    public DatabasePopulationUtil(MessagerieDAO messagerieDAO, UserDAO userDAO, MedicalHistoryDAO medicalHistoryDAO, AdminFunctionalityDAO adminFunctionalityDAO) {
         this.messagerieDAO = messagerieDAO;
         this.userDAO = userDAO;
         this.medicalHistoryDAO = medicalHistoryDAO;
+        this.adminFunctionalityDAO = adminFunctionalityDAO;
     }
 
     public static void main(String[] args) {
@@ -38,11 +38,13 @@ public class DatabasePopulationUtil {
         MessagerieDAO messagerieDAO = new MessagerieDAO();
         MedicalHistoryDAO medicalHistoryDAO = new MedicalHistoryDAO(jdbcTemplate);
         UserDAO userDAO = new UserDAO(jdbcTemplate);
-        DatabasePopulationUtil util = new DatabasePopulationUtil(messagerieDAO, userDAO, medicalHistoryDAO);
+        AdminFunctionalityDAO adminFunctionalityDAO = new AdminFunctionalityDAO(jdbcTemplate);
+        DatabasePopulationUtil util = new DatabasePopulationUtil(messagerieDAO, userDAO, medicalHistoryDAO, adminFunctionalityDAO);
        // util.processUserFile("C:\\Users\\User\\Downloads\\user.txt");
         //util.processMessagerieFile("C:\\Users\\User\\Downloads\\message (3).txt");
-        util.processMedicalHistoryFile("C:\\Users\\User\\Downloads\\medical_history.txt");
+        //util.processMedicalHistoryFile("C:\\Users\\User\\Downloads\\medical_history.txt");
         //util.processMedicFile("C:\\Users\\User\\Downloads\\medic.txt");
+        util.processReportFile("C:\\Users\\User\\Downloads\\report.txt");
     }
 
     public void processMedicFile(String csvFile) {
@@ -84,37 +86,7 @@ public class DatabasePopulationUtil {
         }
     }
 
-    public void processMessagerieFile(String csvFile) {
-        String line;
-        String delimiter = "\\|";
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-            while ((line = br.readLine()) != null) {
-                String[] data = line.split(delimiter);
-                if (data.length == 11) {
-                    UUID id = UUID.fromString(data[0]);
-                    UUID senderId = UUID.fromString(data[1]);
-                    UUID conversationId = UUID.fromString(data[2]);
-                    LocalDate timeSent = LocalDate.parse(data[3], dateFormat);
-                    String message = data[4];
-                    int imageNumber = Integer.parseInt(data[5]);
-                    String imageExtension = data[6];
-                    boolean isRead = Boolean.parseBoolean(data[7]);
-                    UUID repliesTo = UUID.fromString(data[8]);
-                    boolean isFromMedBuddy = Boolean.parseBoolean(data[9]);
-                    boolean isDeleted = Boolean.parseBoolean(data[10]);
-                    Message messages = new Message(conversationId, id, senderId, message, imageNumber, imageExtension, isRead, repliesTo, timeSent, isFromMedBuddy, isDeleted);
-                    System.out.println(id);
-                    messagerieDAO.addMessageToConversation(messages);
-                } else {
-                    System.err.println("invalid : " + line);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void processUserFile(String csvFile) {
         String line;
@@ -158,6 +130,7 @@ public class DatabasePopulationUtil {
     public void processMedicalHistoryFile(String csvFile) {
         String line;
         String delimiter = "\\|";
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             while ((line = br.readLine()) != null) {
@@ -168,7 +141,7 @@ public class DatabasePopulationUtil {
                         UUID medicId = UUID.fromString(data[1]);
                         UUID patientId = UUID.fromString(data[2]);
                         String diagnosis = data[3];
-                        String period = data[4];
+                        LocalDate date_diagnosis = LocalDate.parse(data[4], dateFormat);
                         String treatment = data[5];
                         boolean isDeleted = data[6].equals("1");
 
@@ -177,11 +150,50 @@ public class DatabasePopulationUtil {
                         entry.setMedicId(medicId);
                         entry.setPatientId(patientId);
                         entry.setDiagnosis(diagnosis);
-                        entry.setPeriod(period);
+                        entry.setDate_diagnosis(date_diagnosis);
                         entry.setTreatment(treatment);
                         entry.setDeleted(isDeleted);
 
                         medicalHistoryDAO.createMedicalHistoryEntry(entry);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    System.err.println("invalid : " + line);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void processReportFile(String csvFile) {
+        String line;
+        String delimiter = "\\|";
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(delimiter);
+                if (data.length == 6) {
+                    try {
+                        UUID id = UUID.fromString(data[0]);
+                        UUID reportedUser = UUID.fromString(data[1]);
+                        UUID reportedBy = UUID.fromString(data[2]);
+                        String reportMessage = data[3];
+                        LocalDate timeCreated = LocalDate.parse(data[4], dateFormat);
+                        boolean isDeleted = data[5].equals("1");
+
+                        Report entry = new Report();
+                        entry.setId(id);
+                        entry.setReportedUser(reportedUser);
+                        entry.setReportedBy(reportedBy);
+                        entry.setReportMessage(reportMessage);
+                        entry.setTimeCreated(timeCreated);
+                        entry.setDeleted(isDeleted);
+
+
+                        adminFunctionalityDAO.reportUser(entry);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
