@@ -313,6 +313,7 @@ const AdminMainPage = () => {
 
       <div className={styles.container2__admin__main__page}>
         <p className={styles.container2__admin__main__page__title}></p>
+        <img src={Admin} className={styles.conatiner2__admin__main__page__image} alt="Admin"/>
         <button className={styles.container2__admin__main__page__button1} type="button" onClick={handleReportClick}>REPORT</button><br /><br />
         <button className={styles.container2__admin__main__page__button2} type="button" onClick={handleManageAccountsClick}>MANAGE ACCOUNTS</button>
       </div>
