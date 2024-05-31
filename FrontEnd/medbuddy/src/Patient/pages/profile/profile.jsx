@@ -143,7 +143,7 @@ export default function Profile(){
                     setLanguage(userData.language);
                     setHomeAdress(userData.city + ', ' + userData.country);
                     setPhone(userData.phoneNumber);
-                    //setProfilePicture(userData.profileImage);
+                    setProfilePicture(userData.profileImage);
 
                     setInitialEmail(email);
                     setInitialSurname(surname);
@@ -155,7 +155,7 @@ export default function Profile(){
                     setInitialLanguage(language);
                     setInitialHomeAdress(homeAdress);
                     setInitialPhone(phone);
-                    //setInitialProfilePicture(profilePicture);
+                    setInitialProfilePicture(profilePicture);
                 } catch (error) {
                     console.error('Error:', error);
                 }
@@ -209,7 +209,7 @@ export default function Profile(){
         const reader=new FileReader();
 
         reader.onloadend= () =>{
-            setProfilePicture(new Uint8Array(reader.result));
+            setProfilePicture(reader.result);
             setProfilePicturePreview(URL.createObjectURL(file));
 
             const fileExtension=file.name.split('.').pop();
@@ -217,12 +217,20 @@ export default function Profile(){
         };
 
         if(file){
-            reader.readAsArrayBuffer(file);
+            reader.readAsDataURL(file);
         }
     };
 
     const transformDate = (date) => {
         const [year, month, day] = date.split('-');
+        return `${day}.${month}.${year}`;
+    };
+
+    const getCurrentDate = () => {
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2, '0');
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const year = today.getFullYear();
         return `${day}.${month}.${year}`;
     };
 
@@ -300,8 +308,8 @@ export default function Profile(){
             country:country,
             city:city,
             phoneNumber:phone,
-            //profileImage:profilePicture,
-            //imageExtension:imageExtension,
+            profileImage:profilePicture,
+            imageExtension:imageExtension,
             admin:false
         };
 
@@ -358,8 +366,8 @@ export default function Profile(){
         setLanguage(initialLanguage);
         setBirthDate(initialBirthDate);
         setHomeAdress(initialHomeAdress);
-        //setProfilePicture(initialProfilePicture);
-        //setProfilePicturePreview(initialProfilePicturePreview);
+        setProfilePicture(initialProfilePicture);
+        setProfilePicturePreview(initialProfilePicturePreview);
         setIsEditing(false);
     };
 
@@ -375,8 +383,8 @@ export default function Profile(){
             setInitialLanguage(language)
             setInitialBirthDate(birthDate)
             setInitialHomeAdress(homeAdress)
-            //setInitialProfilePicture(profilePicture)
-            //setinitialProfilePicturePreview(profilePicturePreview)
+            setInitialProfilePicture(profilePicture)
+            setinitialProfilePicturePreview(profilePicturePreview)
         }
     }, [isEditing]);
 
@@ -438,6 +446,8 @@ export default function Profile(){
     const handleChangePassword = async (event) => {
         event.preventDefault();
 
+        const lastTimeLoggedOn = getCurrentDate();
+
         setOldPassword(getCookieValue('user_pass'));
         if(newPassword!==oldPassword && newPassword===confirmPassword){
             const data = {
@@ -445,7 +455,8 @@ export default function Profile(){
                 password:newPassword,
                 lastName:surname,
                 firstName:name,
-                dateOfBirth:birthDate
+                dateOfBirth:birthDate,
+                lastTimeLoggedOn:lastTimeLoggedOn
             };
 
             console.log('Data to be sent:', data);
@@ -510,7 +521,7 @@ export default function Profile(){
                             </>
                         ) : (
                             <>
-                                <img className={`${styles.buttons_container__image}`} src={profilePic} alt='Profile Pic' /><br /><br />
+                                <img className={`${styles.buttons_container__image}`} src={profilePicturePreview ? profilePicturePreview : profilePic} alt='Profile Picture' /><br /><br />
                             </>
                         )}
                         {isEditing ? (

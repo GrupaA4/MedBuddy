@@ -79,7 +79,7 @@ export default function SignIn(){
         const reader=new FileReader();
 
         reader.onloadend= () =>{
-            setProfilePicture(new Uint8Array(reader.result));
+            setProfilePicture(reader.result);
             setProfilePicturePreview(URL.createObjectURL(file));
 
             const fileExtension=file.name.split('.').pop();
@@ -87,7 +87,7 @@ export default function SignIn(){
         };
 
         if(file){
-            reader.readAsArrayBuffer(file);
+            reader.readAsDataURL(file);
         }
     };
 
@@ -388,7 +388,7 @@ export default function SignIn(){
                                 id='profilePicture'
                                 value={profilePicture ? profilePicture.name : ''}
                                 onChange={handleProfilePicChange}
-                                //required
+                                required
                             />
                         </div><br />
                         <div className={`${styles.form_container__profile_pic}`}>
