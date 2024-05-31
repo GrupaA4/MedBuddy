@@ -1,10 +1,7 @@
 package com.medbuddy.medbuddy.utilitaries;
 
 import com.medbuddy.medbuddy.models.*;
-import com.medbuddy.medbuddy.repository.daos.AdminFunctionalityDAO;
-import com.medbuddy.medbuddy.repository.daos.MedicalHistoryDAO;
-import com.medbuddy.medbuddy.repository.daos.MessagerieDAO;
-import com.medbuddy.medbuddy.repository.daos.UserDAO;
+import com.medbuddy.medbuddy.repository.daos.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
@@ -20,12 +17,14 @@ public class DatabasePopulationUtil {
     private final UserDAO userDAO;
     private final MedicalHistoryDAO medicalHistoryDAO;
     private final AdminFunctionalityDAO adminFunctionalityDAO;
+    private final NotificationsDAO notificationsDAO;
 
-    public DatabasePopulationUtil(MessagerieDAO messagerieDAO, UserDAO userDAO, MedicalHistoryDAO medicalHistoryDAO, AdminFunctionalityDAO adminFunctionalityDAO) {
+    public DatabasePopulationUtil(MessagerieDAO messagerieDAO, UserDAO userDAO, MedicalHistoryDAO medicalHistoryDAO, AdminFunctionalityDAO adminFunctionalityDAO, NotificationsDAO notificationsDAO ) {
         this.messagerieDAO = messagerieDAO;
         this.userDAO = userDAO;
         this.medicalHistoryDAO = medicalHistoryDAO;
         this.adminFunctionalityDAO = adminFunctionalityDAO;
+        this.notificationsDAO = notificationsDAO;
     }
 
     public static void main(String[] args) {
@@ -38,13 +37,15 @@ public class DatabasePopulationUtil {
         MessagerieDAO messagerieDAO = new MessagerieDAO();
         MedicalHistoryDAO medicalHistoryDAO = new MedicalHistoryDAO(jdbcTemplate);
         UserDAO userDAO = new UserDAO(jdbcTemplate);
+        NotificationsDAO notificationsDAO = new NotificationsDAO(jdbcTemplate);
         AdminFunctionalityDAO adminFunctionalityDAO = new AdminFunctionalityDAO(jdbcTemplate);
-        DatabasePopulationUtil util = new DatabasePopulationUtil(messagerieDAO, userDAO, medicalHistoryDAO, adminFunctionalityDAO);
+        DatabasePopulationUtil util = new DatabasePopulationUtil(messagerieDAO, userDAO, medicalHistoryDAO, adminFunctionalityDAO, notificationsDAO);
        // util.processUserFile("C:\\Users\\User\\Downloads\\user.txt");
         //util.processMessagerieFile("C:\\Users\\User\\Downloads\\message (3).txt");
         //util.processMedicalHistoryFile("C:\\Users\\User\\Downloads\\medical_history.txt");
         //util.processMedicFile("C:\\Users\\User\\Downloads\\medic.txt");
-        util.processReportFile("C:\\Users\\User\\Downloads\\report.txt");
+        //util.processReportFile("C:\\Users\\User\\Downloads\\report.txt");
+        util.processNotificationsFile("C:\\Users\\User\\Downloads\\notification.txt");
     }
 
     public void processMedicFile(String csvFile) {
@@ -155,6 +156,40 @@ public class DatabasePopulationUtil {
                         entry.setDeleted(isDeleted);
 
                         medicalHistoryDAO.createMedicalHistoryEntry(entry);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    System.err.println("invalid : " + line);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void processNotificationsFile(String csvFile) {
+        String line;
+        String delimiter = "\\|";
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(delimiter);
+                if (data.length == 4) {
+                    try {
+                        UUID id = UUID.fromString(data[0]);
+                        UUID medicId = UUID.fromString(data[1]);
+                        UUID patientId = UUID.fromString(data[2]);
+                        String diagnosis = data[3];
+
+                        Notification entry = new Notification();
+                        entry.setId(id);
+                        entry.setMedicId(medicId);
+                        entry.setPatientId(patientId);
+                        entry.setDiagnosis(diagnosis);
+
+                        notificationsDAO.addNotification(entry);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
