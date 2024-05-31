@@ -32,13 +32,13 @@ function List(){
     const endIndex = startIndex + itemsPerPage;
     // return conversations.slice(startIndex, endIndex).map(conversation => (
       return filteredConversations.slice(startIndex, endIndex).map(conversation => (
-        <div key={conversation.id} className="item">
+        <div key={conversation.id} className="item-conv">
         <img src={Avatar} alt="" />
-        <div className="texts">
-            <span><span className="userName">{conversation.user}</span> wants to contact you at: </span>
-            <a href={`mailto:${conversation.message}`} className="emailLink"> <div className="userEmail"><p>{conversation.message}</p></div></a>
+        <div className="texts-conv">
+            <span><span className="userName-conv">{conversation.user}</span> wants to contact you at: </span>
+            <a href={`mailto:${conversation.message}`} className="emailLink-conv"> <div className="userEmail-conv"><p>{conversation.message}</p></div></a>
         </div>
-      <div className="diagnoses">See diagnoses</div>
+      <div className="diagnoses-conv">See diagnoses</div>
     </div>
     ));
   };
@@ -61,23 +61,23 @@ function List(){
     <div className="List">
       
 
-    <div className="search">
-        <div className="searchBar">
-        <div className="searchIcon">
+    <div className="search-conv">
+        <div className="searchBar-conv">
+        <div className="searchIcon-conv">
         <SearchIcon/>
         </div>
-        <input type="text" placeholder="Search" value={searchTerm} onChange={handleSearchChange}/>
+        <input type="text" placeholder="Search-conv" value={searchTerm} onChange={handleSearchChange}/>
         </div>
     </div>
-    <div className="items">
+    <div className="items-conv">
         {displayConversations()}
     </div>
 
-    <div className="buttons-container">
-        <button onClick={previousPage} disabled={currentPage === 1} className="pre&nextpage-button">
+    <div className="buttons-container-conv">
+        <button onClick={previousPage} disabled={currentPage === 1} className="pre&nextpage-button-conv">
           Previous
         </button>
-        <button onClick={nextPage} disabled={currentPage * itemsPerPage >= conversations.length} className="pre&nextpage-button">
+        <button onClick={nextPage} disabled={currentPage * itemsPerPage >= conversations.length} className="pre&nextpage-button-conv">
           Next
         </button>
       </div>
