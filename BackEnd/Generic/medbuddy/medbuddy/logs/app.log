@@ -1,0 +1,26 @@
+2024-05-31 14:03:29 INFO  MedbuddyApplication:50 - Starting MedbuddyApplication using Java 21.0.2 with PID 20024 (C:\Users\lored\OneDrive\Desktop\proiect_31_05\MedBuddy\BackEnd\Generic\medbuddy\medbuddy\target\classes started by Diana in C:\Users\lored\OneDrive\Desktop\proiect_31_05\MedBuddy\BackEnd\Generic\medbuddy\medbuddy)
+2024-05-31 14:03:29 DEBUG MedbuddyApplication:51 - Running with Spring Boot v3.2.5, Spring v6.1.6
+2024-05-31 14:03:29 INFO  MedbuddyApplication:654 - No active profile set, falling back to 1 default profile: "default"
+2024-05-31 14:03:31 INFO  TomcatWebServer:109 - Tomcat initialized with port 7264 (http)
+2024-05-31 14:03:31 INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-7264"]
+2024-05-31 14:03:31 INFO  StandardService:173 - Starting service [Tomcat]
+2024-05-31 14:03:31 INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-31 14:03:31 INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
+2024-05-31 14:03:31 INFO  ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 1334 ms
+2024-05-31 14:03:32 INFO  DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3fb450d7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4b7ed03e, org.springframework.security.web.context.SecurityContextHolderFilter@5c8d58ed, org.springframework.security.web.header.HeaderWriterFilter@de77146, org.springframework.web.filter.CorsFilter@76cf841, org.springframework.security.web.authentication.logout.LogoutFilter@216372b7, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@687389a6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@28be7fec, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@26f0141, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@636985df, org.springframework.security.web.access.ExceptionTranslationFilter@437ed416, org.springframework.security.web.access.intercept.AuthorizationFilter@48d739f]
+2024-05-31 14:03:32 INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-7264"]
+2024-05-31 14:03:32 INFO  TomcatWebServer:241 - Tomcat started on port 7264 (http) with context path ''
+2024-05-31 14:03:32 INFO  MedbuddyApplication:56 - Started MedbuddyApplication in 2.678 seconds (process running for 3.674)
+2024-05-31 14:04:11 INFO  [/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-31 14:04:11 INFO  DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2024-05-31 14:04:11 INFO  DispatcherServlet:554 - Completed initialization in 1 ms
+2024-05-31 14:04:11 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/login
+2024-05-31 14:04:11 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/login
+2024-05-31 14:04:11 WARN  HikariConfig:1089 - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2024-05-31 14:04:11 INFO  HikariDataSource:110 - HikariPool-1 - Starting...
+2024-05-31 14:04:11 INFO  PoolBase:536 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
+2024-05-31 14:04:11 INFO  HikariPool:565 - HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@1d169fde
+2024-05-31 14:04:11 INFO  HikariDataSource:123 - HikariPool-1 - Start completed.
+2024-05-31 14:04:12 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-05-31 14:04:12 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=ceva1@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-05-31 14:04:12 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/login
