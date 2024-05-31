@@ -20,8 +20,7 @@
     padding-top: 5rem;
     padding-bottom: 5rem;
     background-color: #DEF9F1;
-    // margin-left: -0.5rem;
-    // margin-right: -0.5rem;
+
     .welcome_section__text{
         width: 30vw;
         color: #002845;
@@ -50,8 +49,7 @@
     padding-right: 10vw;
     padding-top: 5rem;
     padding-bottom: 5rem;   
-    // margin-left: -0.5rem;
-    // margin-right: -0.5rem;
+    background-color: #DEF9F1;
     .motivation_section__text{
         width: 30vw;
         color: #002845;
@@ -80,9 +78,6 @@
     padding-right: 10vw;
     padding-top: 5rem;
     padding-bottom: 5rem;
-    background-color: #DEF9F1;
-    // margin-left: -0.5rem;
-    // margin-right: -0.5rem;
     font-family: "Bebas_font";
     .get_started_section__text{
         width: 30vw;
@@ -119,103 +114,7 @@
     }
 }
 
-.form_section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-left: 10vw;
-    padding-right: 10vw;
-    margin-bottom: 3rem;
-    padding-top: 3rem;
-    font-family: "Oswald_font";
-    font-weight: 350;
-    text-align: left;
-    .form_section__title {
-        font-family: "Bebas_font";
-        color: #002845;
-        font-weight: 400;
-        font-size: 3rem;
-        text-align: center;
-        margin-bottom: 3rem;
-    }
-    .form_section__form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 80%;
-        gap: 1rem;
 
-        label {
-            font-size: 1rem;
-            margin-bottom: 0.4rem;
-            color: #002845;
-        }
-        input::placeholder,textarea::placeholder {
-            font-size: 0.8rem;
-        }
-        .form__first_row {
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-    
-            .form__first_row__item {
-                display: flex;
-                flex-direction: column;
-                width: 40%;
-
-                input {
-                    padding: 0.5rem;
-                    height: 2.2rem;
-                    border-radius: 15px;
-                    background-color: #DEF9F1;
-                    border: none;
-                }
-            }
-        }
-    
-        .form__email {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            input {
-                padding: 0.5rem;
-                height: 2.2rem;
-                border-radius: 15px;
-                background-color: #DEF9F1;
-                border: none;
-            }
-        }
-
-        .form__msg {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-    
-            textarea {
-                padding: 0.5rem;
-                border-radius: 15px;
-                background-color: #DEF9F1;
-                border: none;
-                height: 5rem;
-            }
-        }
-
-        .form__btn {
-            width: fit-content;
-            padding: 0.5rem 2.3rem;
-            border-radius: 50px;
-            background-color: #069DAE;
-            border: none;
-            color: white;
-            font-family: "Bebas_font";
-            font-size: 1.1rem;
-        }
-        .form__btn:hover {
-            background-color: #09737f;
-        }
-    }
-}
 
 @media screen and (max-width: 850px){
     .welcome_section{
