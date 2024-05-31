@@ -222,8 +222,7 @@ const AdminReportPage = () => {
       </div>
 
       <div className={styles.container2_admin_report_page}>
-        <div className={styles.icon__and__text}>
-          <div className={styles.container2_admin_report_page__square1__icon}>
+         
             <img
               src={Megafon}
               className={
@@ -231,11 +230,10 @@ const AdminReportPage = () => {
               }
               alt="Megafon"
             />
-          </div>
+        
           <div className={styles.container2_admin_report_page__text}>
             Vezi ultimele raportari!
           </div>
-        </div>
       </div>
     </div>
   );
