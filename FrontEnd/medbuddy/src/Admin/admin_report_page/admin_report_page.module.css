@@ -261,20 +261,71 @@
   opacity: 0;
 }
 
+
+
 @keyframes appear {
   100% {
     opacity: 1;
   }
 }
 
+.container2_admin_report_page__title {
+  position: absolute;
+  line-height: 1.5;
+  color: #002845;
+  font-size: 5vh;
+}
+
+.container2_admin_report_page__button1 {
+  position: absolute;
+  margin-top: 45vh;
+  width: 18vw;
+  height: 7vh;
+  top: 7vh;
+  border-radius: 4vh;
+  border: none;
+  background-color: #002845;
+  cursor: pointer;
+  font-size: 4vh;
+  color: white;
+}
+
+.container2_admin_report_page__button1:hover {
+  scale: 1.1;
+}
+
+.container2_admin_report_page__button1:active {
+  box-shadow: 0 30px #b8e0c6;
+  transform: translateY(8px);
+}
+
+.icon__and__text {
+  display: flex;
+  flex-direction: column; /* Set flex direction to column for inner container */
+  align-items: center; /* Center items horizontally within the column */
+}
+
+.container2_admin_report_page__square1__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+  width: 20vh;
+  margin-right: 2vw; 
+}
 
 .container2_admin_report_page__square1__icon__image {
   height: 50%;
-  width: 55%;
+  width: 65%;
   margin-bottom: 4vh;
 }
-
-
+  .container2_admin_report_page__text {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 3.5vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    align-self: center;
+  }
 
 .container1_admin_report_page__square__data__buttons {
   display: none;
