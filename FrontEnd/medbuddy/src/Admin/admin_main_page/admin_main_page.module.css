@@ -157,7 +157,7 @@
   background-color: #def9f1;
   top: 20vh;
   left: 68vw;
-  height: 85vh;
+  height: 70vh;
   width: 28vw;
   bottom: 20vh;
   scroll-margin-top: 15vh;
@@ -177,7 +177,7 @@
 
 .container2__admin__main__page__button1 {
   position: absolute;
-  margin-top: 40vh;
+  margin-top: 32vh;
   width: 18vw;
   height: 7vh;
   border-radius: 4vh;
@@ -201,7 +201,7 @@
 
 .container2__admin__main__page__button2 {
   position: absolute;
-  margin-top: 60vh;
+  margin-top: 50vh;
   width: 18vw;
   height: 7vh;
   border-radius: 4vh;

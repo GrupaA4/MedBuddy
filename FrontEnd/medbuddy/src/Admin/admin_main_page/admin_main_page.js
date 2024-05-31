@@ -106,6 +106,19 @@ import { useNavigate } from 'react-router-dom';
 import styles from './admin_main_page.module.css';
 import Logo from './Logo.png';
 
+const getCookieValue = (name) => {
+  const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+  for(const cookie of cookies) {
+      if(cookie.startsWith(name + '=')) {
+          return cookie.substring(name.length + 1);
+      }
+  }
+  return null;
+}
+
+const emailFromCookie = getCookieValue('user_email');
+const passwordFromCookie = getCookieValue('user_pass');
+
 const AdminMainPage = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]); 
@@ -113,13 +126,15 @@ const AdminMainPage = () => {
   const [userToEndLoad, setUserToEndLoad] = useState(null);
   let userIdsArray = [];
   let usersAllArray = [];
-
+  const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
+ 
   useEffect(() => {
     const titleElement = document.querySelector(`.${styles.container2__admin__main__page__title}`);
     const texts = ["Welcome back,", "     Admin!"];
     let index = 0;
     let textIndex = 0;
     let finalText = ''; // Variable to hold the final text
+    
 
     function writeText() {
       let currentText = texts[textIndex];
@@ -177,11 +192,15 @@ const AdminMainPage = () => {
     fetchAllUsers();
   }, []); */
   
+  
+
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const responseIds = await fetch(`http://localhost:7264/medbuddy/getoldestusers/${userToStartFrom}/${userToEndLoad}`,{
-          method:'GET', 
+          method:'GET', headers: {
+                        'Authorization': `Basic ${authorisation}`
+                    }, 
         });
 
         if (responseIds.ok) {
@@ -215,7 +234,10 @@ const AdminMainPage = () => {
             const userMainDetailsPromises = data.users.map(
               async (userId) => {
                 const userMainResponse = await fetch(`http://localhost:7264/medbuddy/viewprofile/${userId}`,
-                {method:'GET'})
+                {method:'GET', headers: {
+                  'Authorization': `Basic ${authorisation}`
+              },
+              })
 
                 if(userMainResponse.ok){
                   const userInfo = await userMainResponse.json();
@@ -226,6 +248,7 @@ const AdminMainPage = () => {
                     userLastName: userInfo.lastName,
                     userEmail: userInfo.email,
                     userPhone: userInfo.phoneNumber, 
+
                   };
                 }
                 return null;
@@ -272,15 +295,17 @@ const AdminMainPage = () => {
           <p className={styles.container1__header__admin__main__text}>CURRENT USERS</p>
         </div>
 
-        {[...Array(10).keys()].map(i => (
+       
+        {/* {[...Array(10).keys()].map(i => (  */}
+          {users.map((user, i) => (
           <div key={i} className={styles.container1__admin__main__page__square}>
             <div className={styles.container1__admin__main__page__square__icon}>
               <p>PHOTO</p>
             </div>
             <p className={styles.container1__admin__main__page__square__data}>
-              NAME: <span className={styles.name}></span><br />
-              EMAIL: <span className={styles.email}></span><br />
-              PHONE: <span className={styles.phone}></span>
+              NAME: <span>{user.userLastName} {user.userFirstName}</span><br />
+              EMAIL: <span>{user.userEmail}</span><br />
+              PHONE: <span>{user.userPhone}</span>
             </p>
           </div>
         ))}
