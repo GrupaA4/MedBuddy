@@ -1,5 +1,6 @@
 package com.medbuddy.medbuddy.models;
 
+import com.medbuddy.medbuddy.controllers.requestbodies.MessageRequestBodies;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Message implements Entity{
+public class Message{
+    private String message;
+    /*
     private UUID id;
     private UUID senderId;
     private UUID conversationId;
@@ -23,4 +26,12 @@ public class Message implements Entity{
     private LocalDate timeSent;
     private boolean isFromMedBuddy;
     private boolean isDeleted;
+
+    public Message(MessageRequestBodies.MessageBody body) {
+        message = body.getMessage();
+        imageExtension = body.getImageExtension();
+        repliesTo = body.getRepliesTo();
+        isFromMedBuddy = body.isFromMedbuddy();
+    }
+    */
 }

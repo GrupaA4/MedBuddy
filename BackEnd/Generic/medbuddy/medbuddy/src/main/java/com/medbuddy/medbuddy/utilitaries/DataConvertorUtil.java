@@ -5,7 +5,7 @@ import com.medbuddy.medbuddy.exceptions.DatabaseExceptions;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class DataConvertorUtil {
+public abstract class DataConvertorUtil {
     public static boolean turn0or1intoBoolean(int bool) throws DatabaseExceptions.BooleanProblemInDatabase {
         if (bool == 1) return true;
         else if (bool == 0) return false;
@@ -17,13 +17,23 @@ public class DataConvertorUtil {
         else return 0;
     }
 
-    public static LocalDate turnDDMMYYYYToLocalDate(String date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd");
+    public static LocalDate turnDotDateToLocalDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
         return LocalDate.parse(date, formatter);
     }
 
-    public static String turnLocalDateToDDMMYYYY(LocalDate date) {
+    public static String turnLocalDateToDotDate(LocalDate date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+        return date.format(formatter);
+    }
+
+    public static LocalDate turnSlashDateToLocalDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+        return LocalDate.parse(date, formatter);
+    }
+
+    public static String turnLocalDateToSlashDate(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
         return date.format(formatter);
     }
 }

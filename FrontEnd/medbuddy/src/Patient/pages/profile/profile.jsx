@@ -1,3 +1,4 @@
+//Reminder:  add profile image after backend fix and remove comments at line 416
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
@@ -6,6 +7,7 @@ import styles from './profile.module.scss';
 import Header from '../../_componentsReusable/header/page';
 import Footer from '../../_componentsReusable/footer/page';
 import profilePic from '../../images/profile.svg';
+import Cookies from 'js-cookie';
 
 const getCookieValue = (name) => {
     const cookies = document.cookie.split(';').map(cookie => cookie.trim());
@@ -25,13 +27,13 @@ export default function Profile(){
     const [name, setName] = useState('My Name');
     const [surname, setSurname] = useState('My Surname');
     const [email, setEmail] = useState('example@example.com');
-    const [phone, setPhone] = useState('+0000000000');
+    const [phone, setPhone] = useState('0000000000');
     const [gender, setGender] = useState(false);
     const [pronoun1, setPronoun1] = useState('....');
     const [pronoun2, setPronoun2] = useState('....');
-    const [language, setLanguage] = useState('English');
+    const [language, setLanguage] = useState('EN');
     const [birthDate, setBirthDate] = useState('01/01/2000');
-    const [homeAdress, setHomeAdress] = useState('House Nr. 00 Str. Example, City, Country');
+    const [homeAdress, setHomeAdress] = useState('City, Country');
     const [profilePicture,setProfilePicture]=useState(null);
     const [profilePicturePreview, setProfilePicturePreview]=useState(null);
     const [imageExtension, setImageExtension]=useState('');
@@ -39,21 +41,15 @@ export default function Profile(){
     const [initialName, setInitialName] = useState('My Name');
     const [initialSurname, setInitialSurname] = useState('My Surname');
     const [initialEmail, setInitialEmail] = useState('example@example.com');
-    const [initialPhone, setInitialPhone] = useState('+0000000000');
+    const [initialPhone, setInitialPhone] = useState('0000000000');
     const [initialGender, setInitialGender] = useState(false);
     const [initialPronoun1, setInitialPronoun1] = useState('....');
     const [initialPronoun2, setInitialPronoun2] = useState('....');
-    const [initialLanguage, setInitialLanguage] = useState('English');
+    const [initialLanguage, setInitialLanguage] = useState('EN');
     const [initialBirthDate, setInitialBirthDate] = useState('01/01/2000');
-    const [initialHomeAdress, setInitialHomeAdress] = useState('House Nr. 00 Str. Example, City, Country');
+    const [initialHomeAdress, setInitialHomeAdress] = useState('City, Country');
     const [initialProfilePicture, setInitialProfilePicture] = useState(null);
     const [initialProfilePicturePreview, setinitialProfilePicturePreview]=useState(null);
-
-    const [bloodGroup, setBloodGroup] = useState('00 Rh+');
-    const [alergies, setAlergies] = useState('None');
-
-    const [initialBloodGroup, setInitialBloodGroup] = useState('00 Rh+');
-    const [initialAlergies, setInitialAlergies] = useState('None');
 
     const [isEditing, setIsEditing] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
@@ -63,16 +59,39 @@ export default function Profile(){
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
+
     useEffect(() =>{
         const fetchuserId = async () => {
             try{
                 const response = await fetch(`http://localhost:7264/medbuddy/getuserid/${emailFromCookie}`, {
-                    method: 'GET'
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Basic ${authorisation}`
+                    }
                 });
-                console.log(response);
-                if(!response.ok) {
-                    throw new Error('Error fetching user ID');
+
+                if(response.status !== 200){
+                    if(response.status === 418 || response.status === 500){
+                        throw new Error('Internal backend error');
+                    }
+                    else if(response.status === 401){
+                        throw new Error('Wrong email and password in the header');
+                    }
+                    else if(response.status === 400){
+                        throw new Error('Typo in the URL or not the right path variable type');
+                    }
+                    else if(response.status === 404){
+                        throw new Error('No user was found');
+                    }
+                    else{
+                        throw new Error('Unknown error');
+                    }
                 }
+                else{
+                    console.log('Retrieved ID successfully');
+                }
+
                 const data = await response.json();
                 setUserId(data.id);
             } catch (error) {
@@ -87,10 +106,31 @@ export default function Profile(){
             if(userId) {
                 try {
                     const response = await fetch(`http://localhost:7264/medbuddy/viewprofile/${userId}`, {
-                        method: 'GET'
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Basic ${authorisation}`
+                        }
                     });
-                    if(!response.ok) {
-                        throw new Error('Error fetching user data');
+
+                    if(response.status !== 200){
+                        if(response.status === 418 || response.status === 500){
+                            throw new Error('Internal backend error');
+                        }
+                        else if(response.status === 401){
+                            throw new Error('Wrong email and password in the header');
+                        }
+                        else if(response.status === 400){
+                            throw new Error('Typo in the URL or not the right path variable type');
+                        }
+                        else if(response.status === 404){
+                            throw new Error('No user was found');
+                        }
+                        else{
+                            throw new Error('Unknown error');
+                        }
+                    }
+                    else{
+                        console.log('Retrieved profile successfully');
                     }
                     const userData = await response.json();
                     setEmail(userData.email);
@@ -103,7 +143,7 @@ export default function Profile(){
                     setLanguage(userData.language);
                     setHomeAdress(userData.city + ', ' + userData.country);
                     setPhone(userData.phoneNumber);
-                    setProfilePicture(userData.profileImage);
+                    //setProfilePicture(userData.profileImage);
 
                     setInitialEmail(email);
                     setInitialSurname(surname);
@@ -115,7 +155,7 @@ export default function Profile(){
                     setInitialLanguage(language);
                     setInitialHomeAdress(homeAdress);
                     setInitialPhone(phone);
-                    setInitialProfilePicture(profilePicture);
+                    //setInitialProfilePicture(profilePicture);
                 } catch (error) {
                     console.error('Error:', error);
                 }
@@ -164,14 +204,6 @@ export default function Profile(){
         setHomeAdress(event.target.value);
     };
 
-    const handleBloodGroupChange = (event) => {
-        setBloodGroup(event.target.value);
-    };
-
-    const handleAlergiesChange = (event) => {
-        setAlergies(event.target.value);
-    };
-
     const handleProfilePicChange= (event) =>{
         const file=event.target.files[0];
         const reader=new FileReader();
@@ -189,6 +221,11 @@ export default function Profile(){
         }
     };
 
+    const transformDate = (date) => {
+        const [year, month, day] = date.split('-');
+        return `${day}.${month}.${year}`;
+    };
+
     const handleNewPasswordChange = (event) => {
         setNewPassword(event.target.value);
     };
@@ -200,9 +237,56 @@ export default function Profile(){
     const handleSaveChanges = async (event) => {
         event.preventDefault();
 
-        const addressParts = homeAdress.split(',');
-        const city = addressParts[1].trim();
-        const country = addressParts[2].trim();
+        const phoneRegex = /^\d{10}$/;
+        const languageRegex = /^[A-Z]{2}$/;
+        const textRegex = /^[a-zA-Z]+$/;
+        const firstNameRegex = /^[a-zA-Z-]+$/;
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const homeAddressRegex = /^[a-zA-Z\s,]+$/;
+
+
+        if(!email.match(emailRegex)){
+            window.alert('Please enter a valid email address');
+            return;
+        }
+        if(!surname.match(textRegex)){
+            window.alert('Last name should contain only letters');
+            return;
+       }
+       if(!name.match(firstNameRegex)){
+            window.alert('First name should contain only letters');
+            return;
+       }
+       if(!pronoun1.match(textRegex)){
+            window.alert('Pronoun 1 should contain only letters');
+            return;
+       }
+       if(!pronoun2.match(textRegex)){
+            window.alert('Pronoun 2 should contain only letters');
+            return;
+       }
+       if(!language.match(languageRegex)){
+            window.alert('Language should contain only 2 capital letters');
+            return;
+       }
+       if(!homeAdress.match(homeAddressRegex)){
+            window.alert('Home address must contain only letters.The home address is composed of only city and country.They are separated by a comma and a whitespace.');
+            return;
+       }
+       if(!phone.match(phoneRegex)){
+            window.alert('Phone number should contain only numbers and be exactly 10 digits long');
+            return;
+       }
+
+        const addressParts = homeAdress.split(', ');
+
+        if(addressParts.length !== 2){
+            window.alert('Address should contain exactly one comma (to separate City and Country)');
+            return;
+        }
+        const transformedDob = transformDate(birthDate);
+        const city = addressParts[0];
+        const country = addressParts[1];
         const data = {
             email:email,
             password:passwordFromCookie,
@@ -211,16 +295,14 @@ export default function Profile(){
             gender:gender,
             pronoun1:pronoun1,
             pronoun2:pronoun2,
-            dateOfBirth:birthDate,
+            dateOfBirth:transformedDob,
             language:language,
             country:country,
             city:city,
             phoneNumber:phone,
-            profileImage:profilePicture,
-            imageExtension:imageExtension,
+            //profileImage:profilePicture,
+            //imageExtension:imageExtension,
             admin:false
-            //blood_group:bloodGroup,
-            //alergies:alergies
         };
 
         console.log('Data to be sent:', data);
@@ -229,21 +311,37 @@ export default function Profile(){
             const response = await fetch(`http://localhost:7264/medbuddy/changeprofile/${userId}`, {
                 method: 'PATCH',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Basic ${authorisation}`
                 },
                 body: JSON.stringify(data)
             });
 
-            if(!response.ok){
-                throw new Error('Error sending new data');
+            if(response.status !== 200){
+                if(response.status === 418 || response.status === 500){
+                    throw new Error('Internal backend error');
+                }
+                else if(response.status === 401){
+                    throw new Error('Wrong email and password in the header');
+                }
+                else if(response.status === 400){
+                    throw new Error('Typo in the URL or not the right path variable type');
+                }
+                else if(response.status === 404){
+                    throw new Error('No user was found');
+                }
+                else{
+                    throw new Error('Unknown error');
+                }
             }
-
-            const result= await response.json();
-            console.log('Success:', result);
+            else{
+                console.log('Updated profile successfully');
+            }
 
             setIsEditing(false);
         } catch (error) {
             console.error('Error:', error);
+            window.alert('An error occured.Please try again later.');
         }
     };
 
@@ -260,10 +358,8 @@ export default function Profile(){
         setLanguage(initialLanguage);
         setBirthDate(initialBirthDate);
         setHomeAdress(initialHomeAdress);
-        setProfilePicture(initialProfilePicture);
-        setProfilePicturePreview(initialProfilePicturePreview);
-        setBloodGroup(initialBloodGroup);
-        setAlergies(initialAlergies);
+        //setProfilePicture(initialProfilePicture);
+        //setProfilePicturePreview(initialProfilePicturePreview);
         setIsEditing(false);
     };
 
@@ -279,10 +375,8 @@ export default function Profile(){
             setInitialLanguage(language)
             setInitialBirthDate(birthDate)
             setInitialHomeAdress(homeAdress)
-            setInitialProfilePicture(profilePicture)
-            setinitialProfilePicturePreview(profilePicturePreview)
-            setInitialBloodGroup(bloodGroup)
-            setInitialAlergies(alergies)
+            //setInitialProfilePicture(profilePicture)
+            //setinitialProfilePicturePreview(profilePicturePreview)
         }
     }, [isEditing]);
 
@@ -293,16 +387,36 @@ export default function Profile(){
     const handleConfirmDelete = async () => {
         try{
             const response= await fetch(`http://localhost:7264/medbuddy/harddeleteuser/${userId}`, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Basic ${authorisation}`
+                }
             });
 
-            if(response.ok) {
-                console.log('Account deleted!');
-            } else{
-                console.error('Failed to delete account');
+            if(response.status !== 200){
+                if(response.status === 418 || response.status === 500){
+                    throw new Error('Internal backend error');
+                }
+                else if(response.status === 401){
+                    throw new Error('Wrong email and password in the header');
+                }
+                else if(response.status === 400){
+                    throw new Error('Typo in the URL or not the right path variable type');
+                }
+                else if(response.status === 404){
+                    throw new Error('No user was found');
+                }
+                else{
+                    throw new Error('Unknown error');
+                }
             }
+            else{
+                console.log('Profile deleted successfully');
+            }
+
         } catch (error) {
             console.error('Error deleting account:', error);
+            window.alert('An error occured.Please try again later.');
         } finally {
             setIsDeleting(false);
             //window.location.href='/';
@@ -323,9 +437,6 @@ export default function Profile(){
 
     const handleChangePassword = async (event) => {
         event.preventDefault();
-        const addressParts = homeAdress.split(',');
-        const city = addressParts[1].trim();
-        const country = addressParts[2].trim();
 
         setOldPassword(getCookieValue('user_pass'));
         if(newPassword!==oldPassword && newPassword===confirmPassword){
@@ -334,17 +445,7 @@ export default function Profile(){
                 password:newPassword,
                 lastName:surname,
                 firstName:name,
-                gender:gender,
-                pronoun1:pronoun1,
-                pronoun2:pronoun2,
-                dateOfBirth:birthDate,
-                language:language,
-                country:country,
-                city:city,
-                phoneNumber:phone,
-                profileImage:profilePicture,
-                imageExtension:imageExtension,
-                admin:false
+                dateOfBirth:birthDate
             };
 
             console.log('Data to be sent:', data);
@@ -353,25 +454,43 @@ export default function Profile(){
                 const response = await fetch(`http://localhost:7264/medbuddy/changeprofile/${userId}`, {
                     method: 'PATCH',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': `Basic ${authorisation}`
                     },
                     body: JSON.stringify(data)
                 });
 
-                if(!response.ok){
-                    throw new Error('Error sending password');
+                if(response.status !== 200){
+                    if(response.status === 418 || response.status === 500){
+                        throw new Error('Internal backend error');
+                    }
+                    else if(response.status === 401){
+                        throw new Error('Wrong email and password in the header');
+                    }
+                    else if(response.status === 400){
+                        throw new Error('Typo in the URL or not the right path variable type');
+                    }
+                    else if(response.status === 404){
+                        throw new Error('No user was found');
+                    }
+                    else{
+                        throw new Error('Unknown error');
+                    }
                 }
-
-                const result= await response.json();
-                console.log('Success:', result);
+                else{
+                    console.log('Changed password successfully');
+                    Cookies.set('user_pass', newPassword);
+                }
 
                 setIsChangingPassword(false);
             } catch (error) {
                 console.error('Error:', error);
+                window.alert('An error occured.Please try again later.');
             }
         } else{
             setNewPassword(oldPassword);
             setConfirmPassword(oldPassword);
+            window.alert('Inputed password matches the old password or confirm password doesn\'t match the new password');
         }
     };
 
@@ -562,7 +681,7 @@ export default function Profile(){
                                         />
                                     </div><br />
                                     <div className={`${styles.general_information_container__section__editable_information__div}`}>
-                                        <label htmlFor='adress'>Home Adress </label>
+                                        <label htmlFor='adress'>Home Adress(first city then country) </label>
                                         <input
                                             type='text'
                                             id='adress'
@@ -628,47 +747,6 @@ export default function Profile(){
                                         <p>{homeAdress}</p>
                                     </div>
                                 </div>
-                            )}
-                        </section>
-                    </div>
-                    <div className={`${styles.medical_data_container}`}>
-                        <section className={`${styles.medical_data_container_container__section}`}>
-                            <h2 className={`${styles.medical_data_container__section__title}`}>Medical Data</h2>
-                            {isEditing ? (
-                                <div className={`${styles.medical_data_container__section__editable_information}`}>
-                                    <div className={`${styles.medical_data_container__section__editable_information__div}`}>
-                                        <label htmlFor='blood_group'>Blood Group </label>
-                                        <input
-                                            type='text'
-                                            id='blood_group'
-                                            value={bloodGroup}
-                                            onChange={handleBloodGroupChange}
-                                        />
-                                    </div><br />
-                                    <div className={`${styles.medical_data_container__section__editable_information__div}`}>
-                                        <label htmlFor='alergies'>Alergies </label>
-                                        <input
-                                            type='text'
-                                            id='alergies'
-                                            value={alergies}
-                                            onChange={handleAlergiesChange}
-                                        />
-                                    </div>
-                                </div>
-                            ) : (
-                               <div className={`${styles.medical_data_container__section__non_editable_information}`}>
-                                    <div className={`${styles.medical_data_container__section__non_editable_information__div}`}>
-                                        <h3>Blood Group </h3>
-                                        <p>{bloodGroup}</p>
-                                    </div>
-                                    <div className={`${styles.medical_data_container__section__non_editable_information__div}`}>
-                                        <h3>Alergies </h3>
-                                        <p>{alergies}</p>
-                                    </div>
-                                    <Link className={`${styles.medical_data_container__section__non_editable_information__diagnostics_link}`} to="/diagnoses">
-                                        My Diagnoses
-                                    </Link>
-                               </div>
                             )}
                         </section>
                     </div>
