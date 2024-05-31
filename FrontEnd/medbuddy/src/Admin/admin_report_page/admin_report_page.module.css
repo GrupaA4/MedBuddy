@@ -243,7 +243,7 @@
 .container2_admin_report_page {
   position: absolute;
   display: flex;
-  justify-content: center;
+  flex-direction: column;/* Maintain column layout for the outer container */
   background-color: #def9f1;
   top: 15vh;
   left: 4vw;
@@ -258,7 +258,10 @@
   animation-fill-mode: forwards;
   opacity: 0;
   border: solid 4px #002845;
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
 }
+
 
 @keyframes appear {
   100% {
@@ -296,41 +299,33 @@
   transform: translateY(8px);
 }
 
-.icon__and__text_admin_report_page {
+.icon__and__text {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Set flex direction to column for inner container */
+  align-items: center; /* Center items horizontally within the column */
 }
 
 .container2_admin_report_page__square1__icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  left: 1vw;
-  right: 1vw;
-  top: 1vw;
   height: 20vh;
   width: 20vh;
+  margin-right: 2vw; /* Add space between image and text */
 }
 
 .container2_admin_report_page__square1__icon__image {
-  align-self: left;
-  justify-content: center;
   height: 15vw;
-  width: 25vw;
-  top: 1vh;
-  margin-left: 6vw;
-  margin-top: 4vw;
+  margin-top: 6vw;
+  width: 22vw; /* Adjust width to maintain aspect ratio */
 }
 
-.admin_report_page__text_container2 {
-  color:#002845;
-  position: relative;
-  justify-self: right;
+.container2_admin_report_page__text {
+  color: #002845;
   font-family: "Bebas Neue", sans-serif;
   font-size: 4vh;
-  margin-top: 40vh;
-  left: 0;
+  margin-top: 10vw;
+  text-align: center;
 }
 
 .container1_admin_report_page__square__data__buttons {
