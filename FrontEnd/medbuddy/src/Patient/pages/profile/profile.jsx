@@ -213,6 +213,10 @@ export default function Profile(){
             setProfilePicturePreview(URL.createObjectURL(file));
 
             const fileExtension=file.name.split('.').pop();
+            if(!['png', 'jpg', 'jpeg'].includes(fileExtension)){
+                alert('Please select a PNG or JPG file.');
+                return;
+            }
             setImageExtension(fileExtension);
         };
 
@@ -705,6 +709,7 @@ export default function Profile(){
                                         <input
                                             type='file'
                                             id='profilePicture'
+                                            accept="image/png, image/jpg, image/jpeg"
                                             value={profilePicture ? profilePicture.name : ''}
                                             onChange={handleProfilePicChange}
                                         />
