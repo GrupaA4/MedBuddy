@@ -92,6 +92,7 @@
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   opacity: 0;
+  border: solid 4px #002845;
 }
 
 .container1_admin_report_page::-webkit-scrollbar {
@@ -246,7 +247,7 @@
   background-color: #def9f1;
   top: 15vh;
   left: 4vw;
-  height: 65vh;
+  height: 56vh;
   width: 28vw;
   bottom: 20vh;
   padding: 0px;
@@ -256,6 +257,7 @@
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   opacity: 0;
+  border: solid 4px #002845;
 }
 
 @keyframes appear {
@@ -299,22 +301,26 @@
   flex-direction: column;
 }
 
-.container2_admin_report_page__icon {
-  background-color: white;
-  justify-self: left;
+.container2_admin_report_page__square1__icon {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  top: 4vh;
-  height: 34vh;
-  width: 34vh;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  font-family: "Bebas Neue", sans-serif;
-  color: #002845;
-  font-size: 5vh;
+  left: 1vw;
+  right: 1vw;
+  top: 1vw;
+  height: 20vh;
+  width: 20vh;
+}
+
+.container2_admin_report_page__square1__icon__image {
+  align-self: left;
+  justify-content: center;
+  height: 15vw;
+  width: 25vw;
+  top: 1vh;
+  margin-left: 6vw;
+  margin-top: 4vw;
 }
 
 .admin_report_page__text_container2 {
@@ -323,8 +329,8 @@
   justify-self: right;
   font-family: "Bebas Neue", sans-serif;
   font-size: 4vh;
-  margin-top: 6vh;
-  left: 0.5vw;
+  margin-top: 40vh;
+  left: 0;
 }
 
 .container1_admin_report_page__square__data__buttons {
@@ -342,13 +348,12 @@
   }
 
   .container2_admin_report_page__square1__icon {
-    background-color: white;
     justify-self: left;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    left: 60px;
+    left: 1vw;
     right: 10px;
     height: 20vh;
     width: 20vh;
@@ -371,9 +376,8 @@
   .container2_admin_report_page__text {
     color: #002845;
     position: relative;
-    justify-self: center;
     font-size: 3vh;
-    margin-top: 6vh;
+    margin-top: 40vh;
     left: 10px;
   }
 }
