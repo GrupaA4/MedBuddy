@@ -20,13 +20,12 @@
   display: flex;
   flex-direction: column;
 }
-/* .navbar-container {
+.navbar-container-mainpage-medic {
   width: 100%;
-  padding: 12px 0;
+  padding: 5px 0;
   border-bottom: 2px solid grey;
   border-radius: 10px;
-} */
-
+}
 .conversations-container-mainpage-medic {
   height: 70vh;
   display: flex;

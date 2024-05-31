@@ -41,7 +41,7 @@ const Navbar = () => {
       path: "/contact",
     },
     {
-      text: "Settings",
+      text: "Profile",
       icon: <SettingsIcon />,
       path: "/settingsMedic",
     },
