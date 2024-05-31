@@ -143,7 +143,7 @@ export default function Profile(){
                     setLanguage(userData.language);
                     setHomeAdress(userData.city + ', ' + userData.country);
                     setPhone(userData.phoneNumber);
-                    //setProfilePicture(userData.profileImage);
+                    setProfilePicture(userData.profileImage);
 
                     setInitialEmail(email);
                     setInitialSurname(surname);
@@ -155,7 +155,7 @@ export default function Profile(){
                     setInitialLanguage(language);
                     setInitialHomeAdress(homeAdress);
                     setInitialPhone(phone);
-                    //setInitialProfilePicture(profilePicture);
+                    setInitialProfilePicture(profilePicture);
                 } catch (error) {
                     console.error('Error:', error);
                 }
@@ -209,20 +209,32 @@ export default function Profile(){
         const reader=new FileReader();
 
         reader.onloadend= () =>{
-            setProfilePicture(new Uint8Array(reader.result));
+            setProfilePicture(reader.result);
             setProfilePicturePreview(URL.createObjectURL(file));
 
             const fileExtension=file.name.split('.').pop();
+            if(!['png', 'jpg', 'jpeg'].includes(fileExtension)){
+                alert('Please select a PNG or JPG file.');
+                return;
+            }
             setImageExtension(fileExtension);
         };
 
         if(file){
-            reader.readAsArrayBuffer(file);
+            reader.readAsDataURL(file);
         }
     };
 
     const transformDate = (date) => {
         const [year, month, day] = date.split('-');
+        return `${day}.${month}.${year}`;
+    };
+
+    const getCurrentDate = () => {
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2, '0');
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const year = today.getFullYear();
         return `${day}.${month}.${year}`;
     };
 
@@ -300,8 +312,8 @@ export default function Profile(){
             country:country,
             city:city,
             phoneNumber:phone,
-            //profileImage:profilePicture,
-            //imageExtension:imageExtension,
+            profileImage:profilePicture,
+            imageExtension:imageExtension,
             admin:false
         };
 
@@ -358,8 +370,8 @@ export default function Profile(){
         setLanguage(initialLanguage);
         setBirthDate(initialBirthDate);
         setHomeAdress(initialHomeAdress);
-        //setProfilePicture(initialProfilePicture);
-        //setProfilePicturePreview(initialProfilePicturePreview);
+        setProfilePicture(initialProfilePicture);
+        setProfilePicturePreview(initialProfilePicturePreview);
         setIsEditing(false);
     };
 
@@ -375,8 +387,8 @@ export default function Profile(){
             setInitialLanguage(language)
             setInitialBirthDate(birthDate)
             setInitialHomeAdress(homeAdress)
-            //setInitialProfilePicture(profilePicture)
-            //setinitialProfilePicturePreview(profilePicturePreview)
+            setInitialProfilePicture(profilePicture)
+            setinitialProfilePicturePreview(profilePicturePreview)
         }
     }, [isEditing]);
 
@@ -438,6 +450,8 @@ export default function Profile(){
     const handleChangePassword = async (event) => {
         event.preventDefault();
 
+        const lastTimeLoggedOn = getCurrentDate();
+
         setOldPassword(getCookieValue('user_pass'));
         if(newPassword!==oldPassword && newPassword===confirmPassword){
             const data = {
@@ -445,7 +459,8 @@ export default function Profile(){
                 password:newPassword,
                 lastName:surname,
                 firstName:name,
-                dateOfBirth:birthDate
+                dateOfBirth:birthDate,
+                lastTimeLoggedOn:lastTimeLoggedOn
             };
 
             console.log('Data to be sent:', data);
@@ -510,7 +525,7 @@ export default function Profile(){
                             </>
                         ) : (
                             <>
-                                <img className={`${styles.buttons_container__image}`} src={profilePic} alt='Profile Pic' /><br /><br />
+                                <img className={`${styles.buttons_container__image}`} src={profilePicturePreview ? profilePicturePreview : profilePic} alt='Profile Picture' /><br /><br />
                             </>
                         )}
                         {isEditing ? (
@@ -549,8 +564,11 @@ export default function Profile(){
                                 <h2 className={`${styles.form_container__title}`}>Change your password</h2>
                                 <form className={`${styles.form_container__form}`} onSubmit={handleChangePassword}>
                                     <div>
-                                        <label htmlFor='newpassword'>New password: </label><br />
+                                        <label 
+                                            className={`${styles.form_container__form__label}`}
+                                            htmlFor='newpassword'>New password: </label><br />
                                         <input
+                                            className={`${styles.form_container__form__input}`}
                                             type='password'
                                             id='newpassword'
                                             value={newPassword}
@@ -560,8 +578,11 @@ export default function Profile(){
                                         />
                                     </div><br />
                                     <div>
-                                        <label htmlFor='confirmpassword'>Confirm password: </label><br />
+                                        <label 
+                                            className={`${styles.form_container__form__label}`}
+                                            htmlFor='confirmpassword'>Confirm password: </label><br />
                                         <input
+                                            className={`${styles.form_container__form__input}`}
                                             type='password'
                                             id='confirmpassword'
                                             value={confirmPassword}
@@ -582,8 +603,11 @@ export default function Profile(){
                             {isEditing ? (
                                 <div className={`${styles.general_information_container__section__editable_information}`}>
                                     <div className={`${styles.general_information_container__section__editable_information__div}`}>
-                                        <label htmlFor='name'>Name </label>
+                                        <label 
+                                            className={`${styles.general_information_container__section__editable_information__div__label}`}
+                                            htmlFor='name'>Name </label>
                                         <input
+                                            className={`${styles.general_information_container__section__editable_information__div__input}`}
                                             type='text'
                                             id='name'
                                             value={name}
@@ -591,8 +615,11 @@ export default function Profile(){
                                         />
                                     </div><br />
                                     <div className={`${styles.general_information_container__section__editable_information__div}`}>
-                                        <label htmlFor='surname'>Surname </label>
+                                        <label 
+                                            className={`${styles.general_information_container__section__editable_information__div__label}`}
+                                            htmlFor='surname'>Surname </label>
                                         <input
+                                            className={`${styles.general_information_container__section__editable_information__div__input}`}
                                             type='text'
                                             id='surname'
                                             value={surname}
@@ -600,8 +627,11 @@ export default function Profile(){
                                         />
                                     </div><br />
                                     <div className={`${styles.general_information_container__section__editable_information__div}`}>
-                                        <label htmlFor='email'>Email </label>
+                                        <label 
+                                            className={`${styles.general_information_container__section__editable_information__div__label}`}
+                                            htmlFor='email'>Email </label>
                                         <input
+                                            className={`${styles.general_information_container__section__editable_information__div__input}`}
                                             type='email'
                                             id='email'
                                             value={email}
@@ -609,8 +639,11 @@ export default function Profile(){
                                         />
                                     </div><br />
                                     <div className={`${styles.general_information_container__section__editable_information__div}`}>
-                                        <label htmlFor='phone'>Phone </label>
+                                        <label 
+                                            className={`${styles.general_information_container__section__editable_information__div__label}`}
+                                            htmlFor='phone'>Phone </label>
                                         <input
+                                            className={`${styles.general_information_container__section__editable_information__div__input}`}
                                             type='text'
                                             id='phone'
                                             value={phone}
@@ -618,7 +651,7 @@ export default function Profile(){
                                         />
                                     </div><br />
                                     <div className={`${styles.general_information_container__section__editable_information__div}`}>
-                                        <label>Gender </label>
+                                        <label className={`${styles.general_information_container__section__editable_information__div__label}`}>Gender </label>
                                         <div className={`${styles.general_information_container__section__editable_information__gender}`}>
                                             <label className={`${styles.general_information_container__section__editable_information__gender__option}`} htmlFor='male'>
                                                 <input
@@ -631,7 +664,9 @@ export default function Profile(){
                                                 />
                                                 Male
                                             </label>
-                                            <label className={`${styles.general_information_container__section__editable_information__gender__option}`} htmlFor='female'>
+                                            <label 
+                                                className={`${styles.general_information_container__section__editable_information__gender__option}`} 
+                                                htmlFor='female'>
                                                 <input
                                                     type='radio'
                                                     id='female'
@@ -645,8 +680,11 @@ export default function Profile(){
                                         </div>
                                     </div><br />
                                     <div className={`${styles.general_information_container__section__editable_information__div}`}>
-                                        <label htmlFor='pronoun1'>Pronoun1 </label>
+                                        <label 
+                                            className={`${styles.general_information_container__section__editable_information__div__label}`}
+                                            htmlFor='pronoun1'>Pronoun1 </label>
                                         <input
+                                            className={`${styles.general_information_container__section__editable_information__div__input}`}
                                             type='text'
                                             id='pronoun1'
                                             value={pronoun1}
@@ -654,8 +692,11 @@ export default function Profile(){
                                         />
                                     </div><br />
                                     <div className={`${styles.general_information_container__section__editable_information__div}`}>
-                                        <label htmlFor='pronoun2'>Pronoun2 </label>
+                                        <label 
+                                            className={`${styles.general_information_container__section__editable_information__div__label}`}
+                                            htmlFor='pronoun2'>Pronoun2 </label>
                                         <input
+                                            className={`${styles.general_information_container__section__editable_information__div__input}`}
                                             type='text'
                                             id='pronoun2'
                                             value={pronoun2}
@@ -663,8 +704,11 @@ export default function Profile(){
                                         />
                                     </div><br />
                                     <div className={`${styles.general_information_container__section__editable_information__div}`}>
-                                        <label htmlFor='language'>Language </label>
+                                        <label 
+                                            className={`${styles.general_information_container__section__editable_information__div__label}`}
+                                            htmlFor='language'>Language </label>
                                         <input
+                                            className={`${styles.general_information_container__section__editable_information__div__input}`}
                                             type='text'
                                             id='language'
                                             value={language}
@@ -672,8 +716,11 @@ export default function Profile(){
                                         />
                                     </div><br />
                                     <div className={`${styles.general_information_container__section__editable_information__div}`}>
-                                        <label htmlFor='dob'>Birth Date </label>
+                                        <label 
+                                            className={`${styles.general_information_container__section__editable_information__div__label}`}
+                                            htmlFor='dob'>Birth Date </label>
                                         <input
+                                            className={`${styles.general_information_container__section__editable_information__div__input__dob}`}
                                             type='date'
                                             id='dob'
                                             value={birthDate}
@@ -681,8 +728,11 @@ export default function Profile(){
                                         />
                                     </div><br />
                                     <div className={`${styles.general_information_container__section__editable_information__div}`}>
-                                        <label htmlFor='adress'>Home Adress(first city then country) </label>
+                                        <label 
+                                            className={`${styles.general_information_container__section__editable_information__div__label}`}
+                                            htmlFor='adress'>Home Adress(first city then country) </label>
                                         <input
+                                            className={`${styles.general_information_container__section__editable_information__div__input}`}
                                             type='text'
                                             id='adress'
                                             value={homeAdress}
@@ -690,10 +740,14 @@ export default function Profile(){
                                         />
                                     </div><br />
                                     <div className={`${styles.general_information_container__section__editable_information__div}`}>
-                                        <label htmlFor='profilePicture'>Profile Picture </label>
+                                        <label 
+                                            className={`${styles.general_information_container__section__editable_information__div__label}`}
+                                            htmlFor='profilePicture'>Profile Picture </label>
                                         <input
+                                            className={`${styles.general_information_container__section__editable_information__div__input__pic}`}
                                             type='file'
                                             id='profilePicture'
+                                            accept="image/png, image/jpg, image/jpeg"
                                             value={profilePicture ? profilePicture.name : ''}
                                             onChange={handleProfilePicChange}
                                         />
@@ -707,44 +761,44 @@ export default function Profile(){
                             ) : (
                                 <div className={`${styles.general_information_container__section__non_editable_information}`}>
                                     <div className={`${styles.general_information_container__section__non_editable_information__div}`}>
-                                        <h3>Name </h3>
-                                        <p>{name}</p>
+                                        <h3 className={`${styles.general_information_container__section__non_editable_information__div__h3}`}>Name </h3>
+                                        <p className={`${styles.general_information_container__section__non_editable_information__div__p}`}>{name}</p>
                                     </div> 
                                     <div className={`${styles.general_information_container__section__non_editable_information__div}`}>
-                                        <h3>Surname </h3>
-                                        <p>{surname}</p>    
+                                        <h3 className={`${styles.general_information_container__section__non_editable_information__div__h3}`}>Surname </h3>
+                                        <p className={`${styles.general_information_container__section__non_editable_information__div__p}`}>{surname}</p>    
                                     </div>
                                     <div className={`${styles.general_information_container__section__non_editable_information__div}`}>
-                                        <h3>Email </h3>
-                                        <p>{email}</p>
+                                        <h3 className={`${styles.general_information_container__section__non_editable_information__div__h3}`}>Email </h3>
+                                        <p className={`${styles.general_information_container__section__non_editable_information__div__p}`}>{email}</p>
                                     </div>
                                     <div className={`${styles.general_information_container__section__non_editable_information__div}`}>
-                                        <h3>Phone </h3>
-                                        <p>{phone}</p>
+                                        <h3 className={`${styles.general_information_container__section__non_editable_information__div__h3}`}>Phone </h3>
+                                        <p className={`${styles.general_information_container__section__non_editable_information__div__p}`}>{phone}</p>
                                     </div>
                                     <div className={`${styles.general_information_container__section__non_editable_information__div}`}>
-                                        <h3>Gender </h3>
-                                        <p>{gender ? 'F' : 'M'}</p>
+                                        <h3 className={`${styles.general_information_container__section__non_editable_information__div__h3}`}>Gender </h3>
+                                        <p className={`${styles.general_information_container__section__non_editable_information__div__p}`}>{gender ? 'F' : 'M'}</p>
                                     </div>
                                     <div className={`${styles.general_information_container__section__non_editable_information__div}`}>
-                                        <h3>Pronoun1 </h3>
-                                        <p>{pronoun1}</p>
+                                        <h3 className={`${styles.general_information_container__section__non_editable_information__div__h3}`}>Pronoun1 </h3>
+                                        <p className={`${styles.general_information_container__section__non_editable_information__div__p}`}>{pronoun1}</p>
                                     </div>
                                     <div className={`${styles.general_information_container__section__non_editable_information__div}`}>
-                                        <h3>Pronoun2</h3>
-                                        <p>{pronoun2}</p>
+                                        <h3 className={`${styles.general_information_container__section__non_editable_information__div__h3}`}>Pronoun2</h3>
+                                        <p className={`${styles.general_information_container__section__non_editable_information__div__p}`}>{pronoun2}</p>
                                     </div>
                                     <div className={`${styles.general_information_container__section__non_editable_information__div}`}>
-                                        <h3>Language </h3>
-                                        <p>{language}</p>
+                                        <h3 className={`${styles.general_information_container__section__non_editable_information__div__h3}`}>Language </h3>
+                                        <p className={`${styles.general_information_container__section__non_editable_information__div__p}`}>{language}</p>
                                     </div>
                                     <div className={`${styles.general_information_container__section__non_editable_information__div}`}>
-                                        <h3>Birth Date </h3>
-                                        <p>{birthDate}</p>
+                                        <h3 className={`${styles.general_information_container__section__non_editable_information__div__h3}`}>Birth Date </h3>
+                                        <p className={`${styles.general_information_container__section__non_editable_information__div__p}`}>{birthDate}</p>
                                     </div>
                                     <div className={`${styles.general_information_container__section__non_editable_information__div}`}>
-                                        <h3>Home Adress </h3>
-                                        <p>{homeAdress}</p>
+                                        <h3 className={`${styles.general_information_container__section__non_editable_information__div__h3}`}>Home Adress </h3>
+                                        <p className={`${styles.general_information_container__section__non_editable_information__div__p}`}>{homeAdress}</p>
                                     </div>
                                 </div>
                             )}
