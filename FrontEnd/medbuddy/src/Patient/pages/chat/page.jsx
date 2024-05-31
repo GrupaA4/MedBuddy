@@ -10,10 +10,10 @@ export default function ChatPage() {
     const [userMessages, setUserMessages] = useState([]);
     const [responseMessages, setResponseMessages] = useState([]);
     const [emailList, setEmailList] = useState([]);
+    const [startNewConvo, setStartNewConvo] = useState(false);
     const messageContainerRef = useRef(null);
     const [image, setImage] = useState(null);
     const [disableInput, setDisableInput] = useState(false);
-
 
     const sendCloseConversation = async () => {
         try {
@@ -86,7 +86,7 @@ export default function ChatPage() {
                 text: msg.message,
             }));
 
-            setResponseMessages([...responseMessages, ...newMessages]);
+            setResponseMessages((prev) => [...prev, ...newMessages]);
             checkForEmails(newMessages);
         } catch (error) {
             console.error("Error fetching response messages:", error);
@@ -106,6 +106,17 @@ export default function ChatPage() {
         });
         setEmailList(foundEmails);
     };
+
+    useEffect(() => {
+        if (startNewConvo) {
+            const startNewConversation = async () => {
+                await receiveResponse(1);
+                setStartNewConvo(false);
+            };
+
+            startNewConversation();
+        }
+    }, [startNewConvo]);
 
     useEffect(() => {
         handleNewConvo();
@@ -132,21 +143,26 @@ export default function ChatPage() {
     };
 
     const handleNewConvo = async () => {
-        await receiveResponse(1);
-        setUserMessages([]); 
+        setUserMessages([]);
         setResponseMessages([]);
         setEmailList([]);
         setDisableInput(false);
+
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        setStartNewConvo(true); 
     };
+
     
     const combinedMessages = [];
     const totalMessages = Math.max(responseMessages.length, userMessages.length);
     for (let i = 0; i < totalMessages; i++) {
-        if (userMessages[i]) {
-            combinedMessages.push(userMessages[i]);
-        }
         if (responseMessages[i]) {
             combinedMessages.push(responseMessages[i]);
+        }
+
+        if (userMessages[i]) {
+            combinedMessages.push(userMessages[i]);
         }
     }
 
