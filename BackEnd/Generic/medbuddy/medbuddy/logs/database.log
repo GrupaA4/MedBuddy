@@ -1,8 +1,18 @@
-2024-05-30 16:27:20 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-05-30 16:27:20 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-05-30 16:27:21 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-05-30 16:27:21 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-05-30 16:27:21 DEBUG JdbcTemplate:968 - Executing prepared SQL update
-2024-05-30 16:27:21 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [UPDATE appuser SET email = ?, password = ?, lastName = ?, firstName = ?, gender = ?, pronoun1 = ?, pronoun2 = ?, dateOfBirth = ?, language = ?, country = ?, city = ?, phoneNumber = ?, profileImageNumber = ?, imageExtension = ?, isAdmin = ?, isDeleted = ? WHERE id = ?]
-2024-05-30 16:27:51 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-05-30 16:27:51 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
+2024-05-31 01:59:03 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-05-31 01:59:03 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
+2024-05-31 01:59:04 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-05-31 01:59:04 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM AppNotifications WHERE medicId = ?]
+2024-05-31 01:59:04 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-05-31 01:59:04 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
+2024-05-31 01:59:04 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-05-31 01:59:04 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
+2024-05-31 01:59:23 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-05-31 01:59:23 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
+2024-05-31 01:59:23 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-05-31 01:59:23 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [DELETE FROM AppNotifications WHERE id = ?]
+2024-05-31 01:59:31 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-05-31 01:59:31 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
+2024-05-31 01:59:31 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-05-31 01:59:31 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM AppNotifications WHERE medicId = ?]
+2024-05-31 01:59:31 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-05-31 01:59:31 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
