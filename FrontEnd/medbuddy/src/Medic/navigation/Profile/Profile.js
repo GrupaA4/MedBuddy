@@ -85,7 +85,7 @@ function Profile() {
                     <input class="input_field" type="text" name="city" value={profileData.city} onChange={handleChange} />
                     <input class="input_field" type="text" name="country" value={profileData.country} onChange={handleChange} />
                     <input class="input_field" type="text" name="workPlace" value={profileData.workPlace} onChange={handleChange} />
-                    <input class="input_field" type="text" name="specialization" value={profileData.specialization} onChange={handleChange} />
+                    <p>{profileData.specialization}</p>
                   </>
                 ) : (
                   <>
