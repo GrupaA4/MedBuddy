@@ -73,6 +73,7 @@
   padding-top: 0.25rem;
   margin-bottom: 1rem;
   font-family: "Oswald";
+  width: auto;
 }
 
 .diagnoses_section__diagnose_medication_name {
@@ -172,6 +173,7 @@
   .diagnoses_section__diagnose_medication {
     display: flex;
     flex-direction: column;
+    width: 60vw;
   }
 
   .diagnoses_section__diagnose_medication_name {

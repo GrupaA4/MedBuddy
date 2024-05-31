@@ -64,7 +64,7 @@ const Navbar = () => {
             <a onClick={() => handleNavigation("/contact")}>Contact</a>
           </li>
           <li>
-            <a onClick={() => handleNavigation("/settingsMedic")}>Settings</a>
+            <a onClick={() => handleNavigation("/settingsMedic")}>Profile</a>
           </li>
         </ul>
       </div>
