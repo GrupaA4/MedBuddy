@@ -105,6 +105,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './admin_main_page.module.css';
 import Logo from './Logo.png';
+import Admin from './Admin.png';
 
 const getCookieValue = (name) => {
   const cookies = document.cookie.split(';').map(cookie => cookie.trim());

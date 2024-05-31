@@ -79,6 +79,7 @@
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   overflow-y: scroll;
+  border: 4px solid #002845;
   opacity: 0;
 }
 
@@ -157,7 +158,7 @@
   background-color: #def9f1;
   top: 20vh;
   left: 68vw;
-  height: 70vh;
+  height: 85vh;
   width: 28vw;
   bottom: 20vh;
   scroll-margin-top: 15vh;
@@ -165,6 +166,7 @@
   animation-duration: 1s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+  border: 4px solid #002845;
   opacity: 0;
 }
 
@@ -175,9 +177,16 @@
   font-size: 5vh;
 }
 
+.conatiner2__admin__main__page__image{
+  position: absolute;
+  margin-top: 25vh;
+  height: 25vh;
+  width: 14vw;
+}
+
 .container2__admin__main__page__button1 {
   position: absolute;
-  margin-top: 32vh;
+  margin-top: 58vh;
   width: 18vw;
   height: 7vh;
   border-radius: 4vh;
@@ -201,7 +210,7 @@
 
 .container2__admin__main__page__button2 {
   position: absolute;
-  margin-top: 50vh;
+  margin-top: 70vh;
   width: 18vw;
   height: 7vh;
   border-radius: 4vh;
