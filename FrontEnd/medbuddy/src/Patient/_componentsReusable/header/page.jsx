@@ -23,9 +23,9 @@ export default function Header({setIsMobileMenu}) {
   return (
     <>
       <header className={styles.page__header}>
-      <Link className={styles.page} to="/" onClick={closeMobileMenu}><img className={styles.page__header_logo} src={Logo} alt="IMAGINE"/></Link>
+      <Link className={styles.page} to="/hpmePatient" onClick={closeMobileMenu}><img className={styles.page__header_logo} src={Logo} alt="IMAGINE"/></Link>
         <nav className={`${styles.page__header_navbar} ${isMobileMenuOpen ? styles.show : ''}`}>
-        <Link className={`${styles.page__header_navbar_link} ${location.pathname === "/" ? styles.active : ""}`} to='/' onClick={closeMobileMenu}>Home</Link>
+        <Link className={`${styles.page__header_navbar_link} ${location.pathname === "/homePatient" ? styles.active : ""}`} to='/homePatient' onClick={closeMobileMenu}>Home</Link>
         <Link className={`${styles.page__header_navbar_link} ${location.pathname === "/about" ? styles.active : ""}`} to='/about' onClick={closeMobileMenu}>About</Link>
         <Link className={`${styles.page__header_navbar_link} ${location.pathname === "/pages/contact" ? styles.active : ""}`} to='/pages/contact' onClick={closeMobileMenu}>Contact</Link>
         <Link className={`${styles.page__header_navbar_link} ${location.pathname === "/chat" ? styles.active : ""}`} to='/chat' onClick={closeMobileMenu}>MedBuddy</Link>
@@ -35,7 +35,7 @@ export default function Header({setIsMobileMenu}) {
           <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} className={styles.page__header_hamburger} />
         </div>
         <div className={`${styles.pages} ${isMobileMenuOpen ? styles.pages_show : ''}`}>
-          <Link className={styles.page} to="/" onClick={closeMobileMenu}>Home</Link>
+          <Link className={styles.page} to="/homePatient" onClick={closeMobileMenu}>Home</Link>
           <Link className={styles.page} to="/about" onClick={closeMobileMenu}>About</Link>
           <Link className={styles.page} to="/pages/contact" onClick={closeMobileMenu}>Contact</Link>
           <Link className={styles.page} to="/chat" onClick={closeMobileMenu}>MedBuddy</Link>

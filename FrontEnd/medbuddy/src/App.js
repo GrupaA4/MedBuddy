@@ -22,7 +22,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        {/* <Route path="/" element={<MainPage />} /> */}
+         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/admin" element={<AdminMainPage />} />
         <Route path="/report" element={<ReportPage />} />
@@ -32,8 +32,8 @@ const App = () => {
         <Route path="/homeMedic" element={<HomeMedic />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/settingsMedic" element={<SettingsMedic />} />
-        <Route path="/diagnoses" element={<Diagnostic />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/diagnostic" element={<Diagnostic />} />
+        <Route path="/homePatient" element={<Home />} />
         <Route path="/chat" element={<ChatPage />} />
         <Route path="/diagnoses" element={<Diagnoses />} />
         <Route path="/register" element={<Register />} />
