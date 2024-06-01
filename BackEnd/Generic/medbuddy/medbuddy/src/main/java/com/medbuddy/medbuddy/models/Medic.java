@@ -37,7 +37,7 @@ public class Medic extends User{
         gender = medic.isGender();
         pronoun1 = medic.getPronoun1();
         pronoun2 = medic.getPronoun2();
-        dateOfBirth = DataConvertorUtil.turnDDMMYYYYToLocalDate(medic.getDateOfBirth());
+        dateOfBirth = DataConvertorUtil.turnDotDateToLocalDate(medic.getDateOfBirth());
         language = medic.getLanguage();
         country = medic.getCountry();
         city = medic.getCity();
