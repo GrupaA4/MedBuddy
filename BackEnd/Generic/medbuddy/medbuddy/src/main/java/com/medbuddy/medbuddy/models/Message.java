@@ -12,7 +12,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Message implements Entity{
+public class Message{
+    private String message;
+    /*
     private UUID id;
     private UUID senderId;
     private UUID conversationId;
@@ -31,4 +33,5 @@ public class Message implements Entity{
         repliesTo = body.getRepliesTo();
         isFromMedBuddy = body.isFromMedbuddy();
     }
+    */
 }

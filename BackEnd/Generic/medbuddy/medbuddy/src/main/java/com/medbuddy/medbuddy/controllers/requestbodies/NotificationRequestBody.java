@@ -2,9 +2,7 @@ package com.medbuddy.medbuddy.controllers.requestbodies;
 
 import lombok.Data;
 
-
 @Data
-public class MedicalHistoryRequestBody {
+public class NotificationRequestBody {
     private String diagnosis;
-    private String treatment;
 }
