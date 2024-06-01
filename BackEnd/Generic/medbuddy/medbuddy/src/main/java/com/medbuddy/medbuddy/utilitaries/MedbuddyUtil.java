@@ -14,5 +14,12 @@ public class MedbuddyUtil {
 
     public Message receiveMessageFromMedbuddy(UUID userId) {
         return new Message("Test message");
+        //receive message
+        //check for diagnosis
+        //  if diagnosis, then create a MedicalHistoryEntry
+    }
+
+    public void sendMessageToMedbuddy(UUID userId) {
+        //send message
     }
 }

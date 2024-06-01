@@ -36,9 +36,14 @@ public class MedicalHistoryResponseBodies {
             this.id = medicalHistoryEntry.getId();
             this.diagnose = medicalHistoryEntry.getDiagnosis();
             this.treatment = medicalHistoryEntry.getTreatment();
-            UUID userIdOfMedic = userService.getUserIdOfMedic(medicalHistoryEntry.getMedicId());
-            User medic = userService.getUser(userIdOfMedic);
-            this.name = "Dr. " + medic.getLastName() + " " + medic.getFirstName();
+            UUID medicId = medicalHistoryEntry.getMedicId();
+            if(medicId == UUID.fromString("a67fd0c8-4254-48d0-abde-5707390e86c3")) {
+                this.name = "Medbuddy";
+            } else {
+                UUID userIdOfMedic = userService.getUserIdOfMedic(medicId);
+                User medic = userService.getUser(userIdOfMedic);
+                this.name = "Dr. " + medic.getLastName() + " " + medic.getFirstName();
+            }
             this.date_treatment = DataConvertorUtil.turnLocalDateToSlashDate(medicalHistoryEntry.getDate_diagnosis());
         }
     }
