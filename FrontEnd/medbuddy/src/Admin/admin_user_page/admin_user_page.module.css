@@ -118,6 +118,7 @@
 .admin_user_page_container1__next {
   position: relative;
   width: 40px;
+  z-index: 400;
   font-family: "Bebas Neue", sans-serif;
   height: 40px;
   top: 4vh;
@@ -142,6 +143,7 @@
 .admin_user_page_container1__before {
   position: relative;
   width: 40px;
+  z-index: 400;
   font-family: "Bebas Neue", sans-serif;
   height: 40px;
   top: 4vh;

@@ -23,17 +23,14 @@ const AdminMainPage = () => {
   const [users, setUsers] = useState([]); 
   const [userToStartFrom, setUserToStartFrom] = useState(null);
   const [userToEndLoad, setUserToEndLoad] = useState(null);
-  let userIdsArray = [];
-  let usersAllArray = [];
   const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
- 
+
   useEffect(() => {
     const titleElement = document.querySelector(`.${styles.container2__admin__main__page__title}`);
     const texts = ["Welcome back,", "     Admin!"];
     let index = 0;
     let textIndex = 0;
     let finalText = ''; // Variable to hold the final text
-    
 
     function writeText() {
       let currentText = texts[textIndex];
@@ -71,75 +68,45 @@ const AdminMainPage = () => {
     }
   };
 
-  
-
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const responseIds = await fetch(`http://localhost:7264/medbuddy/getoldestusers/${userToStartFrom}/${userToEndLoad}`,{
-          method:'GET', headers: {
-                        'Authorization': `Basic ${authorisation}`
-                    }, 
+        const start=1;
+        const end=10;
+        const responseIds = await fetch(`http://localhost:7264/medbuddy/getoldestusers/${start}/${end}`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Basic ${authorisation}`
+          }
         });
 
         if (responseIds.ok) {
           const data = await responseIds.json();
           const userIds = data.users;
-          userIdsArray = userIds;
 
-          const startIndex = userIdsArray.indexOf(userToStartFrom);
-          const endIndex = userIdsArray.indexOf(userToEndLoad);
-
-          if (startIndex === -1 || endIndex === -1) {
-            throw new Error("The given ids aren't valid");
-          }
-          
-          if (startIndex > endIndex) {
-            let aux = startIndex;
-            startIndex = endIndex;
-            endIndex = aux;
-          }
-
-          let userMainDetailsPromises;
-          for(let i = startIndex; i <= endIndex; i++){
-            let userId = userIdsArray[i];
-            /* const responseUsers = await fetch(`http://localhost:7264/medbuddy/viewprofile/${userId}`,
-            {method:'GET'});
-
-            if(!responseUsers.ok){
-              throw new Error("Could not fetch the user information");
-            } */
-
-            const userMainDetailsPromises = data.users.map(
-              async (userId) => {
-                const userMainResponse = await fetch(`http://localhost:7264/medbuddy/viewprofile/${userId}`,
-                {method:'GET', headers: {
-                  'Authorization': `Basic ${authorisation}`
-              },
-              })
-
-                if(userMainResponse.ok){
-                  const userInfo = await userMainResponse.json();
-
-                  return{
-                    Id: userId,
-                    userFirstName: userInfo.firstName,
-                    userLastName: userInfo.lastName,
-                    userEmail: userInfo.email,
-                    userPhone: userInfo.phoneNumber, 
-
-                  };
-                }
-                return null;
+          const userDetailsPromises = userIds.map(async (userId) => {
+            const userResponse = await fetch(`http://localhost:7264/medbuddy/viewprofile/${userId}`, {
+              method: 'GET',
+              headers: {
+                'Authorization': `Basic ${authorisation}`
               }
-            );
-          }
+            });
 
-          const userDetails = await Promise.all(
-            userMainDetailsPromises
-          );
+            if (userResponse.ok) {
+              const userInfo = await userResponse.json();
+              return {
+                Id: userId,
+                userFirstName: userInfo.firstName,
+                userLastName: userInfo.lastName,
+                userEmail: userInfo.email,
+                userPhone: userInfo.phoneNumber,
+              };
+            }
+            return null;
+          });
 
-          setUsers(userDetails.filter((Id) => Id !== null));
+          const userDetails = await Promise.all(userDetailsPromises);
+          setUsers(userDetails.filter((user) => user !== null));
         } else {
           console.error('Failed to fetch users information');
         }
@@ -148,7 +115,7 @@ const AdminMainPage = () => {
       }
     };
     fetchUsers();
-  }, []);
+  }, [authorisation, userToStartFrom, userToEndLoad]);
 
   const handleReportClick = () => {
     navigate('/report');

@@ -131,6 +131,7 @@
 .container1_admin_report_page__next {
   position: relative;
   width: 40px;
+  z-index: 400;
   height: 40px;
   top: 4vh;
   bottom: 1vh;
@@ -153,6 +154,7 @@
 
 .container1_admin_report_page__before {
   position: relative;
+  z-index: 400;
   width: 40px;
   height: 40px;
   top: 4vh;
