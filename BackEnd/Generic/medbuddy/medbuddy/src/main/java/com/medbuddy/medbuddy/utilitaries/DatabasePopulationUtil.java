@@ -35,9 +35,21 @@ public class DatabasePopulationUtil {
         NotificationsDAO notificationsDAO = new NotificationsDAO(jdbcTemplate);
         AdminFunctionalityDAO adminFunctionalityDAO = new AdminFunctionalityDAO(jdbcTemplate);
         DatabasePopulationUtil util = new DatabasePopulationUtil(userDAO, medicalHistoryDAO, adminFunctionalityDAO, notificationsDAO);
+        addFirst(util);
+        //addSecond(util);
+        //addThird(util);
+    }
+
+    public static void addFirst(DatabasePopulationUtil util) {
         util.processUserFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/user.txt");
         util.processMedicFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medic.txt");
+    }
+
+    public static void addSecond(DatabasePopulationUtil util) {
         util.processMedicalHistoryFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medical_history.txt");
+    }
+
+    public static void addThird(DatabasePopulationUtil util) {
         util.processReportFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/report.txt");
         util.processNotificationsFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/notification.txt");
     }
