@@ -13,6 +13,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,7 +32,6 @@ public class MedicalHistoryDAO {
     public MedicalHistoryDAO(JdbcTemplate jdbcTemplate) {
         logger = LogManager.getLogger("Database");
         this.jdbcTemplate = jdbcTemplate;
-        jdbcTemplate.setQueryTimeout(10);
     }
 
     /**
@@ -56,20 +57,20 @@ public class MedicalHistoryDAO {
      * @param medicalHistoryEntry the model of the entry to be added
      */
     public void createMedicalHistoryEntry(MedicalHistoryEntry medicalHistoryEntry) {
-        try {
+        //try {
             jdbcTemplate.update(
                     "INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)",
                     medicalHistoryEntry.getId().toString(),
                     medicalHistoryEntry.getMedicId().toString(),
                     medicalHistoryEntry.getPatientId().toString(),
                     medicalHistoryEntry.getDiagnosis(),
-                    medicalHistoryEntry.getPeriod(),
+                    Date.valueOf(medicalHistoryEntry.getDate_diagnosis()),
                     medicalHistoryEntry.getTreatment(),
                     DataConvertorUtil.turnBooleanInto0or1(medicalHistoryEntry.isDeleted())
             );
-        } catch (DataAccessException e) {
-            logger.error("Error executing query: ", e.getMessage());
-        }
+        //} catch (DataAccessException e) {
+            //logger.error("Error executing query: ", e.getMessage());
+       // }
     }
 
     public void deleteEntry(UUID entryId) {
@@ -88,5 +89,14 @@ public class MedicalHistoryDAO {
     public void markEntriesAsDeleted(UUID userId) {
         String sql = "UPDATE MedicalHistory SET isDeleted = 1 WHERE patientId = ?";
         jdbcTemplate.update(sql, userId.toString());
+    }
+
+    public void changeMedicalHistoryEntry(UUID entryId, String diagnosis, String treatment, LocalDate now) {
+        String sql = "UPDATE MedicalHistory SET diagnosis = ?, treatment = ?, diagnosisDate = ? WHERE id = ?";
+        jdbcTemplate.update(sql,
+                diagnosis,
+                treatment,
+                Date.valueOf(now),
+                entryId.toString());
     }
 }
