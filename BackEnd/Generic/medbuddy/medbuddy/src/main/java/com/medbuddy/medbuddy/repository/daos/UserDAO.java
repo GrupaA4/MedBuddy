@@ -259,6 +259,19 @@ public class UserDAO {
         }
     }
 
+    public void deleteMedic(UUID id) {
+        String sql = "DELETE FROM medic WHERE id = ?";
+        int numberOfMedicsDeleted = jdbcTemplate.update(sql, id.toString());
+        switch (numberOfMedicsDeleted) {
+            case 0:
+                throw new NotFoundExceptions.MedicNotFound("No medic with id " + id + " was found");
+            case 1:
+                break;
+            default:
+                throw new DatabaseExceptions.NonUniqueIdentifier("More medics with the same id (" + id + ") were found");
+        }
+    }
+
     public void markUserAsDeleted(UUID id) {
         String sql = "UPDATE appuser SET isDeleted = 1 WHERE id = ?";
         int numberOfUsersDeleted = jdbcTemplate.update(sql, id.toString());
@@ -277,7 +290,7 @@ public class UserDAO {
         Integer numberOfMedicsFound = jdbcTemplate.queryForObject(sql, Integer.class, userId.toString());
 
         if(numberOfMedicsFound == null) {
-            throw new DatabaseExceptions.ErrorInExecutingStatement("Error while trying to determine weather a user is a medic");
+            throw new DatabaseExceptions.ErrorInExecutingStatement("Error while trying to determine whether a user is a medic");
         }
 
         return switch (numberOfMedicsFound) {
