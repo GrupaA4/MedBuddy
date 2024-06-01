@@ -7,28 +7,45 @@ import Header from '../../_componentsReusable/header/page';
 import Footer from '../../_componentsReusable/footer/page';
 import profilePic from '../../images/profile.svg';
 
+const getCookieValue = (name) => {
+    const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+    for(const cookie of cookies) {
+        if(cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1);
+        }
+    }
+    return null;
+}
+
 export default function Profile(){
+    const [userId, setUserId] = useState('');
+    const emailFromCookie = getCookieValue('user_email');
+
     const [name, setName] = useState('My Name');
     const [surname, setSurname] = useState('My Surname');
     const [email, setEmail] = useState('example@example.com');
     const [phone, setPhone] = useState('+0000000000');
-    const [gender, setGender] = useState('M/F');
+    const [gender, setGender] = useState(false);
     const [pronoun1, setPronoun1] = useState('....');
     const [pronoun2, setPronoun2] = useState('....');
     const [language, setLanguage] = useState('English');
     const [birthDate, setBirthDate] = useState('01/01/2000');
     const [homeAdress, setHomeAdress] = useState('House Nr. 00 Str. Example, City, Country');
+    const [profilePicture,setProfilePicture]=useState(null);
+    const [profilePicturePreview, setProfilePicturePreview]=useState(null);
 
     const [initialName, setInitialName] = useState('My Name');
     const [initialSurname, setInitialSurname] = useState('My Surname');
     const [initialEmail, setInitialEmail] = useState('example@example.com');
     const [initialPhone, setInitialPhone] = useState('+0000000000');
-    const [initialGender, setInitialGender] = useState('M/F');
+    const [initialGender, setInitialGender] = useState(false);
     const [initialPronoun1, setInitialPronoun1] = useState('....');
     const [initialPronoun2, setInitialPronoun2] = useState('....');
     const [initialLanguage, setInitialLanguage] = useState('English');
     const [initialBirthDate, setInitialBirthDate] = useState('01/01/2000');
     const [initialHomeAdress, setInitialHomeAdress] = useState('House Nr. 00 Str. Example, City, Country');
+    const [initialProfilePicture, setInitialProfilePicture] = useState(null);
+    const [initialProfilePicturePreview, setinitialProfilePicturePreview]=useState(null);
 
     const [bloodGroup, setBloodGroup] = useState('00 Rh+');
     const [alergies, setAlergies] = useState('None');
@@ -43,6 +60,66 @@ export default function Profile(){
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+
+    useEffect(() =>{
+        const fetchuserId = async () => {
+            try{
+                const response = await fetch(`/medbuddy/getuserid/${emailFromCookie}`, {
+                    method: 'GET'
+                });
+                if(!response.ok) {
+                    throw new Error('Error fetching user ID');
+                }
+                const data = await response.json();
+                setUserId(data.id);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        fetchuserId();
+    }, [emailFromCookie]);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            if(userId) {
+                try {
+                    const response = await fetch(`/medbuddy/viewprofile/${userId}`, {
+                        method: 'GET'
+                    });
+                    if(!response.ok) {
+                        throw new Error('Error fetching user data');
+                    }
+                    const userData = await response.json();
+                    setEmail(userData.email);
+                    setSurname(userData.lastName);
+                    setName(userData.firstName);
+                    setGender(userData.gender);
+                    setPronoun1(userData.pronoun1);
+                    setPronoun2(userData.pronoun2);
+                    setBirthDate(userData.dateOfBirth);
+                    setLanguage(userData.language);
+                    setHomeAdress(userData.city + ', ' + userData.country);
+                    setPhone(userData.phoneNumber);
+                    setProfilePicture(userData.profileImage);
+
+                    setInitialEmail(email);
+                    setInitialSurname(surname);
+                    setInitialName(name);
+                    setInitialGender(gender);
+                    setInitialPronoun1(pronoun1);
+                    setInitialPronoun2(pronoun2);
+                    setInitialBirthDate(birthDate);
+                    setInitialLanguage(language);
+                    setInitialHomeAdress(homeAdress);
+                    setInitialPhone(phone);
+                    setInitialProfilePicture(profilePicture);
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            }
+        };
+        fetchUserData();
+    }, [userId]);
 
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -61,7 +138,7 @@ export default function Profile(){
     };
 
     const handleGenderChange = (event) => {
-        setGender(event.target.value);
+        setGender(event.target.value === 'true');
     };
 
     const handlePronoun1Change = (event) => {
@@ -92,6 +169,20 @@ export default function Profile(){
         setAlergies(event.target.value);
     };
 
+    const handleProfilePicChange= (event) =>{
+        const file=event.target.files[0];
+        const reader=new FileReader();
+
+        reader.onloadend= () =>{
+            setProfilePicture(new Uint8Array(reader.result));
+            setProfilePicturePreview(URL.createObjectURL(file));
+        };
+
+        if(file){
+            reader.readAsArrayBuffer(file);
+        }
+    };
+
     const handleNewPasswordChange = (event) => {
         setNewPassword(event.target.value);
     };
@@ -100,24 +191,51 @@ export default function Profile(){
         setConfirmPassword(event.target.value);
     };
     
-    const handleSaveChanges = (event) => {
+    const handleSaveChanges = async (event) => {
         event.preventDefault();
 
-        console.log({
+        const addressParts = homeAdress.split(',');
+        const city = addressParts[1].trim();
+        const country = addressParts[2].trim();
+        const data = {
+            email:email,
             name:name,
             surname:surname,
-            email:email,
-            phone:phone,
             gender:gender,
             pronoun1:pronoun1,
             pronoun2:pronoun2,
-            language:language,
             birthDate:birthDate,
-            homeAdress:homeAdress,
-            blood_group:bloodGroup,
-            alergies:alergies
-        });
-        setIsEditing(false);
+            language:language,
+            country:country,
+            city:city,
+            phone:phone,
+            profileImage:profilePicture,
+            //blood_group:bloodGroup,
+            //alergies:alergies
+        };
+
+        console.log('Data to be sent:', data);
+
+        try {
+            const response = await fetch(`/medbuddy/changeprofile/${userId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if(!response.ok){
+                throw new Error('Error sending new data');
+            }
+
+            const result= await response.json();
+            console.log('Success:', result);
+
+            setIsEditing(false);
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
 
     const handleCancelChanges = (event) => {
@@ -133,6 +251,8 @@ export default function Profile(){
         setLanguage(initialLanguage);
         setBirthDate(initialBirthDate);
         setHomeAdress(initialHomeAdress);
+        setProfilePicture(initialProfilePicture);
+        setProfilePicturePreview(initialProfilePicturePreview);
         setBloodGroup(initialBloodGroup);
         setAlergies(initialAlergies);
         setIsEditing(false);
@@ -150,6 +270,8 @@ export default function Profile(){
             setInitialLanguage(language)
             setInitialBirthDate(birthDate)
             setInitialHomeAdress(homeAdress)
+            setInitialProfilePicture(profilePicture)
+            setinitialProfilePicturePreview(profilePicturePreview)
             setInitialBloodGroup(bloodGroup)
             setInitialAlergies(alergies)
         }
@@ -159,8 +281,23 @@ export default function Profile(){
         setIsDeleting(true);
     };
 
-    const handleConfirmDelete = () => {
-        console.log('Account deleted!')
+    const handleConfirmDelete = async () => {
+        try{
+            const response= await fetch(`/medbuddy/harddeleteuser/${userId}`, {
+                method: 'DELETE'
+            });
+
+            if(response.ok) {
+                console.log('Account deleted!');
+            } else{
+                console.error('Failed to delete account');
+            }
+        } catch (error) {
+            console.error('Error deleting account:', error);
+        } finally {
+            setIsDeleting(false);
+            //window.location.href='/';
+        }
     };
 
     const handleCancelDelete = () => {
@@ -175,19 +312,41 @@ export default function Profile(){
         setIsChangingPassword(false);
     };
 
-    const handleChangePassword = (event) => {
+    const handleChangePassword = async (event) => {
         event.preventDefault();
 
-        setOldPassword('Future API call');
+        setOldPassword(getCookieValue('user_pass'));
         if(newPassword!==oldPassword && newPassword===confirmPassword){
-            console.log({
+            const data = {
                 password:newPassword
-            });
-        }
+            };
 
-        setNewPassword(oldPassword);
-        setConfirmPassword(oldPassword);
-        setIsChangingPassword(false);
+            console.log('Data to be sent:', data);
+
+            try {
+                const response = await fetch(`medbuddy/changeprofile/${userId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if(!response.ok){
+                    throw new Error('Error sending password');
+                }
+
+                const result= await response.json();
+                console.log('Success:', result);
+
+                setIsChangingPassword(false);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        } else{
+            setNewPassword(oldPassword);
+            setConfirmPassword(oldPassword);
+        }
     };
 
     const [isMobileMenu, setIsMobileMenu] = useState(false);
@@ -200,7 +359,15 @@ export default function Profile(){
                 <div className={`${styles.container}`}>
                     <div className={`${styles.buttons_container}`}>
                         <br /><br />
-                        <img className={`${styles.buttons_container__image}`} src={profilePic} alt='Profile Pic' /><br /><br />
+                        {isEditing ? (
+                            <>
+
+                            </>
+                        ) : (
+                            <>
+                                <img className={`${styles.buttons_container__image}`} src={profilePic} alt='Profile Pic' /><br /><br />
+                            </>
+                        )}
                         {isEditing ? (
                             <>
                                 <button className={`${styles.buttons_container__cancel_changes} ${styles.button}`} onClick={handleCancelChanges}>Cancel Changes</button><br /><br />
@@ -313,7 +480,8 @@ export default function Profile(){
                                                     type='radio'
                                                     id='male'
                                                     name='gender'
-                                                    value={gender}
+                                                    value={false}
+                                                    checked={gender === false}
                                                     onChange={handleGenderChange}
                                                 />
                                                 Male
@@ -323,7 +491,8 @@ export default function Profile(){
                                                     type='radio'
                                                     id='female'
                                                     name='gender'
-                                                    value={gender}
+                                                    value={true}
+                                                    checked={gender === true}
                                                     onChange={handleGenderChange}
                                                 />
                                                 Female
@@ -374,6 +543,20 @@ export default function Profile(){
                                             value={homeAdress}
                                             onChange={handleHomeAdressChange}
                                         />
+                                    </div><br />
+                                    <div className={`${styles.general_information_container__section__editable_information__div}`}>
+                                        <label htmlFor='profilePicture'>Profile Picture </label>
+                                        <input
+                                            type='file'
+                                            id='profilePicture'
+                                            value={profilePicture ? profilePicture.name : ''}
+                                            onChange={handleProfilePicChange}
+                                        />
+                                    </div><br />
+                                    <div className={`${styles.general_information_container__section__editable_information__picture}`}>
+                                        {profilePicture && (
+                                            <img src={profilePicturePreview} alt='Profile Picture'/>
+                                        )}
                                     </div>
                                 </div>
                             ) : (
@@ -396,7 +579,7 @@ export default function Profile(){
                                     </div>
                                     <div className={`${styles.general_information_container__section__non_editable_information__div}`}>
                                         <h3>Gender </h3>
-                                        <p>{gender}</p>
+                                        <p>{gender ? 'F' : 'M'}</p>
                                     </div>
                                     <div className={`${styles.general_information_container__section__non_editable_information__div}`}>
                                         <h3>Pronoun1 </h3>

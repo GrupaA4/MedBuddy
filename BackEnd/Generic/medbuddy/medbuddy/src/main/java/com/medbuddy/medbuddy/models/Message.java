@@ -1,33 +1,37 @@
 package com.medbuddy.medbuddy.models;
 
+import com.medbuddy.medbuddy.controllers.requestbodies.MessageRequestBodies;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.UUID;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class Message {
+public class Message{
+    private String message;
+    /*
     private UUID id;
     private UUID senderId;
     private UUID conversationId;
     private String message;
-    private String imagePath;
-    private Boolean isRead;
+    private Integer imageNumber;
+    private String imageExtension;
+    private boolean isRead;
     private UUID repliesTo;
-    private Boolean isFromMedBuddy;
-    private Boolean isDeleted;
+    private LocalDate timeSent;
+    private boolean isFromMedBuddy;
+    private boolean isDeleted;
 
-    public Message(UUID id, UUID senderId, UUID conversationId, String message, String imagePath, Boolean isRead, UUID repliesTo, Boolean isFromMedBuddy, Boolean isDeleted) {
-        this.id = id;
-        this.senderId = senderId;
-        this.conversationId = conversationId;
-        this.message = message;
-        this.imagePath = imagePath;
-        this.isRead = isRead;
-        this.repliesTo = repliesTo;
-        this.isFromMedBuddy = isFromMedBuddy;
-        this.isDeleted = isDeleted;
+    public Message(MessageRequestBodies.MessageBody body) {
+        message = body.getMessage();
+        imageExtension = body.getImageExtension();
+        repliesTo = body.getRepliesTo();
+        isFromMedBuddy = body.isFromMedbuddy();
     }
-    public Message(){
-
-    }
+    */
 }
