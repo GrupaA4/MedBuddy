@@ -13,14 +13,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 public class DatabasePopulationUtil {
-    private final MessagerieDAO messagerieDAO;
     private final UserDAO userDAO;
     private final MedicalHistoryDAO medicalHistoryDAO;
     private final AdminFunctionalityDAO adminFunctionalityDAO;
     private final NotificationsDAO notificationsDAO;
 
-    public DatabasePopulationUtil(MessagerieDAO messagerieDAO, UserDAO userDAO, MedicalHistoryDAO medicalHistoryDAO, AdminFunctionalityDAO adminFunctionalityDAO, NotificationsDAO notificationsDAO ) {
-        this.messagerieDAO = messagerieDAO;
+    public DatabasePopulationUtil(UserDAO userDAO, MedicalHistoryDAO medicalHistoryDAO, AdminFunctionalityDAO adminFunctionalityDAO, NotificationsDAO notificationsDAO ) {
         this.userDAO = userDAO;
         this.medicalHistoryDAO = medicalHistoryDAO;
         this.adminFunctionalityDAO = adminFunctionalityDAO;
@@ -28,24 +26,34 @@ public class DatabasePopulationUtil {
     }
 
     public static void main(String[] args) {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
-        dataSource.setUsername("student");
-        dataSource.setPassword("STUDENT");
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        MessagerieDAO messagerieDAO = new MessagerieDAO();
+        JdbcTemplate jdbcTemplate = getJdbcTemplate();
         MedicalHistoryDAO medicalHistoryDAO = new MedicalHistoryDAO(jdbcTemplate);
         UserDAO userDAO = new UserDAO(jdbcTemplate);
         NotificationsDAO notificationsDAO = new NotificationsDAO(jdbcTemplate);
         AdminFunctionalityDAO adminFunctionalityDAO = new AdminFunctionalityDAO(jdbcTemplate);
-        DatabasePopulationUtil util = new DatabasePopulationUtil(messagerieDAO, userDAO, medicalHistoryDAO, adminFunctionalityDAO, notificationsDAO);
-       // util.processUserFile("C:\\Users\\User\\Downloads\\user.txt");
-        //util.processMessagerieFile("C:\\Users\\User\\Downloads\\message (3).txt");
-        //util.processMedicalHistoryFile("C:\\Users\\User\\Downloads\\medical_history.txt");
-        //util.processMedicFile("C:\\Users\\User\\Downloads\\medic.txt");
-        //util.processReportFile("C:\\Users\\User\\Downloads\\report.txt");
-        util.processNotificationsFile("C:\\Users\\User\\Downloads\\notification.txt");
+        DatabasePopulationUtil util = new DatabasePopulationUtil(userDAO, medicalHistoryDAO, adminFunctionalityDAO, notificationsDAO);
+        try {
+            util.processUserFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/user.txt");
+            Thread.sleep(10000);
+            util.processMedicFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medic.txt");
+            Thread.sleep(10000);
+            util.processMedicalHistoryFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medical_history.txt");
+            Thread.sleep(10000);
+            util.processReportFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/report.txt");
+            Thread.sleep(10000);
+            util.processNotificationsFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/notification.txt");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static JdbcTemplate getJdbcTemplate() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
+        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
+        dataSource.setUsername("Medbuddy");
+        dataSource.setPassword("Medbuddy");
+        return new JdbcTemplate(dataSource);
     }
 
     public void processMedicFile(String csvFile) {
