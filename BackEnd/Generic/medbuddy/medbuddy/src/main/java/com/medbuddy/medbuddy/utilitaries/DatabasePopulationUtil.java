@@ -32,11 +32,16 @@ public class DatabasePopulationUtil {
         NotificationsDAO notificationsDAO = new NotificationsDAO(jdbcTemplate);
         AdminFunctionalityDAO adminFunctionalityDAO = new AdminFunctionalityDAO(jdbcTemplate);
         DatabasePopulationUtil util = new DatabasePopulationUtil(userDAO, medicalHistoryDAO, adminFunctionalityDAO, notificationsDAO);
+
         util.processUserFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/user.txt");
         util.processMedicFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medic.txt");
+
         util.processMedicalHistoryFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medical_history.txt");
+
         util.processReportFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/report.txt");
+
         util.processNotificationsFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/notification.txt");
+
     }
 
     private static JdbcTemplate getJdbcTemplate() {
