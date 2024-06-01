@@ -18,7 +18,7 @@ public class DatabasePopulationUtil {
     private final AdminFunctionalityDAO adminFunctionalityDAO;
     private final NotificationsDAO notificationsDAO;
 
-    public DatabasePopulationUtil(UserDAO userDAO, MedicalHistoryDAO medicalHistoryDAO, AdminFunctionalityDAO adminFunctionalityDAO, NotificationsDAO notificationsDAO ) {
+    public DatabasePopulationUtil(UserDAO userDAO, MedicalHistoryDAO medicalHistoryDAO, AdminFunctionalityDAO adminFunctionalityDAO, NotificationsDAO notificationsDAO) {
         this.userDAO = userDAO;
         this.medicalHistoryDAO = medicalHistoryDAO;
         this.adminFunctionalityDAO = adminFunctionalityDAO;
@@ -32,19 +32,16 @@ public class DatabasePopulationUtil {
         NotificationsDAO notificationsDAO = new NotificationsDAO(jdbcTemplate);
         AdminFunctionalityDAO adminFunctionalityDAO = new AdminFunctionalityDAO(jdbcTemplate);
         DatabasePopulationUtil util = new DatabasePopulationUtil(userDAO, medicalHistoryDAO, adminFunctionalityDAO, notificationsDAO);
-        try {
-            util.processUserFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/user.txt");
-            Thread.sleep(10000);
-            util.processMedicFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medic.txt");
-            Thread.sleep(10000);
-            util.processMedicalHistoryFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medical_history.txt");
-            Thread.sleep(10000);
-            util.processReportFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/report.txt");
-            Thread.sleep(10000);
-            util.processNotificationsFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/notification.txt");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        util.processUserFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/user.txt");
+        util.processMedicFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medic.txt");
+
+        util.processMedicalHistoryFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medical_history.txt");
+
+        util.processReportFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/report.txt");
+
+        util.processNotificationsFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/notification.txt");
+
     }
 
     private static JdbcTemplate getJdbcTemplate() {
@@ -94,7 +91,6 @@ public class DatabasePopulationUtil {
             e.printStackTrace();
         }
     }
-
 
 
     public void processUserFile(String csvFile) {
