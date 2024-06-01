@@ -20,90 +20,84 @@ $font_oswald: "Oswald_font";
 
 .container{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-content: center;
-    margin-left: 4vw;
-    margin-right: 4vw;
-    margin-bottom: 4vh;
-
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-bottom: 4rem;
+    min-height: calc(100vh - 10rem);
     .buttons_container{
         display: flex;
         flex-direction: column;
         align-items: center;
-
+        margin-top: 5rem;
         &__image{
-            width: 20vw;
-            height: 20vh;
-            position: -webkit-sticky;
-            position: sticky;
-            top: 3vh;
+            width: 15rem;
+            height: 15rem;
+            border-radius: 15rem;
+            //position: -webkit-sticky;
+            //position: sticky;
         }
 
         &__cancel_changes{
             background-color: $green-color;
-            position: -webkit-sticky;
-            position: sticky;
-            top: 30vh;
+            //position: -webkit-sticky;
+            //position: sticky;
+            margin-top: 1rem;
         }
 
         &__save_changes{
             background-color: $red-color;
-            position: -webkit-sticky;
-            position: sticky;
-            top: 40vh;
+            //position: -webkit-sticky;
+            //position: sticky;
+            margin-top: 1rem;
         }
 
         &__edit_profile{
             background-color: $green-color;
-            position: -webkit-sticky;
-            position: sticky;
-            top: 30vh;
+            
+            margin-top: 1rem;
         }
 
         &__change_password{
             background-color: $green-color;
-            position: -webkit-sticky;
-            position: sticky;
-            top: 50vh;
+            
+            margin-top: 1rem;
         }
 
         &__cancel_delete{
             background-color: $green-color;
-            position: -webkit-sticky;
-            position: sticky;
-            top: 60vh;
+            
+            margin-top: 1rem;
         }
 
         &__confirm_delete{
             background-color: $red-color;
-            position: -webkit-sticky;
-            position: sticky;
-            top: 70vh;
+            
+            margin-top: 1rem;
         }
 
         &__delete_account{
             background-color: $red-color;
-            position: -webkit-sticky;
-            position: sticky;
-            top: 60vh;
+            
+            margin-top: 1rem;
         }
 
         &__cancel_change_password{
             background-color: $green-color;
-            position: -webkit-sticky;
-            position: sticky;
-            top: 50vh;
+            
+            margin-top: 1rem;
         }
     }
 
     .general_information_container{
         margin-top: 10vh;
-        margin-bottom: 5vh;
-
+        margin-bottom: 5rem;
+        width: 45vw;
         &__section{
             &__title{
                 font-family: $font_bebas;
-                font-size: 4vh;
+                font-size: 2.5rem;
             }
 
             &__editable_information{
@@ -111,21 +105,50 @@ $font_oswald: "Oswald_font";
                     display: flex;
                     justify-content: space-between;
 
-                    label{
+                    &__label{
                         font-family: $font_bebas;
-                        font-size: 3.5vh;
+                        font-size: 1.5rem;
                         color: $blue-color;
                         font-weight: 100;
-                        margin-right: 2vw;
                     }
     
-                    input{
+                    &__input{
                         font-family: $font_oswald;
-                        font-size: 3vh;
+                        font-size: 1.25rem;
+                        border: solid, 0.05rem, #002845;
+                        border-radius : 0.5rem;
+                        width: 25vw;
+                        &__pic{
+                            width: 25vw;
+                        }
+                        &__dob{
+                            font-family: $font_oswald;
+                            font-size: 1.25rem;
+                            border: solid, 0.05rem, #002845;
+                            border-radius : 0.5rem;
+                            width: 25vw;
+                        }
+                        &__pic::-webkit-file-upload-button {
+                            background-color: #369986;
+                            border-radius: 0.25rem;
+                            border-radius: 0.25rem;
+                            width: 25vw;
+                            height: 2rem;
+                          }
+                    }
+                }
+
+                &__gender{
+                    display: inline;
+                    &__option{
+                        font-family: $font_oswald;
+                        font-size: 1.25rem;
+                       // width: 10vw;
                     }
                 }
 
                 &__picture{
+                    max-width: 10%;
                     display: flex;
                     justify-content: center;
                     align-content: center;
@@ -137,18 +160,19 @@ $font_oswald: "Oswald_font";
                     display: flex;
                     justify-content: space-between;
 
-                    h3{
+                    &__h3{
+                        // width: 20vw;
                         font-family: $font_bebas;
-                        font-size: 3.5vh;
+                        font-size: 2rem;
                         color: $blue-color;
                         font-weight: 100;
-                        margin-right: 2vw;
+                        //margin-right: 2vw;
                         padding: 0;
                     }
     
-                    p{
+                    &__p{
                         font-family: $font_oswald;
-                        font-size: 3vh;
+                        font-size: 2rem;
                         padding: 0;
                     }
                 }
@@ -159,24 +183,31 @@ $font_oswald: "Oswald_font";
     .form_container{
         display: flex;
         flex-direction: column;
-        margin-top: 5vh;
+        align-items: center;
+        margin-top: 5rem;
 
         &__title{
             font-family: $font_bebas;
-            font-size: 5vh;
+            font-size: 3rem;
         }
 
         &__form{
-            label{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            
+            &__label{
                 font-family: $font_bebas;
-                font-size: 3vh;
+                font-size: 1.5rem;
+                color: #069DAE;
             }
             
-            input{
+            &__input{
                 font-family: $font_oswald;
-                font-size: 3vh;
-                height: 6vh;
-                width: 20vw;
+                font-size: 1.5rem;
+                height: 3rem;
+                width: 40vw;
+                border-radius: 0.5rem;
             }
 
             &__submit{
@@ -188,13 +219,13 @@ $font_oswald: "Oswald_font";
 }
 
 .button{
-    width: 12vw;
-    height: 5vh;
+    width: 15vw;
+    height: 5rem;
     border-radius: 3vh;
     border-width: 0;
     font-family: $font_oswald;
     color: $white-color;
-    font-size: 2vh;
+    font-size: 1.5rem;
     cursor: pointer;
 
     &:hover{
@@ -208,39 +239,46 @@ $font_oswald: "Oswald_font";
 
 @media screen and (max-width: 850px){
     .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         .buttons_container{
             &__image{
-                width: 15vw;
-                height: 15vh;
+                width: 15rem;
+                height: 15rem;
             }
         }
-        
+
         .general_information_container{
+            width: 70vw;
             &__section{
                 &__title{
-                    font-size: 3vh;
+                    font-size: 2.25rem;
                 }
 
                 &__editable_information{
                     &__div{
-                        label{
-                            font-size: 2.5vh;
+                        &__label{
+                            font-size: 1.75rem;
                         }
 
-                        input{
-                            font-size: 2vh;
+                        &__input{
+                            font-size: 1.75rem;
                         }
                     }
                 }
 
                 &__non_editable_information{
                     &__div{
-                        h3{
-                            font-size: 2.5vh;
+                        &__h3{
+                            
+                            font-size: 1.75rem;
                         }
 
-                        p{
-                            font-size: 2vh;
+                        &__p{
+                            text-wrap: wrap;
+                            // ?word-wrap: break-word;
+                            font-size: 1.75rem;
                         }
                     }
                 }
@@ -249,20 +287,21 @@ $font_oswald: "Oswald_font";
 
         .form_container{
             &__form{
-                input{
-                    width: 30vw;
+                &__input{
+                    width: 70vw;
                 }
     
                 &__submit{
                     background-color: $red-color;
-                    margin-left: 9vw;
+                    //margin-left: 9vw;
                 }
             }
         }
     }
 
     .button{
-        font-size: 1.5vh;
+        font-size: 1.25rem;
+        width: 50vw;
     }
 }
 
@@ -272,82 +311,70 @@ $font_oswald: "Oswald_font";
 
         .buttons_container{
             &__image{
-                width: 30vw;
-                height: 30vh;
-                position: relative;
-            }
-
-            &__cancel_changes{
-                top: 0vh;
-            }
-    
-            &__save_changes{
-                top: 0vh;
-            }
-    
-            &__edit_profile{
-                top: 0vh;
-            }
-    
-            &__change_password{
-                top: 0vh;
-            }
-    
-            &__cancel_delete{
-                top: 0vh;
-            }
-    
-            &__confirm_delete{
-                top: 0vh;
-            }
-    
-            &__delete_account{
-                top: 0vh;
-            }
-
-            &__cancel_change_password{
-                top: 0vh;
+                width: 45vw;
             }
         }
         
         .general_information_container{
             &__section{
                 &__title{
-                    font-size: 5vh;
+                    font-size: 2.5rem;
                 }
 
                 &__editable_information{
                     &__div{
-                        label{
-                            font-size: 4vh;
+                        &__label{
+                            font-size: 1.25rem;
+                            width: 70vw;
                         }
 
-                        input{
-                            font-size: 4vh;
+                        &__input{
+                            font-size: 1.25rem;
+                            width: 70vw;
+                            &__dob{
+                                width: 70vw;
+                            }
+                            &__pic{
+                                width: 70vw;
+                            }
+                            &__pic::-webkit-file-upload-button {
+                                width: 70vw;
+                            }
+                        }
+                    }
+                    &__gender{
+                        display: flex;
+                        flex-direction: row;
+                        gap: 2rem;
+                        &__option{
+                            font-family: $font_oswald;
+                            font-size: 1rem;
+                           // width: 10vw;
                         }
                     }
                 }
 
                 &__non_editable_information{
                     &__div{
-                        h3{
-                            font-size: 4vh;
+                        &__h3{
+                            font-size: 1.25rem;
                         }
 
-                        p{
-                            font-size: 4vh;
+                        &__p{
+                            font-size: 1.25rem;
                         }
                     }
+                    
                 }
             }
         }
 
         .form_container{
-            margin-left: 22vw;
+            //margin-left: 22vw;
 
             &__form{
-                input{
-                    width: 50vw;
+                &__input{
+                    width: 70vw;
                 }
     
                 &__submit{
@@ -358,54 +385,38 @@ $font_oswald: "Oswald_font";
     }
 
     .button{
-        font-size: 3vh;
-        width: 30vw;
-        height: 10vh;
-        border-radius: 5vh;
+        width: 60vw;
+        
     }
 }
 
-@media screen and (max-width: 1366px){
+@media screen and (max-width: 500px) {
     .container{
-        flex-direction: column;
-
-        .buttons_container{
-            &__cancel_changes{
-                margin-bottom: 4vh;
-            }
-            &__save_changes{
-                margin-bottom: 4vh;
-            }
-    
-            &__edit_profile{
-                margin-bottom: 4vh;
-            }
-    
-            &__change_password{
-                margin-bottom: 4vh;
-            }
-    
-            &__cancel_delete{
-                margin-bottom: 8vh;
-            }
-    
-            &__confirm_delete{
-                margin-bottom: 4vh;
-            }
-    
-            &__delete_account{
-                margin-bottom: 4vh;
-            }
-
-            &__cancel_change_password{
-                margin-bottom: 4vh;
+        .general_information_container{
+            &__section{
+                &__title{
+                    font-size: 2.5rem;
+                }
+                &__editable_information{
+                    &__div{
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+                &__non_editable_information{
+                    &__div{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.25rem;
+                        &__h3{
+                            font-size: 2rem;
+                        }
+                        &__p{
+                            font-size: 2rem;
+                        }
+                    }
+                }
             }
         }
-    }
-
-    .button{
-        width: 20vw;
-        height: 8vh;
-        border-radius: 5vh;
     }
 }
