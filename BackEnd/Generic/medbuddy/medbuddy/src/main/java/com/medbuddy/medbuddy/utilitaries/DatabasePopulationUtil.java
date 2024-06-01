@@ -37,6 +37,13 @@ public class DatabasePopulationUtil {
         AdminFunctionalityDAO adminFunctionalityDAO = new AdminFunctionalityDAO(jdbcTemplate);
         DatabasePopulationUtil util = new DatabasePopulationUtil(userDAO, medicalHistoryDAO, adminFunctionalityDAO,
                 notificationsDAO);
+        // addFirst(util);
+        // addSecond(util);
+        // addThird(util);
+
+    }
+
+    public static void addFirst(DatabasePopulationUtil util) {
         util.processUserFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/user.txt");
         util.processMedicFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medic.txt");
     }
