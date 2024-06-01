@@ -4,6 +4,7 @@ import com.medbuddy.medbuddy.models.*;
 import com.medbuddy.medbuddy.repository.daos.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -17,12 +18,14 @@ public class DatabasePopulationUtil {
     private final MedicalHistoryDAO medicalHistoryDAO;
     private final AdminFunctionalityDAO adminFunctionalityDAO;
     private final NotificationsDAO notificationsDAO;
+    private final BCryptPasswordEncoder encoder;
 
     public DatabasePopulationUtil(UserDAO userDAO, MedicalHistoryDAO medicalHistoryDAO, AdminFunctionalityDAO adminFunctionalityDAO, NotificationsDAO notificationsDAO) {
         this.userDAO = userDAO;
         this.medicalHistoryDAO = medicalHistoryDAO;
         this.adminFunctionalityDAO = adminFunctionalityDAO;
         this.notificationsDAO = notificationsDAO;
+        this.encoder = new BCryptPasswordEncoder();
     }
 
     public static void main(String[] args) {
@@ -99,7 +102,7 @@ public class DatabasePopulationUtil {
                 if (data.length == 18) {
                     UUID id = UUID.fromString(data[0]);
                     String email = data[1];
-                    String password = data[2];
+                    String password = encoder.encode(data[2]);
                     String lastName = data[3];
                     String firstName = data[4];
                     boolean gender = data[5].equals("1");
