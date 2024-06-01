@@ -144,6 +144,7 @@ export default function Profile(){
                     setHomeAdress(userData.city + ', ' + userData.country);
                     setPhone(userData.phoneNumber);
                     setProfilePicture(userData.profileImage);
+                    console.log(profilePicture);
 
                     setInitialEmail(email);
                     setInitialSurname(surname);
@@ -525,7 +526,7 @@ export default function Profile(){
                             </>
                         ) : (
                             <>
-                                <img className={`${styles.buttons_container__image}`} src={profilePicturePreview ? profilePicturePreview : profilePic} alt='Profile Picture' /><br /><br />
+                                <img className={`${styles.buttons_container__image}`} src={profilePicture ? profilePicture : profilePic} alt='Profile Picture' /><br /><br />
                             </>
                         )}
                         {isEditing ? (
