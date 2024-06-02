@@ -79,9 +79,7 @@
   font-size: 16px;
 }
 
-.input-box input.error {
-  border: 2px solid red;
-}
+
 
 .gender--section {
   display: flex;
@@ -125,19 +123,26 @@
 }
 
 .upload--certificate input {
-  margin-top: 1rem;
+    margin-top: 1rem;
+   
 }
-.upload--certificate {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 12rem;
-  margin-top: 1.5rem;
-  margin-left: 1rem;
+.upload--certificate{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 12rem;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+  
+
 }
-.upload--certificate label {
-  margin-left: -2rem;
+.upload--certificate label{
+    margin-left: -2rem;
 }
+.input-box input.error {
+  border: 2px solid red;
+}
+
 
 @media only screen and (max-width: 786px) {
   .input-box {
