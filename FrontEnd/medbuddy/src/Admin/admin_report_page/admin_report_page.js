@@ -44,74 +44,20 @@ const AdminReportPage = () => {
   useEffect(() => {
     const fetchReports = async () => {
       try {
+        const start = 1;
+        const end = 10;
         const response = await fetch(
-          `http://localhost:7264/medbuddy/getreports/${reportToStartWith}/${reportToEndLoad}`,
+          `http://localhost:7264/medbuddy/getreports/${start}/${end}`,
           {
             method: "GET",
             headers: {
-              Authorization: null,
+              Authorization: `Basic ${authorisation}`,
             },
           }
         );
-        if (response.status == 200) {
+        if (response.ok) {
           const data = await response.json();
-
-          setReportedUserId(data.reports[0].reportedUserId);
-          setReporterUserId(data.reports[0].reporterUserId);
-          setMessage(data.reports[0].message);
-
-          // Cookies.set(`user_email`, email, { expires: 7 });
-          // Cookies.set(`user_pass`, password, { expires: 7 });
-
-          const personReportedDetailsPromises = data.reports.map(
-            async (reportedUserId) => {
-              const personReportedResponse = await fetch(
-                `http://localhost:7264/medbuddy/viewprofile/${reportedUserId}`,
-                {
-                  method: "GET",
-                  headers: {
-                    Authorization: `Basic ${authorisation}`,
-                  },
-                }
-              );
-
-              if (personReportedResponse.ok) {
-                const personReported = await personReportedResponse.json();
-
-                setReportedUserEmail(personReported.email);
-                setReportedUserFirstName(personReported.firstName);
-                setReportedUserLastName(personReported.lastName);
-              }
-              return null;
-            }
-          );
-
-          const reporterDetailsPromises = data.reports.map(
-            async (reporterUserId) => {
-              const reporterResponse = await fetch(
-                `http://localhost:7264/medbuddy/viewprofile/${reporterUserId}`,
-                {
-                  method: "GET",
-                  headers: {
-                    Authorization: `Basic ${authorisation}`,
-                  },
-                }
-              );
-
-              if (reporterResponse.ok) {
-                const reporter = await reporterResponse.json();
-
-                setReporterUserFirstName(reporter.firstName);
-                setReporterUserLastName(reporter.lastName);
-              }
-              return null;
-            }
-          );
-
-          const reportDetails = await Promise.all(
-            personReportedDetailsPromises,
-            reporterDetailsPromises
-          );
+          setReports(data.reports);
         } else {
           console.error("Failed to fetch reports");
         }
@@ -121,7 +67,7 @@ const AdminReportPage = () => {
     };
 
     fetchReports();
-  }, []);
+  }, [authorisation]);
 
   const handleReport = async (userId) => {
     try {
@@ -135,15 +81,14 @@ const AdminReportPage = () => {
         }
       );
 
-      if (response.ok) {
-      } else {
+      if (!response.ok) {
         console.error("Failed to delete reported account");
       }
     } catch (error) {
       console.error("Error deleting report:", error);
     }
   };
-
+  
   return (
     <div className={styles.body_admin_report_page}>
       <div className={styles.header}>
