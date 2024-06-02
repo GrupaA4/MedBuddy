@@ -80,22 +80,22 @@ function List() {
     return filteredNotifications
       .slice(startIndex, endIndex)
       .map((notification) => (
-        <div key={notification.id} className="item">
+        <div key={notification.id} className="item-conv">
           <img src={Avatar} alt="" />
-          <div className="texts">
+          <div className="texts-conv">
             <span>
-              <span className="userName">
+              <span className="userName-conv">
                 {notification.firstName} {notification.lastName}
               </span>{" "}
               wants to contact you at:{" "}
             </span>
-            <a href={`mailto:${notification.email}`} className="emailLink">
-              <div className="userEmail">
+            <a href={`mailto:${notification.email}`} className="emailLink-conv">
+              <div className="userEmail-conv">
                 <p>{notification.email}</p>
               </div>
             </a>
           </div>
-          <div className="diagnoses">See diagnoses</div>
+          <div className="diagnoses-conv">See diagnoses</div>
         </div>
       ));
   };
@@ -129,18 +129,18 @@ function List() {
         </div>
       </div>
       <div className="items">{displayNotifications()}</div>
-      <div className="buttons-container">
+      <div className="buttons-container-conv">
         <button
           onClick={previousPage}
           disabled={currentPage === 1}
-          className="pre&nextpage-button"
+          className="pre&nextpage-button-conv"
         >
           Previous
         </button>
         <button
           onClick={nextPage}
           disabled={currentPage * itemsPerPage >= filteredNotifications.length}
-          className="pre&nextpage-button"
+          className="pre&nextpage-button-conv"
         >
           Next
         </button>
