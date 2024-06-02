@@ -19,7 +19,7 @@ import ChatPage from './Patient/pages/chat/page';
 import Diagnoses from './Patient/pages/diagnoses/page';
 // import Register from './Patient/pages/register/register';
 import ProfilePatient from './Patient/pages/profile/profile';
-import Contact from './Patient/pages/contact/page';
+import ContactPatient from './Patient/pages/contact/page';
 import About from './Patient/pages/about/page';
 
 const App = () => {
@@ -37,9 +37,13 @@ const App = () => {
         <Route path="/homeMedic" element={<HomeMedic />} />
         <Route path="/contactMedic" element={<ContactMedic />} />
         <Route path="/profileMedic" element={<ProfileMedic />} />
-        <Route path="/diagnoses" element={<Diagnostic />} />
+        <Route path="/diagnosesMedic" element={<Diagnostic />} />
 
-        
+            <Route path="/chat" element={<ChatPage />} />
+            <Route path="/diagnoses" element={<Diagnoses />} />
+            <Route path="/profilePatient" element={<ProfilePatient />} />
+            <Route path="/contactPatient" element={<ContactPatient />} />
+            <Route path="/about" element={<About />} />
       </Routes>
     </Router>
   );
