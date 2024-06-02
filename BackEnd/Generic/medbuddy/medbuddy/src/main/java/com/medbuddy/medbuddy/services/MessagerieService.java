@@ -49,6 +49,7 @@ public class MessagerieService {
 
     public void sendMessageToMedbuddy() {
         UUID userId = userDAO.getUserId(SecurityUtil.getEmail());
+        medbuddyUtil.sendMessageToMedbuddy(userId);
     }
 
     /*@Autowired
