@@ -213,6 +213,7 @@ const AdminReportPage = () => {
   const [start, setStart] = useState(1);
   const [end, setEnd] = useState(5); // Schimbăm de la 10 la 5
   const [reportCounter, setReportCounter] = useState(0);
+  const [number, setNumber] = useState(1);
 
   const navigate = useNavigate();
 
@@ -234,44 +235,71 @@ const AdminReportPage = () => {
   const passwordFromCookie = getCookieValue("user_pass");
   const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
 
-  useEffect(() => {
-    const fetchReports = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:7264/medbuddy/getreports/${start}/${end}`, // Modificare: folosim start și end din state
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Basic ${authorisation}`,
-            },
-          }
-        );
-        if (response.ok) {
-          const data = await response.json();
-          setReports(data.reports);
-          
-          // Modificare: setare state-urilor adiționale
-          setReportToStartWith(data.reports.map(report => report.startLoad));
-          setReportToEndLoad(data.reports.map(report => report.endLoad));
-          setReportedUserId(data.reports.map(report => report.reportedUserId));
-          setReporterUserId(data.reports.map(report => report.reporterUserId));
-          setMessage(data.reports.map(report => report.message));
-          setReportedUserEmail(data.reports.map(report => report.reportedEmail));
-          setReportedUserFirstName(data.reports.map(report => report.reportedFirstName));
-          setReportedUserLastName(data.reports.map(report => report.reportedLastName));
-          setReporterUserFirstName(data.reports.map(report => report.reporterFirstName));
-          setReporterUserLastName(data.reports.map(report => report.reporterLastName));
-
-        } else {
-          console.error("Failed to fetch reports");
+  const fetchReports = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:7264/medbuddy/getreports/${start}/${end}`, // Modificare: folosim start și end din state
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Basic ${authorisation}`,
+          },
         }
-      } catch (error) {
-        console.error("Error fetching reports:", error);
-      }
-    };
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setNumber(data.reports.length); // Actualizează number în state
+        console.log(data.reports.length);
+        setReports(data.reports);
 
+        // Modificare: setare state-urilor adiționale
+        setReportToStartWith(data.reports.map(report => report.startLoad));
+        setReportToEndLoad(data.reports.map(report => report.endLoad));
+        setReportedUserId(data.reports.map(report => report.reportedUserId));
+        setReporterUserId(data.reports.map(report => report.reporterUserId));
+        setMessage(data.reports.map(report => report.message));
+        setReportedUserEmail(data.reports.map(report => report.reportedEmail));
+        setReportedUserFirstName(data.reports.map(report => report.reportedFirstName));
+        setReportedUserLastName(data.reports.map(report => report.reportedLastName));
+        setReporterUserFirstName(data.reports.map(report => report.reporterFirstName));
+        setReporterUserLastName(data.reports.map(report => report.reporterLastName));
+        setNumber(1); // Resetează number dacă solicitarea are succes
+      } else {
+        console.error("Failed to fetch reports");
+        setNumber(0);
+      }
+    } catch (error) {
+      console.error("Error fetching reports:", error);
+      setNumber(0);
+    }
+  };
+
+  useEffect(() => {
     fetchReports();
   }, [start, end, authorisation]); // Modificare: adăugare start și end în array-ul de dependințe
+
+  const validateReports = async (newStart, newEnd) => {
+    try {
+      const response = await fetch(
+        `http://localhost:7264/medbuddy/getreports/${newStart}/${newEnd}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Basic ${authorisation}`,
+          },
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        return data.reports.length > 0;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      console.error("Error validating reports:", error);
+      return false;
+    }
+  };
 
   const handleReport = async (userId) => {
     try {
@@ -294,15 +322,33 @@ const AdminReportPage = () => {
   };
 
   // Modificare: funcții pentru butoanele de navigare
-  const handleNext = () => {
-    setStart(start + 5);
-    setEnd(end + 5);
+  const handleNext = async () => {
+    const newStart = start + 5;
+    const newEnd = end + 5;
+
+    const hasMoreReports = await validateReports(newStart, newEnd);
+    if (hasMoreReports) {
+      setStart(newStart);
+      setEnd(newEnd);
+      setReportCounter(reportCounter + 5);
+    } else {
+      console.log("No more reports to load");
+    }
   };
 
-  const handlePrevious = () => {
+  const handlePrevious = async () => {
     if (start > 1) {
-      setStart(start - 5);
-      setEnd(end - 5);
+      const newStart = start - 5;
+      const newEnd = end - 5;
+
+      const hasMoreReports = await validateReports(newStart, newEnd);
+      if (hasMoreReports || newStart === 1) {
+        setStart(newStart);
+        setEnd(newEnd);
+        setReportCounter(reportCounter - 5);
+      } else {
+        console.log("You are at the beginning of the reports");
+      }
     }
   };
 
@@ -365,7 +411,7 @@ const AdminReportPage = () => {
             <p className={styles.container1_admin_report_page__square__data}>
               Person reported:{" "}
               <span>
-                {reportedUserLastName[i]} {reportedUserFirstName[i]} {i + 1}
+                {reportedUserLastName[i]} {reportedUserFirstName[i]} {reportCounter + i + 1}
               </span>
               <br />
               Email person reported: <span>{reportedUserEmail[i]}</span>
