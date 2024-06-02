@@ -35,7 +35,6 @@ export default function Profile(){
     const [birthDate, setBirthDate] = useState('01/01/2000');
     const [homeAdress, setHomeAdress] = useState('City, Country');
     const [profilePicture,setProfilePicture]=useState(null);
-    const [profilePicturePreview, setProfilePicturePreview]=useState(null);
     const [imageExtension, setImageExtension]=useState('');
 
     const [initialName, setInitialName] = useState('My Name');
@@ -49,7 +48,6 @@ export default function Profile(){
     const [initialBirthDate, setInitialBirthDate] = useState('01/01/2000');
     const [initialHomeAdress, setInitialHomeAdress] = useState('City, Country');
     const [initialProfilePicture, setInitialProfilePicture] = useState(null);
-    const [initialProfilePicturePreview, setinitialProfilePicturePreview]=useState(null);
 
     const [isEditing, setIsEditing] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
@@ -211,7 +209,6 @@ export default function Profile(){
 
         reader.onloadend= () =>{
             setProfilePicture(reader.result);
-            setProfilePicturePreview(URL.createObjectURL(file));
 
             const fileExtension=file.name.split('.').pop();
             if(!['png', 'jpg', 'jpeg'].includes(fileExtension)){
@@ -372,7 +369,6 @@ export default function Profile(){
         setBirthDate(initialBirthDate);
         setHomeAdress(initialHomeAdress);
         setProfilePicture(initialProfilePicture);
-        setProfilePicturePreview(initialProfilePicturePreview);
         setIsEditing(false);
     };
 
@@ -389,7 +385,6 @@ export default function Profile(){
             setInitialBirthDate(birthDate)
             setInitialHomeAdress(homeAdress)
             setInitialProfilePicture(profilePicture)
-            setinitialProfilePicturePreview(profilePicturePreview)
         }
     }, [isEditing]);
 
@@ -752,11 +747,6 @@ export default function Profile(){
                                             value={profilePicture ? profilePicture.name : ''}
                                             onChange={handleProfilePicChange}
                                         />
-                                    </div><br />
-                                    <div className={`${styles.general_information_container__section__editable_information__picture}`}>
-                                        {profilePicture && (
-                                            <img src={profilePicturePreview} alt='Profile Picture'/>
-                                        )}
                                     </div>
                                 </div>
                             ) : (
