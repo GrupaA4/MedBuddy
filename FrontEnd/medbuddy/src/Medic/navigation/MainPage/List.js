@@ -115,9 +115,9 @@ function List() {
 
   return (
     <div className="List">
-      <div className="search">
-        <div className="searchBar">
-          <div className="searchIcon">
+      <div className="search-conv">
+        <div className="searchBar-conv">
+          <div className="searchIcon-conv">
             <SearchIcon />
           </div>
           <input
