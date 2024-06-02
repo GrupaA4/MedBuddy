@@ -70,7 +70,7 @@ public class UserController {
     @PutMapping("/signup")
     public ResponseEntity<Void> signUp(@RequestBody UserRequestBodies.UserSignup userRequest) {
         User user = new User(userRequest);
-        userService.createUser(user, userRequest.getProfileImage());
+        userService.createUser(user, ImageProcessingUtil.getImageDataAsBytes(userRequest.getProfileImage()));
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
@@ -78,7 +78,9 @@ public class UserController {
     @PutMapping("/signupmedic")
     public ResponseEntity<Void> signUpMedic(@RequestBody UserRequestBodies.MedicSignup medicRequest) {
         Medic medic = new Medic(medicRequest);
-        userService.createMedic(medic, medicRequest.getProfileImage(), medicRequest.getCertificateImage());
+        userService.createMedic(medic,
+                ImageProcessingUtil.getImageDataAsBytes(medicRequest.getProfileImage()),
+                ImageProcessingUtil.getImageDataAsBytes(medicRequest.getCertificateImage()));
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 

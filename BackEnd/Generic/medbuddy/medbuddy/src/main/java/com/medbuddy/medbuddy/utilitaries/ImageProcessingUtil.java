@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Base64;
 
 //This is all untested as I currently can not access the application
@@ -23,6 +24,7 @@ public class ImageProcessingUtil {
     public static void saveImage(int imageNumber, String directory, byte[] imageFile, String imageExtension) {
         try {
             File image = new File(directory + File.separator + "image" + imageNumber + "." + imageExtension);
+            image.createNewFile();
             FileOutputStream outputStream = new FileOutputStream(image);
             outputStream.write(imageFile);
             outputStream.close();
@@ -40,7 +42,7 @@ public class ImageProcessingUtil {
      * @return the byte data of the specified image in Base64
      * @throws IOException
      */
-    public static byte[] extractImage(int imageNumber, String fileExtension, String directory) {
+    public static String extractImage(int imageNumber, String fileExtension, String directory) {
         try {
             String imagePath = directory + File.separator + "image" + imageNumber + "." + fileExtension;
             File imageFile = new File(imagePath);
@@ -48,11 +50,18 @@ public class ImageProcessingUtil {
             byte[] imageData = new byte[(int) imageFile.length()];
             inputStream.read(imageData);
             inputStream.close();
-            byte[] encodedImageData = Base64.getEncoder().encode(imageData);
-            return encodedImageData;
+            return Base64.getEncoder().encodeToString(imageData);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static byte[] getImageDataAsBytes(String imageData) {
+        // Remove the "data:image/jpeg;base64," prefix if present
+        if (imageData.startsWith("data:image/jpeg;base64,")) {
+            return java.util.Base64.getDecoder().decode(imageData.substring(23));
+        }
+        return java.util.Base64.getDecoder().decode(imageData);
     }
 }

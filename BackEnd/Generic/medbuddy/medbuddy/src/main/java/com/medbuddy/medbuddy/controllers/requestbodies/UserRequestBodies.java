@@ -22,7 +22,7 @@ public class UserRequestBodies {
         private String city;
         private String phoneNumber;
         //private String profileImage; // placeholder
-        private byte[] profileImage;
+        private String profileImage;
         private String imageExtension;
         private boolean isAdmin;
     }
@@ -42,13 +42,13 @@ public class UserRequestBodies {
         private String city;
         private String phoneNumber;
         //private String profileImage; // placeholder
-        private byte[] profileImage;
+        private String profileImage;
         private String imageExtension;
         private boolean isAdmin;
         private String typeOfMedic;
         private String clinic;
         //private String certificateImage; // placeholder
-        private byte[] certificateImage;
+        private String certificateImage;
         private String certificateExtension;
     }
 

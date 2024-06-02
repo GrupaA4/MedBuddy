@@ -21,12 +21,12 @@ public class UserResponseBodies {
         private String country;
         private String city;
         private String phoneNumber;
-        private byte[] profileImage;
+        private String profileImage;
         //private String profileImage;
         private String imageExtension;
         private boolean isAdmin;
 
-        public UserProfile(User user, byte[] profileImage) {
+        public UserProfile(User user, String profileImage) {
             email = user.getEmail();
             lastName = user.getLastName();
             firstName = user.getFirstName();
@@ -49,11 +49,11 @@ public class UserResponseBodies {
         private String email;
         private String lastName;
         private String firstName;
-        private byte[] profileImage;
+        private String  profileImage;
         //private String profileImage;
         private String imageExtension;
 
-        public UserBasicInfo(User user, byte[] profileImage) {
+        public UserBasicInfo(User user, String profileImage) {
             email = user.getEmail();
             lastName = user.getLastName();
             firstName = user.getFirstName();
@@ -76,16 +76,16 @@ public class UserResponseBodies {
         private String city;
         private String phoneNumber;
 //        private String profileImage;
-        private byte[] profileImage;
+        private String profileImage;
         private String imageExtension;
         private boolean isAdmin;
         private String typeOfMedic;
 //        private String certificateImage;
-        private byte[] certificateImage;
+        private String certificateImage;
         private String certificateExtension;
         private boolean isApproved;
 
-        public MedicProfile(Medic medic, byte[] profileImage, byte[] certificateImage) {
+        public MedicProfile(Medic medic, String profileImage, String certificateImage) {
             email = medic.getEmail();
             lastName = medic.getLastName();
             firstName = medic.getFirstName();
