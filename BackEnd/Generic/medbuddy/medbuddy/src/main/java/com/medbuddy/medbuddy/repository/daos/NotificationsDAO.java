@@ -14,6 +14,10 @@ public class NotificationsDAO {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    public NotificationsDAO(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
     public void addNotification(Notification notification) {
         String sql = "INSERT INTO AppNotifications VALUES(?, ?, ?, ?)";
         jdbcTemplate.update(sql,

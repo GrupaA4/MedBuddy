@@ -1,9 +1,7 @@
 package com.medbuddy.medbuddy.repository.daos;
 
-import com.medbuddy.medbuddy.exceptions.DatabaseExceptions;
 import com.medbuddy.medbuddy.exceptions.Warnings.MessagerieWarnings;
 import com.medbuddy.medbuddy.models.Conversation;
-//import com.medbuddy.medbuddy.repository.rowmappers.ConversationRowMapper;
 import com.medbuddy.medbuddy.models.Message;
 import com.medbuddy.medbuddy.repository.rowmappers.ConversationRowMapper;
 import com.medbuddy.medbuddy.repository.rowmappers.MessageRowMapper;
@@ -11,16 +9,9 @@ import com.medbuddy.medbuddy.utilitaries.DataConvertorUtil;
 import com.medbuddy.medbuddy.utilitaries.validators.EntityValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 @Repository
@@ -31,13 +22,13 @@ public class MessagerieDAO {
 
     public void createConversationBetween(UUID id, UUID loggedUserId, UUID conversedWithUserId) {
         jdbcTemplate.update("insert into conversation (" +
-                "id, " +
-                "userId1, " +
-                "userId2, " +
-                "lastMessageId, " +
-                "lastSentAt, " +
-                "isDeleted" +
-                ") values(?, ?, ?, NULL, NULL, ?)",
+                        "id, " +
+                        "userId1, " +
+                        "userId2, " +
+                        "lastMessageId, " +
+                        "lastSentAt, " +
+                        "isDeleted" +
+                        ") values(?, ?, ?, NULL, NULL, ?)",
                 id.toString(),
                 loggedUserId.toString(),
                 conversedWithUserId.toString(),
@@ -49,9 +40,9 @@ public class MessagerieDAO {
                 "select * from conversation where (userid1 = ? and userid2 = ?) or (userid1 = ? and userid2 = ?)",
                 String.class, id1.toString(), id2.toString(), id2.toString(), id1.toString());
 
-        for(var conversationIdString : conversations) {
+        for (var conversationIdString : conversations) {
             Conversation conversation = getConversationById(conversationIdString);
-            if(!EntityValidator.validate(conversation)) {
+            if (!EntityValidator.validate(conversation)) {
                 conversations.remove(conversationIdString);
             }
         }
@@ -108,7 +99,7 @@ public class MessagerieDAO {
     }
 
     public List<Message> getMessageInfo(UUID messageId) {
-        return  jdbcTemplate.query("select * from message where messageId = ?", new Object[]{messageId}, new MessageRowMapper());
+        return jdbcTemplate.query("select * from message where messageId = ?", new Object[]{messageId}, new MessageRowMapper());
     }
 
     public List<Message> getPastXMessages(UUID conversationId, int x) {
