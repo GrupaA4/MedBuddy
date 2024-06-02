@@ -10,7 +10,7 @@ export default function Form() {
     password: "",
     lastName: "",
     firstName: "",
-    gender: "",
+    gender: true,
     pronoun1: "",
     pronoun2: "",
     dateOfBirth: "",
@@ -19,22 +19,21 @@ export default function Form() {
     city: "",
     phoneNumber: "",
     profileImage: "",
-    imageExtensioin: "",
+    imageExtension: "",
     typeOfMedic: "",
     clinic: "",
     certificateImage: "",
-    certificateExtension: "",
+    certificateImageExtension: "",
     admin: false,
+    errors: {}
   });
 
   const [profileImage, setProfileImage] = React.useState(null);
-  const [profileImageExtension, setProfileImageExtension] =
-    React.useState(null);
-
+  const [profileImageExtension, setProfileImageExtension] = React.useState(null);
   const [certificateImage, setCertificateImage] = React.useState(null);
-  const [certificateImageExtension, setCertificateImageExtension] =
-    React.useState(null);
-
+  const [certificateImageExtension, setCertificateImageExtension] = React.useState(null);
+  const [profileImagePreview, setProfileImagePreview] = React.useState(null);
+  const [certificateImagePreview, setCertificateImagePreview] = React.useState(null);
   const id = React.useId();
 
   function handleChange(event) {
@@ -43,6 +42,10 @@ export default function Form() {
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: type === "checkbox" ? checked : value,
+      errors: {
+        ...prevFormData.errors,
+        [name]: false
+      }
     }));
   }
 
@@ -52,59 +55,95 @@ export default function Form() {
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      setProfileImage(new Uint8Array(reader.result));
-    };
-    if (file) {
-      reader.readAsArrayBuffer(file);
-      const fileExtension = file.name.split(".").pop().toLowerCase();
+      setProfileImage(reader.result);
+      setProfileImagePreview(URL.createObjectURL(file));
+
+      const fileExtension = file.name.split('.').pop();
+      if (!['png', 'jpg', 'jpeg'].includes(fileExtension)) {
+        alert('Please select a PNG or JPG file.');
+        return;
+      }
       setProfileImageExtension(fileExtension);
+
+
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
     }
+
   }
 
   function handleCertificateImgChange(event) {
     const file = event.target.files[0];
+
     const reader = new FileReader();
+
     reader.onloadend = () => {
-      setCertificateImage(new Uint8Array(reader.result));
-    };
-    if (file) {
-      reader.readAsArrayBuffer(file);
-      const fileExtension = file.name.split(".").pop().toLowerCase();
+      setCertificateImage(reader.result);
+      setCertificateImagePreview(URL.createObjectURL(file));
+
+      const fileExtension = file.name.split('.').pop();
+      if (!['png', 'jpg', 'jpeg'].includes(fileExtension)) {
+        alert('Please select a PNG or JPG file.');
+        return;
+      }
       setCertificateImageExtension(fileExtension);
+
+
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
     }
   }
-  //   const handleProfileImgChange = (event) => {
-  //     const file = event.target.files[0];
-  //     console.log("Profile img: ", file);
-  //     const reader = new FileReader();
-
-  //     reader.onloadend = () => {
-  //       setProfileImage(new Uint8Array(reader.result));
-  //       setProfileImageExtension(URL.createObjectURL(file));
-  //     };
-
-  //     if (file) {
-  //       reader.readAsArrayBuffer(file);
-  //     }
-  //   };
-
-  //   const handleCertificateImgChange = (event) => {
-  //     const file = event.target.files[0];
-  //     console.log("Certificate img: ", file);
-  //     const reader = new FileReader();
-
-  //     reader.onloadend = () => {
-  //       setCertificateImage(new Uint8Array(reader.result));
-  //       setCertificateImageExtension(URL.createObjectURL(file));
-  //     };
-
-  //     if (file) {
-  //       reader.readAsArrayBuffer(file);
-  //     }
-  //   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const phoneRegex = /^\d{10}$/;
+    const languageRegex = /^[A-Z]{2}$/;
+    const textRegex = /^[a-zA-Z]+$/;
+    const firstNameRegex = /^[a-zA-Z-]+$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    let errors = {};
+
+    if (!formData.email.match(emailRegex)) {
+      errors.email = true;
+    }
+    if (!formData.lastName.match(textRegex)) {
+      errors.lastName = true;
+    }
+    if (!formData.firstName.match(firstNameRegex)) {
+      errors.firstName = true;
+    }
+    if (!formData.pronoun1.match(textRegex)) {
+      errors.pronoun1 = true;
+    }
+    if (!formData.pronoun2.match(textRegex)) {
+      errors.pronoun2 = true;
+    }
+    if (!formData.language.match(languageRegex)) {
+      errors.language = true;
+    }
+    if (!formData.country.match(textRegex)) {
+      errors.country = true;
+    }
+    if (!formData.city.match(textRegex)) {
+      errors.city = true;
+    }
+    if (!formData.phoneNumber.match(phoneRegex)) {
+      errors.phoneNumber = true;
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        errors: errors
+      }));
+      return;
+    }
 
     const formattedData = {
       email: formData.email,
@@ -137,6 +176,7 @@ export default function Form() {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            'Authorization': null
           },
           body: JSON.stringify(formattedData),
         }
@@ -165,6 +205,7 @@ export default function Form() {
         typeOfMedic: "",
         clinic: "",
         admin: false,
+        errors: {}
       });
       setProfileImage(null);
       setProfileImageExtension(null);
@@ -190,6 +231,7 @@ export default function Form() {
                 name="firstName"
                 value={formData.firstName}
                 id={id + "-firstName"}
+                className={formData.errors.firstName ? "error" : ""}
               />
             </div>
             <div className="input-box">
@@ -200,6 +242,7 @@ export default function Form() {
                 name="lastName"
                 value={formData.lastName}
                 id={id + "-lastName"}
+                className={formData.errors.lastName ? "error" : ""}
               />
             </div>
             <div className="input-box">
@@ -210,6 +253,7 @@ export default function Form() {
                 name="email"
                 value={formData.email}
                 id={id + "-email"}
+                className={formData.errors.email ? "error" : ""}
               />
             </div>
             <div className="input-box">
@@ -218,8 +262,9 @@ export default function Form() {
                 type="tel"
                 onChange={handleChange}
                 name="phoneNumber"
-                value={formData.phone}
+                value={formData.phoneNumber}
                 id={id + "-phone"}
+                className={formData.errors.phoneNumber ? "error" : ""}
               />
             </div>
             <div className="input-box">
@@ -251,8 +296,8 @@ export default function Form() {
                   id={id + "-female"}
                   name="gender"
                   value="female"
-                  checked={formData.gender === "female"}
-                  onChange={handleChange}
+                // checked={formData.gender === "female"}
+                // onChange={handleChange}
                 />
                 <label htmlFor={id + "-female"}>Female:</label>
 
@@ -261,8 +306,8 @@ export default function Form() {
                   id={id + "-male"}
                   name="gender"
                   value="male"
-                  checked={formData.gender === "male"}
-                  onChange={handleChange}
+                // checked={formData.gender === "male"}
+                // onChange={handleChange}
                 />
                 <label htmlFor={id + "-male"}>Male</label>
               </div>
@@ -274,7 +319,7 @@ export default function Form() {
                 type="date"
                 onChange={handleChange}
                 name="dateOfBirth"
-                value={formData.birthDate}
+                value={formData.dateOfBirth}
                 id={id + "-birthDate"}
               />
             </div>
@@ -287,6 +332,7 @@ export default function Form() {
                 name="pronoun1"
                 value={formData.pronoun1}
                 id={id + "-pronoun1"}
+                className={formData.errors.pronoun1 ? "error" : ""}
               />
             </div>
             <div className="input-box">
@@ -297,6 +343,7 @@ export default function Form() {
                 name="pronoun2"
                 value={formData.pronoun2}
                 id={id + "-pronoun2"}
+                className={formData.errors.pronoun2 ? "error" : ""}
               />
             </div>
             <div className="input-box">
@@ -307,6 +354,7 @@ export default function Form() {
                 name="country"
                 value={formData.country}
                 id={id + "-country"}
+                className={formData.errors.country ? "error" : ""}
               />
             </div>
             <div className="input-box">
@@ -317,6 +365,7 @@ export default function Form() {
                 name="city"
                 value={formData.city}
                 id={id + "-city"}
+                className={formData.errors.city ? "error" : ""}
               />
             </div>
             <div className="input-box">
@@ -325,7 +374,7 @@ export default function Form() {
                 type="text"
                 onChange={handleChange}
                 name="clinic"
-                value={formData.hospital}
+                value={formData.clinic}
                 id={id + "-clinic"}
               />
             </div>
@@ -335,7 +384,7 @@ export default function Form() {
                 type="text"
                 onChange={handleChange}
                 name="typeOfMedic"
-                value={formData.specialization}
+                value={formData.typeOfMedic}
                 id={id + "-typeOfMedic"}
               />
             </div>
@@ -347,6 +396,7 @@ export default function Form() {
                 name="language"
                 value={formData.language}
                 id={id + "-language"}
+                className={formData.errors.language ? "error" : ""}
               />
             </div>
 

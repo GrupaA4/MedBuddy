@@ -22,7 +22,7 @@ import ProfilePatient from './Patient/pages/profile/profile';
 import ContactPatient from './Patient/pages/contact/page';
 import About from './Patient/pages/about/page';
 
-const App = () => {
+function App() {
   return (
     <Router>
       <Routes>
@@ -47,6 +47,6 @@ const App = () => {
       </Routes>
     </Router>
   );
-};
+}
 
 export default App;

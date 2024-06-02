@@ -38,12 +38,12 @@ const Navbar = () => {
     {
       text: "Contact",
       icon: <PhoneRoundedIcon />,
-      path: "/contact",
+      path: "/contactMedic",
     },
     {
-      text: "Settings",
+      text: "Profile",
       icon: <SettingsIcon />,
-      path: "/settingsMedic",
+      path: "/profileMedic",
     },
   ];
 
@@ -61,10 +61,10 @@ const Navbar = () => {
             <a onClick={() => handleNavigation("")}>About</a>
           </li>
           <li>
-            <a onClick={() => handleNavigation("/contact")}>Contact</a>
+            <a onClick={() => handleNavigation("/contactMedic")}>Contact</a>
           </li>
           <li>
-            <a onClick={() => handleNavigation("/settingsMedic")}>Settings</a>
+            <a onClick={() => handleNavigation("/profileMedic")}>Profile</a>
           </li>
         </ul>
       </div>

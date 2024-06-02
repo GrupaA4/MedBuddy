@@ -1,3 +1,4 @@
+//margin + ipadMini + ipadPro 
 @font-face {
     font-family: "Bebas_font";
     src: local("Bebas_Neue"),
@@ -21,6 +22,9 @@ $font_oswald: "Oswald_font";
     display: flex;
     justify-content: space-evenly;
     align-content: center;
+    margin-left: 4vw;
+    margin-right: 4vw;
+    margin-bottom: 4vh;
 
     .buttons_container{
         display: flex;
@@ -119,6 +123,12 @@ $font_oswald: "Oswald_font";
                         font-family: $font_oswald;
                         font-size: 3vh;
                     }
+                }
+
+                &__picture{
+                    display: flex;
+                    justify-content: center;
+                    align-content: center;
                 }
             }
 
@@ -472,6 +482,51 @@ $font_oswald: "Oswald_font";
         font-size: 3vh;
         width: 30vw;
         height: 10vh;
+        border-radius: 5vh;
+    }
+}
+
+@media screen and (max-width: 1366px){
+    .container{
+        flex-direction: column;
+
+        .buttons_container{
+            &__cancel_changes{
+                margin-bottom: 4vh;
+            }
+            &__save_changes{
+                margin-bottom: 4vh;
+            }
+    
+            &__edit_profile{
+                margin-bottom: 4vh;
+            }
+    
+            &__change_password{
+                margin-bottom: 4vh;
+            }
+    
+            &__cancel_delete{
+                margin-bottom: 8vh;
+            }
+    
+            &__confirm_delete{
+                margin-bottom: 4vh;
+            }
+    
+            &__delete_account{
+                margin-bottom: 4vh;
+            }
+
+            &__cancel_change_password{
+                margin-bottom: 4vh;
+            }
+        }
+    }
+
+    .button{
+        width: 20vw;
+        height: 8vh;
         border-radius: 5vh;
     }
 }

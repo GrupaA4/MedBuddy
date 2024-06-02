@@ -3,7 +3,7 @@
   padding: 0;
   font-family: "Oswald";
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   /* height: 100vh; */
   /* background-size: cover;
   background-position: center; */
@@ -20,15 +20,13 @@
   display: flex;
   flex-direction: column;
 }
-/* .navbar-container {
+.navbar-container-mainpage-medic {
   width: 100%;
-  padding: 12px 0;
+  padding: 5px 0;
   border-bottom: 2px solid grey;
   border-radius: 10px;
-} */
-
+}
 .conversations-container-mainpage-medic {
-  height: 70vh;
   display: flex;
   margin-top: 50px;
   width: 100%;
@@ -39,13 +37,19 @@
 
 .list-container-mainpage-medic {
   width: 70%;
-  height: 70vh;
+  height: auto;
   border-radius: 15px;
   border-style: solid;
   border-width: 3px;
   border-color: #a5bcae;
   background-color: #def9f1;
   backdrop-filter: blur(19px) saturate(180%);
+}
+
+@media (max-width: 500px) {
+  .list-container-mainpage-medic {
+    width: 100%;
+  }
 }
 
 /* @media (max-width: 1000px) {

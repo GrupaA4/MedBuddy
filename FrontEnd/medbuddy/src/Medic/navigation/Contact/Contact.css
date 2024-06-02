@@ -3,61 +3,54 @@
   padding: 0;
   font-family: "Oswald";
   width: 100%;
-  height: 100%;
-  /* height: 100vh; */
+  height: 100vh;
   background-size: cover;
   background-position: center;
   background-color: aliceblue;
+  background-size: cover;
   display: flex;
   flex-direction: column;
 }
 
-.body-contat {
+.body-contact {
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
-.navbar-container-contat {
+.navbar-container-contact {
   width: 100%;
   padding: 5px 0;
   border-bottom: 2px solid grey;
   border-radius: 10px;
 }
 
-.content-contat {
+.content-contact {
   height: 100%;
-  width: 95%;
-  margin-top: none;
+  margin-top: 2rem;
 
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
-
-  overflow-x: hidden; /* 
-  border-width: 5px;
-  border-color: black;
-  border-style: solid;*/
 }
 
-.left-container-contat {
-  height: 650px;
+.left-container-contact {
   display: flex;
   flex-direction: column;
   width: 20em;
-  margin-top: 8rem;
-  margin-right: 150px;
-  margin-left: 200px;
+  height: auto;
+  margin: auto;
+  margin-top: 6rem;
 }
 
-.left-container-contat h1 {
+.left-container-contact h1 {
   font-family: "Oswald";
   margin-bottom: 2rem;
   margin-left: 1.5rem;
 }
 
-.left-container-contat h3 {
+.left-container-contact h3 {
   font-size: 1.5em;
   color: #069dae;
   letter-spacing: 0.03em;
@@ -66,49 +59,44 @@
   margin-left: 1rem;
 }
 
-.paragraph-contat {
+.paragraph-contact {
   font-size: 1em;
   letter-spacing: 1.2px;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
-.para-contat {
+.para-contact {
   margin-top: -7%;
   font-size: 1.1em;
   list-style: none;
 }
 
-.forum-container-contat {
-  width: 30rem;
-  height: auto;
-  padding-bottom: none;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+.forum-container-contact {
+  width: auto;
+  margin: auto;
+  margin-top: 2rem;
 }
-.footer-container-contat {
+.footer-container-contact {
+  margin-top: 5rem;
   width: 100%;
 }
-Footer {
-  margin-top: auto;
-}
 
-@media (max-width: 600px) {
-  .content-contat {
-    width: 80%;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+@media (max-width: 863px) {
+  .Contact {
+    height: 100%;
   }
-  .left-container-contat {
-    height: 650px;
+  .content-contact {
+    margin-top: 2rem;
+  }
+  .left-container-contact {
     display: flex;
     flex-direction: column;
-    width: 20em;
-
-    margin-right: 1px;
-    margin-left: 1px;
+    width: 17em;
+    height: auto;
+    margin: auto;
   }
-  .forum-container-contat {
-    margin-left: 5%;
+  .forum-container-contact {
+    width: auto;
+    /* margin-left: 5%; */
   }
 }

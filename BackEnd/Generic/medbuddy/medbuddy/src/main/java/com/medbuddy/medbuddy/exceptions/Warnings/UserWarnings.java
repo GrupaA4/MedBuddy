@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.UUID;
 
-public class UserWarnings {
+public abstract class UserWarnings {
     public static class MultipleUsersSameEmail {
         public static void log(String id1, String id2, String email) {
             Logger logger = LogManager.getLogger("Warnings");
