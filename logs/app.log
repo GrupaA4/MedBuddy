@@ -1,12 +1,13 @@
-2024-05-24 17:47:48 INFO  MedbuddyApplication:50 - Starting MedbuddyApplication using Java 21.0.2 with PID 21928 (D:\IntellijProjects\MedBuddy\BackEnd\Generic\medbuddy\medbuddy\target\classes started by User in D:\IntellijProjects\MedBuddy)
-2024-05-24 17:47:48 DEBUG MedbuddyApplication:51 - Running with Spring Boot v3.2.5, Spring v6.1.6
-2024-05-24 17:47:48 INFO  MedbuddyApplication:654 - No active profile set, falling back to 1 default profile: "default"
-2024-05-24 17:47:48 INFO  TomcatWebServer:109 - Tomcat initialized with port 7264 (http)
-2024-05-24 17:47:49 INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-7264"]
-2024-05-24 17:47:49 INFO  StandardService:173 - Starting service [Tomcat]
-2024-05-24 17:47:49 INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.20]
-2024-05-24 17:47:49 INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
-2024-05-24 17:47:49 INFO  ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 507 ms
-2024-05-24 17:47:49 INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-7264"]
-2024-05-24 17:47:49 INFO  TomcatWebServer:241 - Tomcat started on port 7264 (http) with context path ''
-2024-05-24 17:47:49 INFO  MedbuddyApplication:56 - Started MedbuddyApplication in 1.031 seconds (process running for 1.501)
+2024-06-02 14:16:38 INFO  MedbuddyApplication:50 - Starting MedbuddyApplication using Java 21.0.2 with PID 53120 (D:\IntellijProjects\MedBuddy\BackEnd\Generic\medbuddy\medbuddy\target\classes started by User in D:\IntellijProjects\MedBuddy)
+2024-06-02 14:16:38 DEBUG MedbuddyApplication:51 - Running with Spring Boot v3.2.5, Spring v6.1.6
+2024-06-02 14:16:38 INFO  MedbuddyApplication:654 - No active profile set, falling back to 1 default profile: "default"
+2024-06-02 14:16:39 INFO  TomcatWebServer:109 - Tomcat initialized with port 7264 (http)
+2024-06-02 14:16:39 INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-7264"]
+2024-06-02 14:16:39 INFO  StandardService:173 - Starting service [Tomcat]
+2024-06-02 14:16:39 INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-02 14:16:39 INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
+2024-06-02 14:16:39 INFO  ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 1130 ms
+2024-06-02 14:16:39 INFO  DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@39d77de9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@696fad31, org.springframework.security.web.context.SecurityContextHolderFilter@4137aab0, org.springframework.security.web.header.HeaderWriterFilter@7994a0d1, org.springframework.web.filter.CorsFilter@664212ab, org.springframework.security.web.authentication.logout.LogoutFilter@6486fe7b, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4652c74d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@682e422c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5bb8e6fc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2c06b113, org.springframework.security.web.access.ExceptionTranslationFilter@3457cc8d, org.springframework.security.web.access.intercept.AuthorizationFilter@2997ddfc]
+2024-06-02 14:16:40 INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-7264"]
+2024-06-02 14:16:40 INFO  TomcatWebServer:241 - Tomcat started on port 7264 (http) with context path ''
+2024-06-02 14:16:40 INFO  MedbuddyApplication:56 - Started MedbuddyApplication in 1.881 seconds (process running for 2.589)

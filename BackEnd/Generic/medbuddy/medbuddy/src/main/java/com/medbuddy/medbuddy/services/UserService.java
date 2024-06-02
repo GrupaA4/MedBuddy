@@ -4,6 +4,7 @@ import com.medbuddy.medbuddy.exceptions.NotFoundExceptions;
 import com.medbuddy.medbuddy.models.Medic;
 import com.medbuddy.medbuddy.models.User;
 import com.medbuddy.medbuddy.repository.daos.UserDAO;
+import com.medbuddy.medbuddy.utilitaries.ImageProcessingUtil;
 import com.medbuddy.medbuddy.utilitaries.SecurityUtil;
 import com.medbuddy.medbuddy.utilitaries.validators.EntityValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class UserService {
         }
     }
 
-    public void createUser(User userRequest) {
+    public void createUser(User userRequest, byte[] profileImage) {
 
         userDAO.checkIfUserWithEmailExists(userRequest.getEmail());//will throw exceptions if that happens
 
@@ -46,7 +47,7 @@ public class UserService {
         userRequest.setPassword(passwordEncoder.encode(password));
 
         int imageNumber = userDAO.getMaxImageNumber() + 1;
-        //add profile image to database
+        ImageProcessingUtil.saveImage(imageNumber, "BackEnd\\Generic\\Database\\Profiles", profileImage, userRequest.getImageExtension());
         userRequest.setProfileImageNumber(imageNumber);
 
         userRequest.setLastTimeLoggedIn(LocalDate.now());
@@ -55,7 +56,7 @@ public class UserService {
         userDAO.signupUser(userRequest);
     }
 
-    public void createMedic(Medic medicRequest) {
+    public void createMedic(Medic medicRequest, byte[] profileImage, byte[] certificateImage) {
 
         userDAO.checkIfUserWithEmailExists(medicRequest.getEmail());//will throw exceptions if that happens
 
@@ -65,6 +66,7 @@ public class UserService {
 
         int imageNumber = userDAO.getMaxImageNumber() + 1;
         //add profile image to database
+        ImageProcessingUtil.saveImage(imageNumber, "BackEnd\\Generic\\Database\\Profiles", profileImage, medicRequest.getImageExtension());
         medicRequest.setProfileImageNumber(imageNumber);
 
         medicRequest.setLastTimeLoggedIn(LocalDate.now());
@@ -76,6 +78,7 @@ public class UserService {
 
         int certificateNumber = userDAO.getMaxCertificateNumber() + 1;
         //add certificate image to database
+        ImageProcessingUtil.saveImage(certificateNumber, "BackEnd\\Generic\\Database\\Certificates", certificateImage, medicRequest.getCertificateExtension());
         medicRequest.setProfileImageNumber(certificateNumber);
 
         medicRequest.setApproved(false);

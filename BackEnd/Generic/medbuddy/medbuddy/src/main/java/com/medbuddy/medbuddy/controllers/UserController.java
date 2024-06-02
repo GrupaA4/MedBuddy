@@ -5,6 +5,7 @@ import com.medbuddy.medbuddy.controllers.responsebodies.UserResponseBodies;
 import com.medbuddy.medbuddy.exceptions.UserDidSomethingWrongExceptions;
 import com.medbuddy.medbuddy.models.Medic;
 import com.medbuddy.medbuddy.models.User;
+import com.medbuddy.medbuddy.utilitaries.ImageProcessingUtil;
 import com.medbuddy.medbuddy.utilitaries.SecurityUtil;
 import com.medbuddy.medbuddy.utilitaries.validators.EntityValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +70,7 @@ public class UserController {
     @PutMapping("/signup")
     public ResponseEntity<Void> signUp(@RequestBody UserRequestBodies.UserSignup userRequest) {
         User user = new User(userRequest);
-        userService.createUser(user);
+        userService.createUser(user, userRequest.getProfileImage());
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
@@ -77,20 +78,24 @@ public class UserController {
     @PutMapping("/signupmedic")
     public ResponseEntity<Void> signUpMedic(@RequestBody UserRequestBodies.MedicSignup medicRequest) {
         Medic medic = new Medic(medicRequest);
-        userService.createMedic(medic);
+        userService.createMedic(medic, medicRequest.getProfileImage(), medicRequest.getCertificateImage());
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     //works
     @GetMapping("/viewprofile/{userId}")
     public UserResponseBodies.UserProfile viewProfile(@PathVariable UUID userId) {
-        return new UserResponseBodies.UserProfile(userService.getUser(userId), "placeholder");
+        User user = userService.getUser(userId);
+        return new UserResponseBodies.UserProfile(user,
+                ImageProcessingUtil.extractImage(user.getProfileImageNumber(), user.getImageExtension(), "BackEnd\\Generic\\Database\\Profiles"));
     }
 
     //works
     @GetMapping("/getbasicinfo/{userId}")
     public UserResponseBodies.UserBasicInfo getBasicInfo(@PathVariable UUID userId) {
-        return new UserResponseBodies.UserBasicInfo(userService.getUser(userId), "placeholder");
+        User user = userService.getUser(userId);
+        return new UserResponseBodies.UserBasicInfo(user,
+                ImageProcessingUtil.extractImage(user.getProfileImageNumber(), user.getImageExtension(), "BackEnd\\Generic\\Database\\Profiles"));
     }
 
     //works
@@ -104,7 +109,10 @@ public class UserController {
     //works
     @GetMapping("/viewmedicprofile/{userId}")
     public UserResponseBodies.MedicProfile viewMedicProfile(@PathVariable UUID userId) {
-        return new UserResponseBodies.MedicProfile(userService.getMedicProfile(userId), "placeholder", "placeholder");
+        Medic medic = userService.getMedicProfile(userId);
+        return new UserResponseBodies.MedicProfile(medic,
+                ImageProcessingUtil.extractImage(medic.getProfileImageNumber(), medic.getImageExtension(), "BackEnd\\Generic\\Database\\Profiles"),
+                ImageProcessingUtil.extractImage(medic.getCertificateImageNumber(), medic.getCertificateExtension(), "BackEnd\\Generic\\Database\\Certificates"));
     }
 
     //works (mostly, image problems)
