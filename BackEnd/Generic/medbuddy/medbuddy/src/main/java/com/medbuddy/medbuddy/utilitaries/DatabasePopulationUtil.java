@@ -35,9 +35,10 @@ public class DatabasePopulationUtil {
         NotificationsDAO notificationsDAO = new NotificationsDAO(jdbcTemplate);
         AdminFunctionalityDAO adminFunctionalityDAO = new AdminFunctionalityDAO(jdbcTemplate);
         DatabasePopulationUtil util = new DatabasePopulationUtil(userDAO, medicalHistoryDAO, adminFunctionalityDAO, notificationsDAO);
-        addFirst(util);
+        //addFirst(util);
         //addSecond(util);
         //addThird(util);
+
     }
 
     public static void addFirst(DatabasePopulationUtil util) {
