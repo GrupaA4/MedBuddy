@@ -20,7 +20,8 @@ public class DatabasePopulationUtil {
     private final NotificationsDAO notificationsDAO;
     private final BCryptPasswordEncoder encoder;
 
-    public DatabasePopulationUtil(UserDAO userDAO, MedicalHistoryDAO medicalHistoryDAO, AdminFunctionalityDAO adminFunctionalityDAO, NotificationsDAO notificationsDAO) {
+    public DatabasePopulationUtil(UserDAO userDAO, MedicalHistoryDAO medicalHistoryDAO,
+            AdminFunctionalityDAO adminFunctionalityDAO, NotificationsDAO notificationsDAO) {
         this.userDAO = userDAO;
         this.medicalHistoryDAO = medicalHistoryDAO;
         this.adminFunctionalityDAO = adminFunctionalityDAO;
@@ -34,10 +35,11 @@ public class DatabasePopulationUtil {
         UserDAO userDAO = new UserDAO(jdbcTemplate);
         NotificationsDAO notificationsDAO = new NotificationsDAO(jdbcTemplate);
         AdminFunctionalityDAO adminFunctionalityDAO = new AdminFunctionalityDAO(jdbcTemplate);
-        DatabasePopulationUtil util = new DatabasePopulationUtil(userDAO, medicalHistoryDAO, adminFunctionalityDAO, notificationsDAO);
-        //addFirst(util);
-        //addSecond(util);
-        //addThird(util);
+        DatabasePopulationUtil util = new DatabasePopulationUtil(userDAO, medicalHistoryDAO, adminFunctionalityDAO,
+                notificationsDAO);
+        // addFirst(util);
+        // addSecond(util);
+        // addThird(util);
 
     }
 
@@ -47,12 +49,14 @@ public class DatabasePopulationUtil {
     }
 
     public static void addSecond(DatabasePopulationUtil util) {
-        util.processMedicalHistoryFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medical_history.txt");
+        util.processMedicalHistoryFile(
+                "src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medical_history.txt");
     }
 
     public static void addThird(DatabasePopulationUtil util) {
         util.processReportFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/report.txt");
-        util.processNotificationsFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/notification.txt");
+        util.processNotificationsFile(
+                "src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/notification.txt");
     }
 
     private static JdbcTemplate getJdbcTemplate() {
@@ -103,7 +107,6 @@ public class DatabasePopulationUtil {
         }
     }
 
-
     public void processUserFile(String csvFile) {
         String line;
         String delimiter = "\\|";
@@ -132,7 +135,9 @@ public class DatabasePopulationUtil {
                     boolean isAdmin = data[16].equals("1");
                     boolean isDeleted = data[17].equals("1");
 
-                    User user = new User(id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted);
+                    User user = new User(id, email, password, lastName, firstName, gender, pronoun1, pronoun2,
+                            dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension,
+                            lastTimeLoggedIn, isAdmin, isDeleted);
                     userDAO.signupUser(user);
                 } else {
                     System.err.println("invalid : " + line);
@@ -242,7 +247,6 @@ public class DatabasePopulationUtil {
                         entry.setTimeCreated(timeCreated);
                         entry.setDeleted(isDeleted);
 
-
                         adminFunctionalityDAO.reportUser(entry);
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -256,43 +260,45 @@ public class DatabasePopulationUtil {
         }
     }
 
-//    public void processAdminFile(String csvFile) {
-//        String line;
-//        String delimiter = "\\|";
-//        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-//
-//        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-//            while ((line = br.readLine()) != null) {
-//                String[] data = line.split(delimiter);
-//                if (data.length == 18) {
-//                    UUID id = UUID.fromString(data[0]);
-//                    String email = data[1];
-//                    String password = data[2];
-//                    String lastName = data[3];
-//                    String firstName = data[4];
-//                    Boolean gender = data[5].equals("1");
-//                    String pronoun1 = data[6];
-//                    String pronoun2 = data[7];
-//                    LocalDate dateOfBirth = LocalDate.parse(data[8], dateFormat);
-//                    String language = data[9];
-//                    String country = data[10];
-//                    String city = data[11];
-//                    int profileImageNumber = Integer.parseInt(data[12]);
-//                    String phoneNumber = data[13];
-//                    String imageExtension = data[14];
-//                    LocalDate lastTimeLoggedIn = LocalDate.parse(data[15], dateFormat);
-//                    Boolean isAdmin = data[16].equals("1");
-//                    Boolean isDeleted = data[17].equals("1");
-//
-//                    Admin admin = new Admin(id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted);
-//                    userDAO.signupUser(admin);
-//                } else {
-//                    System.err.println("invalid : " + line);
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    // public void processAdminFile(String csvFile) {
+    // String line;
+    // String delimiter = "\\|";
+    // DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+    //
+    // try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+    // while ((line = br.readLine()) != null) {
+    // String[] data = line.split(delimiter);
+    // if (data.length == 18) {
+    // UUID id = UUID.fromString(data[0]);
+    // String email = data[1];
+    // String password = data[2];
+    // String lastName = data[3];
+    // String firstName = data[4];
+    // Boolean gender = data[5].equals("1");
+    // String pronoun1 = data[6];
+    // String pronoun2 = data[7];
+    // LocalDate dateOfBirth = LocalDate.parse(data[8], dateFormat);
+    // String language = data[9];
+    // String country = data[10];
+    // String city = data[11];
+    // int profileImageNumber = Integer.parseInt(data[12]);
+    // String phoneNumber = data[13];
+    // String imageExtension = data[14];
+    // LocalDate lastTimeLoggedIn = LocalDate.parse(data[15], dateFormat);
+    // Boolean isAdmin = data[16].equals("1");
+    // Boolean isDeleted = data[17].equals("1");
+    //
+    // Admin admin = new Admin(id, email, password, lastName, firstName, gender,
+    // pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber,
+    // profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted);
+    // userDAO.signupUser(admin);
+    // } else {
+    // System.err.println("invalid : " + line);
+    // }
+    // }
+    // } catch (IOException e) {
+    // e.printStackTrace();
+    // }
+    // }
 
 }
