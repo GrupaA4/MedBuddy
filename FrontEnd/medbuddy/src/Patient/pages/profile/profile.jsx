@@ -1,4 +1,3 @@
-//Reminder:  add profile image after backend fix and remove comments at line 416
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
@@ -56,6 +55,9 @@ export default function Profile(){
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+
+    const [imageUrl, setImageUrl] = useState("");
+    const [extension, setExtension] = useState("");
 
     const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
 
@@ -142,7 +144,7 @@ export default function Profile(){
                     setHomeAdress(userData.city + ', ' + userData.country);
                     setPhone(userData.phoneNumber);
                     setProfilePicture(userData.profileImage);
-                    console.log(profilePicture);
+                    setExtension(userData.imageExtension);
 
                     setInitialEmail(email);
                     setInitialSurname(surname);
@@ -162,6 +164,10 @@ export default function Profile(){
         };
         fetchUserData();
     }, [userId]);
+
+    useEffect(() => {
+        setImageUrl(`data:image/${extension};base64,${profilePicture}`);
+      }, [profilePicture, extension]);
 
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -427,7 +433,7 @@ export default function Profile(){
             window.alert('An error occured.Please try again later.');
         } finally {
             setIsDeleting(false);
-            //window.location.href='/';
+            window.location.href='/';
         }
     };
 
@@ -521,7 +527,7 @@ export default function Profile(){
                             </>
                         ) : (
                             <>
-                                <img className={`${styles.buttons_container__image}`} src={profilePicture ? profilePicture : profilePic} alt='Profile Picture' /><br /><br />
+                                <img className={`${styles.buttons_container__image}`} src={imageUrl ? imageUrl : profilePic} alt='Profile Picture' /><br /><br />
                             </>
                         )}
                         {isEditing ? (

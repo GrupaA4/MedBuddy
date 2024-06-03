@@ -1,4 +1,3 @@
-//Reminder: add profile image after backend fix and remove comments at line 208
 import React, {useState} from 'react';
 
 import '../../fonts/Bebas_Neue/BebasNeue-Regular.ttf';
@@ -213,7 +212,7 @@ export default function SignIn(){
             setPhone('');
             setProfilePicture(null);
 
-            //window.location.href='/';
+            window.location.href='/homePatient';
         } catch (error) {
             console.error('Error',error);
             window.alert('An error occured.Please try again later.');

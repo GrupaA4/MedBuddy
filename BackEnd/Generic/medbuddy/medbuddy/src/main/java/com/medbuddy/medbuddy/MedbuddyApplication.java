@@ -10,6 +10,8 @@ import java.sql.SQLException;
 public class MedbuddyApplication {
 
 	public static void main(String[] args) throws SQLException {
+		String currentDir = System.getProperty("user.dir");
+		System.out.println("Current working directory: " + currentDir);
 		SpringApplication.run(MedbuddyApplication.class, args);
 	}
 

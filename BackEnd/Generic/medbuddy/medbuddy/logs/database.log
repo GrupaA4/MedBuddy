@@ -1,164 +1,37 @@
-2024-06-03 10:43:38 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:38 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:43:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:43:39 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
-2024-06-03 10:43:39 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:43:40 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:43:40 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:43:40 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:43:40 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
-2024-06-03 10:43:40 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:43:40 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM MedicalHistory WHERE patientId = ?]
-2024-06-03 10:43:40 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT userId FROM medic WHERE id = ?]
-2024-06-03 10:43:40 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:43:40 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:43:49 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:49 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:43:49 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:49 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
-2024-06-03 10:43:49 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:49 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:43:49 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:49 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:43:51 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:51 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:43:52 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:52 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
-2024-06-03 10:43:52 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:52 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:43:52 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:52 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
-2024-06-03 10:43:55 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:55 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:43:55 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:55 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
-2024-06-03 10:43:57 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:57 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:43:57 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:57 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:43:58 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:58 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
-2024-06-03 10:43:58 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:58 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:43:58 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:58 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:43:58 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:58 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:43:58 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:58 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:43:58 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:58 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
-2024-06-03 10:43:58 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:58 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:43:58 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:58 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM MedicalHistory WHERE patientId = ?]
-2024-06-03 10:43:58 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:58 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT userId FROM medic WHERE id = ?]
-2024-06-03 10:43:58 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:58 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:43:58 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:43:58 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:49:32 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:32 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:32 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:49:32 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:49:33 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:33 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
-2024-06-03 10:49:33 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:33 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:49:33 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:33 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM MedicalHistory WHERE patientId = ?]
-2024-06-03 10:49:33 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:33 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT userId FROM medic WHERE id = ?]
-2024-06-03 10:49:33 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:33 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:49:33 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:33 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:49:36 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:36 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:49:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:49:37 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM MedicalHistory WHERE patientId = ?]
-2024-06-03 10:49:37 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT userId FROM medic WHERE id = ?]
-2024-06-03 10:49:37 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:49:37 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:49:37 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
-2024-06-03 10:49:37 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:49:43 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:43 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:49:43 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:43 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:49:43 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:43 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM MedicalHistory WHERE patientId = ?]
-2024-06-03 10:49:43 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:43 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT userId FROM medic WHERE id = ?]
-2024-06-03 10:49:43 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:43 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:49:43 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:43 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:49:43 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:43 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
-2024-06-03 10:49:43 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:43 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:49:51 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:51 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:49:51 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:51 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
-2024-06-03 10:49:51 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:51 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:49:51 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:51 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:49:51 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:51 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:49:51 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:51 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
-2024-06-03 10:49:51 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:51 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:49:52 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:52 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM MedicalHistory WHERE patientId = ?]
-2024-06-03 10:49:52 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:52 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT userId FROM medic WHERE id = ?]
-2024-06-03 10:49:52 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:52 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:49:52 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:49:52 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:50:41 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:50:41 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:50:41 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:50:41 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
-2024-06-03 10:50:41 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:50:41 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:50:41 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:50:41 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:50:41 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:50:41 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
-2024-06-03 10:50:41 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:50:41 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
-2024-06-03 10:50:41 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:50:41 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:50:41 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:50:41 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM MedicalHistory WHERE patientId = ?]
-2024-06-03 10:50:41 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:50:41 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT userId FROM medic WHERE id = ?]
-2024-06-03 10:50:41 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:50:41 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
-2024-06-03 10:50:41 DEBUG JdbcTemplate:721 - Executing prepared SQL query
-2024-06-03 10:50:41 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
+2024-06-02 19:57:06 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-06-02 19:57:06 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT COUNT(1) FROM appuser WHERE email = ?]
+2024-06-02 19:57:06 DEBUG JdbcTemplate:453 - Executing SQL query [SELECT MAX(profileImageNumber) FROM appuser]
+2024-06-02 19:57:06 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-02 19:57:06 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-02 19:57:20 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-06-02 19:57:20 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
+2024-06-02 19:57:20 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-06-02 19:57:20 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
+2024-06-02 19:57:20 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-06-02 19:57:20 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
+2024-06-02 19:57:20 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-06-02 19:57:20 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
+2024-06-02 19:57:20 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-06-02 19:57:20 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
+2024-06-02 19:57:21 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-06-02 19:57:21 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
+2024-06-02 19:57:21 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-06-02 19:57:21 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
+2024-06-02 19:57:21 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-06-02 19:57:21 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
+2024-06-02 19:58:45 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-06-02 19:58:45 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
+2024-06-02 19:58:45 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-06-02 19:58:45 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
+2024-06-02 19:58:45 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-06-02 19:58:45 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
+2024-06-02 19:58:45 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-06-02 19:58:45 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
+2024-06-02 19:58:45 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-06-02 19:58:45 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE email = ?]
+2024-06-02 19:58:45 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-06-02 19:58:45 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT id FROM appuser WHERE email = ?]
+2024-06-02 19:58:45 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-06-02 19:58:45 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
+2024-06-02 19:58:45 DEBUG JdbcTemplate:721 - Executing prepared SQL query
+2024-06-02 19:58:45 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [SELECT * FROM appuser WHERE id = ?]
