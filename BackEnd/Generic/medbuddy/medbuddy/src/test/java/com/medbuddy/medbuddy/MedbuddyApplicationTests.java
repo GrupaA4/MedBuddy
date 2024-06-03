@@ -1,11 +1,15 @@
 package com.medbuddy.medbuddy;
 
 import com.medbuddy.medbuddy.controllers.AdminFunctionalityController;
+import com.medbuddy.medbuddy.controllers.UserController;
+import com.medbuddy.medbuddy.controllers.advices.UserDidSomethingWrongAdvice;
 import com.medbuddy.medbuddy.exceptions.NotFoundExceptions;
+import com.medbuddy.medbuddy.exceptions.UserDidSomethingWrongExceptions;
 import com.medbuddy.medbuddy.models.Medic;
 import com.medbuddy.medbuddy.models.User;
 import com.medbuddy.medbuddy.repository.daos.UserDAO;
 import com.medbuddy.medbuddy.services.AdminFunctionalityService;
+import com.medbuddy.medbuddy.services.UserService;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -45,7 +49,7 @@ class MedbuddyApplicationTests {
 		user.setId(userUUID);
 		user.setFirstName("John");
 		user.setLastName("Doe");
-		user.setEmail("john@doe.com");
+		user.setEmail("john@sorinel.com");
 		user.setPassword("password");
 		user.setAdmin(false);
 		user.setLastTimeLoggedIn(LocalDate.now());
@@ -158,4 +162,94 @@ class MedbuddyApplicationTests {
 		assertThrows(NotFoundExceptions.UserNotFound.class, () -> userDAO.deleteUser(userUUID));
 	}
 
+	@Test
+	@Order(14)
+	public void deleteMedic_NonExistingMedic_ThrowsException(){
+		assertThrows(NotFoundExceptions.MedicNotFound.class, () -> userDAO.deleteMedic(medicUUID));
+	}
+
+	@Autowired
+	private UserService userService;
+
+	@Autowired
+	private UserController userController = new UserController(userService);
+
+	@Test
+	@Order(15)
+	public void getUserIdByEmail_MockUser_ReturnsId()
+	{
+		assertDoesNotThrow(() -> userService.getUserIdByEmail(user.getEmail()));
+	}
+
+	@Test
+	@Order(16) //Error: User with this email already exists!
+	public void createUser_NonExistingUser_CreatesUser()
+	{
+
+		assertDoesNotThrow(() -> userService.createUser(user));
+	}
+
+	@Test
+	@Order(17)
+	public void createUser_ExistingUser_ThrowsException()
+	{
+		assertThrows(UserDidSomethingWrongExceptions.UserWithEmailAlreadyExists.class, () -> userService.createUser(user));
+	}
+
+	@Test
+	@Order(18) //Error: User with this email already exists!
+	public void createMedic_NonExistingMedic_CreatesMedic()
+	{
+		//userDAO.deleteMedic(userUUID); //no medic with id ssfsdf was found
+
+		assertDoesNotThrow(() -> userService.createMedic(medic));
+	}
+
+	@Test
+	@Order(19)
+	public void createMedic_ExistingMedic_ThrowsException()
+	{
+		assertThrows(UserDidSomethingWrongExceptions.UserWithEmailAlreadyExists.class, () -> userService.createMedic(medic));
+	}
+
+	@Test
+	@Order(20)
+	public void getUser_ExistingUser_ReturnsUser()
+	{
+		userDAO.signupUser(user);
+		assertDoesNotThrow(() -> userService.getUser(userUUID));
+	}
+
+	@Test
+	@Order(21)
+	public void getUser_NonExistingUser_ThrowsException()
+	{
+		assertThrows(NotFoundExceptions.UserNotFound.class, () -> userService.getUser(userUUID));
+	}
+
+	@Test
+	@Order(22) //No medic with id sdssdv found
+	public void getUserIdOfMedic_ExistingMedic_ReturnsId()
+	{
+		//userService.createMedic(medic); //User with this email already exists
+			//userDAO.signupMedic(medic); //SQL [INSERT INTO medic (id, userId, typeOfMedic, clinic, certificateImageNumber, imageExtension, isApproved) VALUES(?, ?, ?, ?, ?, ?, ?)];
+		userService.getUserIdOfMedic(medicUUID);
+
+		assertDoesNotThrow(() -> medic.getMedicId());
+	}
+
+	@Test
+	@Order(23)
+	public void getUserIdOfMedic_NonExistingMedic_ThrowsException()
+	{
+		assertThrows(NotFoundExceptions.UserNotFound.class, () -> userService.getUserIdOfMedic(medicUUID));
+	}
+
+	@Test
+	@Order(24) //No user with id shfihf found
+	public void getMedicProfile_MockUser_ReturnsMedicProfile()
+	{
+		//userDAO.signupUser(user); //No medic with the user id shfihf found
+		assertDoesNotThrow(() -> userService.getMedicProfile(userUUID));
+	}
 }
