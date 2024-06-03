@@ -2,6 +2,7 @@ import React, { useEffect,useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './admin_user_page.module.css';
 import Logo from '../assets/MedBuddy.png';
+import checklist from '../assets/checklist.png'
 
 
 
@@ -184,16 +185,9 @@ const UserPage = () => {
       </div>
 
       <div className={styles.admin_user_page_container2}>
-        <div className={styles.admin_user_page_container2_icon__and__text}>
-          <div className={styles.admin_user_page_container2__square1__icon}>
-            <p>PHOTO</p>
-          </div>
-          <div className={styles.admin_user_page_container2__text1}>Hey Admin!</div>
-          
-        </div>
-        <button className={styles.admin_user_page_container2__button1} type="button">Accept</button>
-        <button className={styles.admin_user_page_container2__button2} type="button">Deny</button>
-        <button className={styles.admin_user_page_container2__button3} type="button">Verify License</button>
+      
+        <img src={checklist} className={styles.admin_user_page_container2_checklistPhoto}  alt="Checklist" ></img>
+        <div className={styles.admin_user_page_container2_upperText}>Handle today's requests!</div>
       </div>
     </div>
   );
