@@ -33,6 +33,7 @@ public class UserService {
         }
     }
 
+
     public void createUser(User userRequest) {
 
         userDAO.checkIfUserWithEmailExists(userRequest.getEmail());//will throw exceptions if that happens
@@ -126,6 +127,7 @@ public class UserService {
 
     public void softDeleteUser(UUID userId) {
         userDAO.markUserAsDeleted(userId);
+        userDAO.softDeleteReportsOnUser(userId);
         //delete conversations
         //delete messages
         //delete reports
