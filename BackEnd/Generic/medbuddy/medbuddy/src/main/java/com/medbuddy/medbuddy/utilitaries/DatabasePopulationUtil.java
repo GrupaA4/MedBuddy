@@ -4,6 +4,7 @@ import com.medbuddy.medbuddy.models.*;
 import com.medbuddy.medbuddy.repository.daos.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -17,12 +18,14 @@ public class DatabasePopulationUtil {
     private final MedicalHistoryDAO medicalHistoryDAO;
     private final AdminFunctionalityDAO adminFunctionalityDAO;
     private final NotificationsDAO notificationsDAO;
+    private final BCryptPasswordEncoder encoder;
 
     public DatabasePopulationUtil(UserDAO userDAO, MedicalHistoryDAO medicalHistoryDAO, AdminFunctionalityDAO adminFunctionalityDAO, NotificationsDAO notificationsDAO) {
         this.userDAO = userDAO;
         this.medicalHistoryDAO = medicalHistoryDAO;
         this.adminFunctionalityDAO = adminFunctionalityDAO;
         this.notificationsDAO = notificationsDAO;
+        this.encoder = new BCryptPasswordEncoder();
     }
 
     public static void main(String[] args) {
@@ -32,9 +35,21 @@ public class DatabasePopulationUtil {
         NotificationsDAO notificationsDAO = new NotificationsDAO(jdbcTemplate);
         AdminFunctionalityDAO adminFunctionalityDAO = new AdminFunctionalityDAO(jdbcTemplate);
         DatabasePopulationUtil util = new DatabasePopulationUtil(userDAO, medicalHistoryDAO, adminFunctionalityDAO, notificationsDAO);
+        addFirst(util);
+        //addSecond(util);
+        //addThird(util);
+    }
+
+    public static void addFirst(DatabasePopulationUtil util) {
         util.processUserFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/user.txt");
         util.processMedicFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medic.txt");
+    }
+
+    public static void addSecond(DatabasePopulationUtil util) {
         util.processMedicalHistoryFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medical_history.txt");
+    }
+
+    public static void addThird(DatabasePopulationUtil util) {
         util.processReportFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/report.txt");
         util.processNotificationsFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/notification.txt");
     }
@@ -99,7 +114,7 @@ public class DatabasePopulationUtil {
                 if (data.length == 18) {
                     UUID id = UUID.fromString(data[0]);
                     String email = data[1];
-                    String password = data[2];
+                    String password = encoder.encode(data[2]);
                     String lastName = data[3];
                     String firstName = data[4];
                     boolean gender = data[5].equals("1");
