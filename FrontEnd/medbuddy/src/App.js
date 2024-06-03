@@ -12,6 +12,7 @@ import HomeMedic from "./Medic/navigation/MainPage/Conversations";
 import ContactMedic from "./Medic/navigation/Contact/Contact";
 import ProfileMedic from "./Medic/navigation/Profile/Profile";
 import Diagnostic from "./Medic/navigation/Diagnoses/Diagnoses";
+import AboutMedic from "./Medic/navigation/About/about";
 
 import Home from './Patient/pages/home/page';
 import ChatPage from './Patient/pages/chat/page';
@@ -34,10 +35,12 @@ function App() {
 
         <Route path="/registerMedic" element={<RegisterMedic />} />
         <Route path="/registerPatient" element={<RegisterPatient />} />
+
         <Route path="/homeMedic" element={<HomeMedic />} />
         <Route path="/contactMedic" element={<ContactMedic />} />
         <Route path="/profileMedic" element={<ProfileMedic />} />
         <Route path="/diagnosesMedic" element={<Diagnostic />} />
+        <Route path="/aboutMedic" element={<AboutMedic />} />
 
             <Route path="/chat" element={<ChatPage />} />
             <Route path="/diagnoses" element={<Diagnoses />} />

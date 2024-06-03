@@ -6,10 +6,16 @@ import Logo from '../common-components/logoB.png';
 import Cookies from 'js-cookie';
 
 export default function Profile() {
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopupDelete, setShowPopupDelete] = useState(false);
 
-  const togglePopup = () => {
-    setShowPopup(!showPopup);
+  const togglePopupDelete = () => {
+    setShowPopupDelete(!showPopupDelete);
+  };
+
+  const [showPopupPassword, setShowPopupPassword] = useState(false);
+
+  const togglePopupPassword = () => {
+    setShowPopupPassword(!showPopupPassword);
   };
 
   const [isEditing, setIsEditing] = useState(false);
@@ -56,6 +62,9 @@ export default function Profile() {
 
     const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
 
+    const [oldPassword, setOldPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
     //obtinut id user
     useEffect(() =>{
@@ -458,6 +467,114 @@ const handleCancelChanges = (event) => {
 };
 
 
+const handleDeleteAccount = async () => {
+  try{
+      const response= await fetch(`http://localhost:7264/medbuddy/harddeleteuser/${userId}`, {
+          method: 'DELETE',
+          headers: {
+              'Authorization': `Basic ${authorisation}`
+          }
+      });
+
+      if(response.status !== 200){
+          if(response.status === 418 || response.status === 500){
+              throw new Error('Internal backend error');
+          }
+          else if(response.status === 401){
+              throw new Error('Wrong email and password in the header');
+          }
+          else if(response.status === 400){
+              throw new Error('Typo in the URL or not the right path variable type');
+          }
+          else if(response.status === 404){
+              throw new Error('No user was found');
+          }
+          else{
+              throw new Error('Unknown error');
+          }
+      }
+      else{
+          console.log('Profile deleted successfully');
+      }
+
+  } catch (error) {
+      console.error('Error deleting account:', error);
+      window.alert('An error occured.Please try again later.');
+  } finally {
+      
+      window.location.href='/';
+  }
+};
+
+const handleNewPasswordChange = (event) => {
+  setNewPassword(event.target.value);
+};
+
+const handleConfirmPasswordChange = (event) => {
+  setConfirmPassword(event.target.value);
+};
+
+const handleChangePassword = async (event) => {
+  event.preventDefault();
+
+  const lastTimeLoggedOn = getCurrentDate();
+
+  setOldPassword(Cookies.get("user_pass"));
+  if(newPassword!==oldPassword && newPassword===confirmPassword){
+      const data = {
+          email:email,
+          password:newPassword,
+          lastName:surname,
+          firstName:name,
+          dateOfBirth:birthDate,
+          lastTimeLoggedOn:lastTimeLoggedOn
+      };
+
+      console.log('Data to be sent:', data);
+
+      try {
+          const response = await fetch(`http://localhost:7264/medbuddy/changeprofile/${userId}`, {
+              method: 'PATCH',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Basic ${authorisation}`
+              },
+              body: JSON.stringify(data)
+          });
+
+          if(response.status !== 200){
+              if(response.status === 418 || response.status === 500){
+                  throw new Error('Internal backend error');
+              }
+              else if(response.status === 401){
+                  throw new Error('Wrong email and password in the header');
+              }
+              else if(response.status === 400){
+                  throw new Error('Typo in the URL or not the right path variable type');
+              }
+              else if(response.status === 404){
+                  throw new Error('No user was found');
+              }
+              else{
+                  throw new Error('Unknown error');
+              }
+          }
+          else{
+              console.log('Changed password successfully');
+              Cookies.set('user_pass', newPassword);
+          }
+
+      } catch (error) {
+          console.error('Error:', error);
+          window.alert('An error occured.Please try again later.');
+      }
+  } else{
+      setNewPassword(oldPassword);
+      setConfirmPassword(oldPassword);
+      window.alert('Inputed password matches the old password or confirm password doesn\'t match the new password');
+  }
+};
+
   return (
     <div className="Profile">
       <div className="body-profile">
@@ -471,8 +588,8 @@ const handleCancelChanges = (event) => {
             </div>
             <div className="buttons-container-profile">
             <button className="button-profile" onClick={handleEditClick}>Edit Profile</button>
-              <button className="button-profile">Change Password</button>
-              <button className="button-profile" onClick={togglePopup}>Delete Account</button>
+              <button className="button-profile" onClick={togglePopupPassword}>Change Password</button>
+              <button className="button-profile" onClick={togglePopupDelete}>Delete Account</button>
             </div>
           </div>
           <div className="general-information-profile">
@@ -525,14 +642,39 @@ const handleCancelChanges = (event) => {
         
         
 
-        {showPopup && (
-          <div id="popup" className="popup">
-            <div className="popup-content">
-              <span className="close" onClick={togglePopup}>&times;</span>
+        {showPopupDelete && (
+          <div id="popupDelete" className="popupDelete">
+            <div className="popupDelete-content">
+              <span className="close" onClick={togglePopupDelete}>&times;</span>
               <h2>Confirm Account Deletion</h2>
               <p>Are you sure you want to delete your account? This action cannot be undone.</p>
-              <button id="confirmDelete" className="popup-button">Yes, Delete</button>
-              <button id="cancelDelete" className="popup-button" onClick={togglePopup}>Cancel</button>
+              <button id="confirmDelete" className="popupDelete-button" onClick={handleDeleteAccount}>Yes, Delete</button>
+              <button id="cancelDelete" className="popupDelete-button" onClick={togglePopupDelete}>Cancel</button>
+            </div>
+          </div>
+        )}
+
+
+        {showPopupPassword && (
+          <div id="popupPassword" className="popupPassword">
+            <div className="popupPassword-content">
+              <span className="closePassword" onClick={togglePopupPassword}>&times;</span>
+              <h2>Change your Password</h2>
+              <div className="password-fields">
+              <div className="password-section">
+                <label className="newPassword">New Password:</label>
+                <input className="inputPassword" type='password' id='newpassword' value={newPassword}
+                 onChange={handleNewPasswordChange}  placeholder='Enter your new password:'  required/>
+              </div>
+
+              <div className="password-section">
+              <label className="newPasswordConfirm">Retype Password:</label>
+              <input className="inputPassword" type='password' id='confirmpassword' value={confirmPassword}
+               onChange={handleConfirmPasswordChange}  placeholder='Enter your new password:'  required/>
+              </div>
+              </div>
+              <button id="confirmChange" className="popupPassword-button" onClick={handleChangePassword}>Change</button>
+              <button id="cancelChange" className="popupPassword-button" onClick={togglePopupPassword}>Cancel</button>
             </div>
           </div>
         )}
