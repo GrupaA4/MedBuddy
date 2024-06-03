@@ -1,19 +1,18 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './admin_user_page.module.css';
 import Logo from '../assets/MedBuddy.png';
-import checklist from '../assets/checklist.png'
-
-
+import checklist from '../assets/checklist.png';
 
 const UserPage = () => {
   const [medics, setMedics] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1); // Adăugat: stare pentru pagina curentă
+  const medicsPerPage = 5; // Adăugat: numărul de medici afișați pe pagină
   const navigate = useNavigate();
 
   const redirectTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
 
   const getCookieValue = (name) => {
     const cookies = document.cookie.split(";").map((cookie) => cookie.trim());
@@ -29,19 +28,16 @@ const UserPage = () => {
   const passwordFromCookie = getCookieValue("user_pass");
   const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
 
-
- 
-  
   useEffect(() => {
     const fetchMedics = async () => {
       try {
-        const response = await fetch('http://localhost:7264/medbuddy/seerequestingmedics',{
-          method:'GET',
+        const response = await fetch('http://localhost:7264/medbuddy/seerequestingmedics', {
+          method: 'GET',
           headers: {
             Authorization: `Basic ${authorisation}`,
           },
         });
-        if (response.status == 200) {
+        if (response.status === 200) {
           const data = await response.json();
           const medicDetailsPromises = data.medics.map(async (medicId) => {
             const medicResponse = await fetch(`http://localhost:7264/medbuddy/viewmedicprofile/${medicId}`, {
@@ -50,7 +46,7 @@ const UserPage = () => {
                 Authorization: `Basic ${authorisation}`,
               },
             });
-            
+
             if (medicResponse.ok) {
               return medicResponse.json();
             }
@@ -67,7 +63,6 @@ const UserPage = () => {
       }
     };
 
-   
     fetchMedics();
   }, [authorisation]);
 
@@ -111,6 +106,21 @@ const UserPage = () => {
     }
   };
 
+  const handleNextPage = () => {
+    if (currentPage < Math.ceil(medics.length / medicsPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const indexOfLastMedic = currentPage * medicsPerPage; //Ultimul user de pe pagina curenta
+  const indexOfFirstMedic = indexOfLastMedic - medicsPerPage; //Primul user de pe pagina curenta
+  const currentMedics = medics.slice(indexOfFirstMedic, indexOfLastMedic); //Obtinerea medicilor de pe pagina curenta
 
   return (
     <div className={styles.body_admin_user_page}>
@@ -143,14 +153,12 @@ const UserPage = () => {
         <div className={styles.admin_user_page_container1__header}>
           <p className={styles.admin_user_page_container1__header__text}>Unverified accounts</p>
           <div className={styles.admin_user_page_container1__buttons}>
-          <button className={styles.admin_user_page_container1__before } /*onClick={() => paginate(currentPage - 1)}
-          disabled={currentPage === 1}*/>&#8678;</button>
-            <button className={styles.admin_user_page_container1__next} /*onClick={() => paginate(currentPage + 1)}
-          disabled={currentMedics.length < medicsPerPage}*/>&#8680;</button>
+            <button className={styles.admin_user_page_container1__before} onClick={handlePreviousPage} disabled={currentPage === 1}>&#8678;</button>
+            <button className={styles.admin_user_page_container1__next} onClick={handleNextPage} disabled={currentMedics.length < medicsPerPage}>&#8680;</button>
           </div>
         </div>
 
-        {medics.map((medic) => (
+        {currentMedics.map((medic) => (
           <div key={medic.medicId} className={styles.admin_user_page_container1__square}>
             <div className={styles.admin_user_page_container1__square__icon_and_data}>
               <div className={styles.admin_user_page_container1__square__icon}>
@@ -164,17 +172,15 @@ const UserPage = () => {
             </div>
             <div className={styles.admin_user_page_container1__square__data__buttons}>
               <button className={styles.admin_user_page_container1__button1} type="button" onClick={() => handleAccept(medic.medicId)}>Accept</button>
-              <button className={styles.admin_user_page_container1__button2} type="button" onClick={() => handleDeny(medic.medicIdid)}>Deny</button>
+              <button className={styles.admin_user_page_container1__button2} type="button" onClick={() => handleDeny(medic.medicId)}>Deny</button>
               <button className={styles.admin_user_page_container1__button3} type="button">Check License</button>
             </div>
           </div>
         ))}
       </div>
 
-
       <div className={styles.admin_user_page_container2}>
-      
-        <img src={checklist} className={styles.admin_user_page_container2_checklistPhoto}  alt="Checklist" ></img>
+        <img src={checklist} className={styles.admin_user_page_container2_checklistPhoto} alt="Checklist" />
         <div className={styles.admin_user_page_container2_upperText}>Handle today's requests!</div>
       </div>
     </div>
