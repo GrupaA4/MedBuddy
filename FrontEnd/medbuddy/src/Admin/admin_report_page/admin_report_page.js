@@ -253,16 +253,26 @@ const AdminReportPage = () => {
         setReports(data.reports);
 
         // Modificare: setare state-urilor adiționale
-        setReportToStartWith(data.reports.map(report => report.startLoad));
-        setReportToEndLoad(data.reports.map(report => report.endLoad));
-        setReportedUserId(data.reports.map(report => report.reportedUserId));
-        setReporterUserId(data.reports.map(report => report.reporterUserId));
-        setMessage(data.reports.map(report => report.message));
-        setReportedUserEmail(data.reports.map(report => report.reportedEmail));
-        setReportedUserFirstName(data.reports.map(report => report.reportedFirstName));
-        setReportedUserLastName(data.reports.map(report => report.reportedLastName));
-        setReporterUserFirstName(data.reports.map(report => report.reporterFirstName));
-        setReporterUserLastName(data.reports.map(report => report.reporterLastName));
+        setReportToStartWith(data.reports.map((report) => report.startLoad));
+        setReportToEndLoad(data.reports.map((report) => report.endLoad));
+        setReportedUserId(data.reports.map((report) => report.reportedUserId));
+        setReporterUserId(data.reports.map((report) => report.reporterUserId));
+        setMessage(data.reports.map((report) => report.message));
+        setReportedUserEmail(
+          data.reports.map((report) => report.reportedEmail)
+        );
+        setReportedUserFirstName(
+          data.reports.map((report) => report.reportedFirstName)
+        );
+        setReportedUserLastName(
+          data.reports.map((report) => report.reportedLastName)
+        );
+        setReporterUserFirstName(
+          data.reports.map((report) => report.reporterFirstName)
+        );
+        setReporterUserLastName(
+          data.reports.map((report) => report.reporterLastName)
+        );
         setNumber(1); // Resetează number dacă solicitarea are succes
       } else {
         console.error("Failed to fetch reports");
@@ -411,7 +421,8 @@ const AdminReportPage = () => {
             <p className={styles.container1_admin_report_page__square__data}>
               Person reported:{" "}
               <span>
-                {reportedUserLastName[i]} {reportedUserFirstName[i]} {reportCounter + i + 1}
+                {reportedUserLastName[i]} {reportedUserFirstName[i]}{" "}
+                {reportCounter + i + 1}
               </span>
               <br />
               Email person reported: <span>{reportedUserEmail[i]}</span>
@@ -436,19 +447,13 @@ const AdminReportPage = () => {
       </div>
 
       <div className={styles.container2_admin_report_page}>
-        <div className={styles.icon__and__text}>
-          <div className={styles.container2_admin_report_page__square1__icon}>
-            <img
-              src={Megafon}
-              className={
-                styles.container2_admin_report_page__square1__icon__image
-              }
-              alt="Megafon"
-            />
-          </div>
-          <div className={styles.container2_admin_report_page__text}>
-            Vezi ultimele raportari!
-          </div>
+        <img
+          src={Megafon}
+          className={styles.container2_admin_report_page__square1__icon__image}
+          alt="Megafon"
+        />
+        <div className={styles.container2_admin_report_page__text}>
+          Vezi ultimele raportari!
         </div>
       </div>
     </div>
@@ -456,4 +461,3 @@ const AdminReportPage = () => {
 };
 
 export default AdminReportPage;
-

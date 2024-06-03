@@ -297,21 +297,6 @@
   transform: translateY(8px);
 }
 
-.icon__and__text {
-  display: flex;
-  flex-direction: column; /* Set flex direction to column for inner container */
-  align-items: center; /* Center items horizontally within the column */
-}
-
-.container2_admin_report_page__square1__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 20vh;
-  width: 20vh;
-  margin-right: 2vw;
-}
-
 .container2_admin_report_page__square1__icon__image {
   height: 50%;
   width: 65%;
@@ -339,18 +324,6 @@
     left: 1vw;
   }
 
-  .container2_admin_report_page__square1__icon {
-    justify-self: left;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    left: 1vw;
-    right: 10px;
-    height: 20vh;
-    width: 20vh;
-  }
-
   .container2_admin_report_page__button1 {
     position: absolute;
     margin-top: 45vh;
@@ -363,14 +336,6 @@
     cursor: pointer;
     font-size: 3vh;
     color: white;
-  }
-
-  .container2_admin_report_page__text {
-    color: #002845;
-    position: relative;
-    font-size: 3vh;
-    margin-top: 40vh;
-    left: 10px;
   }
 }
 
