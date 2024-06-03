@@ -15,10 +15,26 @@ export default function ChatPage() {
     const [image, setImage] = useState(null);
     const [disableInput, setDisableInput] = useState(false);
 
+    const getCookieValue = (name) => {
+        const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+        for(const cookie of cookies) {
+            if(cookie.startsWith(name + '=')) {
+                return cookie.substring(name.length + 1);
+            }
+        }
+        return null;
+    }
+    const emailFromCookie = getCookieValue('user_email');
+    const passwordFromCookie = getCookieValue('user_pass');
+    const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
+
     const sendCloseConversation = async () => {
         try {
-            await fetch(`https://2e0181e9-dcc6-4113-a5fa-4d90638f077c.mock.pstmn.io/medbuddy/chat/closeconversation`, {
-                method: 'HEAD'
+            await fetch(`http://localhost:7264/medbuddy/chat/closeconversation`, {
+                method: 'HEAD',
+                headers: {
+                    'Authorization': `Basic ${authorisation}`
+                }
             });
         } catch (error) {
             console.error("Error closing conversation:", error);
@@ -51,12 +67,17 @@ export default function ChatPage() {
             setImage(null);
 
             try {
-                const formData = new FormData();
-                formData.append('message', message);
+                const messageData = {
+                    message: message
+                };
 
-                const response = await fetch(`https://2e0181e9-dcc6-4113-a5fa-4d90638f077c.mock.pstmn.io/medbuddy/chat/send`, {
+                const response = await fetch(`http://localhost:7264/medbuddy/chat/send`, {
                     method: 'POST',
-                    body: formData,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Basic ${authorisation}`
+                    },
+                    body: JSON.stringify(messageData),
                 });
 
                 if (!response.ok) {
@@ -72,38 +93,43 @@ export default function ChatPage() {
 
     const receiveResponse = async (flag) => {
         try {
-            const response = await fetch(`https://2e0181e9-dcc6-4113-a5fa-4d90638f077c.mock.pstmn.io/medbuddy/chat/receive/${flag}`, {
+            const response = await fetch(`http://localhost:7264/medbuddy/chat/receive/${flag}`, {
                 method: 'GET',
+                headers: {
+                    'Authorization': `Basic ${authorisation}`
+                }
             });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
 
-            const data = await response.json();
-            const newMessages = data.map(msg => ({
-                id: msg.id,
-                sender: "medbuddy",
-                text: msg.message,
-            }));
+            const data = await response.text();
+            const jsonData = JSON.parse(data);
 
-            setResponseMessages((prev) => [...prev, ...newMessages]);
-            checkForEmails(newMessages);
+            const newMessage = {
+                id: Date.now(),
+                sender: "medbuddy",
+                text: jsonData.message,
+            };
+
+            setResponseMessages((prev) => [...prev, newMessage]);
+            checkForEmails(newMessage);
         } catch (error) {
             console.error("Error fetching response messages:", error);
         }
     };
 
-    const checkForEmails = (messages) => {
+    const checkForEmails = (msg) => {
         const foundEmails = [];
-        messages.forEach(msg => {
-            const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
-            const emailsFound = msg.text.match(emailRegex);
-            if (emailsFound) {
-                foundEmails.push(...emailsFound);
-                setDisableInput(true);
-                sendCloseConversation();
-            }
-        });
+
+        const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
+        const emailsFound = msg.text.match(emailRegex);
+        if (emailsFound) {
+            foundEmails.push(...emailsFound);
+            setDisableInput(true);
+            sendCloseConversation();
+        }
+
         setEmailList(foundEmails);
     };
 
