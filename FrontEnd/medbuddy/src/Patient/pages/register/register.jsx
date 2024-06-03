@@ -23,7 +23,6 @@ export default function SignIn(){
     const [city,setCity]=useState('');
     const [phone,setPhone]=useState('');
     const [profilePicture,setProfilePicture]=useState(null);
-    const [profilePicturePreview, setProfilePicturePreview]=useState(null);
     const [imageExtension, setImageExtension]=useState('');
 
     const handleEmailChange= (event) =>{
@@ -80,7 +79,6 @@ export default function SignIn(){
 
         reader.onloadend= () =>{
             setProfilePicture(reader.result);
-            setProfilePicturePreview(URL.createObjectURL(file));
 
             const fileExtension=file.name.split('.').pop();
             if(!['png', 'jpg', 'jpeg'].includes(fileExtension)){
@@ -214,7 +212,6 @@ export default function SignIn(){
             setCity('');
             setPhone('');
             setProfilePicture(null);
-            setProfilePicturePreview(null);
 
             //window.location.href='/';
         } catch (error) {
@@ -395,11 +392,6 @@ export default function SignIn(){
                                 onChange={handleProfilePicChange}
                                 required
                             />
-                        </div><br />
-                        <div className={`${styles.form_container__profile_pic}`}>
-                            {profilePicture && (
-                                <img src={profilePicturePreview} alt='Profile Picture'/>
-                            )}
                         </div><br />
                         <button className={`${styles.form_container__form__submit}`} type='submit'>Register</button>
                     </form>
