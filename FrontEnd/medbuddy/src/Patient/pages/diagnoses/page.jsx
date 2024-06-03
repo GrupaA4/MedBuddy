@@ -24,7 +24,6 @@ export default function Diagnostic() {
     const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
     
     useEffect(() => {
-
         const fetchUserId = async() => {
             try {
                 const response = await fetch(`http://localhost:7264/medbuddy/getuserid/${emailFromCookie}`, {
@@ -32,42 +31,40 @@ export default function Diagnostic() {
                     headers: {
                         'Authorization': `Basic ${authorisation}`
                     }
-                }); // Replace with your actual endpoint
+                }); 
                 if (response.status !== 200) {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
                 setUserId(data.id);
             } catch (error) {
-                console.error('Error fetching diagnoses:', error);
+                console.error('Error fetching user ID:', error);
             }
-            
         }
         fetchUserId();
     }, [emailFromCookie, authorisation]);
 
-        useEffect(() => {
-        // Fetch data from the database using GET method
-        const fetchDiagnoses = async () => {
-            try {
-                const response = await fetch(`http://localhost:7264/medbuddy/getusermedicalhistory/${userId}`, {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `Basic ${authorisation}`
+    useEffect(() => {
+        if (userId) {
+            const fetchDiagnoses = async () => {
+                try {
+                    const response = await fetch(`http://localhost:7264/medbuddy/getusermedicalhistory/${userId}`, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Basic ${authorisation}`
+                        }
+                    }); 
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
                     }
-                }); // Replace with your actual endpoint
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    const data = await response.json();
+                    setDiagnoses(data);
+                } catch (error) {
+                    console.error('Error fetching diagnoses:', error);
                 }
-                const data = await response.json();
-                setDiagnoses(data);
-            } catch (error) {
-                console.error('Error fetching diagnoses:', error);
-            }
-        };
-        
-        fetchDiagnoses();
-
+            };
+            fetchDiagnoses();
+        }
     }, [userId, authorisation]);
 
     return (
