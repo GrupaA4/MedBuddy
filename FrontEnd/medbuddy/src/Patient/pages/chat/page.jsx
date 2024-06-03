@@ -173,10 +173,15 @@ export default function ChatPage() {
         setResponseMessages([]);
         setEmailList([]);
         setDisableInput(false);
-
+        
         await new Promise(resolve => setTimeout(resolve, 0));
 
         setStartNewConvo(true); 
+    };
+
+    const handleNewConvoBtn = async () => {
+        await sendCloseConversation();
+        handleNewConvo();
     };
 
     
@@ -239,7 +244,7 @@ export default function ChatPage() {
                 <button className={styles.page__message_buttons_action} onClick={handleSeeDiagnoses}>
                     See Diagnoses
                 </button>
-                <button className={styles.page__message_buttons_action} onClick={handleNewConvo}>
+                <button className={styles.page__message_buttons_action} onClick={handleNewConvoBtn}>
                     New Conversation
                 </button>
             </div>
