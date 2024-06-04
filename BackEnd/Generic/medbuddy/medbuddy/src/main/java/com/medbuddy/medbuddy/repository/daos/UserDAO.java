@@ -31,6 +31,30 @@ public class UserDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    /**
+     * check to see if a user is in the database
+     * @param email email in the credentials
+     * @param password password in the credentials
+     * @return true if the credentials match a user, false if not
+     */
+    public boolean loginUser(String email, String password) {
+        String sql = "SELECT COUNT(1) FROM appuser WHERE email = ? AND password = ?";
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, email, password);
+
+        if(count == null) {
+            throw new DatabaseExceptions.ErrorInExecutingStatement("Error executing login statement, no object returned!");
+        }
+
+        return switch (count) {
+            case 0 -> false;
+            case 1 -> true;
+            default -> {
+                UserWarnings.MultipleUsersSameCredentials.log(email, password);
+                yield true;
+            }
+        };
+    }
+
     public Optional<User> findByEmail(String email) {
         try {
             String sql = "SELECT * FROM appuser WHERE email = ?";
