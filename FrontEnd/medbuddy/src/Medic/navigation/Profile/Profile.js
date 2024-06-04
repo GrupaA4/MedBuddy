@@ -37,7 +37,7 @@ export default function Profile() {
     const [city, setCity] = useState('City');
     const [clinic, setClinic] = useState('Clinic');
     const [specialization, setSpecialization] = useState('Specialization');
-    const [profilePicture,setProfilePicture]=useState(null);
+    const [profilePicture,setProfilePicture]=useState('');
     const [imageExtension, setImageExtension]=useState('');
 
 
@@ -54,8 +54,8 @@ export default function Profile() {
     const [initialCity, setInitialCity] = useState('City');
     const [initialClinic, setInitialClinic] = useState('Clinic');
     const [initialSpecialization, setInitialSpecialization] = useState('Specialization');
-    const [initialProfilePicture, setInitialProfilePicture] = useState(null);
-    const[initialExtension,setInitialExtenstion]=useState('png');
+    const [initialProfilePicture, setInitialProfilePicture] = useState('');
+    const[initialImageExtension,setInitialImageExtenstion]=useState('');
 
     const [imageUrl, setImageUrl] = useState("");
     const [extension, setExtension] = useState("");
@@ -200,8 +200,9 @@ export default function Profile() {
                 //setClinic('clinic');
                 console.log('clinica: '+clinic);
                 setProfilePicture(userData.profileImage);
+                setImageExtension(userData.imageExtension);
                 setExtension(userData.imageExtension);
-
+                console.log('extension: '+extension);
                 setInitialEmail(email);
                 setInitialSurname(surname);
                 setInitialName(name);
@@ -216,7 +217,7 @@ export default function Profile() {
                 setInitialSpecialization(specialization);
                 setInitialClinic(clinic);
                 setInitialProfilePicture(profilePicture);
-                setInitialExtenstion(extension);
+                setInitialImageExtenstion(imageExtension);
             } catch (error) {
                 console.error('Error:', error);
             }
@@ -226,8 +227,9 @@ export default function Profile() {
 }, [userId]);
 
 useEffect(() => {
-  setImageUrl(`data:image/${extension};base64,${profilePicture}`);
-}, [profilePicture, extension]);
+    setImageUrl(`data:image/${imageExtension};base64,${profilePicture}`);
+    console.log(imageUrl);
+  }, [profilePicture, imageExtension]);
 
   // const [profileData, setProfileData] = useState({
   //   name: 'My Name',
@@ -441,7 +443,7 @@ useEffect(() => {
       setInitialClinic(clinic)
       setInitialSpecialization(specialization)
       setInitialProfilePicture(profilePicture)
-      setInitialExtenstion(extension);
+      ;
   }
 }, [isEditing]);
 
@@ -462,7 +464,6 @@ const handleCancelChanges = (event) => {
   setClinic(initialClinic);
   setSpecialization(initialSpecialization);
   setProfilePicture(initialProfilePicture);
-  setExtension(initialExtension);
   setIsEditing(false);
 };
 
@@ -545,12 +546,12 @@ const handleChangePassword = async (event) => {
 
       try {
           const response = await fetch(`http://localhost:7264/medbuddy/changeprofile/${userId}`, {
-              method: 'PATCH',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Basic ${authorisation}`
-              },
-              body: JSON.stringify(data)
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Basic ${authorisation}`
+            },
+            body: JSON.stringify(data)
           });
 
           if(response.status !== 200){
@@ -595,7 +596,7 @@ const handleChangePassword = async (event) => {
         <div className="content-profile">
           <div className="left-container-profile">
             <div className="profile-picture-profile">
-              <img src={Logo} alt="pfp" />
+              <img className="pfp" src={imageUrl ? imageUrl : Logo} alt='Profile Picture' />
             </div>
             <div className="buttons-container-profile">
                 <button className="button-profile" onClick={handleEditClick}>Edit Profile</button>
@@ -620,14 +621,25 @@ const handleChangePassword = async (event) => {
               <div className='list-2-profile'>
               {isEditing ? (
                   <>
-                    <input class="input_field" type="text" name="name" value={name} onChange={handleNameChange} />
-                    <input class="input_field" type="text" name="surname" value={surname} onChange={handleSurnameChange} />
-                    <input class="input_field" type="email" name="email" value={email} onChange={handleEmailChange} />
-                    <input class="input_field" type="text" name="workPhone" value={phone} onChange={handlePhoneChange} />
-                    <input class="input_field" type="text" name="city" value={city} onChange={handleCityChange} />
-                    <input class="input_field" type="text" name="country" value={country} onChange={handleCountryChange} />
+                    <input className="input_field" type="text" name="name" value={name} onChange={handleNameChange} />
+                    <input className="input_field" type="text" name="surname" value={surname} onChange={handleSurnameChange} />
+                    <input className="input_field" type="email" name="email" value={email} onChange={handleEmailChange} />
+                    <input className="input_field" type="text" name="workPhone" value={phone} onChange={handlePhoneChange} />
+                    <input className="input_field" type="text" name="city" value={city} onChange={handleCityChange} />
+                    <input className="input_field" type="text" name="country" value={country} onChange={handleCountryChange} />
                     <p>{clinic}</p>
                     <p>{specialization}</p>
+
+                    
+                                         <input
+                                            className="input_field"
+                                            type='file'
+                                            id='profilePicture'
+                                            accept="image/png, image/jpg, image/jpeg"
+                                            value={profilePicture ? profilePicture.name : ''}
+                                            onChange={handleProfilePicChange}
+                                        />
+                                    
                   </>
                 ) : (
                   <>
