@@ -66,6 +66,7 @@ public class UserService {
 
         int imageNumber = userDAO.getMaxImageNumber() + 1;
         //add profile image to database
+
         ImageProcessingUtil.saveImage(imageNumber, "C:\\Users\\burca\\OneDrive\\Desktop\\UNI\\ANUL_II\\SEM_2\\Ingineria_Programarii\\Proiect_1_06\\MedBuddy\\BackEnd\\Generic\\Database\\Profiles", profileImage, medicRequest.getImageExtension());
         medicRequest.setProfileImageNumber(imageNumber);
 

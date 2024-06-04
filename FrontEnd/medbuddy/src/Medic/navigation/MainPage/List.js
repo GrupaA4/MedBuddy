@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import "./List.css";
 import Avatar from "./avatar.png";
 
 function List() {
   const [currentPage, setCurrentPage] = useState(1);
+  const [userId, setUserId] = useState();
   const [searchTerm, setSearchTerm] = useState("");
   const [notifications, setNotifications] = useState([]);
   const itemsPerPage = 3;
@@ -17,10 +19,6 @@ function List() {
 
       console.log("Email: ", email);
       console.log("Parola: ", password);
-      // if (!email || !password) {
-      //   console.error("Missing credentials");
-      //   return;
-      // }
 
       const credentials = btoa(`${email}:${password}`);
 
@@ -40,6 +38,7 @@ function List() {
         }
         const userIdData = await userIdResponse.json();
         const userId = userIdData.id;
+        setUserId(userId);
 
         // A doua cerere: obține notificările pe baza userId-ului
         const notificationsResponse = await fetch(
@@ -66,13 +65,18 @@ function List() {
     fetchUserIdAndNotifications();
   }, []);
 
-  console.log("NOTIFICATIONS: ", notifications);
-
   const filteredNotifications = notifications.filter((notification) =>
     `${notification.firstName} ${notification.lastName}`
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
   );
+
+  let path = "/diagnosesMedic/" + userId;
+  let navigate = useNavigate();
+  function routeChange(event) {
+    event.preventDefault();
+    navigate(path);
+  }
 
   const displayNotifications = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -95,7 +99,9 @@ function List() {
               </div>
             </a>
           </div>
-          <div className="diagnoses-conv">See diagnoses</div>
+          <a href={path} onClick={routeChange}>
+            <div className="diagnoses-conv">See diagnoses</div>
+          </a>
         </div>
       ));
   };

@@ -101,8 +101,8 @@
         height: auto;
         min-width: 11rem;
         display: flex;
-
         align-items: center;
+        justify-content: center;
       }
 
       .userEmail-conv:hover {
@@ -119,9 +119,9 @@
       outline: none;
       margin-right: 10px;
       font-family: "Oswald";
-      //margin-left: 10rem;
+      margin-left: 10rem;
     }
-    .diagnoses:hover {
+    .diagnoses-conv:hover {
       color: white;
       background-color: #369986;
     }

@@ -156,7 +156,8 @@
   width: 100%;
 }
 
-.popup {
+.popupDelete,
+.popupPassword {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -169,7 +170,8 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.popup-content {
+.popupDelete-content,
+.popupPassword-content {
   background-color: #fff;
   padding: 20px;
   border: 1px solid #888;
@@ -180,7 +182,8 @@
   position: relative;
 }
 
-.close {
+.close,
+.closePassword {
   color: #aaa;
   position: absolute;
   top: 10px;
@@ -199,20 +202,26 @@
 }
 
 #cancelDelete:hover,
-#cancelDelete:focus {
+#cancelDelete:focus,
+#confirmChange:hover,
+#confirmChange:focus,
+#cancelChange:hover,
+#cancelChange:focus {
   background-color: #369986;
-
   text-decoration: none;
   cursor: pointer;
 }
 .close:hover,
-.close:focus {
+.close:focus,
+.closePassword:hover,
+.closePassword:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
 
-.popup-button {
+.popupDelete-button,
+.popupPassword-button {
   padding: 10px 20px;
   font-size: 16px;
   margin: 10px;
@@ -224,6 +233,31 @@
   border: none;
   border-radius: 4px;
   display: inline-block;
+}
+
+.password-fields {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20%;
+  margin-bottom: 5%;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.password-section {
+  display: flex;
+  flex-direction: column;
+  /* margin: auto; */
+  margin-bottom: 5%;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.inputPassword {
+  padding: 5%;
+  width: 100%;
+  border-radius: 7px;
+  margin-top: 7px;
 }
 
 @media screen and (max-width: 1220px) {

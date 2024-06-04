@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import styles from "./log-in_page.module.css";
-import Logo2 from "./Logo2.png";
-import Doctors from "./Doctors.png";
-import Cookies from "js-cookie";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styles from './log-in_page.module.css';
+import Logo2 from './Logo2.png';
+import Doctors from './Doctors.png';
+import Cookies from 'js-cookie';
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [warning, setWarning] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [warning, setWarning] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -22,77 +22,63 @@ const LoginPage = () => {
       const credentials = btoa(`${email}:${password}`);
 
       try {
-        const response = await fetch("http://localhost:7264/medbuddy/login", {
-          method: "GET",
+        const response = await fetch('http://localhost:7264/medbuddy/login', {
+          method: 'GET',
           headers: {
-            Authorization: `Basic ${credentials}`,
-          },
+            'Authorization': `Basic ${credentials}`
+          }
         });
 
         if (response.ok) {
           const result = await response.json();
-          Cookies.set("user_email", email, { expires: 7 });
-          Cookies.set("user_pass", password, { expires: 7 });
+          Cookies.set('user_email', email, { expires: 7 });
+          Cookies.set('user_pass', password, { expires: 7 });
 
           switch (result.type) {
-            case "Admin":
-              navigate("/admin");
+            case 'Admin':
+              navigate('/admin');
               break;
-            case "Medic":
-              navigate("/mainPageMedic");
+            case 'Medic':
+              navigate('/mainPageMedic');
               break;
-            case "Patient":
-              navigate("/registerPatient");
+            case 'Patient':
+              navigate('/registerPatient');
               break;
             default:
-              setWarning("Unexpected user type.");
+              setWarning('Unexpected user type.');
           }
         } else {
           if (response.status === 401) {
-            setWarning("Email or password are incorrect.");
+            setWarning('Email or password are incorrect.');
           } else {
             setWarning(`Error: ${response.statusText}`);
           }
         }
       } catch (error) {
-        setWarning("An error occurred during login.");
-        console.error("Login error:", error);
+        setWarning('An error occurred during login.');
+        console.error('Login error:', error);
       }
     }
   };
 
   const handleSignUpAsPatient = () => {
-    navigate("/registerPatient");
+    navigate('/registerPatient');
   };
 
   const handleSignUpAsDoctor = () => {
-    navigate("/register");
+    navigate('/register');
   };
 
   return (
     <div className={styles.body_login}>
       <div className={styles.login_container}>
-        <img
-          src={Logo2}
-          className={styles.login_container__image1}
-          alt="Logo2"
-        />
-        <img
-          src={Doctors}
-          className={styles.login_container__image2}
-          alt="Doctors"
-        />
+        <img src={Logo2} className={styles.login_container__image1} alt="Logo2" />
+        <img src={Doctors} className={styles.login_container__image2} alt="Doctors" />
         <div className={styles.login_square}>
           <p className={styles.login_square__title}>LOGIN</p>
           <form onSubmit={handleLogin}>
             <div className={styles.login_square__form}>
-              <label
-                htmlFor="email"
-                className={styles.login_square__form__text}
-              >
-                Email
-              </label>
-              <br />
+              <label htmlFor="email" className={styles.login_square__form__text}>Email</label><br />
               <input
                 type="email"
                 className={styles.login_square__form__label}
@@ -101,16 +87,8 @@ const LoginPage = () => {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-              />
-              <br />
-              <br />
-              <label
-                htmlFor="password"
-                className={styles.login_square__form__text}
-              >
-                Password
-              </label>
-              <br />
+              /><br /><br />
+              <label htmlFor="password" className={styles.login_square__form__text}>Password</label><br />
               <input
                 type="password"
                 className={styles.login_square__form__label}
@@ -118,18 +96,9 @@ const LoginPage = () => {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-              />
-              <br />
-              <br />
-              {warning && <p style={{ color: "red" }}>{warning}</p>}
-              <button
-                className={styles.login_square__form__button1}
-                type="submit"
-              >
-                LOGIN
-              </button>
-              <br />
-              <br />
+              /><br /><br />
+              {warning && <p style={{ color: 'red' }}>{warning}</p>}
+              <button className={styles.login_square__form__button1} type="submit">LOGIN</button><br /><br />
               <button
                 className={styles.login_square__form__button2}
                 type="button"
