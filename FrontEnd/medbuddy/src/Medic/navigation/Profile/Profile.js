@@ -365,7 +365,7 @@ const handleSaveChanges = async (event) => {
       return;
  }
 
-  
+ 
   const transformedDob = transformDate(birthDate);
   const data = {
       email:email,
@@ -466,7 +466,9 @@ const handleCancelChanges = (event) => {
   setIsEditing(false);
 };
 
-
+const handleLogout = async () => {
+    window.location.href='/';
+}
 const handleDeleteAccount = async () => {
   try{
       const response= await fetch(`http://localhost:7264/medbuddy/harddeleteuser/${userId}`, {
@@ -501,7 +503,6 @@ const handleDeleteAccount = async () => {
       console.error('Error deleting account:', error);
       window.alert('An error occured.Please try again later.');
   } finally {
-      
       window.location.href='/';
   }
 };
@@ -522,12 +523,22 @@ const handleChangePassword = async (event) => {
   setOldPassword(Cookies.get("user_pass"));
   if(newPassword!==oldPassword && newPassword===confirmPassword){
       const data = {
-          email:email,
-          password:newPassword,
-          lastName:surname,
-          firstName:name,
-          dateOfBirth:birthDate,
-          lastTimeLoggedOn:lastTimeLoggedOn
+            email:email,
+            password:newPassword,
+            lastName:surname,
+            firstName:name,
+            gender:gender,
+            pronoun1:pronoun1,
+            pronoun2:pronoun2,
+            dateOfBirth:birthDate,
+            language:language,
+            country:country,
+            city:city,
+            phoneNumber:phone,
+            profileImage:profilePicture,
+            imageExtension:imageExtension,
+            admin:false,
+            lastTimeLoggedOn:lastTimeLoggedOn
       };
 
       console.log('Data to be sent:', data);
@@ -587,9 +598,10 @@ const handleChangePassword = async (event) => {
               <img src={Logo} alt="pfp" />
             </div>
             <div className="buttons-container-profile">
-            <button className="button-profile" onClick={handleEditClick}>Edit Profile</button>
-              <button className="button-profile" onClick={togglePopupPassword}>Change Password</button>
-              <button className="button-profile" onClick={togglePopupDelete}>Delete Account</button>
+                <button className="button-profile" onClick={handleEditClick}>Edit Profile</button>
+                <button className="button-profile" onClick={togglePopupPassword}>Change Password</button>
+                <button className="button-profile" onClick={togglePopupDelete}>Delete Account</button>
+                <button className="button-profile" onClick={handleLogout}>Log out</button>
             </div>
           </div>
           <div className="general-information-profile">
