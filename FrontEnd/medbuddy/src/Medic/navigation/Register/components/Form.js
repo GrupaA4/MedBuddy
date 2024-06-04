@@ -25,15 +25,18 @@ export default function Form() {
     certificateImage: "",
     certificateImageExtension: "",
     admin: false,
-    errors: {}
+    errors: {},
   });
 
   const [profileImage, setProfileImage] = React.useState(null);
-  const [profileImageExtension, setProfileImageExtension] = React.useState(null);
+  const [profileImageExtension, setProfileImageExtension] =
+    React.useState(null);
   const [certificateImage, setCertificateImage] = React.useState(null);
-  const [certificateImageExtension, setCertificateImageExtension] = React.useState(null);
+  const [certificateImageExtension, setCertificateImageExtension] =
+    React.useState(null);
   const [profileImagePreview, setProfileImagePreview] = React.useState(null);
-  const [certificateImagePreview, setCertificateImagePreview] = React.useState(null);
+  const [certificateImagePreview, setCertificateImagePreview] =
+    React.useState(null);
   const id = React.useId();
 
   function handleChange(event) {
@@ -44,8 +47,8 @@ export default function Form() {
       [name]: type === "checkbox" ? checked : value,
       errors: {
         ...prevFormData.errors,
-        [name]: false
-      }
+        [name]: false,
+      },
     }));
   }
 
@@ -58,20 +61,17 @@ export default function Form() {
       setProfileImage(reader.result);
       setProfileImagePreview(URL.createObjectURL(file));
 
-      const fileExtension = file.name.split('.').pop();
-      if (!['png', 'jpg', 'jpeg'].includes(fileExtension)) {
-        alert('Please select a PNG or JPG file.');
+      const fileExtension = file.name.split(".").pop();
+      if (!["png", "jpg", "jpeg"].includes(fileExtension)) {
+        alert("Please select a PNG or JPG file.");
         return;
       }
       setProfileImageExtension(fileExtension);
-
-
     };
 
     if (file) {
       reader.readAsDataURL(file);
     }
-
   }
 
   function handleCertificateImgChange(event) {
@@ -83,14 +83,12 @@ export default function Form() {
       setCertificateImage(reader.result);
       setCertificateImagePreview(URL.createObjectURL(file));
 
-      const fileExtension = file.name.split('.').pop();
-      if (!['png', 'jpg', 'jpeg'].includes(fileExtension)) {
-        alert('Please select a PNG or JPG file.');
+      const fileExtension = file.name.split(".").pop();
+      if (!["png", "jpg", "jpeg"].includes(fileExtension)) {
+        alert("Please select a PNG or JPG file.");
         return;
       }
       setCertificateImageExtension(fileExtension);
-
-
     };
 
     if (file) {
@@ -138,9 +136,9 @@ export default function Form() {
     }
 
     if (Object.keys(errors).length > 0) {
-      setFormData(prevFormData => ({
+      setFormData((prevFormData) => ({
         ...prevFormData,
-        errors: errors
+        errors: errors,
       }));
       return;
     }
@@ -176,7 +174,7 @@ export default function Form() {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-            'Authorization': null
+            Authorization: null,
           },
           body: JSON.stringify(formattedData),
         }
@@ -184,7 +182,7 @@ export default function Form() {
       if (!response.ok) {
         throw new Error("Response was not ok");
       }
-
+      console.log("am trecut de fetch");
       const result = await response.json();
       console.log("Success:", result);
       Cookies.set(`user_email`, formattedData.email, { expires: 7 });
@@ -205,7 +203,7 @@ export default function Form() {
         typeOfMedic: "",
         clinic: "",
         admin: false,
-        errors: {}
+        errors: {},
       });
       setProfileImage(null);
       setProfileImageExtension(null);
@@ -296,8 +294,8 @@ export default function Form() {
                   id={id + "-female"}
                   name="gender"
                   value="female"
-                // checked={formData.gender === "female"}
-                // onChange={handleChange}
+                  // checked={formData.gender === "female"}
+                  // onChange={handleChange}
                 />
                 <label htmlFor={id + "-female"}>Female:</label>
 
@@ -306,8 +304,8 @@ export default function Form() {
                   id={id + "-male"}
                   name="gender"
                   value="male"
-                // checked={formData.gender === "male"}
-                // onChange={handleChange}
+                  // checked={formData.gender === "male"}
+                  // onChange={handleChange}
                 />
                 <label htmlFor={id + "-male"}>Male</label>
               </div>

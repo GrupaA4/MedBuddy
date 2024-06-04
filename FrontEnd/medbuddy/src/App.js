@@ -13,14 +13,14 @@ import ContactMedic from "./Medic/navigation/Contact/Contact";
 import ProfileMedic from "./Medic/navigation/Profile/Profile";
 import Diagnostic from "./Medic/navigation/Diagnoses/Diagnoses";
 
-import Home from './Patient/pages/home/page';
-import ChatPage from './Patient/pages/chat/page';
+import Home from "./Patient/pages/home/page";
+import ChatPage from "./Patient/pages/chat/page";
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Diagnoses from './Patient/pages/diagnoses/page';
+import Diagnoses from "./Patient/pages/diagnoses/page";
 // import Register from './Patient/pages/register/register';
-import ProfilePatient from './Patient/pages/profile/profile';
-import ContactPatient from './Patient/pages/contact/page';
-import About from './Patient/pages/about/page';
+import ProfilePatient from "./Patient/pages/profile/profile";
+import ContactPatient from "./Patient/pages/contact/page";
+import About from "./Patient/pages/about/page";
 
 function App() {
   return (
@@ -39,11 +39,11 @@ function App() {
         <Route path="/profileMedic" element={<ProfileMedic />} />
         <Route path="/diagnosesMedic" element={<Diagnostic />} />
 
-            <Route path="/chat" element={<ChatPage />} />
-            <Route path="/diagnoses" element={<Diagnoses />} />
-            <Route path="/profilePatient" element={<ProfilePatient />} />
-            <Route path="/contactPatient" element={<ContactPatient />} />
-            <Route path="/about" element={<About />} />
+        <Route path="/chat" element={<ChatPage />} />
+        <Route path="/diagnoses" element={<Diagnoses />} />
+        <Route path="/profilePatient" element={<ProfilePatient />} />
+        <Route path="/contactPatient" element={<ContactPatient />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </Router>
   );

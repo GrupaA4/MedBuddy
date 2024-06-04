@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./admin_report_page.module.css";
 import Logo from "../assets/MedBuddy.png";
+import Megafon from "../assets/megafon.png";
 import Cookies from "js-cookie";
 
 const AdminReportPage = () => {
@@ -223,18 +224,18 @@ const AdminReportPage = () => {
       <div className={styles.container2_admin_report_page}>
         <div className={styles.icon__and__text}>
           <div className={styles.container2_admin_report_page__square1__icon}>
-            <p>PHOTO</p>
+            <img
+              src={Megafon}
+              className={
+                styles.container2_admin_report_page__square1__icon__image
+              }
+              alt="Megafon"
+            />
           </div>
           <div className={styles.container2_admin_report_page__text}>
-            NAME: Example of name
+            Vezi ultimele raportari!
           </div>
         </div>
-        <button
-          className={styles.container2_admin_report_page__button1}
-          type="button"
-        >
-          Report
-        </button>
       </div>
     </div>
   );

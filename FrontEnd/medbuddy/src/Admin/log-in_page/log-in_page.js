@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./log-in_page.module.css";
 import Logo2 from "./Logo2.png";
 import Doctors from "./Doctors.png";
@@ -9,7 +9,6 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [warning, setWarning] = useState("");
-  const [type, setType] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -20,8 +19,6 @@ const LoginPage = () => {
     if (!email || !password) {
       setWarning("Please fill in both fields.");
     } else {
-      //setWarning('');
-
       const credentials = btoa(`${email}:${password}`);
 
       try {
@@ -36,7 +33,6 @@ const LoginPage = () => {
           const result = await response.json();
           Cookies.set("user_email", email, { expires: 7 });
           Cookies.set("user_pass", password, { expires: 7 });
-          setType(result.type);
 
           switch (result.type) {
             case "Admin":
@@ -53,7 +49,7 @@ const LoginPage = () => {
           }
         } else {
           if (response.status === 401) {
-            setWarning("Email or password are incorect. ");
+            setWarning("Email or password are incorrect.");
           } else {
             setWarning(`Error: ${response.statusText}`);
           }

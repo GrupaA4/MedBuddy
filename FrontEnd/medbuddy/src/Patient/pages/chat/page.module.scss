@@ -93,6 +93,33 @@
                 font-family: "Oswald_font";
                 font-weight: 300;
             }
+            .page__emails {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 2rem auto 0;
+                font-family: "Oswald_font";
+                background-color: #a5d8de;
+                border-radius:  0 0 15px 15px;
+                padding: 0.8rem 0.8rem;
+                color: #505050;
+                font-weight: 500;
+
+                ul {
+                    list-style: circle;
+                    li {
+                        margin-left: -1rem;
+                        a {
+                            text-decoration: none;
+                            color: #505050;
+                            font-weight: 400;
+                        }
+                        a:hover {
+                            border-bottom: 2px solid #646464;
+                        }
+                    }
+                }
+            }
     
             .page__message {
                 background-color: #069DAE;
@@ -127,8 +154,7 @@
             outline: none;
         }
         .page__message_buttons_action:hover{
-            width: 12vw;
-            height: 3.15rem;
+            background-color: #a2ddb6;
         }
     }
     .page__message_input{
@@ -140,8 +166,9 @@
         width: 80vw;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
+        padding: 0.3rem 0.4rem;
         margin-bottom: 1rem;
         margin-top: 1rem;
         .page__message_area_question{
@@ -162,15 +189,7 @@
             display: flex;
             justify-content: space-around;
             width: 12%;
-            .page__message_area_file{
-                cursor: pointer;
-                .page__message_area_file_in{
-                    display: none;
-                }
-                .page__message_area_file_img{
-                    height: 3rem;
-                }
-            }
+
             .page__message_area_button{
                 background-color: #DEF9F1;
                 border: none;
@@ -195,7 +214,7 @@
        
         .page__message_buttons{
             width: 70%;
-            margin-top: 2rem;
+            margin-top: 1rem;
             .page__message_buttons_action{
                 width: 20vw;
                 height: 2.5rem;
@@ -215,7 +234,7 @@
                 height: 5rem;
             }
             .page__message_area_actions{
-                width: 25%;
+
                 .page__message_area_file{
                     .page__message_area_file_img{
                         height: 2.25rem;
@@ -242,18 +261,20 @@
         }
         .page__message_buttons{
             width: 70%;
-            margin-top: 2rem;
+            margin-top: 1rem;
             display: flex;
+            gap: 0.5rem;
             flex-direction: column;
             justify-content: space-around;
-            height: 6rem;
             .page__message_buttons_action{
                 width: 40vw;
+                padding-top: 0.3rem;
+                padding-bottom: 0.3rem;
             }
         }
         .page__message_input{
             height: 6rem;
-            width: 70vw;
+            width: 84vw;
             margin-top: 2rem;
             .page__message_area_question{
                 width: 65%;
@@ -263,7 +284,6 @@
                 font-size: 0.65rem;
             }
             .page__message_area_actions{
-                width: 30%;
                 .page__message_area_file{
                     .page__message_area_file_img{
                         height: 1.5rem;

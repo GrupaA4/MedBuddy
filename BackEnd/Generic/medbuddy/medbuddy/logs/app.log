@@ -1,115 +1,31 @@
-2024-06-02 21:47:12 INFO  MedbuddyApplication:50 - Starting MedbuddyApplication using Java 21.0.2 with PID 20948 (C:\Users\burca\OneDrive\Desktop\UNI\ANUL_II\SEM_2\Ingineria_Programarii\Proiect_1_06\MedBuddy\BackEnd\Generic\medbuddy\medbuddy\target\classes started by burca in C:\Users\burca\OneDrive\Desktop\UNI\ANUL_II\SEM_2\Ingineria_Programarii\Proiect_1_06\MedBuddy\BackEnd\Generic\medbuddy\medbuddy)
-2024-06-02 21:47:12 DEBUG MedbuddyApplication:51 - Running with Spring Boot v3.2.5, Spring v6.1.6
-2024-06-02 21:47:12 INFO  MedbuddyApplication:654 - No active profile set, falling back to 1 default profile: "default"
-2024-06-02 21:47:15 INFO  TomcatWebServer:109 - Tomcat initialized with port 7264 (http)
-2024-06-02 21:47:15 INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-7264"]
-2024-06-02 21:47:15 INFO  StandardService:173 - Starting service [Tomcat]
-2024-06-02 21:47:15 INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.20]
-2024-06-02 21:47:15 INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
-2024-06-02 21:47:15 INFO  ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 1540 ms
-2024-06-02 21:47:16 INFO  DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@45037e16, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2f2e4bde, org.springframework.security.web.context.SecurityContextHolderFilter@640d604, org.springframework.security.web.header.HeaderWriterFilter@4dc52559, org.springframework.web.filter.CorsFilter@6ccac6f4, org.springframework.security.web.authentication.logout.LogoutFilter@6de7778f, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@71936a92, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5438fa43, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@512abf25, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6222391a, org.springframework.security.web.access.ExceptionTranslationFilter@7b96de8d, org.springframework.security.web.access.intercept.AuthorizationFilter@2589d787]
-2024-06-02 21:47:17 INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-7264"]
-2024-06-02 21:47:17 INFO  TomcatWebServer:241 - Tomcat started on port 7264 (http) with context path ''
-2024-06-02 21:47:17 INFO  MedbuddyApplication:56 - Started MedbuddyApplication in 8.042 seconds (process running for 10.993)
-2024-06-02 21:47:32 INFO  [/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-06-02 21:47:32 INFO  DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
-2024-06-02 21:47:32 INFO  DispatcherServlet:554 - Completed initialization in 1 ms
-2024-06-02 21:47:32 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/login
-2024-06-02 21:47:32 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/login
-2024-06-02 21:47:32 WARN  HikariConfig:1089 - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
-2024-06-02 21:47:32 INFO  HikariDataSource:110 - HikariPool-1 - Starting...
-2024-06-02 21:47:32 INFO  PoolBase:536 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
-2024-06-02 21:47:32 INFO  HikariPool:565 - HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@7f8f5303
-2024-06-02 21:47:32 INFO  HikariDataSource:123 - HikariPool-1 - Start completed.
-2024-06-02 21:47:32 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:47:32 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:47:32 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/login
-2024-06-02 21:48:43 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:48:43 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:48:44 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:48:44 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:48:44 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:48:44 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:48:44 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:48:44 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:48:44 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:48:44 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:48:44 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:48:44 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:48:44 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:48:44 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:48:44 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:48:44 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:48:44 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:48:44 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:48:52 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:48:52 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:48:52 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:48:52 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:48:52 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:48:52 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:48:52 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:48:52 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:48:52 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:48:52 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:48:52 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:48:52 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:48:52 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:48:52 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:48:53 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:48:53 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:48:53 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:48:53 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:48:53 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:48:53 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:50:52 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:50:52 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:50:53 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:50:53 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:50:53 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:50:54 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:50:54 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:50:54 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:50:54 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:50:54 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:50:54 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:50:54 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:50:54 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:50:54 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:50:54 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:50:54 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:50:54 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:50:54 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:50:54 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:50:54 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:50:54 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:50:55 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:50:55 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:50:55 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:52:13 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:52:14 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:52:14 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:52:14 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:52:14 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:52:18 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:52:18 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:52:18 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:52:18 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:52:18 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:52:18 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:52:18 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:52:18 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:52:18 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:52:18 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getuserid/leonarda.kuhlman@hotmail.com
-2024-06-02 21:52:18 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:52:18 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:52:18 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:52:18 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:52:18 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:52:18 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:52:18 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-06-02 21:52:18 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=leonarda.kuhlman@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]
-2024-06-02 21:52:18 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:52:18 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getallnotifications/f40555b9-f191-4db3-bf57-cf94938f9bfa
-2024-06-02 21:56:27 INFO  HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
-2024-06-02 21:56:27 INFO  HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2024-06-02 23:46:30 INFO  MedbuddyApplication:50 - Starting MedbuddyApplication using Java 21.0.2 with PID 3204 (C:\Users\burca\OneDrive\Desktop\UNI\ANUL_II\SEM_2\Ingineria_Programarii\Proiect_1_06\MedBuddy\BackEnd\Generic\medbuddy\medbuddy\target\classes started by burca in C:\Users\burca\OneDrive\Desktop\UNI\ANUL_II\SEM_2\Ingineria_Programarii\Proiect_1_06\MedBuddy\BackEnd\Generic\medbuddy\medbuddy)
+2024-06-02 23:46:30 DEBUG MedbuddyApplication:51 - Running with Spring Boot v3.2.5, Spring v6.1.6
+2024-06-02 23:46:30 INFO  MedbuddyApplication:654 - No active profile set, falling back to 1 default profile: "default"
+2024-06-02 23:46:32 INFO  TomcatWebServer:109 - Tomcat initialized with port 7264 (http)
+2024-06-02 23:46:32 INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-7264"]
+2024-06-02 23:46:32 INFO  StandardService:173 - Starting service [Tomcat]
+2024-06-02 23:46:32 INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-02 23:46:32 INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
+2024-06-02 23:46:32 INFO  ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 1613 ms
+2024-06-02 23:46:34 INFO  DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@33d28f0a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@48d739f, org.springframework.security.web.context.SecurityContextHolderFilter@382d71c7, org.springframework.security.web.header.HeaderWriterFilter@22a6d75c, org.springframework.web.filter.CorsFilter@56cc9f29, org.springframework.security.web.authentication.logout.LogoutFilter@61394494, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6cbb7a7d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@34a20f16, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@496cc217, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@51e7589f, org.springframework.security.web.access.ExceptionTranslationFilter@5fef0c19, org.springframework.security.web.access.intercept.AuthorizationFilter@2dc39b53]
+2024-06-02 23:46:35 INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-7264"]
+2024-06-02 23:46:35 INFO  TomcatWebServer:241 - Tomcat started on port 7264 (http) with context path ''
+2024-06-02 23:46:35 INFO  MedbuddyApplication:56 - Started MedbuddyApplication in 5.046 seconds (process running for 7.963)
+2024-06-02 23:46:50 INFO  [/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-02 23:46:50 INFO  DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2024-06-02 23:46:50 INFO  DispatcherServlet:554 - Completed initialization in 2 ms
+2024-06-02 23:46:50 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/signupmedic
+2024-06-02 23:46:50 DEBUG FilterChainProxy:223 - Securing PUT /medbuddy/signupmedic
+2024-06-02 23:46:50 DEBUG FilterChainProxy:227 - Secured PUT /medbuddy/signupmedic
+2024-06-02 23:46:50 WARN  HikariConfig:1089 - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2024-06-02 23:46:50 INFO  HikariDataSource:110 - HikariPool-1 - Starting...
+2024-06-02 23:46:51 INFO  PoolBase:536 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
+2024-06-02 23:46:51 INFO  HikariPool:565 - HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@4f43935d
+2024-06-02 23:46:51 INFO  HikariDataSource:123 - HikariPool-1 - Start completed.
+2024-06-02 23:46:51 DEBUG AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2024-06-02 23:48:41 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/signupmedic
+2024-06-02 23:48:41 DEBUG FilterChainProxy:223 - Securing PUT /medbuddy/signupmedic
+2024-06-02 23:48:41 DEBUG FilterChainProxy:227 - Secured PUT /medbuddy/signupmedic
+2024-06-02 23:48:41 DEBUG AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2024-06-02 23:49:25 INFO  HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2024-06-02 23:49:25 INFO  HikariDataSource:352 - HikariPool-1 - Shutdown completed.
