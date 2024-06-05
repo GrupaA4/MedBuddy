@@ -47,7 +47,7 @@ public class UserServiceTest {
         user.setId(userUUID);
         user.setFirstName("John");
         user.setLastName("Doe");
-        user.setEmail("john@jjjoan13.com");
+        user.setEmail("john@jjjoan14.com");
         user.setPassword("password");
         user.setAdmin(false);
         user.setLastTimeLoggedIn(LocalDate.now());
@@ -221,7 +221,7 @@ public class UserServiceTest {
         newUser.setId(userUUID1);
         newUser.setFirstName("John");
         newUser.setLastName("Doe");
-        newUser.setEmail("john@jjoan13.com");
+        newUser.setEmail("john@jjoan14.com");
         newUser.setPassword("password");
         newUser.setAdmin(false);
         newUser.setLastTimeLoggedIn(LocalDate.now());
@@ -284,5 +284,17 @@ public class UserServiceTest {
     public void getUserIdOfMedic_NonExistingMedic_ThrowsException()
     {
         assertThrows(NotFoundExceptions.UserNotFound.class, () -> userService.getUserIdOfMedic(medicUUID));
+    }
+
+    @Test
+    @Order(24)
+    public void deleteUser_ExistingUser_RemovesTheUserFromTheDatabase1(){
+        assertDoesNotThrow(() -> userDAO.deleteUser(medic1.getId()));
+    }
+
+    @Test
+    @Order(25)
+    public void deleteUser_ExistingUser_RemovesTheUserFromTheDatabase2(){
+        assertDoesNotThrow(() -> userDAO.deleteUser(user.getId()));
     }
 }
