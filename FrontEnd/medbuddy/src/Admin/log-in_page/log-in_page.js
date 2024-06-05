@@ -66,7 +66,7 @@ const LoginPage = () => {
   };
 
   const handleSignUpAsDoctor = () => {
-    navigate('/register');
+    navigate('/registerMedic');
   };
 
   return (
