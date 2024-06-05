@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './admin_main_page.module.css';
@@ -7,10 +6,10 @@ import Admin from './Admin.png';
 
 const getCookieValue = (name) => {
   const cookies = document.cookie.split(';').map(cookie => cookie.trim());
-  for(const cookie of cookies) {
-      if(cookie.startsWith(name + '=')) {
-          return cookie.substring(name.length + 1);
-      }
+  for (const cookie of cookies) {
+    if (cookie.startsWith(name + '=')) {
+      return cookie.substring(name.length + 1);
+    }
   }
   return null;
 }
@@ -20,9 +19,11 @@ const passwordFromCookie = getCookieValue('user_pass');
 
 const AdminMainPage = () => {
   const navigate = useNavigate();
-  const [users, setUsers] = useState([]); 
-  const [userToStartFrom, setUserToStartFrom] = useState(null);
-  const [userToEndLoad, setUserToEndLoad] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [page, setPage] = useState(1);
+  const [isLastPage, setIsLastPage] = useState(false);
+  const [currentFetch, setCurrentFetch] = useState(null);
+  const usersPerPage = 5;
   const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
 
   useEffect(() => {
@@ -30,7 +31,7 @@ const AdminMainPage = () => {
     const texts = ["Welcome back,", "     Admin!"];
     let index = 0;
     let textIndex = 0;
-    let finalText = ''; // Variable to hold the final text
+    let finalText = '';
 
     function writeText() {
       let currentText = texts[textIndex];
@@ -45,7 +46,7 @@ const AdminMainPage = () => {
         if (textIndex < texts.length) {
           finalText += '<br>';
           finalText += ' ';
-          setTimeout(writeText, 100); 
+          setTimeout(writeText, 100);
         }
       }
     }
@@ -57,22 +58,14 @@ const AdminMainPage = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const shiftNews = (direction) => {
-    const container = document.querySelector(`.${styles.container1}`);
-    const scrollAmount = 200; // Adjust this value to control scroll speed
-
-    if (direction === 'prev') {
-      container.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
-    } else if (direction === 'next') {
-      container.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+  const fetchUsers = async (pageNum) => {
+    if (currentFetch) {
+      await currentFetch;
     }
-  };
-
-  useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchPromise = (async () => {
       try {
-        const start=1;
-        const end=10;
+        const start = (pageNum - 1) * usersPerPage + 1;
+        const end = pageNum * usersPerPage;
         const responseIds = await fetch(`http://localhost:7264/medbuddy/getoldestusers/${start}/${end}`, {
           method: 'GET',
           headers: {
@@ -106,16 +99,47 @@ const AdminMainPage = () => {
           });
 
           const userDetails = await Promise.all(userDetailsPromises);
-          setUsers(userDetails.filter((user) => user !== null));
+          const filteredUsers = userDetails.filter((user) => user !== null);
+          setUsers(filteredUsers);
+
+          if (filteredUsers.length < usersPerPage) {
+            setIsLastPage(true);
+          } else {
+            const nextStart = end + 1;
+            const nextEnd = nextStart + usersPerPage - 1;
+            const nextResponseIds = await fetch(`http://localhost:7264/medbuddy/getoldestusers/${nextStart}/${nextEnd}`, {
+              method: 'GET',
+              headers: {
+                'Authorization': `Basic ${authorisation}`
+              }
+            });
+
+            if (nextResponseIds.ok) {
+              const nextData = await nextResponseIds.json();
+              setIsLastPage(nextData.users.length === 0);
+            } else {
+              setIsLastPage(true);
+            }
+          }
         } else {
           console.error('Failed to fetch users information');
         }
       } catch (error) {
         console.error('Error fetching users:', error);
       }
+    })();
+
+    setCurrentFetch(fetchPromise);
+    await fetchPromise;
+    setCurrentFetch(null);
+  };
+
+  useEffect(() => {
+    const initFetch = async () => {
+      await fetchUsers(page);
     };
-    fetchUsers();
-  }, [authorisation, userToStartFrom, userToEndLoad]);
+    initFetch();
+  }, [authorisation, page]);
 
   const handleReportClick = () => {
     navigate('/report');
@@ -123,6 +147,20 @@ const AdminMainPage = () => {
 
   const handleManageAccountsClick = () => {
     navigate('/user');
+  };
+
+  const handlePrevious = async () => {
+    if (page > 1) {
+      await fetchUsers(page - 1);
+      setPage(page - 1);
+    }
+  };
+
+  const handleNext = async () => {
+    if (!isLastPage) {
+      await fetchUsers(page + 1);
+      setPage(page + 1);
+    }
   };
 
   return (
@@ -139,11 +177,25 @@ const AdminMainPage = () => {
       <div className={styles.container1__admin__main__page} id="current_users">
         <div className={styles.container1__header__admin__main__page}>
           <p className={styles.container1__header__admin__main__text}>CURRENT USERS</p>
+          <div className={styles.container1__header__admin__main__page__buttons}>
+            <button
+              className={styles.container1__header__admin__main__page__before}
+              onClick={handlePrevious}
+              disabled={page === 1}
+            >
+              &#8678;
+            </button>
+            <button
+              className={styles.container1__header__admin__main__page__next}
+              onClick={handleNext}
+              disabled={isLastPage}
+            >
+              &#8680;
+            </button>
+          </div>
         </div>
 
-       
-        {/* {[...Array(10).keys()].map(i => (  */}
-          {users.map((user, i) => (
+        {users.map((user, i) => (
           <div key={i} className={styles.container1__admin__main__page__square}>
             <div className={styles.container1__admin__main__page__square__icon}>
               <p>PHOTO</p>
@@ -159,7 +211,7 @@ const AdminMainPage = () => {
 
       <div className={styles.container2__admin__main__page}>
         <p className={styles.container2__admin__main__page__title}></p>
-        <img src={Admin} className={styles.conatiner2__admin__main__page__image} alt="Admin"/>
+        <img src={Admin} className={styles.conatiner2__admin__main__page__image} alt="Admin" />
         <button className={styles.container2__admin__main__page__button1} type="button" onClick={handleReportClick}>REPORT</button><br /><br />
         <button className={styles.container2__admin__main__page__button2} type="button" onClick={handleManageAccountsClick}>MANAGE ACCOUNTS</button>
       </div>
