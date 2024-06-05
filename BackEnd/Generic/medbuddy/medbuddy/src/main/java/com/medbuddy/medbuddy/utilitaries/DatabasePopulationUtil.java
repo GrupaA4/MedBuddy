@@ -2,6 +2,7 @@ package com.medbuddy.medbuddy.utilitaries;
 
 import com.medbuddy.medbuddy.models.*;
 import com.medbuddy.medbuddy.repository.daos.*;
+import com.medbuddy.medbuddy.services.UserService;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,6 +12,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 public class DatabasePopulationUtil {
@@ -19,6 +23,7 @@ public class DatabasePopulationUtil {
     private final AdminFunctionalityDAO adminFunctionalityDAO;
     private final NotificationsDAO notificationsDAO;
     private final BCryptPasswordEncoder encoder;
+    private final List<User> users;
 
     public DatabasePopulationUtil(UserDAO userDAO, MedicalHistoryDAO medicalHistoryDAO, AdminFunctionalityDAO adminFunctionalityDAO, NotificationsDAO notificationsDAO) {
         this.userDAO = userDAO;
@@ -26,6 +31,7 @@ public class DatabasePopulationUtil {
         this.adminFunctionalityDAO = adminFunctionalityDAO;
         this.notificationsDAO = notificationsDAO;
         this.encoder = new BCryptPasswordEncoder();
+        users = new ArrayList<>();
     }
 
     public static void main(String[] args) {
@@ -36,8 +42,9 @@ public class DatabasePopulationUtil {
         AdminFunctionalityDAO adminFunctionalityDAO = new AdminFunctionalityDAO(jdbcTemplate);
         DatabasePopulationUtil util = new DatabasePopulationUtil(userDAO, medicalHistoryDAO, adminFunctionalityDAO, notificationsDAO);
         addFirst(util);
-        //addSecond(util);
-        //addThird(util);
+        addSecond(util);
+        addThird(util);
+        commenceUserDeletion(util);
     }
 
     public static void addFirst(DatabasePopulationUtil util) {
@@ -130,8 +137,8 @@ public class DatabasePopulationUtil {
                     LocalDate lastTimeLoggedIn = LocalDate.parse(data[15], dateFormat);
                     boolean isAdmin = data[16].equals("1");
                     boolean isDeleted = data[17].equals("1");
-
                     User user = new User(id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted);
+                    users.add(user);
                     userDAO.signupUser(user);
                 } else {
                     System.err.println("invalid : " + line);
@@ -255,6 +262,19 @@ public class DatabasePopulationUtil {
         }
     }
 
+    public static void commenceUserDeletion(DatabasePopulationUtil util){
+        util.deleteUsers();;
+    }
+    public void deleteUsers(){
+        for(User user : users){
+            Random random = new Random();
+            if(random.nextInt(100) >= 95){
+                userDAO.markUserAsDeleted(user.getId());
+                userDAO.softDeleteMedicalHistoryForUser(user.getId());
+                userDAO.softDeleteReportsOnUser(user.getId());
+            }
+        }
+    }
 //    public void processAdminFile(String csvFile) {
 //        String line;
 //        String delimiter = "\\|";

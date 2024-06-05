@@ -292,7 +292,11 @@ public class UserDAO {
     }
 
     public void softDeleteMedicalHistoryForUser(UUID userId) {
-        jdbcTemplate.update("UPDATE medicalHistory SET isDeleted = 1 WHERE patientId = ?", userId.toString());
+        jdbcTemplate.update("UPDATE medicalHistory SET isDeleted = 1 WHERE patientId = ? OR medicId = ?", userId.toString(), userId.toString());
+    }
+
+    public void deleteReportsMadeByUser(UUID userId) {
+        jdbcTemplate.update("DELETE FROM reports WHERE reportedBy = ?", userId.toString());
     }
 
     public boolean isMedic(UUID userId) {
