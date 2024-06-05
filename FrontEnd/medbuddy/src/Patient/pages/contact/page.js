@@ -54,12 +54,16 @@ function ContactPatient() {
       fetchuserId();
   }, [emailFromCookie]);
 
+    const [isMobileMenu, setIsMobileMenu] = useState(false);
+
     return (
-  
+        <>
+        <Header setIsMobileMenu={setIsMobileMenu}/>
+        {!isMobileMenu &&
+        <>
       <div className="Contact">
         <div className="body-contact">
         <div className='navbar-container-contact'>
-          <Header/>
         </div>
   
           <div className="content-contact">
@@ -82,13 +86,17 @@ function ContactPatient() {
             </div>
           </div>
           
-          <div className="footer-container-contact"><Footer/></div>
+          
           
           </div>
   
   
   
       </div>
+      </>
+    }
+    <Footer />
+    </>
     );
   }
   
