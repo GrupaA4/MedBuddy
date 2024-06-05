@@ -10,6 +10,8 @@ function List() {
   const [userId, setUserId] = useState();
   const [searchTerm, setSearchTerm] = useState("");
   const [notifications, setNotifications] = useState([]);
+  const [profilePicture, setProfilePicture] = useState("");
+  const [imageExtension, setImageExtension] = useState("");
   const itemsPerPage = 3;
 
   useEffect(() => {
@@ -57,6 +59,7 @@ function List() {
         }
         const notificationsData = await notificationsResponse.json();
         setNotifications(notificationsData.notifications);
+        console.log("NOTIFICARI PRIMITE: ", notifications);
       } catch (error) {
         console.error("Error fetching notifications:", error);
       }
@@ -64,6 +67,35 @@ function List() {
 
     fetchUserIdAndNotifications();
   }, []);
+
+  const deleteNotification = async (notificationId) => {
+    const email = Cookies.get("user_email");
+    const password = Cookies.get("user_pass");
+    const credentials = btoa(`${email}:${password}`);
+
+    try {
+      const response = await fetch(
+        `http://localhost:7264/medbuddy/deletenotification/${notificationId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Basic ${credentials}`,
+          },
+        }
+      );
+      if (response.ok) {
+        setNotifications((prevNotifications) =>
+          prevNotifications.filter(
+            (notification) => notification.id !== notificationId
+          )
+        );
+      } else {
+        console.error("Error deleting notification:", response.status);
+      }
+    } catch (error) {
+      console.error("Error deleting notification:", error);
+    }
+  };
 
   const filteredNotifications = notifications.filter((notification) =>
     `${notification.firstName} ${notification.lastName}`
@@ -77,6 +109,9 @@ function List() {
     event.preventDefault();
     navigate(path);
   }
+  const convertBase64ToUrl = (base64Image, extension) => {
+    return `data:image/${extension};base64,${base64Image}`;
+  };
 
   const displayNotifications = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -85,7 +120,13 @@ function List() {
       .slice(startIndex, endIndex)
       .map((notification) => (
         <div key={notification.id} className="item-conv">
-          <img src={Avatar} alt="" />
+          <img
+            src={convertBase64ToUrl(
+              notification.profileImage,
+              notification.imageExtension
+            )}
+            alt="profileImg"
+          />
           <div className="texts-conv">
             <span>
               <span className="userName-conv">
@@ -99,9 +140,17 @@ function List() {
               </div>
             </a>
           </div>
-          <a href={path} onClick={routeChange}>
-            <div className="diagnoses-conv">See diagnoses</div>
-          </a>
+          <div className="buttons-section-conv">
+            <a className="see-diagnoses-link" href={path} onClick={routeChange}>
+              <div className="diagnoses-conv">See diagnoses</div>
+            </a>
+            <button
+              onClick={() => deleteNotification(notification.id)}
+              className="delete-conv"
+            >
+              Delete
+            </button>
+          </div>
         </div>
       ));
   };
@@ -134,7 +183,7 @@ function List() {
           />
         </div>
       </div>
-      <div className="items">{displayNotifications()}</div>
+      <div className="items-conv">{displayNotifications()}</div>
       <div className="buttons-container-conv">
         <button
           onClick={previousPage}

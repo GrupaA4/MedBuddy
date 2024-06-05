@@ -46,9 +46,9 @@
   backdrop-filter: blur(19px) saturate(180%);
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .list-container-mainpage-medic {
-    width: 100%;
+    width: 90%;
   }
 }
 

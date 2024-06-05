@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   .search-conv {
     display: flex;
@@ -13,6 +14,7 @@
     height: 50px;
     margin-top: 2rem;
     margin-bottom: 2rem;
+
     .searchBar-conv {
       flex: 1;
       background-color: #b8e0c6;
@@ -38,8 +40,10 @@
       }
 
       img {
-        width: 20px;
-        height: 20px;
+        height: 40px;
+        width: auto;
+        border-radius: 50%;
+        object-fit: contain;
       }
     }
   }
@@ -48,13 +52,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
   }
 
   .item-conv {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    flex-direction: row;
+   
     gap: 1rem;
     padding: 2rem;
     cursor: pointer;
@@ -77,6 +83,7 @@
       flex-direction: column;
       width: 50%;
       text-align: left;
+
       .emailLink {
         text-decoration: none;
       }
@@ -110,22 +117,60 @@
         background-color: #369986;
       }
     }
+
+    .buttons-section-conv{
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 0 5rem;
+    
+      
+      .see-diagnoses-link{
+      text-decoration: none;
+     
     .diagnoses-conv {
-      padding: 8px 16px;
-      background-color: #a1c7ae;
+      padding: 8px 40px;
       border: 1px solid #002845;
       border-radius: 10px;
       cursor: pointer;
       outline: none;
-      margin-right: 10px;
+      text-align: center;
       font-family: "Oswald";
-      margin-left: 10rem;
+      font-weight: 600;
+      font-size: 18px;
+      color: #002845;
+      background-color: #369986;
+      
     }
+  }
     .diagnoses-conv:hover {
+     color: white;
+    }
+
+
+
+    .delete-conv {
+      padding: 8px 16px;
+      
+      border: 1px solid #002845;
+      border-radius: 10px;
+      cursor: pointer;
+      outline: none;
+      font-family: "Oswald";
+      color:red;
+      font-weight: 600;
+    }
+
+    .delete-conv:hover {
       color: white;
       background-color: #369986;
     }
   }
+  }
+
   .buttons-container-conv {
     display: flex;
     flex-direction: row;
@@ -152,10 +197,53 @@
   }
 }
 
+@media only screen and (max-width: 950px){
+
+  .List{
+    .item-conv {
+   
+      .buttons-section-conv{
+     
+        .see-diagnoses-link{
+     
+   
+          .diagnoses-conv {
+       
+            padding: 5px 30px;
+          
+            font-size: 15px;
+           
+    }
+      }
+    }}
+  }
+
+
+
+}
+@media only screen and (max-width: 880px) {
+  .List{
+    .item-conv {
+      align-items: flex-start;
+      flex-direction: column;
+   
+      .buttons-section-conv{
+       align-items: flex-start;
+        flex-direction: row;
+        justify-content: flex-start;
+    }}
+  }
+
+}
 @media only screen and (max-width: 755px) {
+
+
+
+
   .item-conv {
     gap: 0.1rem;
   }
+
   .item-conv img {
     width: auto;
     height: 2rem;
@@ -163,12 +251,15 @@
 
   .texts-conv {
     margin-left: 0px;
+
     span {
       font-size: 10px;
+
       .userName-conv {
         font-size: 10px;
       }
     }
+
     .userEmail-conv {
       font-size: 12px;
     }

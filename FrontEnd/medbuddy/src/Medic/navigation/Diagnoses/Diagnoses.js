@@ -9,7 +9,6 @@ import EditableInput from "./input/EditableInput";
 import NewDiagnoses from "./input/NewDiagnosis";
 
 function Diagnostic() {
-  const [isMobileMenu, setIsMobileMenu] = useState(false);
   const [diagnoses, setDiagnoses] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
   const [buttonText, setButtonText] = useState("Add new diagnosis");
@@ -145,8 +144,6 @@ function Diagnostic() {
   };
   const addNewDiagnosis = () => {
     setIsClicked((isClicked) => !isClicked);
-    if (isClicked === true) setButtonText("Cancel");
-    else setButtonText("Add new diagnosis");
   };
 
   return (
@@ -154,82 +151,76 @@ function Diagnostic() {
       <div className="navbar-container-diagnosis">
         <Navbar />
       </div>
-      {!isMobileMenu && (
-        <>
-          <section className="introduction_section">
-            <div className="introduction_section__text">
-              <h1 className="introduction_section__text_title">
-                Patient's Diagnoses
-              </h1>
-              <div className="introduction_section__text_description">
-                The Diagnoses Page offers doctors a concise summary of past
-                diagnoses and prescribed medications for a patient, complete
-                with the prescribing doctor's details and dates, facilitating a
-                clear and contextual review of their medical history.
-                <br />
-                Doctors can also alter the medication and diagnosis fields,
-                ensuring that the patient's records are accurate and up-to-date
-                based on the latest medical assessments and treatments.
+      <section className="introduction_section">
+        <div className="introduction_section__text">
+          <h1 className="introduction_section__text_title">
+            Patient's Diagnoses
+          </h1>
+          <div className="introduction_section__text_description">
+            The Diagnoses Page offers doctors a concise summary of past
+            diagnoses and prescribed medications for a patient, complete with
+            the prescribing doctor's details and dates, facilitating a clear and
+            contextual review of their medical history.
+            <br />
+            Doctors can also alter the medication and diagnosis fields, ensuring
+            that the patient's records are accurate and up-to-date based on the
+            latest medical assessments and treatments.
+          </div>
+        </div>
+        <img
+          className="introduction_section__image"
+          src={Panel}
+          alt="An image"
+        />
+      </section>
+
+      <section className="diagnoses_section">
+        {diagnoses.map((diagnosis, index) => (
+          <div key={index} className="diagnoses_section__diagnose">
+            <div className="diagnoses_section__diagnose_column">
+              <div className="diagnoses_section__diagnose_medication">
+                <div className="diagnoses_section__diagnose_medication_bold">
+                  Diagnosis:
+                </div>
+                <EditableInput
+                  value={diagnosis.title}
+                  onBlur={(newValue) => handleTitleChange(index, newValue)}
+                />
+              </div>
+              <div className="diagnoses_section__diagnose_medication">
+                <div className="diagnoses_section__diagnose_medication_bold">
+                  Medication:
+                </div>
+                <EditableInput
+                  value={diagnosis.medication}
+                  onBlur={(newValue) => handleMedicationChange(index, newValue)}
+                />
               </div>
             </div>
-            <img
-              className="introduction_section__image"
-              src={Panel}
-              alt="An image"
-            />
-          </section>
+            <div className="diagnoses_section__diagnose_column_medic">
+              {diagnosis.doctor}
+            </div>
+            <div className="diagnoses_section__diagnose_column_date">
+              <div>{diagnosis.date}</div>
+              <button
+                className="delete-diagnoses"
+                onClick={() => handleDelete(diagnosis.id)}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
+      </section>
 
-          <section className="diagnoses_section">
-            {diagnoses.map((diagnosis, index) => (
-              <div key={index} className="diagnoses_section__diagnose">
-                <div className="diagnoses_section__diagnose_column">
-                  <div className="diagnoses_section__diagnose_medication">
-                    <div className="diagnoses_section__diagnose_medication_bold">
-                      Diagnosis:
-                    </div>
-                    <EditableInput
-                      value={diagnosis.title}
-                      onBlur={(newValue) => handleTitleChange(index, newValue)}
-                    />
-                  </div>
-                  <div className="diagnoses_section__diagnose_medication">
-                    <div className="diagnoses_section__diagnose_medication_bold">
-                      Medication:
-                    </div>
-                    <EditableInput
-                      value={diagnosis.medication}
-                      onBlur={(newValue) =>
-                        handleMedicationChange(index, newValue)
-                      }
-                    />
-                  </div>
-                </div>
-                <div className="diagnoses_section__diagnose_column_medic">
-                  {diagnosis.doctor}
-                </div>
-                <div className="diagnoses_section__diagnose_column_date">
-                  <div>{diagnosis.date}</div>
-                  <button
-                    className="delete-diagnoses"
-                    onClick={() => handleDelete(diagnosis.id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            ))}
-          </section>
-        </>
-      )}
-
-      <section className="new_diagnoses_section">
-        {isClicked && <NewDiagnoses />}
+      <section className="add_new_section">
+        {isClicked && <NewDiagnoses id={id} />}
       </section>
 
       <section className="add-new-diagnoses-section">
         <div>
           <button className="add-new-diagnoses" onClick={addNewDiagnosis}>
-            {buttonText}
+            {!isClicked ? "Add new diagnoses" : "Cancel"}
           </button>
         </div>
       </section>
