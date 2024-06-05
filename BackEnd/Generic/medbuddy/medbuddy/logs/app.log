@@ -222,3 +222,13 @@
 2024-06-05 22:15:21 DEBUG DaoAuthenticationProvider:199 - Authenticated user
 2024-06-05 22:15:21 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=gerardo.dietrich@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
 2024-06-05 22:15:21 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getallnotifications/b9ce6987-d463-4925-917a-c7a479059f0b
+2024-06-05 22:18:05 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getusermedicalhistory/b9ce6987-d463-4925-917a-c7a479059f0b
+2024-06-05 22:18:06 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getusermedicalhistory/b9ce6987-d463-4925-917a-c7a479059f0b
+2024-06-05 22:18:06 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getusermedicalhistory/b9ce6987-d463-4925-917a-c7a479059f0b
+2024-06-05 22:18:06 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-05 22:18:06 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=gerardo.dietrich@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-05 22:18:06 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getusermedicalhistory/b9ce6987-d463-4925-917a-c7a479059f0b
+2024-06-05 22:18:06 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getusermedicalhistory/b9ce6987-d463-4925-917a-c7a479059f0b
+2024-06-05 22:18:06 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-05 22:18:06 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=gerardo.dietrich@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-05 22:18:06 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getusermedicalhistory/b9ce6987-d463-4925-917a-c7a479059f0b
