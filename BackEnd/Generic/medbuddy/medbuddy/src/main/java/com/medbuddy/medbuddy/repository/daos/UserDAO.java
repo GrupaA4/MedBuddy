@@ -296,6 +296,10 @@ public class UserDAO {
         }
     }
 
+    public void softDeleteReportsOnUser(UUID userId) {
+        jdbcTemplate.update("UPDATE reports SET isDeleted = 1 WHERE reportedUser = ?", userId.toString());
+    }
+
     public boolean isMedic(UUID userId) {
         String sql = "SELECT COUNT(1) FROM medic WHERE userId = ?";
         Integer numberOfMedicsFound = jdbcTemplate.queryForObject(sql, Integer.class, userId.toString());

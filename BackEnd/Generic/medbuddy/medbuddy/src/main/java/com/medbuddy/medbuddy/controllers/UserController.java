@@ -89,7 +89,7 @@ public class UserController {
     public UserResponseBodies.UserProfile viewProfile(@PathVariable UUID userId) {
         User user = userService.getUser(userId);
         return new UserResponseBodies.UserProfile(user,
-                ImageProcessingUtil.extractImage(user.getProfileImageNumber(), user.getImageExtension(), "BackEnd\\Generic\\Database\\Profiles"));
+                ImageProcessingUtil.extractImage(user.getProfileImageNumber(), user.getImageExtension(), "src\\Database\\Profiles"));
     }
 
     //works
@@ -97,7 +97,7 @@ public class UserController {
     public UserResponseBodies.UserBasicInfo getBasicInfo(@PathVariable UUID userId) {
         User user = userService.getUser(userId);
         return new UserResponseBodies.UserBasicInfo(user,
-                ImageProcessingUtil.extractImage(user.getProfileImageNumber(), user.getImageExtension(), "BackEnd\\Generic\\Database\\Profiles"));
+                ImageProcessingUtil.extractImage(user.getProfileImageNumber(), user.getImageExtension(), "src\\Database\\Profiles"));
     }
 
     //works
@@ -113,8 +113,8 @@ public class UserController {
     public UserResponseBodies.MedicProfile viewMedicProfile(@PathVariable UUID userId) {
         Medic medic = userService.getMedicProfile(userId);
         return new UserResponseBodies.MedicProfile(medic,
-                ImageProcessingUtil.extractImage(medic.getProfileImageNumber(), medic.getImageExtension(), "BackEnd\\Generic\\Database\\Profiles"),
-                ImageProcessingUtil.extractImage(medic.getCertificateImageNumber(), medic.getCertificateExtension(), "BackEnd\\Generic\\Database\\Certificates"));
+                ImageProcessingUtil.extractImage(medic.getProfileImageNumber(), medic.getImageExtension(), "src\\Database\\Profiles"),
+                ImageProcessingUtil.extractImage(medic.getCertificateImageNumber(), medic.getCertificateExtension(), "src\\Database\\Certificates"));
     }
 
     //works (mostly, image problems)

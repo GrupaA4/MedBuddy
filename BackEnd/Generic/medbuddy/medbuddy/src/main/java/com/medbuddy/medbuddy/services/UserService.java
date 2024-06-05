@@ -47,7 +47,7 @@ public class UserService {
         userRequest.setPassword(passwordEncoder.encode(password));
 
         int imageNumber = userDAO.getMaxImageNumber() + 1;
-        ImageProcessingUtil.saveImage(imageNumber, "BackEnd\\Generic\\Database\\Profiles", profileImage, userRequest.getImageExtension());
+        ImageProcessingUtil.saveImage(imageNumber, "src\\Database\\Profiles", profileImage, userRequest.getImageExtension());
         userRequest.setProfileImageNumber(imageNumber);
 
         userRequest.setLastTimeLoggedIn(LocalDate.now());
@@ -66,7 +66,7 @@ public class UserService {
 
         int imageNumber = userDAO.getMaxImageNumber() + 1;
         //add profile image to database
-        ImageProcessingUtil.saveImage(imageNumber, "BackEnd\\Generic\\Database\\Profiles", profileImage, medicRequest.getImageExtension());
+        ImageProcessingUtil.saveImage(imageNumber, "src\\Database\\Profiles", profileImage, medicRequest.getImageExtension());
         medicRequest.setProfileImageNumber(imageNumber);
 
         medicRequest.setLastTimeLoggedIn(LocalDate.now());
@@ -78,7 +78,7 @@ public class UserService {
 
         int certificateNumber = userDAO.getMaxCertificateNumber() + 1;
         //add certificate image to database
-        ImageProcessingUtil.saveImage(certificateNumber, "BackEnd\\Generic\\Database\\Certificates", certificateImage, medicRequest.getCertificateExtension());
+        ImageProcessingUtil.saveImage(certificateNumber, "src\\Database\\Certificates", certificateImage, medicRequest.getCertificateExtension());
         medicRequest.setProfileImageNumber(certificateNumber);
 
         medicRequest.setApproved(false);
@@ -133,6 +133,7 @@ public class UserService {
 
     public void softDeleteUser(UUID userId) {
         userDAO.markUserAsDeleted(userId);
+        userDAO.softDeleteReportsOnUser(userId);
         //delete conversations
         //delete messages
         //delete reports
