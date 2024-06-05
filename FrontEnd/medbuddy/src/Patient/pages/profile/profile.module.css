@@ -1,0 +1,363 @@
+@font-face {
+  font-family: "Bebas_font";
+  src: local("Bebas_Neue"), url("../../fonts/Bebas_Neue/BebasNeue-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Oswald_font";
+  src: local("Oswald"), url("../../fonts/Oswald/Oswald-VariableFont_wght.ttf") format("truetype");
+}
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  margin-left: 4vw;
+  margin-right: 4vw;
+  margin-bottom: 4vh;
+}
+.container .buttons_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container .buttons_container__image {
+  width: 20vw;
+  height: 20vh;
+  position: sticky;
+  top: 3vh;
+}
+.container .buttons_container__cancel_changes {
+  background-color: #369986;
+  position: sticky;
+  top: 30vh;
+}
+.container .buttons_container__save_changes {
+  background-color: #F04242;
+  position: sticky;
+  top: 40vh;
+}
+.container .buttons_container__edit_profile {
+  background-color: #369986;
+  position: sticky;
+  top: 30vh;
+}
+.container .buttons_container__change_password {
+  background-color: #369986;
+  position: sticky;
+  top: 50vh;
+}
+.container .buttons_container__cancel_delete {
+  background-color: #369986;
+  position: sticky;
+  top: 60vh;
+}
+.container .buttons_container__confirm_delete {
+  background-color: #F04242;
+  position: sticky;
+  top: 70vh;
+}
+.container .buttons_container__delete_account {
+  background-color: #F04242;
+  position: sticky;
+  top: 60vh;
+}
+.container .buttons_container__cancel_change_password {
+  background-color: #369986;
+  position: sticky;
+  top: 50vh;
+}
+.container .general_information_container {
+  margin-top: 10vh;
+  margin-bottom: 5vh;
+}
+.container .general_information_container__section__title {
+  font-family: "Bebas_font";
+  font-size: 4vh;
+}
+.container .general_information_container__section__editable_information__div {
+  display: flex;
+  justify-content: space-between;
+}
+.container .general_information_container__section__editable_information__div label {
+  font-family: "Bebas_font";
+  font-size: 3.5vh;
+  color: #069DAE;
+  font-weight: 100;
+  margin-right: 2vw;
+}
+.container .general_information_container__section__editable_information__div input {
+  font-family: "Oswald_font";
+  font-size: 3vh;
+}
+.container .general_information_container__section__editable_information__picture {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.container .general_information_container__section__non_editable_information__div {
+  display: flex;
+  justify-content: space-between;
+}
+.container .general_information_container__section__non_editable_information__div h3 {
+  font-family: "Bebas_font";
+  font-size: 3.5vh;
+  color: #069DAE;
+  font-weight: 100;
+  margin-right: 2vw;
+  padding: 0;
+}
+.container .general_information_container__section__non_editable_information__div p {
+  font-family: "Oswald_font";
+  font-size: 3vh;
+  padding: 0;
+}
+.container .medical_data_container {
+  margin-top: 10vh;
+}
+.container .medical_data_container__section__title {
+  font-family: "Bebas_font";
+  font-size: 4vh;
+}
+.container .medical_data_container__section__editable_information__div {
+  display: flex;
+  justify-content: space-between;
+}
+.container .medical_data_container__section__editable_information__div label {
+  font-family: "Bebas_font";
+  font-size: 2vh;
+  color: #069DAE;
+  font-weight: 100;
+  margin-right: 2vw;
+}
+.container .medical_data_container__section__editable_information__div input {
+  font-family: "Oswald_font";
+  font-size: 2vh;
+}
+.container .medical_data_container__section__non_editable_information__div {
+  display: flex;
+  justify-content: space-between;
+}
+.container .medical_data_container__section__non_editable_information__div h3 {
+  font-family: "Bebas_font";
+  font-size: 2vh;
+  color: #069DAE;
+  font-weight: 100;
+  margin-right: 2vw;
+  padding: 0;
+}
+.container .medical_data_container__section__non_editable_information__div p {
+  font-family: "Oswald_font";
+  font-size: 2vh;
+  padding: 0;
+}
+.container .medical_data_container__section__non_editable_information__diagnostics_link {
+  display: inline-block;
+  padding: 2vh 4vw;
+  border-radius: 3vh;
+  background-color: #369986;
+  text-decoration: none;
+  font-family: "Oswald_font";
+  color: #FFF;
+  margin-left: 1vw;
+  margin-top: 2vh;
+  font-size: 2vh;
+}
+.container .medical_data_container__section__non_editable_information__diagnostics_link:hover {
+  transform: translateY(-0.5vh);
+}
+.container .medical_data_container__section__non_editable_information__diagnostics_link:active {
+  transform: translateY(0.5vh);
+}
+.container .form_container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5vh;
+}
+.container .form_container__title {
+  font-family: "Bebas_font";
+  font-size: 5vh;
+}
+.container .form_container__form label {
+  font-family: "Bebas_font";
+  font-size: 3vh;
+}
+.container .form_container__form input {
+  font-family: "Oswald_font";
+  font-size: 3vh;
+  height: 6vh;
+  width: 20vw;
+}
+.container .form_container__form__submit {
+  background-color: #F04242;
+  margin-left: 5vw;
+}
+
+.button {
+  width: 12vw;
+  height: 5vh;
+  border-radius: 3vh;
+  border-width: 0;
+  font-family: "Oswald_font";
+  color: #FFF;
+  font-size: 2vh;
+  cursor: pointer;
+}
+.button:hover {
+  transform: translateY(-0.5vh);
+}
+.button:active {
+  transform: translateY(0.5vh);
+}
+
+@media screen and (max-width: 850px) {
+  .container .buttons_container__image {
+    width: 15vw;
+    height: 15vh;
+  }
+  .container .general_information_container__section__title {
+    font-size: 3vh;
+  }
+  .container .general_information_container__section__editable_information__div label {
+    font-size: 2.5vh;
+  }
+  .container .general_information_container__section__editable_information__div input {
+    font-size: 2vh;
+  }
+  .container .general_information_container__section__non_editable_information__div h3 {
+    font-size: 2.5vh;
+  }
+  .container .general_information_container__section__non_editable_information__div p {
+    font-size: 2vh;
+  }
+  .container .medical_data_container__section__title {
+    font-size: 3vh;
+  }
+  .container .form_container__form input {
+    width: 30vw;
+  }
+  .container .form_container__form__submit {
+    background-color: #F04242;
+    margin-left: 9vw;
+  }
+  .button {
+    font-size: 1.5vh;
+  }
+}
+@media screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+  .container .buttons_container__image {
+    width: 30vw;
+    height: 30vh;
+    position: relative;
+  }
+  .container .buttons_container__cancel_changes {
+    top: 0vh;
+  }
+  .container .buttons_container__save_changes {
+    top: 0vh;
+  }
+  .container .buttons_container__edit_profile {
+    top: 0vh;
+  }
+  .container .buttons_container__change_password {
+    top: 0vh;
+  }
+  .container .buttons_container__cancel_delete {
+    top: 0vh;
+  }
+  .container .buttons_container__confirm_delete {
+    top: 0vh;
+  }
+  .container .buttons_container__delete_account {
+    top: 0vh;
+  }
+  .container .buttons_container__cancel_change_password {
+    top: 0vh;
+  }
+  .container .general_information_container__section__title {
+    font-size: 5vh;
+  }
+  .container .general_information_container__section__editable_information__div label {
+    font-size: 4vh;
+  }
+  .container .general_information_container__section__editable_information__div input {
+    font-size: 4vh;
+  }
+  .container .general_information_container__section__non_editable_information__div h3 {
+    font-size: 4vh;
+  }
+  .container .general_information_container__section__non_editable_information__div p {
+    font-size: 4vh;
+  }
+  .container .medical_data_container__section__title {
+    font-size: 5vh;
+  }
+  .container .medical_data_container__section__editable_information__div label {
+    font-size: 4vh;
+  }
+  .container .medical_data_container__section__editable_information__div input {
+    font-size: 4vh;
+  }
+  .container .medical_data_container__section__non_editable_information__div h3 {
+    font-size: 4vh;
+  }
+  .container .medical_data_container__section__non_editable_information__div p {
+    font-size: 4vh;
+  }
+  .container .medical_data_container__section__non_editable_information__diagnostics_link {
+    margin-bottom: 4vh;
+    margin-left: 26vw;
+    padding: 2vh 8vw;
+    font-size: 4vh;
+  }
+  .container .form_container {
+    margin-left: 22vw;
+  }
+  .container .form_container__form input {
+    width: 50vw;
+  }
+  .container .form_container__form__submit {
+    margin-bottom: 4vh;
+  }
+  .button {
+    font-size: 3vh;
+    width: 30vw;
+    height: 10vh;
+    border-radius: 5vh;
+  }
+}
+@media screen and (max-width: 1366px) {
+  .container {
+    flex-direction: column;
+  }
+  .container .buttons_container__cancel_changes {
+    margin-bottom: 4vh;
+  }
+  .container .buttons_container__save_changes {
+    margin-bottom: 4vh;
+  }
+  .container .buttons_container__edit_profile {
+    margin-bottom: 4vh;
+  }
+  .container .buttons_container__change_password {
+    margin-bottom: 4vh;
+  }
+  .container .buttons_container__cancel_delete {
+    margin-bottom: 8vh;
+  }
+  .container .buttons_container__confirm_delete {
+    margin-bottom: 4vh;
+  }
+  .container .buttons_container__delete_account {
+    margin-bottom: 4vh;
+  }
+  .container .buttons_container__cancel_change_password {
+    margin-bottom: 4vh;
+  }
+  .button {
+    width: 20vw;
+    height: 8vh;
+    border-radius: 5vh;
+  }
+}/*# sourceMappingURL=profile.module.css.map */

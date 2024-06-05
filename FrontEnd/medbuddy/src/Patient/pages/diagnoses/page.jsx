@@ -8,26 +8,64 @@ import Footer from '../../_componentsReusable/footer/page';
 export default function Diagnostic() {
     const [isMobileMenu, setIsMobileMenu] = useState(false);
     const [diagnoses, setDiagnoses] = useState([]);
+    const [userId, setUserId] = useState("");
 
+    const getCookieValue = (name) => {
+        const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+        for(const cookie of cookies) {
+            if(cookie.startsWith(name + '=')) {
+                return cookie.substring(name.length + 1);
+            }
+        }
+        return null;
+    }
+    const emailFromCookie = getCookieValue('user_email');
+    const passwordFromCookie = getCookieValue('user_pass');
+    const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
+    
     useEffect(() => {
-        // Fetch data from the database using GET method
-        const fetchDiagnoses = async () => {
+        const fetchUserId = async() => {
             try {
-                const response = await fetch('https://2e0181e9-dcc6-4113-a5fa-4d90638f077c.mock.pstmn.io/medbuddy/diagnoses/receive', {
+                const response = await fetch(`http://localhost:7264/medbuddy/getuserid/${emailFromCookie}`, {
                     method: 'GET',
-                }); // Replace with your actual endpoint
-                if (!response.ok) {
+                    headers: {
+                        'Authorization': `Basic ${authorisation}`
+                    }
+                }); 
+                if (response.status !== 200) {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                setDiagnoses(data);
+                setUserId(data.id);
             } catch (error) {
-                console.error('Error fetching diagnoses:', error);
+                console.error('Error fetching user ID:', error);
             }
-        };
+        }
+        fetchUserId();
+    }, [emailFromCookie, authorisation]);
 
-        fetchDiagnoses();
-    }, []);
+    useEffect(() => {
+        if (userId) {
+            const fetchDiagnoses = async () => {
+                try {
+                    const response = await fetch(`http://localhost:7264/medbuddy/getusermedicalhistory/${userId}`, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Basic ${authorisation}`
+                        }
+                    }); 
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    const data = await response.json();
+                    setDiagnoses(data);
+                } catch (error) {
+                    console.error('Error fetching diagnoses:', error);
+                }
+            };
+            fetchDiagnoses();
+        }
+    }, [userId, authorisation]);
 
     return (
         <>

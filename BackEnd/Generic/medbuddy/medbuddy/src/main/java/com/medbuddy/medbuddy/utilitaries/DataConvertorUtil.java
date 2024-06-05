@@ -17,6 +17,26 @@ public abstract class DataConvertorUtil {
         else return 0;
     }
 
+    public static LocalDate turnDotDateToLocalDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+        return LocalDate.parse(date, formatter);
+    }
+
+    public static String turnLocalDateToDotDate(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+        return date.format(formatter);
+    }
+
+    public static LocalDate turnSlashDateToLocalDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+        return LocalDate.parse(date, formatter);
+    }
+
+    public static String turnLocalDateToSlashDate(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+        return date.format(formatter);
+    }
+
     public static LocalDate turnDDMMYYYYToLocalDate(String date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
         return LocalDate.parse(date, formatter);

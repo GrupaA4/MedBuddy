@@ -61,7 +61,7 @@ public class User implements Entity{
         gender = userRequest.isGender();
         pronoun1 = userRequest.getPronoun1();
         pronoun2 = userRequest.getPronoun2();
-        dateOfBirth = DataConvertorUtil.turnDDMMYYYYToLocalDate(userRequest.getDateOfBirth());
+        dateOfBirth = DataConvertorUtil.turnDotDateToLocalDate(userRequest.getDateOfBirth());
         language = userRequest.getLanguage();
         country = userRequest.getCountry();
         city = userRequest.getCity();
