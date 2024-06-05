@@ -43,7 +43,9 @@ public class UserDAO {
 
     public void updateLastTimeLoggedOn(UUID userId, LocalDate date) {
         String sql = "UPDATE appuser SET lastTimeLoggedIn = ? WHERE id = ?";
-        int numberOfUsersUpdated = jdbcTemplate.update(sql, date, userId);
+        int numberOfUsersUpdated = jdbcTemplate.update(sql,
+                Date.valueOf(date),
+                userId.toString());
 
         switch (numberOfUsersUpdated) {
             case 0:
