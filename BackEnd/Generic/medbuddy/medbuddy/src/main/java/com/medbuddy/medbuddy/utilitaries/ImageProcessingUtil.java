@@ -1,5 +1,6 @@
 package com.medbuddy.medbuddy.utilitaries;
 
+import com.medbuddy.medbuddy.models.User;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -52,6 +53,22 @@ public class ImageProcessingUtil {
             inputStream.close();
             return Base64.getEncoder().encodeToString(imageData);
         } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static Boolean doesImageCorrespondToUser(byte[] newImageData, User user) {
+        try{
+            String imagePath = "src\\Database\\Profiles" + File.separator +"image" + user.getProfileImageNumber() + "." + user.getImageExtension();
+            File imageFile = new File(imagePath);
+            FileInputStream inputStream = new FileInputStream(imageFile);
+            byte[] imageData = new byte[(int) imageFile.length()];
+            inputStream.read(imageData);
+            inputStream.close();
+            return Arrays.equals(imageData, newImageData);
+        } catch (IOException e)
+        {
             e.printStackTrace();
             return null;
         }
