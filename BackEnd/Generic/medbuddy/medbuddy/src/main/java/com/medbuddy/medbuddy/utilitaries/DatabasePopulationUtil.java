@@ -3,9 +3,12 @@ package com.medbuddy.medbuddy.utilitaries;
 import com.medbuddy.medbuddy.models.*;
 import com.medbuddy.medbuddy.repository.daos.*;
 import com.medbuddy.medbuddy.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -17,60 +20,42 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-public class DatabasePopulationUtil {
-    private final UserDAO userDAO;
-    private final MedicalHistoryDAO medicalHistoryDAO;
-    private final AdminFunctionalityDAO adminFunctionalityDAO;
-    private final NotificationsDAO notificationsDAO;
-    private final BCryptPasswordEncoder encoder;
-    private final List<User> users;
+@Component
+public class DatabasePopulationUtil implements CommandLineRunner {
+    @Autowired
+    private UserDAO userDAO;
+    @Autowired
+    private MedicalHistoryDAO medicalHistoryDAO;
+    @Autowired
+    private AdminFunctionalityDAO adminFunctionalityDAO;
+    @Autowired
+    private NotificationsDAO notificationsDAO;
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+    private List<User> users  = new ArrayList<>();
 
-    public DatabasePopulationUtil(UserDAO userDAO, MedicalHistoryDAO medicalHistoryDAO,
-            AdminFunctionalityDAO adminFunctionalityDAO, NotificationsDAO notificationsDAO) {
-        this.userDAO = userDAO;
-        this.medicalHistoryDAO = medicalHistoryDAO;
-        this.adminFunctionalityDAO = adminFunctionalityDAO;
-        this.notificationsDAO = notificationsDAO;
-        this.encoder = new BCryptPasswordEncoder();
-        users = new ArrayList<>();
+    @Override
+    public void run(String... args) throws Exception {
+        addFirst();
+        addSecond();
+        addThird();
+        deleteUsers();
     }
 
-    public static void main(String[] args) {
-        JdbcTemplate jdbcTemplate = getJdbcTemplate();
-        MedicalHistoryDAO medicalHistoryDAO = new MedicalHistoryDAO(jdbcTemplate);
-        UserDAO userDAO = new UserDAO(jdbcTemplate);
-        NotificationsDAO notificationsDAO = new NotificationsDAO(jdbcTemplate);
-        AdminFunctionalityDAO adminFunctionalityDAO = new AdminFunctionalityDAO(jdbcTemplate);
-        DatabasePopulationUtil util = new DatabasePopulationUtil(userDAO, medicalHistoryDAO, adminFunctionalityDAO, notificationsDAO);
-        addFirst(util);
-        addSecond(util);
-        addThird(util);
-        commenceUserDeletion(util);
+    public void addFirst() {
+        processUserFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/user.txt");
+        processMedicFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medic.txt");
     }
 
-    public static void addFirst(DatabasePopulationUtil util) {
-        util.processUserFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/user.txt");
-        util.processMedicFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medic.txt");
+    public void addSecond() {
+        processMedicalHistoryFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medical_history.txt");
     }
 
-    public static void addSecond(DatabasePopulationUtil util) {
-        util.processMedicalHistoryFile(
-                "src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medical_history.txt");
-    }
-
-    public static void addThird(DatabasePopulationUtil util) {
-        util.processReportFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/report.txt");
-        util.processNotificationsFile(
-                "src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/notification.txt");
-    }
-
-    private static JdbcTemplate getJdbcTemplate() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
-        dataSource.setUsername("Medbuddy");
-        dataSource.setPassword("Medbuddy");
-        return new JdbcTemplate(dataSource);
+    public void addThird() {
+        processReportFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/report.txt");
+        processNotificationsFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/notification.txt");
     }
 
     public void processMedicFile(String csvFile) {
@@ -267,9 +252,6 @@ public class DatabasePopulationUtil {
         }
     }
 
-    public static void commenceUserDeletion(DatabasePopulationUtil util){
-        util.deleteUsers();;
-    }
     public void deleteUsers(){
         for(User user : users){
             Random random = new Random();

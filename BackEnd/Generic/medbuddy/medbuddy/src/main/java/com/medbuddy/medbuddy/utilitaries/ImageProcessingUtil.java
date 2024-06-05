@@ -59,16 +59,15 @@ public class ImageProcessingUtil {
     }
 
     public static Boolean doesImageCorrespondToUser(String newImageData, User user) {
-        try{
-            String imagePath = "src\\Database\\Profiles" + File.separator +"image" + user.getProfileImageNumber() + "." + user.getImageExtension();
+        try {
+            String imagePath = "src\\Database\\Profiles" + File.separator + "image" + user.getProfileImageNumber() + "." + user.getImageExtension();
             File imageFile = new File(imagePath);
             FileInputStream inputStream = new FileInputStream(imageFile);
             byte[] imageData = new byte[(int) imageFile.length()];
             inputStream.read(imageData);
             inputStream.close();
             return Arrays.equals(imageData, getImageDataAsBytes(newImageData));
-        } catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
