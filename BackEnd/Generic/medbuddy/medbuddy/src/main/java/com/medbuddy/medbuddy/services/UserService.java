@@ -134,6 +134,8 @@ public class UserService {
     public void softDeleteUser(UUID userId) {
         userDAO.markUserAsDeleted(userId);
         userDAO.softDeleteReportsOnUser(userId);
+        userDAO.softDeleteMedicalHistoryForUser(userId);
+        userDAO.deleteReportsMadeByUser(userId);
         //delete conversations
         //delete messages
         //delete reports

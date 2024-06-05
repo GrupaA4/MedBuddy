@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.xml.validation.Validator;
 import java.time.LocalDate;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -106,10 +107,12 @@ public class AdminFunctionalityService {
 
     public List<Medic> getRequestingMedics() {
         List<Medic> medics = adminFunctionalityRepository.getRequestingMedics();
-        for(var medic : medics) {
+        Iterator<Medic> iterator = medics.iterator();
+        while (iterator.hasNext()) {
+            Medic medic = iterator.next();
             medic.setId(userRepository.getUserIdOfMedic(medic.getMedicId()));
-            if(!EntityValidator.validate(userRepository.getUserById(medic.getId()))) {
-                medics.remove(medic);
+            if (!EntityValidator.validate(userRepository.getUserById(medic.getId()))) {
+                iterator.remove();
             }
         }
         return medics;

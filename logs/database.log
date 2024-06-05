@@ -1,0 +1,374 @@
+2024-06-05 23:31:32 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:32 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:32 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:32 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:32 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:32 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:32 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:32 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:32 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:32 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:32 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:32 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:33 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:33 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:33 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:33 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:33 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:33 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:33 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:33 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:33 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:33 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:33 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:33 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:33 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:33 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:33 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:33 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:33 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:33 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:33 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:33 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:33 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:33 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:34 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:34 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:34 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:34 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:34 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:34 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:34 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:34 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:34 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:34 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:34 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:34 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:34 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:34 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:34 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:34 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:34 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:34 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:34 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:34 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:34 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:34 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:35 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:35 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:35 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:35 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:35 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:35 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:35 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:35 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:35 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:35 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:35 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:35 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:35 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:35 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:35 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:35 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:35 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:35 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:35 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:35 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:35 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:35 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:35 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:35 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:36 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:36 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:36 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:36 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:36 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:36 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:36 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:36 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:36 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:36 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO appuser (id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:36 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO medic (id, userId, typeOfMedic, clinic, certificateImageNumber, imageExtension, isApproved) VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:36 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO medic (id, userId, typeOfMedic, clinic, certificateImageNumber, imageExtension, isApproved) VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:36 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO medic (id, userId, typeOfMedic, clinic, certificateImageNumber, imageExtension, isApproved) VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:36 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO medic (id, userId, typeOfMedic, clinic, certificateImageNumber, imageExtension, isApproved) VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:36 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO medic (id, userId, typeOfMedic, clinic, certificateImageNumber, imageExtension, isApproved) VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:36 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:36 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO medic (id, userId, typeOfMedic, clinic, certificateImageNumber, imageExtension, isApproved) VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO medic (id, userId, typeOfMedic, clinic, certificateImageNumber, imageExtension, isApproved) VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO medic (id, userId, typeOfMedic, clinic, certificateImageNumber, imageExtension, isApproved) VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO medic (id, userId, typeOfMedic, clinic, certificateImageNumber, imageExtension, isApproved) VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO medic (id, userId, typeOfMedic, clinic, certificateImageNumber, imageExtension, isApproved) VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:37 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:37 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO MedicalHistory VALUES(?, ?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO reports(ID, REPORTEDUSER, REPORTEDBY, REPORTMESSAGE, TIMECREATED, ISDELETED) VALUES (?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO reports(ID, REPORTEDUSER, REPORTEDBY, REPORTMESSAGE, TIMECREATED, ISDELETED) VALUES (?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO reports(ID, REPORTEDUSER, REPORTEDBY, REPORTMESSAGE, TIMECREATED, ISDELETED) VALUES (?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO reports(ID, REPORTEDUSER, REPORTEDBY, REPORTMESSAGE, TIMECREATED, ISDELETED) VALUES (?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO reports(ID, REPORTEDUSER, REPORTEDBY, REPORTMESSAGE, TIMECREATED, ISDELETED) VALUES (?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO reports(ID, REPORTEDUSER, REPORTEDBY, REPORTMESSAGE, TIMECREATED, ISDELETED) VALUES (?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO reports(ID, REPORTEDUSER, REPORTEDBY, REPORTMESSAGE, TIMECREATED, ISDELETED) VALUES (?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO reports(ID, REPORTEDUSER, REPORTEDBY, REPORTMESSAGE, TIMECREATED, ISDELETED) VALUES (?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO reports(ID, REPORTEDUSER, REPORTEDBY, REPORTMESSAGE, TIMECREATED, ISDELETED) VALUES (?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO reports(ID, REPORTEDUSER, REPORTEDBY, REPORTMESSAGE, TIMECREATED, ISDELETED) VALUES (?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO reports(ID, REPORTEDUSER, REPORTEDBY, REPORTMESSAGE, TIMECREATED, ISDELETED) VALUES (?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO reports(ID, REPORTEDUSER, REPORTEDBY, REPORTMESSAGE, TIMECREATED, ISDELETED) VALUES (?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:38 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:38 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO reports(ID, REPORTEDUSER, REPORTEDBY, REPORTMESSAGE, TIMECREATED, ISDELETED) VALUES (?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO reports(ID, REPORTEDUSER, REPORTEDBY, REPORTMESSAGE, TIMECREATED, ISDELETED) VALUES (?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO reports(ID, REPORTEDUSER, REPORTEDBY, REPORTMESSAGE, TIMECREATED, ISDELETED) VALUES (?, ?, ?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:39 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:39 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [INSERT INTO AppNotifications VALUES(?, ?, ?, ?)]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [UPDATE appuser SET isDeleted = 1 WHERE id = ?]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [UPDATE medicalHistory SET isDeleted = 1 WHERE patientId = ? OR medicId = ?]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [UPDATE reports SET isDeleted = 1 WHERE reportedUser = ?]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [UPDATE appuser SET isDeleted = 1 WHERE id = ?]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [UPDATE medicalHistory SET isDeleted = 1 WHERE patientId = ? OR medicId = ?]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [UPDATE reports SET isDeleted = 1 WHERE reportedUser = ?]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [UPDATE appuser SET isDeleted = 1 WHERE id = ?]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [UPDATE medicalHistory SET isDeleted = 1 WHERE patientId = ? OR medicId = ?]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [UPDATE reports SET isDeleted = 1 WHERE reportedUser = ?]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [UPDATE appuser SET isDeleted = 1 WHERE id = ?]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [UPDATE medicalHistory SET isDeleted = 1 WHERE patientId = ? OR medicId = ?]
+2024-06-05 23:31:40 DEBUG JdbcTemplate:968 - Executing prepared SQL update
+2024-06-05 23:31:40 DEBUG JdbcTemplate:650 - Executing prepared SQL statement [UPDATE reports SET isDeleted = 1 WHERE reportedUser = ?]

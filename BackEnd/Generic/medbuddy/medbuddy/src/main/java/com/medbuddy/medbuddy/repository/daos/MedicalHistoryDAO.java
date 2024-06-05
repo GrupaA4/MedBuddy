@@ -99,4 +99,5 @@ public class MedicalHistoryDAO {
                 Date.valueOf(now),
                 entryId.toString());
     }
+
 }
