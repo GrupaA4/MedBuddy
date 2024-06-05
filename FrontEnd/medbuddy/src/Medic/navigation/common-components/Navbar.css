@@ -3,6 +3,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   min-height: 90px;
+  font-family: "Oswald";
 }
 .nav-logo-container img {
   width: 50px;
