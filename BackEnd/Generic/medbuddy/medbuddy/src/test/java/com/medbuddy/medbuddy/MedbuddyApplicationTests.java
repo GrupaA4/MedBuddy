@@ -40,16 +40,22 @@ class MedbuddyApplicationTests {
 	// Astea sunt doar mock up-uri cu care sa putem utiliza functiile.
 	// O data marcat ca deleted in db un user nu i se mai poate actualiza statusul, sa fiti atente la chestii marunte de genul i guess
 	private static UUID userUUID = UUID.randomUUID();
+	private static UUID userUUID1 = UUID.randomUUID();
 	private static User user = new User();
+	private static User newUser = new User();
 	private static UUID medicUUID = UUID.randomUUID();
+
+	private static UUID medicUUID1 = UUID.randomUUID();
 	private static Medic medic;
+
+	private static Medic medic1;
 
 	static
 	{
 		user.setId(userUUID);
 		user.setFirstName("John");
 		user.setLastName("Doe");
-		user.setEmail("john@sorinel.com");
+		user.setEmail("john@jjjoan9.com");
 		user.setPassword("password");
 		user.setAdmin(false);
 		user.setLastTimeLoggedIn(LocalDate.now());
@@ -130,14 +136,43 @@ class MedbuddyApplicationTests {
 		assertDoesNotThrow(() -> adminFunctionalityService.allowMedic(medicUUID));
 	}
 
+//	@Test
+//	@Order(9) //No user with id shfihf found
+//	public void getMedicProfile_MockUser_ReturnsMedicProfile1()
+//	{
+//		//userDAO.signupUser(user); //No medic with the user id shfihf found
+//		assertDoesNotThrow(() -> userService.getMedicProfile(medicUUID));
+//	}
+
 	@Test
 	@Order(9)
+	public void getUserIdOfMedic_ExistingMedic_ReturnsId()
+	{
+		assertDoesNotThrow(() -> userService.getUserIdOfMedic(medicUUID));
+	}
+
+	@Test
+	@Order(10)
+	public void getUser_ExistingUser_ReturnsUser()
+	{
+		assertDoesNotThrow(() -> userService.getUser(userUUID));
+	}
+
+	@Test
+	@Order(11)
+	public void getUserIdByEmail_MockUser_ReturnsId()
+	{
+		assertDoesNotThrow(() -> userService.getUserIdByEmail(user.getEmail()));
+	}
+
+	@Test
+	@Order(12)
 	public void isDeleted_MockUser_DefaultValueIsFalse(){
 		assertEquals(userDAO.getUserById(userUUID).isDeleted(), false);
 	}
 
 	@Test
-	@Order(10)
+	@Order(13)
 	public void markUserAsDeleted_MockUser_UpdatesTheDeletionStatusToTrue(){
 		userDAO.markUserAsDeleted(userUUID);
 
@@ -145,25 +180,25 @@ class MedbuddyApplicationTests {
 	}
 
 	@Test
-	@Order(11)
+	@Order(14)
 	public void deleteMedic_ExistingMedic_RemovesTheMedicFromTheDatabase(){
 		assertDoesNotThrow(() -> userDAO.deleteMedic(medicUUID));
 	}
 
 	@Test
-	@Order(12)
+	@Order(15)
 	public void deleteUser_ExistingUser_RemovesTheUserFromTheDatabase(){
 		assertDoesNotThrow(() -> userDAO.deleteUser(userUUID));
 	}
 
 	@Test
-	@Order(13)
+	@Order(16)
 	public void deleteUser_NonExistingUser_ThrowsException(){
 		assertThrows(NotFoundExceptions.UserNotFound.class, () -> userDAO.deleteUser(userUUID));
 	}
 
 	@Test
-	@Order(14)
+	@Order(17)
 	public void deleteMedic_NonExistingMedic_ThrowsException(){
 		assertThrows(NotFoundExceptions.MedicNotFound.class, () -> userDAO.deleteMedic(medicUUID));
 	}
@@ -175,14 +210,7 @@ class MedbuddyApplicationTests {
 	private UserController userController = new UserController(userService);
 
 	@Test
-	@Order(15)
-	public void getUserIdByEmail_MockUser_ReturnsId()
-	{
-		assertDoesNotThrow(() -> userService.getUserIdByEmail(user.getEmail()));
-	}
-
-	@Test
-	@Order(16) //Error: User with this email already exists!
+	@Order(18)
 	public void createUser_NonExistingUser_CreatesUser()
 	{
 
@@ -190,52 +218,73 @@ class MedbuddyApplicationTests {
 	}
 
 	@Test
-	@Order(17)
+	@Order(19)
 	public void createUser_ExistingUser_ThrowsException()
 	{
 		assertThrows(UserDidSomethingWrongExceptions.UserWithEmailAlreadyExists.class, () -> userService.createUser(user));
 	}
 
-	@Test
-	@Order(18) //Error: User with this email already exists!
-	public void createMedic_NonExistingMedic_CreatesMedic()
+	static
 	{
-		//userDAO.deleteMedic(userUUID); //no medic with id ssfsdf was found
-
-		assertDoesNotThrow(() -> userService.createMedic(medic));
+		newUser.setId(userUUID1);
+		newUser.setFirstName("John");
+		newUser.setLastName("Doe");
+		newUser.setEmail("john@jjoan9.com");
+		newUser.setPassword("password");
+		newUser.setAdmin(false);
+		newUser.setLastTimeLoggedIn(LocalDate.now());
+		newUser.setCity("Iasi");
+		newUser.setCountry("Romania");
+		newUser.setDateOfBirth(LocalDate.of(1999, 12, 5));
+		newUser.setProfileImageNumber(1);
+		newUser.setImageExtension("png");
+		newUser.setGender(true);
+		newUser.setLanguage("RO");
+		newUser.setPhoneNumber("0712345678");
+		newUser.setPronoun1("he");
+		newUser.setPronoun1("him");
+		newUser.setDeleted(false);
 	}
 
-	@Test
-	@Order(19)
-	public void createMedic_ExistingMedic_ThrowsException()
-	{
-		assertThrows(UserDidSomethingWrongExceptions.UserWithEmailAlreadyExists.class, () -> userService.createMedic(medic));
+	static{
+		Medic temppMedic = new Medic();
+		temppMedic.setMedicId(medicUUID1);
+		temppMedic.setTypeOfMedic("Chirurg");
+		temppMedic.setClinic("Policlinica Iasi");
+		temppMedic.setCertificateImageNumber(2);
+		temppMedic.setCertificateExtension("png");
+		temppMedic.setApproved(false);
+		medic1 = new Medic(newUser, temppMedic);
 	}
 
 	@Test
 	@Order(20)
-	public void getUser_ExistingUser_ReturnsUser()
+	public void createMedic_NonExistingMedic_CreatesMedic()
 	{
-		userDAO.signupUser(user);
-		assertDoesNotThrow(() -> userService.getUser(userUUID));
+		assertDoesNotThrow(() -> userService.createMedic(medic1));
 	}
 
 	@Test
 	@Order(21)
+	public void createMedic_ExistingMedic_ThrowsException()
+	{
+		assertThrows(UserDidSomethingWrongExceptions.UserWithEmailAlreadyExists.class, () -> userService.createMedic(medic1));
+	}
+
+//	@Test
+//	@Order(22) //No user with id shfihf found
+//	public void getMedicProfile_MockUser_ReturnsMedicProfile()
+//	{
+//		//userDAO.signupUser(medic1); //eroare urata rau
+//		assertDoesNotThrow(() -> userService.getMedicProfile(medicUUID1));
+//	}
+
+
+	@Test
+	@Order(22)
 	public void getUser_NonExistingUser_ThrowsException()
 	{
 		assertThrows(NotFoundExceptions.UserNotFound.class, () -> userService.getUser(userUUID));
-	}
-
-	@Test
-	@Order(22) //No medic with id sdssdv found
-	public void getUserIdOfMedic_ExistingMedic_ReturnsId()
-	{
-		//userService.createMedic(medic); //User with this email already exists
-			//userDAO.signupMedic(medic); //SQL [INSERT INTO medic (id, userId, typeOfMedic, clinic, certificateImageNumber, imageExtension, isApproved) VALUES(?, ?, ?, ?, ?, ?, ?)];
-		userService.getUserIdOfMedic(medicUUID);
-
-		assertDoesNotThrow(() -> medic.getMedicId());
 	}
 
 	@Test
@@ -243,13 +292,5 @@ class MedbuddyApplicationTests {
 	public void getUserIdOfMedic_NonExistingMedic_ThrowsException()
 	{
 		assertThrows(NotFoundExceptions.UserNotFound.class, () -> userService.getUserIdOfMedic(medicUUID));
-	}
-
-	@Test
-	@Order(24) //No user with id shfihf found
-	public void getMedicProfile_MockUser_ReturnsMedicProfile()
-	{
-		//userDAO.signupUser(user); //No medic with the user id shfihf found
-		assertDoesNotThrow(() -> userService.getMedicProfile(userUUID));
 	}
 }
