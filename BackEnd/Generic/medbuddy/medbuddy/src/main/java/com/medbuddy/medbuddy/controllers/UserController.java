@@ -89,7 +89,7 @@ public class UserController {
     public UserResponseBodies.UserProfile viewProfile(@PathVariable UUID userId) {
         User user = userService.getUser(userId);
         return new UserResponseBodies.UserProfile(user,
-                ImageProcessingUtil.extractImage(user.getProfileImageNumber(), user.getImageExtension(), "D:\\Facultate\\Anul_II\\Sem2\\Ingineria_programarii\\Proiect\\MedBuddy\\BackEnd\\Generic\\Database\\Profiles"));
+                ImageProcessingUtil.extractImage(user.getProfileImageNumber(), user.getImageExtension(), "C:\\Users\\Laura\\Documents\\ip2\\med\\MedBuddy\\BackEnd\\Generic\\Database\\Profiles"));
     }
 
     //works
@@ -97,7 +97,7 @@ public class UserController {
     public UserResponseBodies.UserBasicInfo getBasicInfo(@PathVariable UUID userId) {
         User user = userService.getUser(userId);
         return new UserResponseBodies.UserBasicInfo(user,
-                ImageProcessingUtil.extractImage(user.getProfileImageNumber(), user.getImageExtension(), "D:\\Facultate\\Anul_II\\Sem2\\Ingineria_programarii\\Proiect\\MedBuddy\\BackEnd\\Generic\\Database\\Profiles"));
+                ImageProcessingUtil.extractImage(user.getProfileImageNumber(), user.getImageExtension(), "C:\\Users\\Laura\\Documents\\ip2\\med\\MedBuddy\\BackEnd\\Generic\\Database\\Profiles"));
     }
 
     //works
@@ -113,8 +113,8 @@ public class UserController {
     public UserResponseBodies.MedicProfile viewMedicProfile(@PathVariable UUID userId) {
         Medic medic = userService.getMedicProfile(userId);
         return new UserResponseBodies.MedicProfile(medic,
-                ImageProcessingUtil.extractImage(medic.getProfileImageNumber(), medic.getImageExtension(), "D:\\Facultate\\Anul_II\\Sem2\\Ingineria_programarii\\Proiect\\MedBuddy\\BackEnd\\Generic\\Database\\Profiles"),
-                ImageProcessingUtil.extractImage(medic.getCertificateImageNumber(), medic.getCertificateExtension(), "D:\\Facultate\\Anul_II\\Sem2\\Ingineria_programarii\\Proiect\\MedBuddy\\BackEnd\\Generic\\Database\\Certificates"));
+                ImageProcessingUtil.extractImage(medic.getProfileImageNumber(), medic.getImageExtension(), "C:\\Users\\Laura\\Documents\\ip2\\med\\MedBuddy\\BackEnd\\Generic\\Database\\Profiles"),
+                ImageProcessingUtil.extractImage(medic.getCertificateImageNumber(), medic.getCertificateExtension(), "C:\\Users\\Laura\\Documents\\ip2\\med\\MedBuddy\\BackEnd\\Generic\\Database\\Certificates"));
     }
 
     //works (mostly, image problems)

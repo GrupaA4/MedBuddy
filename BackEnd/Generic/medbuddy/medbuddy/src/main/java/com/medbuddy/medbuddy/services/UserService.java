@@ -66,7 +66,7 @@ public class UserService {
 
         int imageNumber = userDAO.getMaxImageNumber() + 1;
         //add profile image to database
-        ImageProcessingUtil.saveImage(imageNumber, "D:\\Facultate\\Anul_II\\Sem2\\Ingineria_programarii\\Proiect\\MedBuddy\\BackEnd\\Generic\\Database\\Profiles", profileImage, medicRequest.getImageExtension());
+        ImageProcessingUtil.saveImage(imageNumber, "C:\\Users\\Laura\\Documents\\ip2\\med\\MedBuddy\\BackEnd\\Generic\\Database\\Profiles", profileImage, medicRequest.getImageExtension());
         medicRequest.setProfileImageNumber(imageNumber);
 
         medicRequest.setLastTimeLoggedIn(LocalDate.now());
@@ -78,7 +78,7 @@ public class UserService {
 
         int certificateNumber = userDAO.getMaxCertificateNumber() + 1;
         //add certificate image to database
-        ImageProcessingUtil.saveImage(certificateNumber, "D:\\Facultate\\Anul_II\\Sem2\\Ingineria_programarii\\Proiect\\MedBuddy\\BackEnd\\Generic\\Database\\Certificates", certificateImage, medicRequest.getCertificateExtension());
+        ImageProcessingUtil.saveImage(certificateNumber, "C:\\Users\\Laura\\Documents\\ip2\\med\\MedBuddy\\BackEnd\\Generic\\Database\\Certificates", certificateImage, medicRequest.getCertificateExtension());
         medicRequest.setProfileImageNumber(certificateNumber);
 
         medicRequest.setApproved(false);
