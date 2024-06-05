@@ -300,6 +300,10 @@ public class UserDAO {
         jdbcTemplate.update("UPDATE reports SET isDeleted = 1 WHERE reportedUser = ?", userId.toString());
     }
 
+    public void softDeleteMedicalHistoryForUser(UUID userId) {
+        jdbcTemplate.update("UPDATE medicalHistory SET isDeleted = 1 WHERE patientId = ?", userId.toString());
+    }
+
     public boolean isMedic(UUID userId) {
         String sql = "SELECT COUNT(1) FROM medic WHERE userId = ?";
         Integer numberOfMedicsFound = jdbcTemplate.queryForObject(sql, Integer.class, userId.toString());
