@@ -6,9 +6,9 @@ import Doctors from './Doctors.png';
 import Cookies from 'js-cookie';
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [warning, setWarning] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [warning, setWarning] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {

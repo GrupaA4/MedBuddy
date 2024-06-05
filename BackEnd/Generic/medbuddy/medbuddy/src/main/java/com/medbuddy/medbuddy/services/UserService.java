@@ -47,7 +47,7 @@ public class UserService {
         userRequest.setPassword(passwordEncoder.encode(password));
 
         int imageNumber = userDAO.getMaxImageNumber() + 1;
-        ImageProcessingUtil.saveImage(imageNumber, "D:\\Facultate\\Anul_II\\Sem2\\Ingineria_programarii\\Proiect\\MedBuddy\\BackEnd\\Generic\\Database\\Profiles", profileImage, userRequest.getImageExtension());
+        ImageProcessingUtil.saveImage(imageNumber, "C:\\Users\\Laura\\Documents\\ip2\\med\\MedBuddy\\BackEnd\\Generic\\Database\\", profileImage, userRequest.getImageExtension());
         userRequest.setProfileImageNumber(imageNumber);
 
         userRequest.setLastTimeLoggedIn(LocalDate.now());
