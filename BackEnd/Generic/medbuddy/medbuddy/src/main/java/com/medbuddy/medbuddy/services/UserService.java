@@ -23,10 +23,6 @@ public class UserService {
     @Autowired
     private UserDAO userDAO;
 
-    public boolean loginUser(String email, String password) {
-        return userDAO.loginUser(email, password);//throws exceptions if email doesn't exist
-    }
-
     public UUID getUserIdByEmail(String email) {
         UUID id = userDAO.getUserId(email);
 

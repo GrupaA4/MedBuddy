@@ -64,7 +64,7 @@ public class AdminFunctionalityResponseBodies {
             reportedUserId = report.getReportedUser();
             reporterUserId = report.getReportedBy();
             message = report.getReportMessage();
-            timeCreated = DataConvertorUtil.turnLocalDateToDDMMYYYY(report.getTimeCreated());
+            timeCreated = DataConvertorUtil.turnLocalDateToDotDate(report.getTimeCreated());
         }
     }
 

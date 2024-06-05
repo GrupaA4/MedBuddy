@@ -18,7 +18,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+public class    SecurityConfig {
 
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .cors(withDefaults())
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/medbuddy/signup", "/medbuddy/signupmedic", "/medbuddy/login").permitAll()
+                                .requestMatchers("/medbuddy/signup", "/medbuddy/signupmedic").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .httpBasic(withDefaults());

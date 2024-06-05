@@ -33,7 +33,7 @@ public class UserResponseBodies {
             gender = user.isGender();
             pronoun1 = user.getPronoun1();
             pronoun2 = user.getPronoun2();
-            dateOfBirth = DataConvertorUtil.turnLocalDateToDDMMYYYY(user.getDateOfBirth());
+            dateOfBirth = DataConvertorUtil.turnLocalDateToDotDate(user.getDateOfBirth());
             language = user.getLanguage();
             country = user.getCountry();
             city = user.getCity();
@@ -92,7 +92,7 @@ public class UserResponseBodies {
             gender = medic.isGender();
             pronoun1 = medic.getPronoun1();
             pronoun2 = medic.getPronoun2();
-            dateOfBirth = DataConvertorUtil.turnLocalDateToDDMMYYYY(medic.getDateOfBirth());
+            dateOfBirth = DataConvertorUtil.turnLocalDateToDotDate(medic.getDateOfBirth());
             language = medic.getLanguage();
             country = medic.getCountry();
             city = medic.getCity();
