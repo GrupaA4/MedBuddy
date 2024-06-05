@@ -7,7 +7,7 @@ import checklist from "../assets/checklist.png";
 const UserPage = () => {
   const [medics, setMedics] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const medicsPerPage = 10;
+  const medicsPerPage = 5;
   const navigate = useNavigate();
 
   const redirectTop = () => {
