@@ -171,7 +171,15 @@ const AdminReportPage = () => {
             className={styles.container1_admin_report_page__square}
           >
             <div className={styles.container1_admin_report_page__square__icon}>
-              <p>PHOTO</p>
+              {report.profileImage && report.imageExtension ? (
+                <img
+                  src={`data:image/${report.imageExtension};base64,${report.profileImage}`}
+                  alt="Profile"
+                  className={styles.profile_image}
+                />
+              ) : (
+                <p>PHOTO</p>
+              )}
             </div>
             <p className={styles.container1_admin_report_page__square__data}>
               Person reported:{" "}
