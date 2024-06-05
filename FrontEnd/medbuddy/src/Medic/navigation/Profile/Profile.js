@@ -6,24 +6,26 @@ import Logo from '../common-components/logoB.png';
 import Cookies from 'js-cookie';
 
 export default function Profile() {
+
+  //delete account window
   const [showPopupDelete, setShowPopupDelete] = useState(false);
 
   const togglePopupDelete = () => {
     setShowPopupDelete(!showPopupDelete);
   };
-
+  //change password window
   const [showPopupPassword, setShowPopupPassword] = useState(false);
 
   const togglePopupPassword = () => {
     setShowPopupPassword(!showPopupPassword);
   };
-
+  //edit profile mode
   const [isEditing, setIsEditing] = useState(false);
-
+  //basic account info
   const [userId, setUserId] = useState('');
     const emailFromCookie = Cookies.get("user_email");
     const passwordFromCookie = Cookies.get("user_pass");
-
+  //info for account
     const [name, setName] = useState('My Name');
     const [surname, setSurname] = useState('My Surname');
     const [email, setEmail] = useState('example@example.com');
@@ -38,6 +40,7 @@ export default function Profile() {
     const [clinic, setClinic] = useState('Clinic');
     const [specialization, setSpecialization] = useState('Specialization');
     const [profilePicture,setProfilePicture]=useState('');
+    /////extension IMAGE
     const [imageExtension, setImageExtension]=useState('');
 
 
@@ -55,10 +58,10 @@ export default function Profile() {
     const [initialClinic, setInitialClinic] = useState('Clinic');
     const [initialSpecialization, setInitialSpecialization] = useState('Specialization');
     const [initialProfilePicture, setInitialProfilePicture] = useState('');
-    const[initialImageExtension,setInitialImageExtenstion]=useState('');
+    
 
     const [imageUrl, setImageUrl] = useState("");
-    const [extension, setExtension] = useState("");
+    const [extension, setExtension] = useState(""); //////////extensie CE
 
     const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
 
@@ -142,6 +145,7 @@ export default function Profile() {
                     console.log('Retrieved profile successfully');
                 }
                 const userData = await response.json();
+                console.log(userData);
                 setEmail(userData.email);
                 setSurname(userData.lastName);
                 setName(userData.firstName);
@@ -157,11 +161,12 @@ export default function Profile() {
                 setSpecialization(userData.typeOfMedic);
                 setClinic(userData.clinic); 
                 //setClinic('clinic');
-                console.log('clinica: '+clinic);
+                console.log('clinica: '+userData.clinic);
                 setProfilePicture(userData.profileImage);
-                setImageExtension(userData.imageExtension);
                 setExtension(userData.imageExtension);
-                console.log('extension: '+extension);
+                
+
+
                 setInitialEmail(email);
                 setInitialSurname(surname);
                 setInitialName(name);
@@ -176,7 +181,7 @@ export default function Profile() {
                 setInitialSpecialization(specialization);
                 setInitialClinic(clinic);
                 setInitialProfilePicture(profilePicture);
-                setInitialImageExtenstion(imageExtension);
+                
             } catch (error) {
                 console.error('Error:', error);
             }
@@ -186,20 +191,12 @@ export default function Profile() {
 }, [userId]);
 
 useEffect(() => {
+    
     setImageUrl(`data:image/${imageExtension};base64,${profilePicture}`);
     console.log(imageUrl);
   }, [profilePicture, imageExtension]);
 
-  // const [profileData, setProfileData] = useState({
-  //   name: 'My Name',
-  //   surname: 'My Surname',
-  //   email: 'example@gmail.com',
-  //   workPhone: '+0000000000',
-  //   city: 'My City',
-  //   country: 'My Country',
-  //   workPlace: 'Hospital/Work Place',
-  //   specialization: 'Specialization'
-  // });
+
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -207,21 +204,12 @@ useEffect(() => {
 
   const handleSaveClick = () => {
     setIsEditing(false);
-    // Save changes logic here
   };
 
   const handleCancelClick = () => {
     setIsEditing(false);
-    // Optionally reset changes here
   };
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setProfileData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value
-  //   }));
-  // };
 
   const handleNameChange = (event) => {
     setName(event.target.value);

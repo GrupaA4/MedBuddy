@@ -12,7 +12,7 @@ import HomeMedic from "./Medic/navigation/MainPage/Conversations";
 import ContactMedic from "./Medic/navigation/Contact/Contact";
 import ProfileMedic from "./Medic/navigation/Profile/Profile";
 import Diagnostic from "./Medic/navigation/Diagnoses/Diagnoses";
-import AboutMedic from "./Medic/navigation/About/about";
+import AboutMedic from "./Medic/navigation/about/page";
 
 import Home from './Patient/pages/home/page';
 import ChatPage from './Patient/pages/chat/page';
