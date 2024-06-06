@@ -46,7 +46,7 @@
 .header__image {
   align-self: left;
   position: absolute;
-  height: 4.4vw;
+  height: 9vh;
   width: 5vw;
   top: 1vh;
   left: 1vw;
@@ -111,6 +111,13 @@
   margin-left: 0px;
   width: 100%;
   height: 12vh;
+}
+
+.container1_admin_report_page_profile_image {
+  height: 34vh;
+  width: 34vh;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .container1_admin_report_page__header__text {
@@ -400,6 +407,13 @@
     align-items: center;
     font-size: 3vh;
     color: #002845;
+  }
+
+  .container1_admin_report_page_profile_image {
+    height: 15vh;
+    width: 14vh;
+    border-radius: 50%;
+    object-fit: cover;
   }
 
   .container1_admin_report_page__square__data {

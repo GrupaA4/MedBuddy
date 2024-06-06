@@ -63,10 +63,6 @@ public class UserDAO {
         }
     }
 
-    public void softDeleteReportsOnUser(UUID userId) {
-        jdbcTemplate.update("UPDATE reports SET isDeleted = 1 WHERE reportedUser = ?", userId.toString());
-    }
-
     public void updateLastTimeLoggedOn(UUID userId, LocalDate date) {
         String sql = "UPDATE appuser SET lastTimeLoggedIn = ? WHERE id = ?";
         int numberOfUsersUpdated = jdbcTemplate.update(sql,
