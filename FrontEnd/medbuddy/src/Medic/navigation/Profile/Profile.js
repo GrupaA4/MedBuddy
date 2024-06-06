@@ -69,6 +69,7 @@ export default function Profile() {
     const [confirmPassword, setConfirmPassword] = useState('');
 
   
+  
     useEffect(() =>{
       const fetchuserId = async () => {
           try{
@@ -110,6 +111,7 @@ export default function Profile() {
       fetchuserId();
   }, [emailFromCookie]);
 
+  
   
   
   useEffect(() => {
@@ -158,6 +160,9 @@ export default function Profile() {
                 setPhone(userData.phoneNumber);
                 setSpecialization(userData.typeOfMedic);
                 setClinic(userData.clinic); 
+
+                setClinic('clinic');
+
 
                 setClinic('clinic');
 
@@ -556,6 +561,13 @@ const handleChangePassword = async (event) => {
                   ): (<></>)
                 }
                 
+                {isEditing?(
+                  <>
+                  <p>New Profile Picture</p>
+                  </>
+                  ): (<></>)
+                }
+                
               </div>
               <div className='list-2-profile'>
               {isEditing ? (
@@ -570,8 +582,6 @@ const handleChangePassword = async (event) => {
                     <p>{specialization}</p>
                     <input className="input_field" type='file' id='upload-pfp' accept="image/png, image/jpg, image/jpeg" 
                       value={profilePicture ? profilePicture.name : ''} onChange={handleProfilePicChange} />
-                      
-                        
                   </>
                 ) : (
                   <>
@@ -640,5 +650,3 @@ const handleChangePassword = async (event) => {
     </div>
   );
 }
-
-

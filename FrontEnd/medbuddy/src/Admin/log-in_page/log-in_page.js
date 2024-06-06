@@ -37,12 +37,12 @@ const LoginPage = () => {
           switch (result.type) {
             case 'Admin':
               navigate('/admin');
-              break;
+              break
             case 'Medic':
-              navigate('/mainPageMedic');
+              navigate('/homeMedic');
               break;
             case 'Patient':
-              navigate('/registerPatient');
+              navigate('/homePatient');
               break;
             default:
               setWarning('Unexpected user type.');
