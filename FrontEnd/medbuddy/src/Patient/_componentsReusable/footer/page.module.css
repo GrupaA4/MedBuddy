@@ -1,0 +1,81 @@
+@font-face {
+  font-family: "Oswald_font";
+  src: local("Oswald"), url("../../fonts/Oswald/Oswald-VariableFont_wght.ttf") format("truetype");
+}
+.page__footer {
+  background-color: #002845;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 10rem;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  font-family: "Oswald_font";
+}
+.page__footer .footer__main_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.page__footer .footer__main_info .page__footer__logo {
+  width: 50%;
+}
+.page__footer .footer__main_info .page__footer__navbar {
+  display: flex;
+  gap: 2rem;
+}
+.page__footer .footer__main_info .page__footer__navbar .page__footer_navbar_link {
+  text-decoration: none;
+  color: #DEF9F1;
+}
+.page__footer .footer__main_info .footer__socials {
+  display: flex;
+  align-items: center;
+}
+.page__footer .footer__main_info .footer__socials .page__footer__link {
+  margin-right: -0.5rem;
+}
+.page__footer .footer__main_info .footer__socials .page__footer__link .footer__socials_link {
+  width: 70%;
+  margin: 0;
+}
+.page__footer .footer__line {
+  border-bottom: 1px solid #DEF9F1;
+  width: 100%;
+  padding-bottom: 0.6rem;
+}
+.page__footer .footer__rights {
+  color: #069DAE;
+  text-align: center;
+  font-size: 0.7rem;
+  margin-top: 0.3rem;
+}
+
+@media screen and (max-width: 750px) {
+  .page__footer {
+    padding: 3rem 10vw 3rem 10vw;
+  }
+  .page__footer .footer__main_info {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .page__footer .footer__main_info .page__logoLink {
+    width: 2rem;
+  }
+  .page__footer .footer__main_info .page__logoLink .page__footer__logo {
+    width: 100%;
+    padding-right: 0;
+  }
+  .page__footer .footer__main_info .footer__socials {
+    display: flex;
+    align-items: center;
+  }
+  .page__footer .footer__main_info .footer__socials .page__footer__link .footer__socials_link {
+    width: 60%;
+  }
+  .page__footer .footer__line {
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+}/*# sourceMappingURL=page.module.css.map */

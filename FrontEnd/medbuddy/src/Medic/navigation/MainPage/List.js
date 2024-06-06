@@ -1,78 +1,150 @@
-import "./List.css"
-import Avatar from './avatar.png';
-import React, {useState} from 'react';
-import SearchIcon from '@mui/icons-material/Search';
+import React, { useState, useEffect } from "react";
+import Cookies from "js-cookie";
+import SearchIcon from "@mui/icons-material/Search";
+import "./List.css";
+import Avatar from "./avatar.png";
 
+function List() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [notifications, setNotifications] = useState([]);
+  const itemsPerPage = 3;
 
-function List(){
+  useEffect(() => {
+    const fetchUserIdAndNotifications = async () => {
+      const email = Cookies.get("user_email");
+      const password = Cookies.get("user_pass");
 
-    const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4; 
+      console.log("Email: ", email);
+      console.log("Parola: ", password);
+      // if (!email || !password) {
+      //   console.error("Missing credentials");
+      //   return;
+      // }
 
-  const conversations = [
-    { id: 1, user: 'Jane Doe', message: 'Hello' },
-    { id: 2, user: 'John Smith', message: 'Hi there' },
-    { id: 3, user: 'Alice', message: 'Hey' },
-    { id: 4, user: 'Bob', message: 'Good morning' },
-    { id: 5, user: 'Eve', message: 'Good evening' },
-    { id: 6, user: '1', message: 'Hello' },
-    { id: 7, user: '2', message: 'Hi there' },
-    { id: 8, user: '3', message: 'Hey' },
-    { id: 9, user: '4', message: 'Good morning' },
-    { id: 10, user: '5', message: 'Good evening' },
-   
-  ];
+      const credentials = btoa(`${email}:${password}`);
 
+      try {
+        // Prima cerere: obține userId pe baza emailului
+        const userIdResponse = await fetch(
+          `http://localhost:7264/medbuddy/getuserid/${email}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Basic ${credentials}`,
+            },
+          }
+        );
+        if (!userIdResponse.ok) {
+          throw new Error("Network response was not ok for userId fetch");
+        }
+        const userIdData = await userIdResponse.json();
+        const userId = userIdData.id;
 
-  const displayConversations = () => {
+        // A doua cerere: obține notificările pe baza userId-ului
+        const notificationsResponse = await fetch(
+          `http://localhost:7264/medbuddy/getallnotifications/${userId}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Basic ${credentials}`,
+            },
+          }
+        );
+        if (!notificationsResponse.ok) {
+          throw new Error(
+            "Network response was not ok for notifications fetch"
+          );
+        }
+        const notificationsData = await notificationsResponse.json();
+        setNotifications(notificationsData.notifications);
+      } catch (error) {
+        console.error("Error fetching notifications:", error);
+      }
+    };
+
+    fetchUserIdAndNotifications();
+  }, []);
+
+  console.log("NOTIFICATIONS: ", notifications);
+
+  const filteredNotifications = notifications.filter((notification) =>
+    `${notification.firstName} ${notification.lastName}`
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+  );
+
+  const displayNotifications = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    return conversations.slice(startIndex, endIndex).map(conversation => (
-      <div className="item" key={conversation.id}>
-        <img src={Avatar} alt="" />
-        <div className="texts">
-          <span>{conversation.user}</span>
-          <p>{conversation.message}</p>
+    return filteredNotifications
+      .slice(startIndex, endIndex)
+      .map((notification) => (
+        <div key={notification.id} className="item-conv">
+          <img src={Avatar} alt="" />
+          <div className="texts-conv">
+            <span>
+              <span className="userName-conv">
+                {notification.firstName} {notification.lastName}
+              </span>{" "}
+              wants to contact you at:{" "}
+            </span>
+            <a href={`mailto:${notification.email}`} className="emailLink-conv">
+              <div className="userEmail-conv">
+                <p>{notification.email}</p>
+              </div>
+            </a>
+          </div>
+          <div className="diagnoses-conv">See diagnoses</div>
         </div>
-      </div>
-    ));
+      ));
   };
 
   const nextPage = () => {
-    setCurrentPage(prevPage => prevPage + 1);
+    setCurrentPage((prevPage) => prevPage + 1);
   };
 
   const previousPage = () => {
-    setCurrentPage(prevPage => prevPage - 1);
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+    setCurrentPage(1); // Resetăm pagina la 1 când se face o căutare nouă
   };
 
   return (
-
     <div className="List">
-      
-
-    <div className="search">
-        <div className="searchBar">
-        <div className="searchIcon">
-        <SearchIcon/>
+      <div className="search-conv">
+        <div className="searchBar-conv">
+          <div className="searchIcon-conv">
+            <SearchIcon />
+          </div>
+          <input
+            type="text"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
         </div>
-        <input type="text" placeholder="Search"/>
-        </div>
-    </div>
-    <div className="items">
-        {displayConversations()}
-    </div>
-
-    <div className="buttons-container">
-        <button onClick={previousPage} disabled={currentPage === 1} className="pre&nextpage-button">
+      </div>
+      <div className="items">{displayNotifications()}</div>
+      <div className="buttons-container-conv">
+        <button
+          onClick={previousPage}
+          disabled={currentPage === 1}
+          className="pre&nextpage-button-conv"
+        >
           Previous
         </button>
-        <button onClick={nextPage} disabled={currentPage * itemsPerPage >= conversations.length} className="pre&nextpage-button">
+        <button
+          onClick={nextPage}
+          disabled={currentPage * itemsPerPage >= filteredNotifications.length}
+          className="pre&nextpage-button-conv"
+        >
           Next
         </button>
       </div>
-    
-    
     </div>
   );
 }

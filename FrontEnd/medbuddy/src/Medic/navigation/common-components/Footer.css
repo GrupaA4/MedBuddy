@@ -1,4 +1,4 @@
-Footer{
+ .footer-medic{
     width: 100%;
     display: flex;
     align-items: center;
@@ -7,7 +7,7 @@ Footer{
     background-color: #002845;
     padding-top: 28px;
     padding-bottom: 28px;
-  }
+  } 
 
 .footer-content{
     max-width: 80%;

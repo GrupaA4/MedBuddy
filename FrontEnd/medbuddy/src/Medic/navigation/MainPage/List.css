@@ -3,15 +3,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  .search {
+
+  .search-conv {
     display: flex;
     align-items: center;
     gap: 20px;
     padding: 10px;
     width: 70%;
     height: 50px;
-
-    .searchBar {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    .searchBar-conv {
       flex: 1;
       background-color: #b8e0c6;
       display: flex;
@@ -23,7 +25,7 @@
       backdrop-filter: blur(20px);
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.311);
 
-      .searchIcon {
+      .searchIcon-conv {
         color: rgb(85, 94, 94);
       }
 
@@ -42,58 +44,96 @@
     }
   }
 
-  .items {
+  .items-conv {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 100%;
   }
 
-  .item {
+  .item-conv {
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding: 20px;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem;
     cursor: pointer;
-    height: 50px;
-    margin-bottom: 20px;
+    height: auto;
+    margin-bottom: 1rem;
     width: 70%;
     background-color: #b8e0c6;
     border-radius: 20px;
     border-bottom: 2px solid grey;
 
     img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      object-fit: cover;
+      width: 3rem;
+      height: auto;
+      border-radius: 80%;
+      margin-right: none;
     }
 
-    .texts {
+    .texts-conv {
       display: flex;
       flex-direction: column;
-      width: 330px;
+      width: 50%;
       text-align: left;
-      margin-top: 10px;
-      margin-left: 15px;
+      .emailLink {
+        text-decoration: none;
+      }
 
       span {
         font-weight: 500;
         font-size: 18.5px;
+        color: rgb(93, 93, 93);
+        margin-bottom: 0.5rem;
+
+        .userName-conv {
+          font-size: 20px;
+          color: #002845;
+        }
       }
 
-      p {
+      .userEmail-conv {
         font-size: 14px;
         font-weight: 300;
         background-color: #a1c7ae;
         border-radius: 20px;
-        padding-left: 10px;
-        height: 25px;
+        height: auto;
+        min-width: 11rem;
+        display: flex;
+
+        align-items: center;
+      }
+
+      .userEmail-conv:hover {
+        color: white;
+        background-color: #369986;
       }
     }
+    .diagnoses-conv {
+      padding: 8px 16px;
+      background-color: #a1c7ae;
+      border: 1px solid #002845;
+      border-radius: 10px;
+      cursor: pointer;
+      outline: none;
+      margin-right: 10px;
+      font-family: "Oswald";
+      //margin-left: 10rem;
+    }
+    .diagnoses:hover {
+      color: white;
+      background-color: #369986;
+    }
+  }
+  .buttons-container-conv {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
   }
 
-  .buttons-container button {
+  .buttons-container-conv button {
     padding: 8px 16px;
     background-color: #369986;
     border: none;
@@ -102,11 +142,40 @@
     outline: none;
     margin-right: 10px;
     font-family: "Oswald";
+    font-size: 22px;
   }
 
-  .buttons-container button:disabled {
+  .buttons-container-conv button:disabled {
     /* Stiluri pentru butoanele dezactivate */
     opacity: 0.7;
     cursor: not-allowed;
+  }
+}
+
+@media only screen and (max-width: 755px) {
+  .item-conv {
+    gap: 0.1rem;
+  }
+  .item-conv img {
+    width: auto;
+    height: 2rem;
+  }
+
+  .texts-conv {
+    margin-left: 0px;
+    span {
+      font-size: 10px;
+      .userName-conv {
+        font-size: 10px;
+      }
+    }
+    .userEmail-conv {
+      font-size: 12px;
+    }
+  }
+
+  .userEmail-conv {
+    width: auto;
+    height: auto;
   }
 }

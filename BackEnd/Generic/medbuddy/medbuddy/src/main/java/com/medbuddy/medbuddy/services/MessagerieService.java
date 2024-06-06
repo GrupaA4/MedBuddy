@@ -20,6 +20,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class MessagerieService {
@@ -29,14 +32,19 @@ public class MessagerieService {
     @Autowired
     UserDAO userDAO;
 
+    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     public void closeConversation() {
         UUID userId = userDAO.getUserId(SecurityUtil.getEmail());
         medbuddyUtil.closeConversation(userId);
     }
 
+    public void startConversationTimer() {
+        scheduler.schedule(this::closeConversation, 15, TimeUnit.MINUTES);
+    }
+
     public Message receiveMessage(int flag) {
         UUID userId = userDAO.getUserId(SecurityUtil.getEmail());
-
+        startConversationTimer();
         if(DataConvertorUtil.turn0or1intoBoolean(flag)) {
             return new Message("Hello, " +
                     userDAO.getUserById(userId).getLastName() + " " +

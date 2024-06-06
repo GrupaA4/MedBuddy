@@ -2,65 +2,52 @@ package com.medbuddy.medbuddy.utilitaries;
 
 import com.medbuddy.medbuddy.models.*;
 import com.medbuddy.medbuddy.repository.daos.*;
+import com.medbuddy.medbuddy.repository.rowmappers.UserRowMapper;
+import com.medbuddy.medbuddy.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
-public class DatabasePopulationUtil {
-    private final UserDAO userDAO;
-    private final MedicalHistoryDAO medicalHistoryDAO;
-    private final AdminFunctionalityDAO adminFunctionalityDAO;
-    private final NotificationsDAO notificationsDAO;
-    private final BCryptPasswordEncoder encoder;
+@Component
+public class DatabasePopulationUtil implements CommandLineRunner {
+    @Autowired
+    private UserDAO userDAO;
+    @Autowired
+    private MedicalHistoryDAO medicalHistoryDAO;
+    @Autowired
+    private AdminFunctionalityDAO adminFunctionalityDAO;
+    @Autowired
+    private NotificationsDAO notificationsDAO;
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+    private List<User> users  = new ArrayList<>();
 
-    public DatabasePopulationUtil(UserDAO userDAO, MedicalHistoryDAO medicalHistoryDAO, AdminFunctionalityDAO adminFunctionalityDAO, NotificationsDAO notificationsDAO) {
-        this.userDAO = userDAO;
-        this.medicalHistoryDAO = medicalHistoryDAO;
-        this.adminFunctionalityDAO = adminFunctionalityDAO;
-        this.notificationsDAO = notificationsDAO;
-        this.encoder = new BCryptPasswordEncoder();
-    }
-
-    public static void main(String[] args) {
-        JdbcTemplate jdbcTemplate = getJdbcTemplate();
-        MedicalHistoryDAO medicalHistoryDAO = new MedicalHistoryDAO(jdbcTemplate);
-        UserDAO userDAO = new UserDAO(jdbcTemplate);
-        NotificationsDAO notificationsDAO = new NotificationsDAO(jdbcTemplate);
-        AdminFunctionalityDAO adminFunctionalityDAO = new AdminFunctionalityDAO(jdbcTemplate);
-        DatabasePopulationUtil util = new DatabasePopulationUtil(userDAO, medicalHistoryDAO, adminFunctionalityDAO, notificationsDAO);
-        addFirst(util);
-        //addSecond(util);
-        //addThird(util);
-    }
-
-    public static void addFirst(DatabasePopulationUtil util) {
-        util.processUserFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/user.txt");
-        util.processMedicFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medic.txt");
-    }
-
-    public static void addSecond(DatabasePopulationUtil util) {
-        util.processMedicalHistoryFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medical_history.txt");
-    }
-
-    public static void addThird(DatabasePopulationUtil util) {
-        util.processReportFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/report.txt");
-        util.processNotificationsFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/notification.txt");
-    }
-
-    private static JdbcTemplate getJdbcTemplate() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
-        dataSource.setUsername("Medbuddy");
-        dataSource.setPassword("Medbuddy");
-        return new JdbcTemplate(dataSource);
+    @Override
+    public void run(String... args) throws Exception {
+        List<User> currentUsers = jdbcTemplate.query("SELECT * FROM appuser", new UserRowMapper());
+        if(currentUsers.size() < 5) {
+            processUserFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/user.txt");
+            processMedicFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medic.txt");
+            processMedicalHistoryFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medical_history.txt");
+            processReportFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/report.txt");
+            processNotificationsFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/notification.txt");
+            deleteUsers();
+        }
     }
 
     public void processMedicFile(String csvFile) {
@@ -131,8 +118,11 @@ public class DatabasePopulationUtil {
                     boolean isAdmin = data[16].equals("1");
                     boolean isDeleted = data[17].equals("1");
 
-                    User user = new User(id, email, password, lastName, firstName, gender, pronoun1, pronoun2, dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension, lastTimeLoggedIn, isAdmin, isDeleted);
+                    User user = new User(id, email, password, lastName, firstName, gender, pronoun1, pronoun2,
+                            dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension,
+                            lastTimeLoggedIn, isAdmin, isDeleted);
                     userDAO.signupUser(user);
+                    users.add(user);
                 } else {
                     System.err.println("invalid : " + line);
                 }
@@ -255,6 +245,16 @@ public class DatabasePopulationUtil {
         }
     }
 
+    public void deleteUsers(){
+        for(User user : users){
+            Random random = new Random();
+            if(random.nextInt(100) >= 95){
+                userDAO.markUserAsDeleted(user.getId());
+                userDAO.softDeleteMedicalHistoryForUser(user.getId());
+                userDAO.softDeleteReportsOnUser(user.getId());
+            }
+        }
+    }
 //    public void processAdminFile(String csvFile) {
 //        String line;
 //        String delimiter = "\\|";
