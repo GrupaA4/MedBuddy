@@ -13,7 +13,7 @@ public class MedbuddyUtil {
     }
 
     public Message receiveMessageFromMedbuddy(UUID userId) {
-        return new Message("Test message");
+        return new Message("Test message rebeca.cruickshank@hotmail.com");
         //receive message
         //check for diagnosis
         //  if diagnosis, then create a MedicalHistoryEntry
