@@ -149,4 +149,8 @@ public class UserService {
     public boolean isMedic(UUID userId) {
         return userDAO.isMedic(userId);
     }
+
+    public void updateLastTimeLoggedOn(UUID userId) {
+        userDAO.updateLastTimeLoggedOn(userId, LocalDate.now());
+    }
 }

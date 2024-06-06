@@ -80,6 +80,7 @@ public class UserResponseBodies {
         private String imageExtension;
         private boolean isAdmin;
         private String typeOfMedic;
+        private String clinic;
 //        private String certificateImage;
         private String certificateImage;
         private String certificateExtension;
@@ -101,6 +102,7 @@ public class UserResponseBodies {
             imageExtension = medic.getImageExtension();
             isAdmin = medic.isAdmin();
             typeOfMedic = medic.getTypeOfMedic();
+            clinic = medic.getClinic();
             this.certificateImage = certificateImage;
             certificateExtension = medic.getCertificateExtension();
             isApproved = medic.isApproved();
