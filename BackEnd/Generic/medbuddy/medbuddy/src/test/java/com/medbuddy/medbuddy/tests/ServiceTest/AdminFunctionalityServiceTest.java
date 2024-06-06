@@ -220,7 +220,7 @@ public class AdminFunctionalityServiceTest {
 
         List<Report> actualReports = adminFunctionalityService.getReports(fromReport, toReport);
 
-        assertEquals(7, actualReports.size());
+        assertEquals(15, actualReports.size());
     }
 
     @Test

@@ -140,7 +140,7 @@ public class MessagerieServiceTest {
     @Order(5)
     public void sendMessageToMedbuddy_ExistingConvo_SendsMessage()
     {
-        assertDoesNotThrow(() -> messagerieService.sendMessageToMedbuddy());
+        assertDoesNotThrow(() -> messagerieService.sendMessageToMedbuddy("hello"));
     }
 
     @Test

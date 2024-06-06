@@ -9,9 +9,7 @@ import com.medbuddy.medbuddy.models.Patient;
 import com.medbuddy.medbuddy.models.User;
 import com.medbuddy.medbuddy.repository.rowmappers.MedicRowMapper;
 import com.medbuddy.medbuddy.repository.rowmappers.UserRowMapper;
-import com.medbuddy.medbuddy.services.UserService;
 import com.medbuddy.medbuddy.utilitaries.DataConvertorUtil;
-import com.medbuddy.medbuddy.utilitaries.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,12 +23,10 @@ import java.util.*;
 public class UserDAO {
 
     private final JdbcTemplate jdbcTemplate;
-    private final UserService userService;
 
     @Autowired
-    public UserDAO(JdbcTemplate jdbcTemplate, UserService userService) {
+    public UserDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-        this.userService = userService;
     }
 
     /**
@@ -315,13 +311,6 @@ public class UserDAO {
         }
     }
 
-    public boolean isAdmin() {
-        String email = SecurityUtil.getEmail();
-        UUID userId =  userService.getUserIdByEmail(email);
-        String sql = "SELECT isAdimn FROM appuser WHERE userId = ?";
-        return jdbcTemplate.queryForObject(sql, Boolean.class, userId.toString());
-    }
-
     public void softDeleteReportsOnUser(UUID userId) {
         jdbcTemplate.update("UPDATE reports SET isDeleted = 1 WHERE reportedUser = ?", userId.toString());
     }
@@ -353,7 +342,7 @@ public class UserDAO {
     }
 
     public List<Medic> chooseMedic(Patient patient, String typeOfMedic) {
-        //specializare
+        //specialization
         String sqlType = "select * from medic where typeOfMedic = ?";
         List<Medic> medics = jdbcTemplate.query(sqlType, new MedicRowMapper(), typeOfMedic);
         if (medics.isEmpty()) {
@@ -389,7 +378,7 @@ public class UserDAO {
         return optimal;
     }
 
-    public String getMedici(Patient patient, String typeOfMedic) {
+    public String getMedics(Patient patient, String typeOfMedic) {
         List<Medic> medics = chooseMedic(patient, typeOfMedic);
 
         if (medics == null || medics.isEmpty()) {
@@ -397,7 +386,7 @@ public class UserDAO {
         }
 
         StringBuilder statement = new StringBuilder("###Diagnosis###");
-        statement.append(medics.get(0).getTypeOfMedic()).append(". Pentru mai multe informatii apelati (");
+        statement.append(medics.get(0).getTypeOfMedic()).append(". For more informations plese contact: (");
 
         for (Medic medic : medics) {
             statement.append(" ").append(medic.getEmail());
