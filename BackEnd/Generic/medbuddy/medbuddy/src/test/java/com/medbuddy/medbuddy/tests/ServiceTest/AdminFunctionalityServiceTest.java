@@ -239,8 +239,8 @@ public class AdminFunctionalityServiceTest {
         List<User> oldestUsers = adminFunctionalityService.getOldestUsers(1, 2);
 
         assertEquals(2, oldestUsers.size());
-        assertEquals(oldestUsers.get(0).getEmail(), "dummy@gmail.com");
-        assertEquals(oldestUsers.get(1).getEmail(), "test@gmail.com");
+        assertEquals(oldestUsers.get(0).getEmail(), "sibyl.murphy@yahoo.com");
+        assertEquals(oldestUsers.get(1).getEmail(), "rubin.smitham@hotmail.com");
     }
 
     @Test

@@ -283,7 +283,7 @@ public class UserServiceTest {
     @Order(23)
     public void getUserIdOfMedic_NonExistingMedic_ThrowsException()
     {
-        assertThrows(NotFoundExceptions.UserNotFound.class, () -> userService.getUserIdOfMedic(medicUUID));
+        assertThrows(NotFoundExceptions.MedicNotFound.class, () -> userService.getUserIdOfMedic(medicUUID));
     }
 
     @Test
