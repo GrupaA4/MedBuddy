@@ -41,7 +41,6 @@ class NotificationsServiceTest {
         UUID userId = UUID.randomUUID();
         List<Notification> notifications = new ArrayList<>();
 
-        // Mocking behavior
         when(notificationsDAO.getAllNotifications(userId)).thenReturn(notifications);
         List<NotificationsResponseBodies.NotificationResponseBody> result = notificationsService.getAllNotifications(userId);
         assertThat(result).isNotNull();

@@ -41,7 +41,7 @@ public class AdminFunctionalityDAOTest {
     private static UUID reportUUID = UUID.randomUUID();
     private static UUID userUUID = UUID.randomUUID();
     private static UUID reportedByUUID = UUID.randomUUID();
-//    private static User user;
+
     private static Report report;
 
     private static User user ;

@@ -235,7 +235,6 @@ class MedbuddyApplicationTests {
 		assertEquals("Park", userFromDb.getLastName());
 		assertEquals("jane@park.com", userFromDb.getEmail());
 		assertTrue(passwordEncoder.matches("newpassword", userFromDb.getPassword()), "Password should match after update");
-//		assertEquals("newpassword", userFromDb.getPassword());
 		assertFalse(userFromDb.isAdmin());
 		assertEquals("Brasov", userFromDb.getCity());
 		assertEquals("Romania", userFromDb.getCountry());
