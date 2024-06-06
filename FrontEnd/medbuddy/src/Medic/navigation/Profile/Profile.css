@@ -218,7 +218,7 @@ input[type="file"]::file-selector-button {
   font-size: 16px;
   margin: 10px;
   cursor: pointer;
-  ext-decoration: none;
+  text-decoration: none;
   color: black;
   font-family: "Oswald";
   background-color: #b8e0c6;
