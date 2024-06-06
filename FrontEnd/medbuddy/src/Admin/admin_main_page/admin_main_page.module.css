@@ -1,11 +1,11 @@
 .body__admin__main__page {
   margin: 0;
   padding: 0;
-  font-family: "Bebas Neue", sans-serif; 
+  font-family: "Bebas Neue", sans-serif;
   background-color: white;
 }
 
-.header__admin__main__page{
+.header__admin__main__page {
   display: flex;
   margin: 0;
   top: 0;
@@ -109,7 +109,7 @@
 .container1__header__admin__main__text {
   color: #002845;
   font-size: 3.5vh;
-  margin-left: 2vw; 
+  margin-left: 2vw;
   align-self: left;
 }
 
@@ -122,7 +122,7 @@
 
 .container1__header__admin__main__page__before {
   position: relative;
-  z-index: 400; 
+  z-index: 400;
   width: 40px;
   height: 40px;
   top: 4vh;
@@ -174,7 +174,7 @@
   background-color: #b8e0c6;
   position: relative;
   margin-bottom: 10vh;
-  left: 2.5vw; 
+  left: 2.5vw;
   width: 55vw;
   height: 45vh;
   top: 25vh;
@@ -188,7 +188,7 @@
   justify-self: left;
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   position: relative;
   height: 34vh;
   width: 34vh;
@@ -198,6 +198,13 @@
   align-items: center;
   color: #002845;
   font-size: 5vh;
+}
+
+.container1__admin__main__page_profile_image {
+  height: 34vh;
+  width: 34vh;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .container1__admin__main__page__square__data {
@@ -235,13 +242,12 @@
   font-size: 5vh;
 }
 
-.conatiner2__admin__main__page__image{
+.conatiner2__admin__main__page__image {
   position: absolute;
   margin-top: 25vh;
   height: 25vh;
   width: 14vw;
 }
-
 
 .container2__admin__main__page__button1 {
   position: absolute;
@@ -294,17 +300,17 @@
 /* Media Queries */
 @media only screen and (max-width: 1900px) {
   .header__paragraph__admin__main__page {
-    margin-left: 65vw; 
+    margin-left: 65vw;
   }
 }
 
-@media only screen and (min-width: 1800px) and (min-height: 800px){
+@media only screen and (min-width: 1800px) and (min-height: 800px) {
   .container1__header__admin__main__page__buttons {
     margin-left: 85vh;
   }
 }
 
-@media only screen and (max-width: 1500px){
+@media only screen and (max-width: 1500px) {
   .container1__header__admin__main__page__buttons {
     margin-left: 65vh;
   }
@@ -312,35 +318,35 @@
 
 @media only screen and (max-width: 1400px) {
   .header__paragraph__admin__main__page {
-    margin-left: 61vw; 
+    margin-left: 61vw;
   }
 
   .container1__header__admin__main__page__buttons {
     margin-left: 58vh;
-  } 
+  }
 }
 
-@media only screen and (max-width: 1350px){
+@media only screen and (max-width: 1350px) {
   .container1__header__admin__main__page__buttons {
     margin-left: 56vh;
   }
-} 
+}
 
 @media only screen and (max-width: 1300px) {
   .header__paragraph__admin__main__page {
-    margin-left: 57vw; 
+    margin-left: 57vw;
   }
 
   .container1__header__admin__main__page__buttons {
     margin-left: 52vh;
-  } 
+  }
 }
 
-@media only screen and (max-width: 1250px){
+@media only screen and (max-width: 1250px) {
   .container1__header__admin__main__page__buttons {
     margin-left: 50vh;
   }
-} 
+}
 
 @media only screen and (max-width: 1200px) and (min-width: 800px) {
   .container1__admin__main__page__square {
@@ -361,12 +367,12 @@
   }
 
   .header__paragraph__admin__main__page {
-    margin-left: 55vw; 
+    margin-left: 55vw;
   }
 
   .container1__header__admin__main__page__buttons {
     margin-left: 48vh;
-  } 
+  }
 }
 
 @media only screen and (max-width: 1170px) {
@@ -389,7 +395,7 @@
 
   .container1__header__admin__main__page__buttons {
     margin-left: 80vh;
-  } 
+  }
 }
 
 @media only screen and (max-width: 1150px) {
@@ -400,7 +406,7 @@
 
 @media only screen and (max-width: 1100px) {
   .header__paragraph__admin__main__page {
-    margin-left: 53vw; 
+    margin-left: 53vw;
   }
 
   .header__image__admin__main__page {
@@ -411,23 +417,22 @@
 
   .container1__header__admin__main__page__buttons {
     margin-left: 72vh;
-  } 
-
+  }
 }
 
 @media only screen and (max-width: 1050px) {
   .header__paragraph__admin__main__page {
-    margin-left: 51vw; 
+    margin-left: 51vw;
   }
 
   .container1__header__admin__main__page__buttons {
     margin-left: 70vh;
-  } 
+  }
 }
 
 @media only screen and (max-width: 1050px) and (min-height: 1350px) {
   .header__paragraph__admin__main__page {
-    margin-left: 28vw; 
+    margin-left: 28vw;
   }
 }
 
@@ -441,16 +446,22 @@
   }
 
   .header__paragraph__admin__main__page {
-    margin-left: 48vw; 
+    margin-left: 48vw;
   }
 
   .container1__header__admin__main__page__buttons {
     margin-left: 65vh;
-  } 
+  }
 
+  .container1__admin__main__page_profile_image {
+    height: 34vh;
+    width: 34vh;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 }
 
-@media only screen and (max-width: 950px){
+@media only screen and (max-width: 950px) {
   .container1__header__admin__main__page__buttons {
     margin-left: 60vh;
   }
@@ -458,11 +469,11 @@
 
 @media only screen and (max-width: 950px) and (min-height: 1100px) {
   .header__paragraph__admin__main__page {
-    margin-left: 27vw; 
+    margin-left: 27vw;
   }
 }
 
-@media only screen and (max-width: 900px){
+@media only screen and (max-width: 900px) {
   .container1__header__admin__main__page__buttons {
     margin-left: 55vh;
   }
@@ -479,7 +490,7 @@
   .container1__admin__main__page__square__icon {
     top: 4vh;
     left: 4vw;
-    justify-self: left; 
+    justify-self: left;
   }
 
   .container1__admin__main__page__square__data {
@@ -491,19 +502,19 @@
   }
 
   .header__paragraph__admin__main__page {
-    margin-left: 46vw; 
+    margin-left: 46vw;
   }
 }
 
-@media only screen and (max-width: 850px){
+@media only screen and (max-width: 850px) {
   .container1__header__admin__main__page__buttons {
     margin-left: 50vh;
   }
-} 
+}
 
 @media only screen and (max-width: 830px) {
   .header__paragraph__admin__main__page {
-    margin-left: 44vw; 
+    margin-left: 44vw;
   }
 }
 
@@ -530,7 +541,7 @@
 
   .container1__header__admin__main__page__buttons {
     margin-left: 45vh;
-  } 
+  }
 }
 
 @media only screen and (max-width: 780px) {
@@ -559,7 +570,7 @@
 
   .container1__header__admin__main__page__buttons {
     margin-left: 40vh;
-  } 
+  }
 }
 
 @media only screen and (max-width: 700px) {
@@ -570,7 +581,7 @@
 
   .container1__header__admin__main__page__buttons {
     margin-left: 35vh;
-  } 
+  }
 }
 
 @media only screen and (max-width: 650px) {
@@ -588,18 +599,17 @@
     width: 35px;
   }
 
-  .container1__header__admin__main__page__before:active{
+  .container1__header__admin__main__page__before:active {
     box-shadow: 0 27px #b8e0c6;
   }
 
-  .container1__header__admin__main__page__next:active{
+  .container1__header__admin__main__page__next:active {
     box-shadow: 0 27px #b8e0c6;
   }
 
   .container1__header__admin__main__page__buttons {
     margin-left: 30vh;
-  } 
-
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -618,7 +628,7 @@
 
   .container1__header__admin__main__page__buttons {
     margin-left: 25vh;
-  } 
+  }
 }
 
 @media only screen and (max-width: 580px) {
@@ -647,7 +657,7 @@
 
   .container1__header__admin__main__page__buttons {
     margin-left: 20vh;
-  } 
+  }
 }
 
 @media only screen and (max-width: 540px) {
@@ -691,11 +701,11 @@
     width: 30px;
   }
 
-  .container1__header__admin__main__page__before:active{
+  .container1__header__admin__main__page__before:active {
     box-shadow: 0 24px #b8e0c6;
   }
 
-  .container1__header__admin__main__page__next:active{
+  .container1__header__admin__main__page__next:active {
     box-shadow: 0 24px #b8e0c6;
   }
 
@@ -705,7 +715,7 @@
 
   .container1__header__admin__main__page__buttons {
     margin-left: 17vh;
-  } 
+  }
 }
 
 @media only screen and (max-width: 480px) {
@@ -731,11 +741,11 @@
   }
 }
 
-@media only screen and (max-width: 450px){
+@media only screen and (max-width: 450px) {
   .container1__header__admin__main__page__buttons {
     margin-left: 13vh;
   }
-} 
+}
 
 @media only screen and (max-width: 430px) {
   .header__paragraph__admin__main__page {
@@ -777,7 +787,7 @@
 
   .container1__header__admin__main__page__buttons {
     margin-left: 12vh;
-  } 
+  }
 }
 
 @media only screen and (max-width: 390px) {
@@ -813,7 +823,7 @@
 
   .container1__header__admin__main__page__buttons {
     margin-left: 11vh;
-  } 
+  }
 }
 
 @media only screen and (max-width: 370px) {
@@ -839,8 +849,7 @@
 
   .container1__header__admin__main__page__buttons {
     margin-left: 10vh;
-  } 
-
+  }
 }
 
 @media only screen and (max-width: 350px) {
@@ -861,7 +870,7 @@
 
   .container1__header__admin__main__page__buttons {
     margin-left: 9vh;
-  } 
+  }
 }
 
 @media only screen and (max-width: 340px) {
@@ -870,11 +879,11 @@
   }
 }
 
-@media only screen and (max-width: 330px){
+@media only screen and (max-width: 330px) {
   .container1__header__admin__main__page__buttons {
     margin-left: 8vh;
   }
-} 
+}
 
 @media only screen and (max-width: 320px) {
   .header__paragraph__admin__main__page {
@@ -883,7 +892,7 @@
 
   .container1__header__admin__main__page__buttons {
     margin-left: 7vh;
-  } 
+  }
 }
 
 @media only screen and (max-width: 310px) {

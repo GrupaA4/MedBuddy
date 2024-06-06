@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@mdi/react": "^1.6.1",
     "react-router-dom": "^6.23.1"
   }
 }

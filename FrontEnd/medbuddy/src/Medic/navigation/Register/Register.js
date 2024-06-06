@@ -1,5 +1,5 @@
 import logo from './images/logo.png';
-import cover from './images/image.png';
+import cover from './images/register.png';
 import Form from './components/Form';
 import './Register.css';
 

@@ -55,7 +55,7 @@ const UserPage = () => {
 
             if (medicResponse.ok) {
               const medic = await medicResponse.json();
-              return { ...medic, medicId }; // Adaugă medicId la obiectul medic
+              return { ...medic, medicId };
             }
             return null;
           });
@@ -95,6 +95,23 @@ const UserPage = () => {
       }
     } catch (error) {
       console.error("Error accepting medic:", error);
+    }
+  };
+
+  const handleCheck = async (medic) => {
+    if (!medic || !medic.medicId) {
+      console.error("Invalid medic object");
+      return;
+    }
+
+    console.log(`Checking license for medic with ID: ${medic.medicId}`);
+
+    const licenseURL = `data:image/${medic.certificateExtension};base64,${medic.certificateImage}`;
+
+    try {
+      window.open(licenseURL, "_blank");
+    } catch (error) {
+      console.error("Error opening medic license:", error);
     }
   };
 
@@ -203,78 +220,94 @@ const UserPage = () => {
           </div>
         </div>
 
-        {currentMedics.map((medic, index) => (
-          <div
-            key={medic.medicId || index} // Folosește medicId sau index ca și cheie
-            className={styles.admin_user_page_container1__square}
-          >
+        {currentMedics.map((medic, index) => {
+          console.log("Medic information:", medic);
+          return (
             <div
-              className={
-                styles.admin_user_page_container1__square__icon_and_data
-              }
+              key={medic.medicId || index}
+              className={styles.admin_user_page_container1__square}
             >
-              <div className={styles.admin_user_page_container1__square__icon}>
-                <p>PHOTO</p>
+              <div
+                className={
+                  styles.admin_user_page_container1__square__icon_and_data
+                }
+              >
+                <div
+                  className={styles.admin_user_page_container1__square__icon}
+                >
+                  {medic.profileImage && medic.imageExtension ? (
+                    <img
+                      src={`data:image/${medic.imageExtension};base64,${medic.profileImage}`}
+                      alt="Profile"
+                      className={styles.admin_user_page_profileImage}
+                    />
+                  ) : (
+                    <p>No Photo</p>
+                  )}
+                </div>
+                <div
+                  className={styles.admin_user_page_container1__square__data}
+                >
+                  <div
+                    className={
+                      styles.admin_user_page_container1__square__data__info
+                    }
+                  >
+                    NAME:{" "}
+                    <span className={styles.name}>
+                      {medic.lastName} {medic.firstName}
+                    </span>
+                  </div>
+                  <div
+                    className={
+                      styles.admin_user_page_container1__square__data__info
+                    }
+                  >
+                    {" "}
+                    EMAIL: <span className={styles.email}>{medic.email}</span>
+                  </div>
+                  <div
+                    className={
+                      styles.admin_user_page_container1__square__data__info
+                    }
+                  >
+                    MEDICAL LICENSE:{" "}
+                    <span className={styles.medicalLicense}>
+                      {medic.medicalLicense}
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div className={styles.admin_user_page_container1__square__data}>
-                <div
-                  className={
-                    styles.admin_user_page_container1__square__data__info
-                  }
+              <div
+                className={
+                  styles.admin_user_page_container1__square__data__buttons
+                }
+              >
+                <button
+                  className={styles.admin_user_page_container1__button1}
+                  type="button"
+                  onClick={() => handleAccept(medic.medicId || medic.id)}
                 >
-                  NAME:{" "}
-                  <span className={styles.name}>
-                    {medic.lastName} {medic.firstName}
-                  </span>
-                </div>
-                <div
-                  className={
-                    styles.admin_user_page_container1__square__data__info
-                  }
+                  Accept
+                </button>
+                <button
+                  className={styles.admin_user_page_container1__button2}
+                  type="button"
+                  onClick={() => handleDeny(medic.medicId || medic.id)}
                 >
-                  {" "}
-                  EMAIL: <span className={styles.email}>{medic.email}</span>
-                </div>
-                <div
-                  className={
-                    styles.admin_user_page_container1__square__data__info
-                  }
+                  Deny
+                </button>
+                <button
+                  className={styles.admin_user_page_container1__button3}
+                  type="button"
+                  onClick={() => handleCheck(medic)}
                 >
-                  MEDICAL LICENSE:{" "}
-                  <span className={styles.medicalLicense}>
-                    {medic.medicalLicense}
-                  </span>
-                </div>
+                  Check License
+                </button>
               </div>
             </div>
-            <div
-              className={
-                styles.admin_user_page_container1__square__data__buttons
-              }
-            >
-              <button
-                className={styles.admin_user_page_container1__button1}
-                type="button"
-                onClick={() => handleAccept(medic.medicId || medic.id)}
-              >
-                Accept
-              </button>
-              <button
-                className={styles.admin_user_page_container1__button2}
-                type="button"
-                onClick={() => handleDeny(medic.medicId || medic.id)}
-              >
-                Deny
-              </button>
-              <button
-                className={styles.admin_user_page_container1__button3}
-                type="button"
-              >
-                Check License
-              </button>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <div className={styles.admin_user_page_container2}>

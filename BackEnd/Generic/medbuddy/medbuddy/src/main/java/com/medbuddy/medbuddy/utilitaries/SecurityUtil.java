@@ -14,7 +14,7 @@ public class SecurityUtil {
     //see what an encrypted password looks like
     public static void main(String[] args) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String rawPassword = "admin";
+        String rawPassword = "test";
         String encodedPassword = encoder.encode(rawPassword);
         System.out.println(encodedPassword);
     }
