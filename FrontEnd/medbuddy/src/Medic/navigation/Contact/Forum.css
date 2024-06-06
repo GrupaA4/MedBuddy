@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap");
 
-.title {
+.title-forum {
   font-family: "Bebas Neue", sans-serif;
   font-size: 1.8rem;
   text-align: center;
@@ -25,14 +25,14 @@
     rgba(0, 0, 0, 0.09) 0px 4px 2px;
 }
 
-.full-name {
+.full-name-forum {
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
   margin-top: 25px;
   margin-left: 30px;
 }
-.full-name input {
+.full-name-forum input {
   width: 190%;
   border-style: solid;
   border-color: hsl(65, 13%, 81%);
@@ -40,13 +40,13 @@
   border-radius: 7px;
 }
 
-.email {
+.email-forum {
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
   margin-left: 30px;
 }
-.email input {
+.email-forum input {
   width: 190%;
   border-style: solid;
   border-color: hsl(65, 13%, 81%);
@@ -54,22 +54,22 @@
   border-radius: 7px;
 }
 
-.message {
+.message-forum {
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
   margin-left: 30px;
 }
-.message input {
-  height: 120px;
-  width: 190%;
+.message-forum textarea {
+  /* height: 120px; */
+  width: 85%;
   border-style: solid;
   border-color: hsl(65, 13%, 81%);
   border-width: 2px;
   border-radius: 7px;
 }
 
-.submit--button {
+.submit--button-forum {
   background-color: #008bac;
   font-family: "Bebas Neue", sans-serif;
   font-size: 1.3rem;
@@ -83,22 +83,22 @@
   margin-left: 34%;
 }
 
-.submit--button:hover {
+.submit--button-forum:hover {
   background-color: #002845;
 }
 
 @media (max-width: 600px) {
-  .forum--container {
+  .forum--container-forum {
     width: 300px;
   }
 
-  .message input,
-  .email input,
-  .full-name input {
+  .message-forum textarea,
+  .email-forum input,
+  .full-name-forum input {
     width: 100%;
   }
 
-  .submit--button {
+  .submit--button-forum {
     margin-left: 22%;
   }
 }

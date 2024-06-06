@@ -53,20 +53,6 @@ $font_oswald: "Oswald_font";
         border-radius: 2vh;
         width: 30vw;
 
-        &__profile_pic{
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            margin-right: 2.5vw;
-
-            img{
-                width: 10vw;
-                height: 10vh;
-                border: 0.2vw solid $ternary-color;
-                border-radius: 5vh;
-            }
-        }
-
         &__title{
             text-align: center;
             font-family: $font_bebas;
@@ -159,16 +145,6 @@ $font_oswald: "Oswald_font";
                     width: 20vw;
                 }
             }
-
-            &__profile_pic{
-                
-                img{
-                    width: 12vw;
-                    height: 10vh;
-                    border: 0.6vw solid $ternary-color;
-                    margin-left: 2vw;
-                }
-            }
         }
     }
 }
@@ -211,16 +187,6 @@ $font_oswald: "Oswald_font";
                     margin-left: 14vw;
                 }
             }
-
-            &__profile_pic{
-                
-                img{
-                    width: 15vw;
-                    height: 12vh;
-                    border: 0.8vw solid $ternary-color;
-                    margin-left: 2vw;
-                }
-            }
         }
     }
 }
@@ -243,15 +209,6 @@ $font_oswald: "Oswald_font";
                 &__submit{
                     font-size: 3.5vh;
                     margin-left: 15vw;
-                }
-            }
-
-            &__profile_pic{
-                
-                img{
-                    width: 15vw;
-                    height: 12vh;
-                    border: 1vw solid $ternary-color;
                 }
             }
         }

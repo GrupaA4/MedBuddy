@@ -13,11 +13,11 @@ const LoginPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
+    console.log("Email:", email);
+    console.log("Password:", password);
 
     if (!email || !password) {
-      setWarning('Please fill in both fields.');
+      setWarning("Please fill in both fields.");
     } else {
       const credentials = btoa(`${email}:${password}`);
 
