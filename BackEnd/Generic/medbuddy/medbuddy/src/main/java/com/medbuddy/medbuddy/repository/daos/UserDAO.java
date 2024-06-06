@@ -9,9 +9,7 @@ import com.medbuddy.medbuddy.models.Patient;
 import com.medbuddy.medbuddy.models.User;
 import com.medbuddy.medbuddy.repository.rowmappers.MedicRowMapper;
 import com.medbuddy.medbuddy.repository.rowmappers.UserRowMapper;
-import com.medbuddy.medbuddy.services.UserService;
 import com.medbuddy.medbuddy.utilitaries.DataConvertorUtil;
-import com.medbuddy.medbuddy.utilitaries.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,12 +23,34 @@ import java.util.*;
 public class UserDAO {
 
     private final JdbcTemplate jdbcTemplate;
-    private final UserService userService;
 
     @Autowired
-    public UserDAO(JdbcTemplate jdbcTemplate, UserService userService) {
+    public UserDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-        this.userService = userService;
+    }
+
+    /**
+     * check to see if a user is in the database
+     * @param email email in the credentials
+     * @param password password in the credentials
+     * @return true if the credentials match a user, false if not
+     */
+    public boolean loginUser(String email, String password) {
+        String sql = "SELECT COUNT(1) FROM appuser WHERE email = ? AND password = ?";
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, email, password);
+
+        if(count == null) {
+            throw new DatabaseExceptions.ErrorInExecutingStatement("Error executing login statement, no object returned!");
+        }
+
+        return switch (count) {
+            case 0 -> false;
+            case 1 -> true;
+            default -> {
+                UserWarnings.MultipleUsersSameCredentials.log(email, password);
+                yield true;
+            }
+        };
     }
 
     public Optional<User> findByEmail(String email) {
@@ -45,7 +65,9 @@ public class UserDAO {
 
     public void updateLastTimeLoggedOn(UUID userId, LocalDate date) {
         String sql = "UPDATE appuser SET lastTimeLoggedIn = ? WHERE id = ?";
-        int numberOfUsersUpdated = jdbcTemplate.update(sql, date, userId);
+        int numberOfUsersUpdated = jdbcTemplate.update(sql,
+                Date.valueOf(date),
+                userId.toString());
 
         switch (numberOfUsersUpdated) {
             case 0:
@@ -183,7 +205,7 @@ public class UserDAO {
         String sql = "SELECT userId FROM medic WHERE id = ?";
         List<String> ids = jdbcTemplate.queryForList(sql, String.class, medicId.toString());
         return switch (ids.size()) {
-            case 0 -> throw new NotFoundExceptions.UserNotFound("No medic with id " + medicId + " found");
+            case 0 -> throw new NotFoundExceptions.MedicNotFound("No medic with id " + medicId + " found");
             case 1 -> UUID.fromString(ids.get(0));
             default ->
                     throw new DatabaseExceptions.NonUniqueIdentifier("Found more medics with the same id: " + medicId);
@@ -194,7 +216,7 @@ public class UserDAO {
         String sql = "SELECT * FROM medic WHERE userId = ?";
         List<Medic> medics = jdbcTemplate.query(sql, new MedicRowMapper(), id.toString());
         return switch (medics.size()) {
-            case 0 -> throw new NotFoundExceptions.UserNotFound("No medic with the user id " + id + " found");
+            case 0 -> throw new NotFoundExceptions.MedicNotFound("No medic with the user id " + id + " found");
             case 1 -> medics.get(0);
             default -> {
                 UserWarnings.MultipleMedicsSameUserId.log(medics.get(0).getMedicId(), medics.get(1).getMedicId(), id);
@@ -263,6 +285,19 @@ public class UserDAO {
         }
     }
 
+    public void deleteMedic(UUID id) {
+        String sql = "DELETE FROM medic WHERE id = ?";
+        int numberOfMedicsDeleted = jdbcTemplate.update(sql, id.toString());
+        switch (numberOfMedicsDeleted) {
+            case 0:
+                throw new NotFoundExceptions.MedicNotFound("No medic with id " + id + " was found");
+            case 1:
+                break;
+            default:
+                throw new DatabaseExceptions.NonUniqueIdentifier("More medics with the same id (" + id + ") were found");
+        }
+    }
+
     public void markUserAsDeleted(UUID id) {
         String sql = "UPDATE appuser SET isDeleted = 1 WHERE id = ?";
         int numberOfUsersDeleted = jdbcTemplate.update(sql, id.toString());
@@ -276,18 +311,16 @@ public class UserDAO {
         }
     }
 
-    public boolean isAdmin() {
-        String email = SecurityUtil.getEmail();
-        UUID userId = userService.getUserIdByEmail(email);
-        String sql = "SELECT isAdimn FROM appuser WHERE userId = ?";
-        return jdbcTemplate.queryForObject(sql, Boolean.class, userId.toString());
+    public void softDeleteReportsOnUser(UUID userId) {
+        jdbcTemplate.update("UPDATE reports SET isDeleted = 1 WHERE reportedUser = ?", userId.toString());
     }
 
-    public boolean isMedic() {
-        String email = SecurityUtil.getEmail();
-        UUID userId = userService.getUserIdByEmail(email);
-        String sql = "SELECT COUNT(1) FROM medic WHERE userId = ?";
-        return jdbcTemplate.queryForObject(sql, Boolean.class, userId.toString());
+    public void softDeleteMedicalHistoryForUser(UUID userId) {
+        jdbcTemplate.update("UPDATE medicalHistory SET isDeleted = 1 WHERE patientId = ? OR medicId = ?", userId.toString(), userId.toString());
+    }
+
+    public void deleteReportsMadeByUser(UUID userId) {
+        jdbcTemplate.update("DELETE FROM reports WHERE reportedBy = ?", userId.toString());
     }
 
     public boolean isMedic(UUID userId) {
@@ -309,7 +342,7 @@ public class UserDAO {
     }
 
     public List<Medic> chooseMedic(Patient patient, String typeOfMedic) {
-        //specializare
+        //specialization
         String sqlType = "select * from medic where typeOfMedic = ?";
         List<Medic> medics = jdbcTemplate.query(sqlType, new MedicRowMapper(), typeOfMedic);
         if (medics.isEmpty()) {
@@ -345,7 +378,7 @@ public class UserDAO {
         return optimal;
     }
 
-    public String getMedici(Patient patient, String typeOfMedic) {
+    public String getMedics(Patient patient, String typeOfMedic) {
         List<Medic> medics = chooseMedic(patient, typeOfMedic);
 
         if (medics == null || medics.isEmpty()) {
@@ -353,7 +386,7 @@ public class UserDAO {
         }
 
         StringBuilder statement = new StringBuilder("###Diagnosis###");
-        statement.append(medics.get(0).getTypeOfMedic()).append(". Pentru mai multe informatii apelati (");
+        statement.append(medics.get(0).getTypeOfMedic()).append(". For more informations plese contact: (");
 
         for (Medic medic : medics) {
             statement.append(" ").append(medic.getEmail());

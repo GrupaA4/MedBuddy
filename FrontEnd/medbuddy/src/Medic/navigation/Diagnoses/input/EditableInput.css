@@ -1,0 +1,85 @@
+/* .wrapper {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    position: relative;
+  }
+  
+  .input {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+  
+  .button {
+    display: none; 
+    position: absolute;
+    right: 0px;
+  }
+  
+  .wrapper:hover .button {
+    display: inline;
+  } */
+
+  /* EditableInput.css */
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    position: relative;
+    background: #f7f9fc; /* Light background color for the input container */
+    border-radius: 8px; /* Rounded corners */
+    padding: 2px 12px; /* Padding inside the wrapper */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .input {
+    flex-grow: 1; /* Ensures the input takes up available space */
+    margin-right: 10px;
+  }
+  
+  .input input {
+    font-family: "Oswald";
+    width: 100%; /* Ensure input takes full width of the container */
+    border: none; /* Remove default border */
+    outline: none; /* Remove default outline */
+    background: transparent; /* Make background transparent */
+    font-size: 16px; /* Adjust font size */
+    color: #333; /* Darker text color */
+    padding: 8px 0; /* Padding inside the input */
+  }
+  
+  .button {
+    display: none; /* Initially hidden */
+    position: absolute;
+    right: 12px; /* Positioning the button */
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+  
+  .wrapper:hover .button {
+    display: block; /* Display the button on hover */
+  }
+  
+  .buttonIcon {
+    display: flex; /* Flex to center icon */
+    justify-content: center;
+    align-items: center;
+    width: 24px; /* Fixed width */
+    height: 24px; /* Fixed height */
+    background-color: #e0e0e0; /* Light gray background */
+    border-radius: 50%; /* Round button */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+  }
+  
+  .buttonIcon:hover {
+    background-color: #d4d4d4; /* Darker gray on hover */
+  }
+  
+  .buttonIcon svg {
+    width: 16px; /* Adjust icon size */
+    height: 16px; /* Adjust icon size */
+    fill: #555; /* Icon color */
+  }
+  

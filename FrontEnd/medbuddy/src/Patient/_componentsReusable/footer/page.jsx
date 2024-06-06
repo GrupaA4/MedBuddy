@@ -16,7 +16,7 @@ export default function Footer(){
                     <nav className={`${styles.page__footer__navbar}`}>
                         <Link className={`${styles.page__footer_navbar_link} ${location.pathname === "/" ? styles.active : ""}`} to='/'>Home</Link>
                         <Link className={`${styles.page__footer_navbar_link} ${location.pathname === "/about" ? styles.active : ""}`} to='/about'>About</Link>
-                        <Link className={`${styles.page__footer_navbar_link} ${location.pathname === "/contact" ? styles.active : ""}`} to='/contact'>Contact</Link>
+                        <Link className={`${styles.page__footer_navbar_link} ${location.pathname === "/pages/contact" ? styles.active : ""}`} to='/pages/contact'>Contact</Link>
                         <Link className={`${styles.page__footer_navbar_link} ${location.pathname === "/chat" ? styles.active : ""}`} to='/chat'>MedBuddy</Link>
                     </nav>
                     <div className={`${styles.footer__socials}`}>

@@ -5,6 +5,7 @@ import com.medbuddy.medbuddy.models.User;
 import com.medbuddy.medbuddy.utilitaries.DataConvertorUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 public class UserResponseBodies {
     @Data
@@ -20,8 +21,8 @@ public class UserResponseBodies {
         private String country;
         private String city;
         private String phoneNumber;
-        //private MultipartFile profileImage
         private String profileImage;
+        //private String profileImage;
         private String imageExtension;
         private boolean isAdmin;
 
@@ -32,7 +33,7 @@ public class UserResponseBodies {
             gender = user.isGender();
             pronoun1 = user.getPronoun1();
             pronoun2 = user.getPronoun2();
-            dateOfBirth = DataConvertorUtil.turnLocalDateToDotDate(user.getDateOfBirth());
+            dateOfBirth = DataConvertorUtil.turnLocalDateToDDMMYYYY(user.getDateOfBirth());
             language = user.getLanguage();
             country = user.getCountry();
             city = user.getCity();
@@ -48,8 +49,8 @@ public class UserResponseBodies {
         private String email;
         private String lastName;
         private String firstName;
-        //private MultipartFile profileImage
-        private String profileImage;
+        private String  profileImage;
+        //private String profileImage;
         private String imageExtension;
 
         public UserBasicInfo(User user, String profileImage) {
@@ -74,10 +75,13 @@ public class UserResponseBodies {
         private String country;
         private String city;
         private String phoneNumber;
+//        private String profileImage;
         private String profileImage;
         private String imageExtension;
         private boolean isAdmin;
         private String typeOfMedic;
+        private String clinic;
+//        private String certificateImage;
         private String certificateImage;
         private String certificateExtension;
         private boolean isApproved;
@@ -89,7 +93,7 @@ public class UserResponseBodies {
             gender = medic.isGender();
             pronoun1 = medic.getPronoun1();
             pronoun2 = medic.getPronoun2();
-            dateOfBirth = DataConvertorUtil.turnLocalDateToDotDate(medic.getDateOfBirth());
+            dateOfBirth = DataConvertorUtil.turnLocalDateToDDMMYYYY(medic.getDateOfBirth());
             language = medic.getLanguage();
             country = medic.getCountry();
             city = medic.getCity();
@@ -98,6 +102,7 @@ public class UserResponseBodies {
             imageExtension = medic.getImageExtension();
             isAdmin = medic.isAdmin();
             typeOfMedic = medic.getTypeOfMedic();
+            clinic = medic.getClinic();
             this.certificateImage = certificateImage;
             certificateExtension = medic.getCertificateExtension();
             isApproved = medic.isApproved();

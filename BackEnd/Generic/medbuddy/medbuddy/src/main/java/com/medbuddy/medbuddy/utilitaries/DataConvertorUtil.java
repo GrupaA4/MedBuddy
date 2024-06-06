@@ -36,4 +36,14 @@ public abstract class DataConvertorUtil {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
         return date.format(formatter);
     }
+
+    public static LocalDate turnDDMMYYYYToLocalDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+        return LocalDate.parse(date, formatter);
+    }
+
+    public static String turnLocalDateToDDMMYYYY(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+        return date.format(formatter);
+    }
 }

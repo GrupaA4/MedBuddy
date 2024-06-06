@@ -1,0 +1,64 @@
+.Register {
+  background-color: #def9f1;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.container1 {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 200px;
+  width: auto;
+}
+
+.cover {
+  height: 300px;
+  width: auto;
+}
+
+.container2 {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 900px) {
+  .logo {
+    height: 150px;
+    width: auto;
+  }
+
+  .cover {
+    height: 250px;
+    width: auto;
+  }
+}
+
+@media only screen and (max-width: 786px) {
+  .Register {
+    text-align: center;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .container1 {
+    width: auto;
+  }
+
+  .container2 {
+    width: auto;
+  }
+}

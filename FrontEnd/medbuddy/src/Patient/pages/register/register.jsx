@@ -22,7 +22,7 @@ export default function SignIn(){
     const [city,setCity]=useState('');
     const [phone,setPhone]=useState('');
     const [profilePicture,setProfilePicture]=useState(null);
-    const [profilePicturePreview, setProfilePicturePreview]=useState(null);
+    const [imageExtension, setImageExtension]=useState('');
 
     const handleEmailChange= (event) =>{
         setEmail(event.target.value);
@@ -77,17 +77,73 @@ export default function SignIn(){
         const reader=new FileReader();
 
         reader.onloadend= () =>{
-            setProfilePicture(new Uint8Array(reader.result));
-            setProfilePicturePreview(URL.createObjectURL(file));
+            setProfilePicture(reader.result);
+
+            const fileExtension=file.name.split('.').pop();
+            if(!['png', 'jpg', 'jpeg'].includes(fileExtension)){
+                alert('Please select a PNG or JPG file.');
+                return;
+            }
+            setImageExtension(fileExtension);
         };
 
         if(file){
-            reader.readAsArrayBuffer(file);
+            reader.readAsDataURL(file);
         }
+    };
+
+    const transformDate = (date) => {
+        const [year, month, day] = date.split('-');
+        return `${day}.${month}.${year}`;
     };
 
     const handleSubmit= async (event) =>{
         event.preventDefault();
+
+        const phoneRegex = /^\d{10}$/;
+        const languageRegex = /^[A-Z]{2}$/;
+        const textRegex = /^[a-zA-Z]+$/;
+        const firstNameRegex = /^[a-zA-Z-]+$/;
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+
+        if(!email.match(emailRegex)){
+            window.alert('Please enter a valid email address');
+            return;
+        }
+        if(!lastName.match(textRegex)){
+            window.alert('Last name should contain only letters');
+            return;
+       }
+       if(!firstName.match(firstNameRegex)){
+            window.alert('First name should contain only letters');
+            return;
+       }
+       if(!pronoun1.match(textRegex)){
+            window.alert('Pronoun 1 should contain only letters');
+            return;
+       }
+       if(!pronoun2.match(textRegex)){
+            window.alert('Pronoun 2 should contain only letters');
+            return;
+       }
+       if(!language.match(languageRegex)){
+            window.alert('Language should contain only 2 capital letters');
+            return;
+       }
+       if(!country.match(textRegex)){
+            window.alert('Country should contain only letters');
+            return;
+       }
+       if(!city.match(textRegex)){
+            window.alert('City should contain only letters');
+            return;
+       }
+       if(!phone.match(phoneRegex)){
+            window.alert('Phone number should contain only numbers and be exactly 10 digits long');
+            return;
+       }
+       const transformedDob = transformDate(dob);
 
         const data = {
             email:email,
@@ -97,31 +153,48 @@ export default function SignIn(){
             gender:gender,
             pronoun1:pronoun1,
             pronoun2:pronoun2,
-            dateOfBirth:dob,
+            dateOfBirth:transformedDob,
             language:language,
             country:country,
             city:city,
             phoneNumber:phone,
-            profileImage:profilePicture
+            profileImage:profilePicture,
+            imageExtension:imageExtension,
+            admin:false
         };
 
         console.log('Data to be sent:', data);
 
         try {
-            const response = await fetch('https://0462a4b4-2de7-465f-a03e-a1097daea12c.mock.pstmn.io/medbuddy/signup', {
-                method: 'POST',
+            const response = await fetch('http://localhost:7264/medbuddy/signup', {
+                method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': null
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(data),
             });
 
-            if(!response.ok){
-                throw new Error('Response was not ok');
+            if(response.status !== 201){
+                if(response.status === 418 || response.status === 500){
+                    throw new Error('Internal backend error');
+                }
+                else if(response.status === 401){
+                    throw new Error('Wrong email and password in the header');
+                }
+                else if(response.status === 400){
+                    throw new Error('Typo in the URL or not the right path variable type');
+                }
+                else if(response.status === 403){
+                    throw new Error('Another user with this email exists');
+                }
+                else{
+                    throw new Error('Unknown error');
+                }
             }
-
-            const result= await response.json();
-            console.log('Success:',result);
+            else{
+                console.log('Successfull authentification');
+            }
 
             Cookies.set(`user_email`, email, {expires: 7});
             Cookies.set(`user_pass`, password, {expires: 7});
@@ -138,11 +211,11 @@ export default function SignIn(){
             setCity('');
             setPhone('');
             setProfilePicture(null);
-            setProfilePicturePreview(null);
 
-            //window.location.href='/';
+            window.location.href='/homePatient';
         } catch (error) {
             console.error('Error',error);
+            window.alert('An error occured.Please try again later.');
         }
     };
 
@@ -313,15 +386,11 @@ export default function SignIn(){
                             <input
                                 type='file'
                                 id='profilePicture'
+                                accept="image/png, image/jpg, image/jpeg"
                                 value={profilePicture ? profilePicture.name : ''}
                                 onChange={handleProfilePicChange}
                                 required
                             />
-                        </div><br />
-                        <div className={`${styles.form_container__profile_pic}`}>
-                            {profilePicture && (
-                                <img src={profilePicturePreview} alt='Profile Picture'/>
-                            )}
                         </div><br />
                         <button className={`${styles.form_container__form__submit}`} type='submit'>Register</button>
                     </form>

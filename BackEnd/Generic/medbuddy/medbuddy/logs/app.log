@@ -1,35 +1,50 @@
-2024-05-31 01:58:57 INFO  MedbuddyApplication:50 - Starting MedbuddyApplication using Java 22.0.1 with PID 4772 (C:\UNIVERSITY STUFF\II-II Ingineria Programarii\Project\MedBuddy\BackEnd\Generic\medbuddy\medbuddy\target\classes started by vladm in C:\UNIVERSITY STUFF\II-II Ingineria Programarii\Project\MedBuddy\BackEnd\Generic\medbuddy\medbuddy)
-2024-05-31 01:58:57 DEBUG MedbuddyApplication:51 - Running with Spring Boot v3.2.5, Spring v6.1.6
-2024-05-31 01:58:57 INFO  MedbuddyApplication:654 - No active profile set, falling back to 1 default profile: "default"
-2024-05-31 01:58:59 INFO  TomcatWebServer:109 - Tomcat initialized with port 7264 (http)
-2024-05-31 01:58:59 INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-7264"]
-2024-05-31 01:58:59 INFO  StandardService:173 - Starting service [Tomcat]
-2024-05-31 01:58:59 INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.20]
-2024-05-31 01:58:59 INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
-2024-05-31 01:58:59 INFO  ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 1806 ms
-2024-05-31 01:59:00 INFO  DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1332dec4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@544e3679, org.springframework.security.web.context.SecurityContextHolderFilter@70881123, org.springframework.security.web.header.HeaderWriterFilter@4837f97e, org.springframework.web.filter.CorsFilter@3a401749, org.springframework.security.web.authentication.logout.LogoutFilter@2eb0cefe, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5fb3111a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5e905f2c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@fddd7ae, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6889f56f, org.springframework.security.web.access.ExceptionTranslationFilter@17c4dc5b, org.springframework.security.web.access.intercept.AuthorizationFilter@132e3594]
-2024-05-31 01:59:00 INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-7264"]
-2024-05-31 01:59:00 INFO  TomcatWebServer:241 - Tomcat started on port 7264 (http) with context path ''
-2024-05-31 01:59:00 INFO  MedbuddyApplication:56 - Started MedbuddyApplication in 3.935 seconds (process running for 5.249)
-2024-05-31 01:59:02 INFO  [/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-05-31 01:59:02 INFO  DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
-2024-05-31 01:59:02 INFO  DispatcherServlet:554 - Completed initialization in 3 ms
-2024-05-31 01:59:02 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getallnotifications/861c4ac7-7ab5-4d31-84da-b6e9d2edb1a1
-2024-05-31 01:59:03 WARN  HikariConfig:1089 - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
-2024-05-31 01:59:03 INFO  HikariDataSource:110 - HikariPool-1 - Starting...
-2024-05-31 01:59:03 INFO  PoolBase:536 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
-2024-05-31 01:59:03 INFO  HikariPool:565 - HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@1de605dc
-2024-05-31 01:59:03 INFO  HikariDataSource:123 - HikariPool-1 - Start completed.
-2024-05-31 01:59:04 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-05-31 01:59:04 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=test@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
-2024-05-31 01:59:04 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getallnotifications/861c4ac7-7ab5-4d31-84da-b6e9d2edb1a1
-2024-05-31 01:59:23 DEBUG FilterChainProxy:223 - Securing DELETE /medbuddy/deletenotification/bc496184-d516-406e-862b-ffa6595dd36d
-2024-05-31 01:59:23 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-05-31 01:59:23 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=test@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
-2024-05-31 01:59:23 DEBUG FilterChainProxy:227 - Secured DELETE /medbuddy/deletenotification/bc496184-d516-406e-862b-ffa6595dd36d
-2024-05-31 01:59:31 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getallnotifications/861c4ac7-7ab5-4d31-84da-b6e9d2edb1a1
-2024-05-31 01:59:31 DEBUG DaoAuthenticationProvider:199 - Authenticated user
-2024-05-31 01:59:31 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=test@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
-2024-05-31 01:59:31 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getallnotifications/861c4ac7-7ab5-4d31-84da-b6e9d2edb1a1
-2024-05-31 02:01:19 INFO  HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
-2024-05-31 02:01:19 INFO  HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2024-06-07 00:32:23 INFO  AnnotationConfigContextLoaderUtils:83 - Could not detect default configuration classes for test class [com.medbuddy.medbuddy.tests.repository.daos.MedicalHistoryDAOTest]: MedicalHistoryDAOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-06-07 00:32:23 INFO  SpringBootTestContextBootstrapper:234 - Found @SpringBootConfiguration com.medbuddy.medbuddy.MedbuddyApplication for test class com.medbuddy.medbuddy.tests.repository.daos.MedicalHistoryDAOTest
+2024-06-07 00:32:23 INFO  MedicalHistoryDAOTest:50 - Starting MedicalHistoryDAOTest using Java 22.0.1 with PID 3008 (started by vladm in C:\UNIVERSITY STUFF\II-II Ingineria Programarii\Project\MedBuddy\BackEnd\Generic\medbuddy\medbuddy)
+2024-06-07 00:32:23 DEBUG MedicalHistoryDAOTest:51 - Running with Spring Boot v3.2.5, Spring v6.1.6
+2024-06-07 00:32:23 INFO  MedicalHistoryDAOTest:654 - No active profile set, falling back to 1 default profile: "default"
+2024-06-07 00:32:25 INFO  DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3ace6346, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4e48462d, org.springframework.security.web.context.SecurityContextHolderFilter@401e02b4, org.springframework.security.web.header.HeaderWriterFilter@7a358613, org.springframework.web.filter.CorsFilter@17216605, org.springframework.security.web.authentication.logout.LogoutFilter@3a109ff7, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7af1d072, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@18c880ea, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5ac044ef, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@10a907ec, org.springframework.security.web.access.ExceptionTranslationFilter@4a1dda83, org.springframework.security.web.access.intercept.AuthorizationFilter@6818fd48]
+2024-06-07 00:32:25 INFO  MedicalHistoryDAOTest:56 - Started MedicalHistoryDAOTest in 2.218 seconds (process running for 4.014)
+2024-06-07 00:32:25 WARN  HikariConfig:1089 - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2024-06-07 00:32:25 INFO  HikariDataSource:110 - HikariPool-1 - Starting...
+2024-06-07 00:32:26 INFO  PoolBase:536 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
+2024-06-07 00:32:26 INFO  HikariPool:565 - HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@4597e6e3
+2024-06-07 00:32:26 INFO  HikariDataSource:123 - HikariPool-1 - Start completed.
+2024-06-07 00:32:27 INFO  AnnotationConfigContextLoaderUtils:83 - Could not detect default configuration classes for test class [com.medbuddy.medbuddy.tests.ServiceTest.MedicalHistoryServiceTest]: MedicalHistoryServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-06-07 00:32:27 INFO  SpringBootTestContextBootstrapper:234 - Found @SpringBootConfiguration com.medbuddy.medbuddy.MedbuddyApplication for test class com.medbuddy.medbuddy.tests.ServiceTest.MedicalHistoryServiceTest
+2024-06-07 00:32:27 INFO  AnnotationConfigContextLoaderUtils:83 - Could not detect default configuration classes for test class [com.medbuddy.medbuddy.tests.UtilsTests.DataConvertorUtilTests]: DataConvertorUtilTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-06-07 00:32:27 INFO  SpringBootTestContextBootstrapper:234 - Found @SpringBootConfiguration com.medbuddy.medbuddy.MedbuddyApplication for test class com.medbuddy.medbuddy.tests.UtilsTests.DataConvertorUtilTests
+2024-06-07 00:32:27 INFO  DataConvertorUtilTests:50 - Starting DataConvertorUtilTests using Java 22.0.1 with PID 3008 (started by vladm in C:\UNIVERSITY STUFF\II-II Ingineria Programarii\Project\MedBuddy\BackEnd\Generic\medbuddy\medbuddy)
+2024-06-07 00:32:27 DEBUG DataConvertorUtilTests:51 - Running with Spring Boot v3.2.5, Spring v6.1.6
+2024-06-07 00:32:27 INFO  DataConvertorUtilTests:654 - No active profile set, falling back to 1 default profile: "default"
+2024-06-07 00:32:28 INFO  TomcatWebServer:109 - Tomcat initialized with port 0 (http)
+2024-06-07 00:32:28 INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-auto-1"]
+2024-06-07 00:32:28 INFO  StandardService:173 - Starting service [Tomcat]
+2024-06-07 00:32:28 INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-07 00:32:28 INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
+2024-06-07 00:32:28 INFO  ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 567 ms
+2024-06-07 00:32:28 INFO  DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@f996445, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@48697181, org.springframework.security.web.context.SecurityContextHolderFilter@3efb863c, org.springframework.security.web.header.HeaderWriterFilter@7135e8cd, org.springframework.web.filter.CorsFilter@7253c53, org.springframework.security.web.authentication.logout.LogoutFilter@74babce8, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2ee5c08d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5527dbb0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@483fe83a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7282f7b1, org.springframework.security.web.access.ExceptionTranslationFilter@34e53c02, org.springframework.security.web.access.intercept.AuthorizationFilter@28e24663]
+2024-06-07 00:32:28 INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-auto-1"]
+2024-06-07 00:32:28 INFO  TomcatWebServer:241 - Tomcat started on port 51922 (http) with context path ''
+2024-06-07 00:32:28 INFO  DataConvertorUtilTests:56 - Started DataConvertorUtilTests in 0.87 seconds (process running for 6.572)
+2024-06-07 00:32:28 WARN  HikariConfig:1089 - HikariPool-2 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2024-06-07 00:32:28 INFO  HikariDataSource:110 - HikariPool-2 - Starting...
+2024-06-07 00:32:28 INFO  PoolBase:536 - HikariPool-2 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
+2024-06-07 00:32:28 INFO  HikariPool:565 - HikariPool-2 - Added connection oracle.jdbc.driver.T4CConnection@2184962c
+2024-06-07 00:32:28 INFO  HikariDataSource:123 - HikariPool-2 - Start completed.
+2024-06-07 00:32:28 INFO  AnnotationConfigContextLoaderUtils:83 - Could not detect default configuration classes for test class [com.medbuddy.medbuddy.tests.repository.daos.UserDAOTest]: UserDAOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-06-07 00:32:28 INFO  SpringBootTestContextBootstrapper:234 - Found @SpringBootConfiguration com.medbuddy.medbuddy.MedbuddyApplication for test class com.medbuddy.medbuddy.tests.repository.daos.UserDAOTest
+2024-06-07 00:32:29 INFO  AnnotationConfigContextLoaderUtils:83 - Could not detect default configuration classes for test class [com.medbuddy.medbuddy.tests.repository.daos.AdminFunctionalityDAOTest]: AdminFunctionalityDAOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-06-07 00:32:29 INFO  SpringBootTestContextBootstrapper:234 - Found @SpringBootConfiguration com.medbuddy.medbuddy.MedbuddyApplication for test class com.medbuddy.medbuddy.tests.repository.daos.AdminFunctionalityDAOTest
+2024-06-07 00:32:29 INFO  AnnotationConfigContextLoaderUtils:83 - Could not detect default configuration classes for test class [com.medbuddy.medbuddy.tests.repository.daos.NotificationsDAOTest]: NotificationsDAOTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-06-07 00:32:29 INFO  SpringBootTestContextBootstrapper:234 - Found @SpringBootConfiguration com.medbuddy.medbuddy.MedbuddyApplication for test class com.medbuddy.medbuddy.tests.repository.daos.NotificationsDAOTest
+2024-06-07 00:32:29 INFO  AnnotationConfigContextLoaderUtils:83 - Could not detect default configuration classes for test class [com.medbuddy.medbuddy.tests.ServiceTest.MessagerieServiceTest]: MessagerieServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-06-07 00:32:29 INFO  SpringBootTestContextBootstrapper:234 - Found @SpringBootConfiguration com.medbuddy.medbuddy.MedbuddyApplication for test class com.medbuddy.medbuddy.tests.ServiceTest.MessagerieServiceTest
+2024-06-07 00:32:29 INFO  AnnotationConfigContextLoaderUtils:83 - Could not detect default configuration classes for test class [com.medbuddy.medbuddy.tests.ServiceTest.AdminFunctionalityServiceTest]: AdminFunctionalityServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-06-07 00:32:29 INFO  SpringBootTestContextBootstrapper:234 - Found @SpringBootConfiguration com.medbuddy.medbuddy.MedbuddyApplication for test class com.medbuddy.medbuddy.tests.ServiceTest.AdminFunctionalityServiceTest
+2024-06-07 00:32:30 INFO  AnnotationConfigContextLoaderUtils:83 - Could not detect default configuration classes for test class [com.medbuddy.medbuddy.tests.ServiceTest.UserServiceTest]: UserServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-06-07 00:32:30 INFO  SpringBootTestContextBootstrapper:234 - Found @SpringBootConfiguration com.medbuddy.medbuddy.MedbuddyApplication for test class com.medbuddy.medbuddy.tests.ServiceTest.UserServiceTest
+2024-06-07 00:32:30 INFO  HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2024-06-07 00:32:30 INFO  HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2024-06-07 00:32:30 INFO  HikariDataSource:350 - HikariPool-2 - Shutdown initiated...
+2024-06-07 00:32:30 INFO  HikariDataSource:352 - HikariPool-2 - Shutdown completed.

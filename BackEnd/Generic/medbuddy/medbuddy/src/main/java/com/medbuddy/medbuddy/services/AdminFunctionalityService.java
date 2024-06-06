@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.xml.validation.Validator;
 import java.time.LocalDate;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -64,39 +65,38 @@ public class AdminFunctionalityService {
         return filteredUserList;
     }
 
-    public void allowMedic(UUID medicId) {
-        UUID userId = userRepository.getUserIdOfMedic(medicId);
+    public void allowMedic(UUID userId) {
+        Medic medic = userRepository.getMedicSpecificInfoByUserId(userId);
         User user = userRepository.getUserById(userId);
-        if(!EntityValidator.validate(user)) {
-            throw new NotFoundExceptions.MedicNotFound("No medic with id = " + medicId + " was found");
+        if (!EntityValidator.validate(user)) {
+            throw new NotFoundExceptions.MedicNotFound("No medic with id = " + userId + " was found");
         }
-        adminFunctionalityRepository.allowMedic(medicId);
+        adminFunctionalityRepository.allowMedic(medic.getMedicId());
     }
 
     public List<User> findUserByName(String username) {
-        if (!username.contains("+") || (username.startsWith("+") && username.endsWith("+")))
-            throw new UserDidSomethingWrongExceptions.TriedToGetAllUsers ("Invalid format, can't return all users or you forgot the +");
+        int count = username.length() - username.replace("+", "").length();
+        if (!username.contains("+") || count > 1 || ((username.startsWith("+") && username.endsWith("+"))))
+            throw new IllegalArgumentException("Invalid format, can't return all users or you forgot the +");
         String[] nameParts = username.split("\\+");
-
-        if (nameParts.length > 2)
-            throw new UserDidSomethingWrongExceptions.TooManyParts("Invalid format, should only have 2 parts.");
 
         String firstName;
         String lastName;
         List<User> users;
 
         if (nameParts.length == 1) {
-            if (username.endsWith("+")) {
-                lastName = nameParts[0];
-                users = adminFunctionalityRepository.findUserByName(null, lastName);
-            } else {
-                firstName = nameParts[0];
+            lastName = nameParts[0];
+            users = adminFunctionalityRepository.findUserByName(null, lastName);
+        } else {
+            if(username.startsWith("+")){
+                firstName = nameParts[1];
                 users = adminFunctionalityRepository.findUserByName(firstName, null);
             }
-        } else {
-            lastName = nameParts[0];
-            firstName = nameParts[1];
-            users = adminFunctionalityRepository.findUserByName(firstName, lastName);
+            else {
+                lastName = nameParts[0];
+                firstName = nameParts[1];
+                users = adminFunctionalityRepository.findUserByName(firstName, lastName);
+            }
         }
 
         users.removeIf(user -> !EntityValidator.validate(user));
@@ -106,10 +106,12 @@ public class AdminFunctionalityService {
 
     public List<Medic> getRequestingMedics() {
         List<Medic> medics = adminFunctionalityRepository.getRequestingMedics();
-        for(var medic : medics) {
+        Iterator<Medic> iterator = medics.iterator();
+        while (iterator.hasNext()) {
+            Medic medic = iterator.next();
             medic.setId(userRepository.getUserIdOfMedic(medic.getMedicId()));
-            if(!EntityValidator.validate(userRepository.getUserById(medic.getId()))) {
-                medics.remove(medic);
+            if (!EntityValidator.validate(userRepository.getUserById(medic.getId()))) {
+                iterator.remove();
             }
         }
         return medics;

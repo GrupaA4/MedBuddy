@@ -21,8 +21,8 @@ public class UserRequestBodies {
         private String country;
         private String city;
         private String phoneNumber;
-        private String profileImage; // placeholder
-        //private MultipartFile profileImage;
+        //private String profileImage; // placeholder
+        private String profileImage;
         private String imageExtension;
         private boolean isAdmin;
     }
@@ -41,14 +41,14 @@ public class UserRequestBodies {
         private String country;
         private String city;
         private String phoneNumber;
-        private String profileImage; // placeholder
-        //private MultipartFile profileImage;
+        //private String profileImage; // placeholder
+        private String profileImage;
         private String imageExtension;
         private boolean isAdmin;
         private String typeOfMedic;
         private String clinic;
-        private String certificateImage; // placeholder
-        //private MultipartFile certificateImage;
+        //private String certificateImage; // placeholder
+        private String certificateImage;
         private String certificateExtension;
     }
 
