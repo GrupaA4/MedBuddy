@@ -113,6 +113,13 @@
   height: 12vh;
 }
 
+.container1_admin_report_page_profile_image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .container1_admin_report_page__header__text {
   color: #002845;
   font-size: 3.5vh;

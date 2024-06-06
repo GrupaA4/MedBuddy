@@ -175,7 +175,7 @@ const AdminReportPage = () => {
                 <img
                   src={`data:image/${report.imageExtension};base64,${report.profileImage}`}
                   alt="Profile"
-                  className={styles.profile_image}
+                  className={styles.container1_admin_report_page_profile_image}
                 />
               ) : (
                 <p>PHOTO</p>
