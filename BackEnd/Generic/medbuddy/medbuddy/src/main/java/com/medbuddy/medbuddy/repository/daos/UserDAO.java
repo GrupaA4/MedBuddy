@@ -9,7 +9,9 @@ import com.medbuddy.medbuddy.models.Patient;
 import com.medbuddy.medbuddy.models.User;
 import com.medbuddy.medbuddy.repository.rowmappers.MedicRowMapper;
 import com.medbuddy.medbuddy.repository.rowmappers.UserRowMapper;
+import com.medbuddy.medbuddy.services.UserService;
 import com.medbuddy.medbuddy.utilitaries.DataConvertorUtil;
+import com.medbuddy.medbuddy.utilitaries.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,10 +25,12 @@ import java.util.*;
 public class UserDAO {
 
     private final JdbcTemplate jdbcTemplate;
+    private final UserService userService;
 
     @Autowired
-    public UserDAO(JdbcTemplate jdbcTemplate) {
+    public UserDAO(JdbcTemplate jdbcTemplate, UserService userService) {
         this.jdbcTemplate = jdbcTemplate;
+        this.userService = userService;
     }
 
     public Optional<User> findByEmail(String email) {
@@ -272,6 +276,13 @@ public class UserDAO {
         }
     }
 
+    public boolean isAdmin() {
+        String email = SecurityUtil.getEmail();
+        UUID userId =  userService.getUserIdByEmail(email);
+        String sql = "SELECT isAdimn FROM appuser WHERE userId = ?";
+        return jdbcTemplate.queryForObject(sql, Boolean.class, userId.toString());
+    }
+
     public boolean isMedic(UUID userId) {
         String sql = "SELECT COUNT(1) FROM medic WHERE userId = ?";
         Integer numberOfMedicsFound = jdbcTemplate.queryForObject(sql, Integer.class, userId.toString());
@@ -290,25 +301,58 @@ public class UserDAO {
         };
     }
 
-    public String chooseMedic(Patient patient, String typeOfMedic) {
+    public List<Medic> chooseMedic(Patient patient, String typeOfMedic) {
         //specializare
         String sqlType = "select * from medic where typeOfMedic = ?";
         List<Medic> medics = jdbcTemplate.query(sqlType, new MedicRowMapper(), typeOfMedic);
         if (medics.isEmpty()) {
-            return "No medics available for the given type.";
+            return null;
         }
+        int opt = 0;
         List<Medic> optimal = new ArrayList<>();
+        List<Medic> ultraSuperMegaGamingOptimal = new ArrayList<>();
+        int ultraOpt = 0;
         for (Medic medic : medics) {
             if (!Objects.equals(medic.getCountry(), patient.getCountry())) {
-                optimal.add(medic);
                 if (Objects.equals(medic.getLanguage(), patient.getLanguage())) {
-                    return "###Diagnosis###" + medic.getTypeOfMedic() + ". Pentru mai multe informatii apelati  (" + medic.getEmail() + ") ";
+                    if (Objects.equals(medic.getCity(), patient.getCity())) {
+                        ultraOpt++;
+                        ultraSuperMegaGamingOptimal.add(medic);
+                    }
+                    opt++;
+                    optimal.add(0, medic);
+                } else {
+                    optimal.add(medic);
                 }
             }
         }
-        if (optimal.isEmpty()) {
-            return "###Diagnosis###" + medics.get(0).getTypeOfMedic() + ". Pentru mai multe informatii apelati  (" + medics.get(0).getEmail() + ") ";
+        if (ultraOpt != 0) {
+            return ultraSuperMegaGamingOptimal.subList(0, ultraOpt);
         }
-        return "###Diagnosis###" + optimal.get(0).getTypeOfMedic() + ". Pentru mai multe informatii apelati  (" + optimal.get(0).getEmail() + ") ";
+        if (opt != 0) {
+            return optimal.subList(0, opt);
+        }
+        if (optimal.isEmpty()) {
+            return medics;
+        }
+        return optimal;
+    }
+
+    public String getMedici(Patient patient, String typeOfMedic) {
+        List<Medic> medics = chooseMedic(patient, typeOfMedic);
+
+        if (medics == null || medics.isEmpty()) {
+            return "No medics found for the specified type.";
+        }
+
+        StringBuilder statement = new StringBuilder("###Diagnosis###");
+        statement.append(medics.get(0).getTypeOfMedic()).append(". Pentru mai multe informatii apelati (");
+
+        for (Medic medic : medics) {
+            statement.append(" ").append(medic.getEmail());
+        }
+
+        statement.append(") ");
+        return statement.toString();
     }
 }

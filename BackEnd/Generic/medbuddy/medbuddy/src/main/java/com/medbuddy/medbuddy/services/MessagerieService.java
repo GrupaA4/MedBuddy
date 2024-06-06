@@ -33,6 +33,7 @@ public class MessagerieService {
     UserDAO userDAO;
 
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
     public void closeConversation() {
         UUID userId = userDAO.getUserId(SecurityUtil.getEmail());
         medbuddyUtil.closeConversation(userId);
