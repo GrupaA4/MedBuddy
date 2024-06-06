@@ -24,14 +24,14 @@ public class UserService {
     private UserDAO userDAO;
 
     public boolean loginUser(String email, String password) {
-        return userDAO.loginUser(email, password);//throws exceptions if email doesn't exist
+        return userDAO.loginUser(email, password);// throws exceptions if email doesn't exist
     }
 
     public UUID getUserIdByEmail(String email) {
         UUID id = userDAO.getUserId(email);
 
         User user = userDAO.getUserById(id);
-        if(EntityValidator.validate(user)) {
+        if (EntityValidator.validate(user)) {
             return id;
         } else {
             throw new NotFoundExceptions.UserNotFound("User with email " + email + " was not found");
@@ -40,14 +40,16 @@ public class UserService {
 
     public void createUser(User userRequest, byte[] profileImage) {
 
-        userDAO.checkIfUserWithEmailExists(userRequest.getEmail());//will throw exceptions if that happens
+        userDAO.checkIfUserWithEmailExists(userRequest.getEmail());// will throw exceptions if that happens
 
         userRequest.setId(SecurityUtil.getNewId());
         String password = userRequest.getPassword();
         userRequest.setPassword(passwordEncoder.encode(password));
 
         int imageNumber = userDAO.getMaxImageNumber() + 1;
-        ImageProcessingUtil.saveImage(imageNumber, "C:\\Users\\Laura\\Documents\\ip2\\med\\MedBuddy\\BackEnd\\Generic\\Database\\", profileImage, userRequest.getImageExtension());
+        ImageProcessingUtil.saveImage(imageNumber,
+                "C:\\Users\\Laura\\Documents\\ip2\\med\\MedBuddy\\BackEnd\\Generic\\Database\\", profileImage,
+                userRequest.getImageExtension());
         userRequest.setProfileImageNumber(imageNumber);
 
         userRequest.setLastTimeLoggedIn(LocalDate.now());
@@ -58,27 +60,31 @@ public class UserService {
 
     public void createMedic(Medic medicRequest, byte[] profileImage, byte[] certificateImage) {
 
-        userDAO.checkIfUserWithEmailExists(medicRequest.getEmail());//will throw exceptions if that happens
+        userDAO.checkIfUserWithEmailExists(medicRequest.getEmail());// will throw exceptions if that happens
 
         medicRequest.setId(SecurityUtil.getNewId());
         String password = medicRequest.getPassword();
         medicRequest.setPassword(passwordEncoder.encode(password));
 
         int imageNumber = userDAO.getMaxImageNumber() + 1;
-        //add profile image to database
-        ImageProcessingUtil.saveImage(imageNumber, "D:\\Facultate\\Anul_II\\Sem2\\Ingineria_programarii\\Proiect\\MedBuddy\\BackEnd\\Generic\\Database\\Profiles", profileImage, medicRequest.getImageExtension());
+        // add profile image to database
+        ImageProcessingUtil.saveImage(imageNumber,
+                "C:\\Users\\Laura\\Documents\\ip2\\med\\MedBuddy\\BackEnd\\Generic\\Database\\Profiles", profileImage,
+                medicRequest.getImageExtension());
         medicRequest.setProfileImageNumber(imageNumber);
 
         medicRequest.setLastTimeLoggedIn(LocalDate.now());
         medicRequest.setDeleted(false);
 
-        userDAO.signupUser(medicRequest);//automatically maps to a user
+        userDAO.signupUser(medicRequest);// automatically maps to a user
 
         medicRequest.setMedicId(SecurityUtil.getNewId());
 
         int certificateNumber = userDAO.getMaxCertificateNumber() + 1;
-        //add certificate image to database
-        ImageProcessingUtil.saveImage(certificateNumber, "D:\\Facultate\\Anul_II\\Sem2\\Ingineria_programarii\\Proiect\\MedBuddy\\BackEnd\\Generic\\Database\\Certificates", certificateImage, medicRequest.getCertificateExtension());
+        // add certificate image to database
+        ImageProcessingUtil.saveImage(certificateNumber,
+                "C:\\Users\\Laura\\Documents\\ip2\\med\\MedBuddy\\BackEnd\\Generic\\Database\\Certificates",
+                certificateImage, medicRequest.getCertificateExtension());
         medicRequest.setProfileImageNumber(certificateNumber);
 
         medicRequest.setApproved(false);
@@ -89,7 +95,7 @@ public class UserService {
     public User getUser(UUID userId) {
         User user = userDAO.getUserById(userId);
 
-        if(EntityValidator.validate(user)) {
+        if (EntityValidator.validate(user)) {
             return user;
         } else {
             throw new NotFoundExceptions.UserNotFound("User with id " + userId + "was not found");
@@ -101,7 +107,7 @@ public class UserService {
 
         User user = userDAO.getUserById(userId);
 
-        if(EntityValidator.validate(user)) {
+        if (EntityValidator.validate(user)) {
             return userId;
         } else {
             throw new NotFoundExceptions.UserNotFound("Medic with id " + medicId + "was not found");
@@ -111,7 +117,7 @@ public class UserService {
     public Medic getMedicProfile(UUID userId) {
         User user = userDAO.getUserById(userId);
 
-        if(!EntityValidator.validate(user)) {
+        if (!EntityValidator.validate(user)) {
             throw new NotFoundExceptions.UserNotFound("No user with this id " + userId + " was found");
         }
 
@@ -121,7 +127,7 @@ public class UserService {
     public void updateUser(UUID userId, User userRequest) {
         User user = userDAO.getUserById(userId);
 
-        if(!EntityValidator.validate(user)) {
+        if (!EntityValidator.validate(user)) {
             throw new NotFoundExceptions.UserNotFound("No user with this id " + userId + " was found");
         }
 
@@ -133,10 +139,10 @@ public class UserService {
 
     public void softDeleteUser(UUID userId) {
         userDAO.markUserAsDeleted(userId);
-        //delete conversations
-        //delete messages
-        //delete reports
-        //delete medical history
+        // delete conversations
+        // delete messages
+        // delete reports
+        // delete medical history
     }
 
     public void hardDeleteUser(UUID userId) {

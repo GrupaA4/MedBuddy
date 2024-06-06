@@ -6,24 +6,26 @@ import Logo from '../common-components/logoB.png';
 import Cookies from 'js-cookie';
 
 export default function Profile() {
+
+  //delete account window
   const [showPopupDelete, setShowPopupDelete] = useState(false);
 
   const togglePopupDelete = () => {
     setShowPopupDelete(!showPopupDelete);
   };
-
+  //change password window
   const [showPopupPassword, setShowPopupPassword] = useState(false);
 
   const togglePopupPassword = () => {
     setShowPopupPassword(!showPopupPassword);
   };
-
+  //edit profile mode
   const [isEditing, setIsEditing] = useState(false);
-
+  //basic account info
   const [userId, setUserId] = useState('');
     const emailFromCookie = Cookies.get("user_email");
     const passwordFromCookie = Cookies.get("user_pass");
-
+  //info for account
     const [name, setName] = useState('My Name');
     const [surname, setSurname] = useState('My Surname');
     const [email, setEmail] = useState('example@example.com');
@@ -55,10 +57,10 @@ export default function Profile() {
     const [initialClinic, setInitialClinic] = useState('Clinic');
     const [initialSpecialization, setInitialSpecialization] = useState('Specialization');
     const [initialProfilePicture, setInitialProfilePicture] = useState('');
-    const[initialImageExtension,setInitialImageExtenstion]=useState('');
+    
 
     const [imageUrl, setImageUrl] = useState("");
-    const [extension, setExtension] = useState("");
+    const [extension, setExtension] = useState(""); 
 
     const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
 
@@ -66,7 +68,7 @@ export default function Profile() {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    //obtinut id user
+  
     useEffect(() =>{
       const fetchuserId = async () => {
           try{
@@ -109,7 +111,7 @@ export default function Profile() {
   }, [emailFromCookie]);
 
   
-  //afisare informatii cont
+  
   useEffect(() => {
     const fetchUserData = async () => {
         if(userId) {
@@ -142,6 +144,7 @@ export default function Profile() {
                     console.log('Retrieved profile successfully');
                 }
                 const userData = await response.json();
+                console.log(userData);
                 setEmail(userData.email);
                 setSurname(userData.lastName);
                 setName(userData.firstName);
@@ -149,19 +152,20 @@ export default function Profile() {
                 setPronoun1(userData.pronoun1);
                 setPronoun2(userData.pronoun2);
                 setBirthDate(userData.dateOfBirth);
-                console.log('zi nastere '+birthDate);
                 setLanguage(userData.language);
                 setCity(userData.city);
                 setCountry(userData.country);
                 setPhone(userData.phoneNumber);
                 setSpecialization(userData.typeOfMedic);
                 setClinic(userData.clinic); 
-                //setClinic('clinic');
-                console.log('clinica: '+clinic);
+
+                setClinic('clinic');
+
                 setProfilePicture(userData.profileImage);
-                setImageExtension(userData.imageExtension);
                 setExtension(userData.imageExtension);
-                console.log('extension: '+extension);
+                
+
+
                 setInitialEmail(email);
                 setInitialSurname(surname);
                 setInitialName(name);
@@ -176,7 +180,7 @@ export default function Profile() {
                 setInitialSpecialization(specialization);
                 setInitialClinic(clinic);
                 setInitialProfilePicture(profilePicture);
-                setInitialImageExtenstion(imageExtension);
+                
             } catch (error) {
                 console.error('Error:', error);
             }
@@ -187,19 +191,9 @@ export default function Profile() {
 
 useEffect(() => {
     setImageUrl(`data:image/${imageExtension};base64,${profilePicture}`);
-    console.log(imageUrl);
   }, [profilePicture, imageExtension]);
 
-  // const [profileData, setProfileData] = useState({
-  //   name: 'My Name',
-  //   surname: 'My Surname',
-  //   email: 'example@gmail.com',
-  //   workPhone: '+0000000000',
-  //   city: 'My City',
-  //   country: 'My Country',
-  //   workPlace: 'Hospital/Work Place',
-  //   specialization: 'Specialization'
-  // });
+
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -207,21 +201,12 @@ useEffect(() => {
 
   const handleSaveClick = () => {
     setIsEditing(false);
-    // Save changes logic here
   };
 
   const handleCancelClick = () => {
     setIsEditing(false);
-    // Optionally reset changes here
   };
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setProfileData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value
-  //   }));
-  // };
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -302,18 +287,6 @@ const handleSaveChanges = async (event) => {
       window.alert('First name should contain only letters');
       return;
  }
-//  if(!pronoun1.match(textRegex)){
-//       window.alert('Pronoun 1 should contain only letters');
-//       return;
-//  }
-//  if(!pronoun2.match(textRegex)){
-//       window.alert('Pronoun 2 should contain only letters');
-//       return;
-//  }
-//  if(!language.match(languageRegex)){
-//       window.alert('Language should contain only 2 capital letters');
-//       return;
-//  }
  if(!country.match(textRegex)){
       window.alert('Country must contain only letters');
  }
@@ -576,6 +549,13 @@ const handleChangePassword = async (event) => {
                 <p>Country</p>
                 <p>Hospital/Work Place</p>
                 <p>Specialization</p>
+                {isEditing?(
+                  <>
+                  <p>New Profile Picture</p>
+                  </>
+                  ): (<></>)
+                }
+                
               </div>
               <div className='list-2-profile'>
               {isEditing ? (
@@ -588,17 +568,10 @@ const handleChangePassword = async (event) => {
                     <input className="input_field" type="text" name="country" value={country} onChange={handleCountryChange} />
                     <p>{clinic}</p>
                     <p>{specialization}</p>
-
-                    
-                                         <input
-                                            className="input_field"
-                                            type='file'
-                                            id='profilePicture'
-                                            accept="image/png, image/jpg, image/jpeg"
-                                            value={profilePicture ? profilePicture.name : ''}
-                                            onChange={handleProfilePicChange}
-                                        />
-                                    
+                    <input className="input_field" type='file' id='upload-pfp' accept="image/png, image/jpg, image/jpeg" 
+                      value={profilePicture ? profilePicture.name : ''} onChange={handleProfilePicChange} />
+                      
+                        
                   </>
                 ) : (
                   <>
