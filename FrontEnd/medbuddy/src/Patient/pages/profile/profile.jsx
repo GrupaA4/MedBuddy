@@ -20,8 +20,8 @@ const getCookieValue = (name) => {
 
 export default function Profile(){
     const [userId, setUserId] = useState('');
-    const emailFromCookie = getCookieValue('user_email');
-    const passwordFromCookie = getCookieValue('user_pass');
+    const [emailFromCookie, setEmailFromCookie] = getCookieValue('user_email');
+    const [passwordFromCookie, setPasswordFromCookie] = getCookieValue('user_pass');
 
     const [name, setName] = useState('My Name');
     const [surname, setSurname] = useState('My Surname');
@@ -179,6 +179,8 @@ export default function Profile(){
 
     const handleEmailChange = (event) => {
         setEmail(event.target.value);
+        Cookies.set('user_email', email);
+        setEmailFromCookie(email);
     };
 
     const handlePhoneChange = (event) => {
@@ -497,6 +499,7 @@ export default function Profile(){
                 else{
                     console.log('Changed password successfully');
                     Cookies.set('user_pass', newPassword);
+                    setPasswordFromCookie(newPassword);
                 }
 
                 setIsChangingPassword(false);
