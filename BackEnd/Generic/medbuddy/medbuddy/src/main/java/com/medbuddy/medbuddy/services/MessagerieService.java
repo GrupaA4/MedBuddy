@@ -55,9 +55,9 @@ public class MessagerieService {
         return medbuddyUtil.receiveMessageFromMedbuddy(userId);
     }
 
-    public void sendMessageToMedbuddy() {
+    public void sendMessageToMedbuddy(String message) {
         UUID userId = userDAO.getUserId(SecurityUtil.getEmail());
-        medbuddyUtil.sendMessageToMedbuddy(userId);
+        medbuddyUtil.sendMessageToMedbuddy(message, userId);
     }
 
     /*@Autowired
