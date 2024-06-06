@@ -37,7 +37,7 @@ const LoginPage = () => {
           switch (result.type) {
             case 'Admin':
               navigate('/admin');
-              break;
+              break
             case 'Medic':
               navigate('/homeMedic');
               break;
