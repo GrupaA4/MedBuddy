@@ -41,9 +41,9 @@ public class AdminFunctionalityController {
     }
 
     //works
-    @PatchMapping(value = "/medbuddy/allowmedic/{medicId}")
-    public void allowMedic(@PathVariable UUID medicId) {
-        adminFunctionalityService.allowMedic(medicId);
+    @PatchMapping(value = "/medbuddy/allowmedic/{userId}")
+    public void allowMedic(@PathVariable UUID userId) {
+        adminFunctionalityService.allowMedic(userId);
     }
 
     @GetMapping(value = "/medbuddy/seerequestingmedics")

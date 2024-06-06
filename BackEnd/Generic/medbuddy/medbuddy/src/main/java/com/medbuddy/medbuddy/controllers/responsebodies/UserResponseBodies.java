@@ -75,12 +75,12 @@ public class UserResponseBodies {
         private String country;
         private String city;
         private String phoneNumber;
-        //        private String profileImage;
+//        private String profileImage;
         private String profileImage;
         private String imageExtension;
         private boolean isAdmin;
         private String typeOfMedic;
-        //        private String certificateImage;
+//        private String certificateImage;
         private String certificateImage;
         private String certificateExtension;
         private boolean isApproved;
