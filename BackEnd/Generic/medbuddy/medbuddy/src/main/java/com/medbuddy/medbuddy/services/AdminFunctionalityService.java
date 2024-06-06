@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.xml.validation.Validator;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -60,7 +61,9 @@ public class AdminFunctionalityService {
     public List<User> getOldestUsers(int fromUser, int toUser) {
         List<User> filteredUserList = adminFunctionalityRepository.getOldestUsers();
         filteredUserList.removeIf(user -> !EntityValidator.validate(user));
-        filteredUserList = filteredUserList.subList(max(1, fromUser) - 1, min(toUser, filteredUserList.size()));
+        if (fromUser < 1 || toUser<fromUser || toUser > filteredUserList.size())
+            throw new IllegalArgumentException("Invalid indexes.");
+        filteredUserList = filteredUserList.subList(fromUser - 1, toUser);
         return filteredUserList;
     }
 
@@ -74,29 +77,27 @@ public class AdminFunctionalityService {
     }
 
     public List<User> findUserByName(String username) {
-        if (!username.contains("+") || (username.startsWith("+") && username.endsWith("+")))
-            throw new UserDidSomethingWrongExceptions.TriedToGetAllUsers ("Invalid format, can't return all users or you forgot the +");
+        int count = username.length() - username.replace("+", "").length();
+        if (!username.contains("+") || count>1 || ((username.startsWith("+") && username.endsWith("+"))))
+            throw new IllegalArgumentException("Invalid format, can't return all users or you forgot the +");
         String[] nameParts = username.split("\\+");
-
-        if (nameParts.length > 2)
-            throw new UserDidSomethingWrongExceptions.TooManyParts("Invalid format, should only have 2 parts.");
-
         String firstName;
         String lastName;
         List<User> users;
 
         if (nameParts.length == 1) {
-            if (username.endsWith("+")) {
                 lastName = nameParts[0];
                 users = adminFunctionalityRepository.findUserByName(null, lastName);
-            } else {
-                firstName = nameParts[0];
+        } else {
+            if(username.startsWith("+")){
+                firstName = nameParts[1];
                 users = adminFunctionalityRepository.findUserByName(firstName, null);
             }
-        } else {
-            lastName = nameParts[0];
-            firstName = nameParts[1];
-            users = adminFunctionalityRepository.findUserByName(firstName, lastName);
+            else{
+                lastName = nameParts[0];
+                firstName = nameParts[1];
+                users = adminFunctionalityRepository.findUserByName(firstName, lastName);
+            }
         }
 
         users.removeIf(user -> !EntityValidator.validate(user));

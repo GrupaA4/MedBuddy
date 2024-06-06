@@ -205,13 +205,11 @@ public class AdminFunctionalityServiceTest {
 
     @Test
     @Order(7)
-    public void getReports_WithInvalidRange_ShouldReturnEmptyList() {
+    public void getReports_WithInvalidRange_ShouldThrowIllegalArgumentException() {
         int fromReport = 5;
         int toReport = 1;
 
-        List<Report> actualReports = adminFunctionalityService.getReports(fromReport, toReport);
-
-        assertTrue(actualReports.isEmpty());
+        assertThrows(IllegalArgumentException.class, () -> adminFunctionalityService.getReports(fromReport, toReport));
     }
 
     @Test
@@ -227,13 +225,12 @@ public class AdminFunctionalityServiceTest {
 
     @Test
     @Order(9)
-    public void getReports_WithNegativeRange_ShouldReturnEmptyList() {
+    public void getReports_WithNegativeRange_ShouldThrowIllegalArgumentException() {
         int fromReport = -5;
         int toReport = -1;
 
-        List<Report> actualReports = adminFunctionalityService.getReports(fromReport, toReport);
 
-        assertTrue(actualReports.isEmpty());
+        assertThrows(IllegalArgumentException.class, () -> adminFunctionalityService.getReports(fromReport, toReport));
     }
 
     @Test
@@ -249,8 +246,8 @@ public class AdminFunctionalityServiceTest {
     @Test
     @Order(11)
     public void getOldestUsers_InvalidRange_ShouldReturnAnEmptyList() {
-        List<User> oldestUsers = adminFunctionalityService.getOldestUsers(10, 12);
-        assertTrue(oldestUsers.isEmpty());
+        assertThrows(IllegalArgumentException.class, () -> adminFunctionalityService.getOldestUsers(500, 1000));
+
     }
 
     @Test
@@ -320,7 +317,7 @@ public class AdminFunctionalityServiceTest {
     @Test
     @Order(20)
     public void findUserByName_InvalidFormatTriesToGetAllUsers_ThrowsException() {
-        assertThrows(UserDidSomethingWrongExceptions.TriedToGetAllUsers.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             adminFunctionalityService.findUserByName("+");
         });
     }
@@ -328,7 +325,7 @@ public class AdminFunctionalityServiceTest {
     @Test
     @Order(21)
     public void findUserByName_InvalidFormatForgotThePlusSign_ThrowsException() {
-        assertThrows(UserDidSomethingWrongExceptions.TriedToGetAllUsers.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             adminFunctionalityService.findUserByName("");
         });
     }
@@ -336,7 +333,7 @@ public class AdminFunctionalityServiceTest {
     @Test
     @Order(22)
     public void findUserByName_TooManyParts_ThrowsException() {
-        assertThrows(UserDidSomethingWrongExceptions.TooManyParts.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             adminFunctionalityService.findUserByName("something+something+something");
         });
     }
@@ -344,7 +341,7 @@ public class AdminFunctionalityServiceTest {
     @Test
     @Order(23)
     public void findUserByName_TooManyParts2_ThrowsException() {
-        assertThrows(UserDidSomethingWrongExceptions.TooManyParts.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             adminFunctionalityService.findUserByName("+something+something");
         });
     }
@@ -352,7 +349,7 @@ public class AdminFunctionalityServiceTest {
     @Test
     @Order(24)
     public void findUserByName_TooManyParts3_ThrowsException() {
-        assertThrows(UserDidSomethingWrongExceptions.TooManyParts.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             adminFunctionalityService.findUserByName("something+something+nxaskn");
         });
     }
