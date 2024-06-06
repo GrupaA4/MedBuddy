@@ -2,6 +2,7 @@ package com.medbuddy.medbuddy.utilitaries;
 
 import com.medbuddy.medbuddy.models.*;
 import com.medbuddy.medbuddy.repository.daos.*;
+import com.medbuddy.medbuddy.repository.rowmappers.UserRowMapper;
 import com.medbuddy.medbuddy.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -38,24 +39,15 @@ public class DatabasePopulationUtil implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        addFirst();
-        addSecond();
-        addThird();
-        deleteUsers();
-    }
-
-    public void addFirst() {
-        processUserFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/user.txt");
-        processMedicFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medic.txt");
-    }
-
-    public void addSecond() {
-        processMedicalHistoryFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medical_history.txt");
-    }
-
-    public void addThird() {
-        processReportFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/report.txt");
-        processNotificationsFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/notification.txt");
+        List<User> currentUsers = jdbcTemplate.query("SELECT * FROM appuser", new UserRowMapper());
+        if(currentUsers.size() < 5) {
+            processUserFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/user.txt");
+            processMedicFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medic.txt");
+            processMedicalHistoryFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/medical_history.txt");
+            processReportFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/report.txt");
+            processNotificationsFile("src/main/java/com/medbuddy/medbuddy/utilitaries/databasepopulationfiles/notification.txt");
+            deleteUsers();
+        }
     }
 
     public void processMedicFile(String csvFile) {
@@ -130,6 +122,7 @@ public class DatabasePopulationUtil implements CommandLineRunner {
                             dateOfBirth, language, country, city, phoneNumber, profileImageNumber, imageExtension,
                             lastTimeLoggedIn, isAdmin, isDeleted);
                     userDAO.signupUser(user);
+                    users.add(user);
                 } else {
                     System.err.println("invalid : " + line);
                 }

@@ -65,13 +65,13 @@ public class AdminFunctionalityService {
         return filteredUserList;
     }
 
-    public void allowMedic(UUID medicId) {
-        UUID userId = userRepository.getUserIdOfMedic(medicId);
+    public void allowMedic(UUID userId) {
+        Medic medic = userRepository.getMedicSpecificInfoByUserId(userId);
         User user = userRepository.getUserById(userId);
         if(!EntityValidator.validate(user)) {
-            throw new NotFoundExceptions.MedicNotFound("No medic with id = " + medicId + " was found");
+            throw new NotFoundExceptions.MedicNotFound("No medic with id = " + userId + " was found");
         }
-        adminFunctionalityRepository.allowMedic(medicId);
+        adminFunctionalityRepository.allowMedic(medic.getMedicId());
     }
 
     public List<User> findUserByName(String username) {
