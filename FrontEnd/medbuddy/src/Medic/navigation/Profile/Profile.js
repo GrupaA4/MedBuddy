@@ -40,7 +40,6 @@ export default function Profile() {
     const [clinic, setClinic] = useState('Clinic');
     const [specialization, setSpecialization] = useState('Specialization');
     const [profilePicture,setProfilePicture]=useState('');
-    /////extension IMAGE
     const [imageExtension, setImageExtension]=useState('');
 
 
@@ -61,7 +60,7 @@ export default function Profile() {
     
 
     const [imageUrl, setImageUrl] = useState("");
-    const [extension, setExtension] = useState(""); //////////extensie CE
+    const [extension, setExtension] = useState(""); 
 
     const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
 
@@ -69,7 +68,7 @@ export default function Profile() {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    //obtinut id user
+  
     useEffect(() =>{
       const fetchuserId = async () => {
           try{
@@ -112,7 +111,7 @@ export default function Profile() {
   }, [emailFromCookie]);
 
   
-  //afisare informatii cont
+  
   useEffect(() => {
     const fetchUserData = async () => {
         if(userId) {
@@ -153,15 +152,15 @@ export default function Profile() {
                 setPronoun1(userData.pronoun1);
                 setPronoun2(userData.pronoun2);
                 setBirthDate(userData.dateOfBirth);
-                console.log('zi nastere '+birthDate);
                 setLanguage(userData.language);
                 setCity(userData.city);
                 setCountry(userData.country);
                 setPhone(userData.phoneNumber);
                 setSpecialization(userData.typeOfMedic);
                 setClinic(userData.clinic); 
-                //setClinic('clinic');
-                console.log('clinica: '+userData.clinic);
+
+                setClinic('clinic');
+
                 setProfilePicture(userData.profileImage);
                 setExtension(userData.imageExtension);
                 
@@ -191,9 +190,7 @@ export default function Profile() {
 }, [userId]);
 
 useEffect(() => {
-    
     setImageUrl(`data:image/${imageExtension};base64,${profilePicture}`);
-    console.log(imageUrl);
   }, [profilePicture, imageExtension]);
 
 
@@ -290,18 +287,6 @@ const handleSaveChanges = async (event) => {
       window.alert('First name should contain only letters');
       return;
  }
-//  if(!pronoun1.match(textRegex)){
-//       window.alert('Pronoun 1 should contain only letters');
-//       return;
-//  }
-//  if(!pronoun2.match(textRegex)){
-//       window.alert('Pronoun 2 should contain only letters');
-//       return;
-//  }
-//  if(!language.match(languageRegex)){
-//       window.alert('Language should contain only 2 capital letters');
-//       return;
-//  }
  if(!country.match(textRegex)){
       window.alert('Country must contain only letters');
  }
@@ -564,6 +549,13 @@ const handleChangePassword = async (event) => {
                 <p>Country</p>
                 <p>Hospital/Work Place</p>
                 <p>Specialization</p>
+                {isEditing?(
+                  <>
+                  <p>New Profile Picture</p>
+                  </>
+                  ): (<></>)
+                }
+                
               </div>
               <div className='list-2-profile'>
               {isEditing ? (
@@ -576,17 +568,10 @@ const handleChangePassword = async (event) => {
                     <input className="input_field" type="text" name="country" value={country} onChange={handleCountryChange} />
                     <p>{clinic}</p>
                     <p>{specialization}</p>
-
-                    
-                                         <input
-                                            className="input_field"
-                                            type='file'
-                                            id='profilePicture'
-                                            accept="image/png, image/jpg, image/jpeg"
-                                            value={profilePicture ? profilePicture.name : ''}
-                                            onChange={handleProfilePicChange}
-                                        />
-                                    
+                    <input className="input_field" type='file' id='upload-pfp' accept="image/png, image/jpg, image/jpeg" 
+                      value={profilePicture ? profilePicture.name : ''} onChange={handleProfilePicChange} />
+                      
+                        
                   </>
                 ) : (
                   <>

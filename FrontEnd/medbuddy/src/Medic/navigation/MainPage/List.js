@@ -12,7 +12,10 @@ function List() {
   const [notifications, setNotifications] = useState([]);
   const [profilePicture, setProfilePicture] = useState("");
   const [imageExtension, setImageExtension] = useState("");
+  const [imageUrl,setImageUrl]=useState("");
   const itemsPerPage = 3;
+
+  
 
   useEffect(() => {
     const fetchUserIdAndNotifications = async () => {
