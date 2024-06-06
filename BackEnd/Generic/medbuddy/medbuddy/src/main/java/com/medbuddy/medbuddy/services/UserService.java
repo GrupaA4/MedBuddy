@@ -21,9 +21,9 @@ public class UserService {
     @Autowired
     private UserDAO userDAO;
 
-    public boolean loginUser(String email, String password) {
+/*    public boolean loginUser(String email, String password) {
         return userDAO.loginUser(email, password);//throws exceptions if email doesn't exist
-    }
+    }*/
 
     public UUID getUserIdByEmail(String email) {
         UUID id = userDAO.getUserId(email);
@@ -58,31 +58,30 @@ public class UserService {
 
         userDAO.checkIfUserWithEmailExists(medicRequest.getEmail());//will throw exceptions if that happens
 
-            medicRequest.setId(SecurityUtil.getNewId());
-            String password = medicRequest.getPassword();
-            medicRequest.setPassword(passwordEncoder.encode(password));
+        medicRequest.setId(SecurityUtil.getNewId());
+        String password = medicRequest.getPassword();
+        medicRequest.setPassword(passwordEncoder.encode(password));
 
         int imageNumber = userDAO.getMaxImageNumber() + 1;
         //add profile image to database
         ImageProcessingUtil.saveImage(imageNumber, "src\\Database\\Profiles", profileImage, medicRequest.getImageExtension());
         medicRequest.setProfileImageNumber(imageNumber);
 
-            medicRequest.setLastTimeLoggedIn(LocalDate.now());
-            medicRequest.setDeleted(false);
+        medicRequest.setLastTimeLoggedIn(LocalDate.now());
+        medicRequest.setDeleted(false);
 
-            userDAO.signupUser(medicRequest);//automatically maps to a user
+        userDAO.signupUser(medicRequest);//automatically maps to a user
 
-            medicRequest.setMedicId(SecurityUtil.getNewId());
+        medicRequest.setMedicId(SecurityUtil.getNewId());
 
         int certificateNumber = userDAO.getMaxCertificateNumber() + 1;
         //add certificate image to database
         ImageProcessingUtil.saveImage(certificateNumber, "src\\Database\\Certificates", certificateImage, medicRequest.getCertificateExtension());
         medicRequest.setProfileImageNumber(certificateNumber);
 
-            medicRequest.setApproved(false);
+        medicRequest.setApproved(false);
 
-            userDAO.signupMedic(medicRequest);
-        }
+        userDAO.signupMedic(medicRequest);
     }
 
     public User getUser(UUID userId) {
