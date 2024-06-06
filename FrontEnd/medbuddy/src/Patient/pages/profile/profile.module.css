@@ -10,6 +10,9 @@
   display: flex;
   justify-content: space-evenly;
   align-content: center;
+  margin-left: 4vw;
+  margin-right: 4vw;
+  margin-bottom: 4vh;
 }
 .container .buttons_container {
   display: flex;
@@ -84,6 +87,11 @@
 .container .general_information_container__section__editable_information__div input {
   font-family: "Oswald_font";
   font-size: 3vh;
+}
+.container .general_information_container__section__editable_information__picture {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 .container .general_information_container__section__non_editable_information__div {
   display: flex;
@@ -316,6 +324,40 @@
     font-size: 3vh;
     width: 30vw;
     height: 10vh;
+    border-radius: 5vh;
+  }
+}
+@media screen and (max-width: 1366px) {
+  .container {
+    flex-direction: column;
+  }
+  .container .buttons_container__cancel_changes {
+    margin-bottom: 4vh;
+  }
+  .container .buttons_container__save_changes {
+    margin-bottom: 4vh;
+  }
+  .container .buttons_container__edit_profile {
+    margin-bottom: 4vh;
+  }
+  .container .buttons_container__change_password {
+    margin-bottom: 4vh;
+  }
+  .container .buttons_container__cancel_delete {
+    margin-bottom: 8vh;
+  }
+  .container .buttons_container__confirm_delete {
+    margin-bottom: 4vh;
+  }
+  .container .buttons_container__delete_account {
+    margin-bottom: 4vh;
+  }
+  .container .buttons_container__cancel_change_password {
+    margin-bottom: 4vh;
+  }
+  .button {
+    width: 20vw;
+    height: 8vh;
     border-radius: 5vh;
   }
 }/*# sourceMappingURL=profile.module.css.map */

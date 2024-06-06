@@ -1,20 +1,45 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./page.module.scss";
 import Send from "../../images/send-msg.svg";
-import Choose from "../../images/add-files.svg";
 import Robo_icon from "../../images/robo_icon.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
-
-const userId = "c6028efa-d76c-4bc5-aa3f-c12f2b9dce9c"; 
-const conversationId = "2"; 
 
 export default function ChatPage() {
     const [message, setMessage] = useState('');
     const [userMessages, setUserMessages] = useState([]);
     const [responseMessages, setResponseMessages] = useState([]);
+    const [emailList, setEmailList] = useState([]);
+    const [startNewConvo, setStartNewConvo] = useState(false);
     const messageContainerRef = useRef(null);
     const [image, setImage] = useState(null);
+    const [disableInput, setDisableInput] = useState(false);
+
+    const getCookieValue = (name) => {
+        const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+        for(const cookie of cookies) {
+            if(cookie.startsWith(name + '=')) {
+                return cookie.substring(name.length + 1);
+            }
+        }
+        return null;
+    }
+    const emailFromCookie = getCookieValue('user_email');
+    const passwordFromCookie = getCookieValue('user_pass');
+    const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
+
+    const sendCloseConversation = async () => {
+        try {
+            await fetch(`http://localhost:7264/medbuddy/chat/closeconversation`, {
+                method: 'HEAD',
+                headers: {
+                    'Authorization': `Basic ${authorisation}`
+                }
+            });
+        } catch (error) {
+            console.error("Error closing conversation:", error);
+        }
+    };
 
     const handleMessageChange = (e) => {
         setMessage(e.target.value);
@@ -42,54 +67,86 @@ export default function ChatPage() {
             setImage(null);
 
             try {
-                const formData = new FormData();
-                formData.append('message', message);
-                if (image) {
-                    formData.append('image', image);
-                }
-                formData.append('repliesTo', null); 
-                const response = await fetch(`https://2e0181e9-dcc6-4113-a5fa-4d90638f077c.mock.pstmn.io/medbuddy/chat/send`, {
+                const messageData = {
+                    message: message
+                };
+
+                const response = await fetch(`http://localhost:7264/medbuddy/chat/send`, {
                     method: 'POST',
-                    body: formData,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Basic ${authorisation}`
+                    },
+                    body: JSON.stringify(messageData),
                 });
 
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
 
-                simulateResponse();
+                receiveResponse(0);
             } catch (error) {
                 console.error("Error sending message:", error);
             }
         }
     };
 
-    const simulateResponse = async () => {
+    const receiveResponse = async (flag) => {
         try {
-            const response = await fetch('https://2e0181e9-dcc6-4113-a5fa-4d90638f077c.mock.pstmn.io/medbuddy/chat/receive', {
+            const response = await fetch(`http://localhost:7264/medbuddy/chat/receive/${flag}`, {
                 method: 'GET',
+                headers: {
+                    'Authorization': `Basic ${authorisation}`
+                }
             });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            const data = await response.json();
-            const newMessages = data.map(msg => ({
-                id: msg.id,
-                sender: 'medbuddy',
-                text: msg.text,
-            }));
-            setResponseMessages([...responseMessages, ...newMessages]);
+
+            const data = await response.text();
+            const jsonData = JSON.parse(data);
+
+            const newMessage = {
+                id: Date.now(),
+                sender: "medbuddy",
+                text: jsonData.message,
+            };
+
+            setResponseMessages((prev) => [...prev, newMessage]);
+            checkForEmails(newMessage);
         } catch (error) {
             console.error("Error fetching response messages:", error);
         }
     };
-    
 
-    const simulateResponseWithFile = () => {
-        setTimeout(() => {
-            setResponseMessages([...responseMessages, { id: Date.now(), sender: 'medbuddy', text: "I added the file!" }]);
-        }, 1500); 
+    const checkForEmails = (msg) => {
+        const foundEmails = [];
+
+        const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
+        const emailsFound = msg.text.match(emailRegex);
+        if (emailsFound) {
+            foundEmails.push(...emailsFound);
+            setDisableInput(true);
+            sendCloseConversation();
+        }
+
+        setEmailList(foundEmails);
     };
+
+    useEffect(() => {
+        if (startNewConvo) {
+            const startNewConversation = async () => {
+                await receiveResponse(1);
+                setStartNewConvo(false);
+            };
+
+            startNewConversation();
+        }
+    }, [startNewConvo]);
+
+    useEffect(() => {
+        handleNewConvo();
+    }, []);
 
     useEffect(() => {
         scrollToBottom();
@@ -101,35 +158,42 @@ export default function ChatPage() {
         }
     };
 
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        setImage(file);
-        const reader = new FileReader();
-        reader.onload = () => {
-            const fileData = reader.result; 
-            const fileName = file.name;
-            const messageWithFile = { id: Date.now(), sender: 'user', text: message, file: fileData, fileName: fileName };
-            setUserMessages([...userMessages, messageWithFile]);
-            setMessage('');
-
-            simulateResponseWithFile();
-        };
-        reader.readAsDataURL(file);
+    const handleBackToHomepage = async () => {
+        await sendCloseConversation();
+        window.location.href = '/';
     };
 
-    const handleNewConvo = () => {
-        setUserMessages([]); 
+    const handleSeeDiagnoses = async () => {
+        await sendCloseConversation();
+        window.location.href = '/diagnoses';
+    };
+
+    const handleNewConvo = async () => {
+        setUserMessages([]);
         setResponseMessages([]);
+        setEmailList([]);
+        setDisableInput(false);
+        
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        setStartNewConvo(true); 
     };
+
+    const handleNewConvoBtn = async () => {
+        await sendCloseConversation();
+        handleNewConvo();
+    };
+
     
     const combinedMessages = [];
-    const totalMessages = Math.max(userMessages.length, responseMessages.length);
+    const totalMessages = Math.max(responseMessages.length, userMessages.length);
     for (let i = 0; i < totalMessages; i++) {
-        if (userMessages[i]) {
-            combinedMessages.push(userMessages[i]);
-        }
         if (responseMessages[i]) {
             combinedMessages.push(responseMessages[i]);
+        }
+
+        if (userMessages[i]) {
+            combinedMessages.push(userMessages[i]);
         }
     }
 
@@ -156,27 +220,32 @@ export default function ChatPage() {
                             key={msg.id} 
                             className={`${styles.page__msg} ${msg.sender === 'user' ? styles.page__message : styles.page__response}`}
                         >
-                            {msg.file ? (
-                                <div>
-                                    <a href={msg.file} download>{msg.fileName}</a>
-                                    <div>{msg.text}</div>
-                                </div>
-                            ) : (
-                                <div>{msg.text}</div>
-                            )}
+                            <div>{msg.text}</div>
                         </div>
                     ))}
+                    {emailList.length > 0 && (
+                        <div className={styles.page__emails}>
+                            <div>Discuss your diagnosis with a doctor:</div>
+                            <ul>
+                                {emailList.map((email, index) => (
+                                    <li key={index}>
+                                                <a href={`mailto:${email}?subject=${encodeURIComponent('Diagnosis discussion')}`}>{email}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </div>
             <div className={styles.page__message_buttons}>
-                <button className={styles.page__message_buttons_action} onClick={() => window.location.href = '/'}>
+                <button className={styles.page__message_buttons_action} onClick={handleBackToHomepage}>
                     Back to Homepage
                 </button>
-                <button className={styles.page__message_buttons_action} onClick={() => window.location.href = '/diagnoses'}>
+                <button className={styles.page__message_buttons_action} onClick={handleSeeDiagnoses}>
                     See Diagnoses
                 </button>
-                <button className={styles.page__message_buttons_action} onClick={handleNewConvo}>
-                    New Discussion
+                <button className={styles.page__message_buttons_action} onClick={handleNewConvoBtn}>
+                    New Conversation
                 </button>
             </div>
             <div className={styles.page__message_input}>
@@ -186,20 +255,9 @@ export default function ChatPage() {
                     value={message}
                     onChange={handleMessageChange} 
                     onKeyPress={handleKeyPress} 
+                    disabled={disableInput}
                 />
-                <div className={styles.page__message_area_actions}>
-                    <label className={styles.page__message_area_file}>
-                        <img 
-                            className={styles.page__message_area_file_img} 
-                            src={Choose}
-                            alt="choose file"
-                        />
-                        <input 
-                            type="file" 
-                            className={styles.page__message_area_file_in} 
-                            onChange={handleFileChange} 
-                        />
-                    </label>
+                <div className={styles.page__message_area_actions}> 
                     <button 
                         onClick={handleSend}
                         className={styles.page__message_area_button}
