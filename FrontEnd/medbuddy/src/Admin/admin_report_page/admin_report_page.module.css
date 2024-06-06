@@ -114,8 +114,8 @@
 }
 
 .container1_admin_report_page_profile_image {
-  width: 100px;
-  height: 100px;
+  height: 34vh;
+  width: 34vh;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -407,6 +407,13 @@
     align-items: center;
     font-size: 3vh;
     color: #002845;
+  }
+
+  .container1_admin_report_page_profile_image {
+    height: 15vh;
+    width: 14vh;
+    border-radius: 50%;
+    object-fit: cover;
   }
 
   .container1_admin_report_page__square__data {
