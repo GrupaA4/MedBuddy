@@ -219,4 +219,4 @@ const AdminMainPage = () => {
   );
 };
 
-export default AdminMainPage;
+export default AdminMainPage; 
