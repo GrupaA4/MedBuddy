@@ -103,13 +103,66 @@ const UserPage = () => {
       console.error("Invalid medic object");
       return;
     }
-
+  
     console.log(`Checking license for medic with ID: ${medic.medicId}`);
-
-    const licenseURL = `data:image/${medic.certificateExtension};base64,${medic.certificateImage}`;
-
+  
+    const { certificateExtension, certificateImage } = medic;
+  
+    if (!certificateExtension || !certificateImage) {
+      console.error("Missing certificate extension or image");
+      return;
+    }
+  
+    const mimeType = `image/${certificateExtension}`;
+  
+    if (!/^data:image\/[a-zA-Z]*;base64,/.test(`data:${mimeType};base64,`)) {
+      console.error("Invalid MIME type for the image");
+      return;
+    }
+  
+    const licenseURL = `data:${mimeType};base64,${certificateImage}`;
+  
     try {
-      window.open(licenseURL, "_blank");
+      const newTab = window.open();
+      if (newTab) {
+        newTab.document.write(`
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Medic License</title>
+            <style>
+              body, html {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #f0f0f0;
+              }
+              .centered-image-license {
+                max-width: 50%;
+                max-height: 50%;
+                object-fit: contain;
+                border: 1px solid #ccc;
+                box-shadow: 0 0 10px rgba(0,0,0,0.5);
+              }
+            </style>
+          </head>
+          <body>
+            <div class="license_class">
+              <img src="${licenseURL}" alt="Medic License" class="centered-image-license" />
+            </div>
+          </body>
+          </html>
+        `);
+        newTab.document.close();
+      } else {
+        console.error("Failed to open new tab");
+      }
     } catch (error) {
       console.error("Error opening medic license:", error);
     }
