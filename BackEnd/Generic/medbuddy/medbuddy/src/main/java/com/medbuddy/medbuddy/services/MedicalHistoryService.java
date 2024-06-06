@@ -54,6 +54,7 @@ public class MedicalHistoryService {
     }
 
     public void changeDiagnosis(UUID entryId, MedicalHistoryRequestBody body) {
+
         medicalHistoryRepository.changeMedicalHistoryEntry(entryId, body.getDiagnosis(), body.getTreatment(), LocalDate.now());
     }
 }

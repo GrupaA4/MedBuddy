@@ -3,6 +3,7 @@ package com.medbuddy.medbuddy.controllers;
 import com.medbuddy.medbuddy.controllers.requestbodies.MedicalHistoryRequestBody;
 import com.medbuddy.medbuddy.controllers.responsebodies.MedicalHistoryResponseBodies;
 import com.medbuddy.medbuddy.models.MedicalHistoryEntry;
+import com.medbuddy.medbuddy.repository.daos.UserDAO;
 import com.medbuddy.medbuddy.services.MedicalHistoryService;
 import com.medbuddy.medbuddy.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class MedicalHistoryController {
     private MedicalHistoryService medicalHistoryService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserDAO userDAO;
 
     @GetMapping(value = "/getusermedicalhistory/{id}")
     public List<MedicalHistoryResponseBodies.MedicalHistoryBasicFields> getMedicalHistory(@PathVariable UUID id) {
@@ -39,6 +42,8 @@ public class MedicalHistoryController {
 
     @PatchMapping(value = "/verifydiagnosis/{id}")
     public void changeDiagnosis(@PathVariable UUID id, @RequestBody MedicalHistoryRequestBody body) {
-        medicalHistoryService.changeDiagnosis(id, body);
+        if(userDAO.isMedic()) {
+            medicalHistoryService.changeDiagnosis(id, body);
+        }
     }
 }

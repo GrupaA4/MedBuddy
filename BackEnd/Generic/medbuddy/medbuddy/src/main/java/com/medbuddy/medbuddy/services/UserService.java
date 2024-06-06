@@ -50,32 +50,31 @@ public class UserService {
     }
 
     public void createMedic(Medic medicRequest) {
-        if (userDAO.isAdmin()) {
-            userDAO.checkIfUserWithEmailExists(medicRequest.getEmail());//will throw exceptions if that happens
 
-            medicRequest.setId(SecurityUtil.getNewId());
-            String password = medicRequest.getPassword();
-            medicRequest.setPassword(passwordEncoder.encode(password));
+        userDAO.checkIfUserWithEmailExists(medicRequest.getEmail());//will throw exceptions if that happens
 
-            int imageNumber = userDAO.getMaxImageNumber() + 1;
-            //add profile image to database
-            medicRequest.setProfileImageNumber(imageNumber);
+        medicRequest.setId(SecurityUtil.getNewId());
+        String password = medicRequest.getPassword();
+        medicRequest.setPassword(passwordEncoder.encode(password));
 
-            medicRequest.setLastTimeLoggedIn(LocalDate.now());
-            medicRequest.setDeleted(false);
+        int imageNumber = userDAO.getMaxImageNumber() + 1;
+        //add profile image to database
+        medicRequest.setProfileImageNumber(imageNumber);
 
-            userDAO.signupUser(medicRequest);//automatically maps to a user
+        medicRequest.setLastTimeLoggedIn(LocalDate.now());
+        medicRequest.setDeleted(false);
 
-            medicRequest.setMedicId(SecurityUtil.getNewId());
+        userDAO.signupUser(medicRequest);//automatically maps to a user
 
-            int certificateNumber = userDAO.getMaxCertificateNumber() + 1;
-            //add certificate image to database
-            medicRequest.setProfileImageNumber(certificateNumber);
+        medicRequest.setMedicId(SecurityUtil.getNewId());
 
-            medicRequest.setApproved(false);
+        int certificateNumber = userDAO.getMaxCertificateNumber() + 1;
+        //add certificate image to database
+        medicRequest.setProfileImageNumber(certificateNumber);
 
-            userDAO.signupMedic(medicRequest);
-        }
+        medicRequest.setApproved(false);
+
+        userDAO.signupMedic(medicRequest);
     }
 
     public User getUser(UUID userId) {
@@ -124,7 +123,9 @@ public class UserService {
     }
 
     public void softDeleteUser(UUID userId) {
-        userDAO.markUserAsDeleted(userId);
+        if (userDAO.isAdmin() == true) {
+            userDAO.markUserAsDeleted(userId);
+        }
         //delete conversations
         //delete messages
         //delete reports

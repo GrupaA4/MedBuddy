@@ -278,8 +278,15 @@ public class UserDAO {
 
     public boolean isAdmin() {
         String email = SecurityUtil.getEmail();
-        UUID userId =  userService.getUserIdByEmail(email);
+        UUID userId = userService.getUserIdByEmail(email);
         String sql = "SELECT isAdimn FROM appuser WHERE userId = ?";
+        return jdbcTemplate.queryForObject(sql, Boolean.class, userId.toString());
+    }
+
+    public boolean isMedic() {
+        String email = SecurityUtil.getEmail();
+        UUID userId = userService.getUserIdByEmail(email);
+        String sql = "SELECT COUNT(1) FROM medic WHERE userId = ?";
         return jdbcTemplate.queryForObject(sql, Boolean.class, userId.toString());
     }
 
