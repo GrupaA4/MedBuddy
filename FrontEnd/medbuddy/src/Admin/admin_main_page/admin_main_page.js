@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styles from './admin_main_page.module.css';
-import Logo from './Logo.png';
-import Admin from './Admin.png';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "./admin_main_page.module.css";
+import Logo from "./Logo.png";
+import Admin from "./Admin.png";
 
 const getCookieValue = (name) => {
-  const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+  const cookies = document.cookie.split(";").map((cookie) => cookie.trim());
   for (const cookie of cookies) {
-    if (cookie.startsWith(name + '=')) {
+    if (cookie.startsWith(name + "=")) {
       return cookie.substring(name.length + 1);
     }
   }
   return null;
-}
+};
 
-const emailFromCookie = getCookieValue('user_email');
-const passwordFromCookie = getCookieValue('user_pass');
+const emailFromCookie = getCookieValue("user_email");
+const passwordFromCookie = getCookieValue("user_pass");
 
 const AdminMainPage = () => {
   const navigate = useNavigate();
@@ -27,11 +27,13 @@ const AdminMainPage = () => {
   const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
 
   useEffect(() => {
-    const titleElement = document.querySelector(`.${styles.container2__admin__main__page__title}`);
+    const titleElement = document.querySelector(
+      `.${styles.container2__admin__main__page__title}`
+    );
     const texts = ["Welcome back,", "     Admin!"];
     let index = 0;
     let textIndex = 0;
-    let finalText = '';
+    let finalText = "";
 
     function writeText() {
       let currentText = texts[textIndex];
@@ -44,8 +46,8 @@ const AdminMainPage = () => {
         index = 0;
         textIndex++;
         if (textIndex < texts.length) {
-          finalText += '<br>';
-          finalText += ' ';
+          finalText += "<br>";
+          finalText += " ";
           setTimeout(writeText, 100);
         }
       }
@@ -55,7 +57,7 @@ const AdminMainPage = () => {
   }, []);
 
   const redirectTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const fetchUsers = async (pageNum) => {
@@ -66,24 +68,30 @@ const AdminMainPage = () => {
       try {
         const start = (pageNum - 1) * usersPerPage + 1;
         const end = pageNum * usersPerPage;
-        const responseIds = await fetch(`http://localhost:7264/medbuddy/getoldestusers/${start}/${end}`, {
-          method: 'GET',
-          headers: {
-            'Authorization': `Basic ${authorisation}`
+        const responseIds = await fetch(
+          `http://localhost:7264/medbuddy/getoldestusers/${start}/${end}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Basic ${authorisation}`,
+            },
           }
-        });
+        );
 
         if (responseIds.ok) {
           const data = await responseIds.json();
           const userIds = data.users;
 
           const userDetailsPromises = userIds.map(async (userId) => {
-            const userResponse = await fetch(`http://localhost:7264/medbuddy/viewprofile/${userId}`, {
-              method: 'GET',
-              headers: {
-                'Authorization': `Basic ${authorisation}`
+            const userResponse = await fetch(
+              `http://localhost:7264/medbuddy/viewprofile/${userId}`,
+              {
+                method: "GET",
+                headers: {
+                  Authorization: `Basic ${authorisation}`,
+                },
               }
-            });
+            );
 
             if (userResponse.ok) {
               const userInfo = await userResponse.json();
@@ -93,6 +101,8 @@ const AdminMainPage = () => {
                 userLastName: userInfo.lastName,
                 userEmail: userInfo.email,
                 userPhone: userInfo.phoneNumber,
+                profileImage: userInfo.profileImage, // Adaugă informația despre imagine
+                imageExtension: userInfo.imageExtension, // Adaugă informația despre extensia imaginii
               };
             }
             return null;
@@ -107,12 +117,15 @@ const AdminMainPage = () => {
           } else {
             const nextStart = end + 1;
             const nextEnd = nextStart + usersPerPage - 1;
-            const nextResponseIds = await fetch(`http://localhost:7264/medbuddy/getoldestusers/${nextStart}/${nextEnd}`, {
-              method: 'GET',
-              headers: {
-                'Authorization': `Basic ${authorisation}`
+            const nextResponseIds = await fetch(
+              `http://localhost:7264/medbuddy/getoldestusers/${nextStart}/${nextEnd}`,
+              {
+                method: "GET",
+                headers: {
+                  Authorization: `Basic ${authorisation}`,
+                },
               }
-            });
+            );
 
             if (nextResponseIds.ok) {
               const nextData = await nextResponseIds.json();
@@ -122,10 +135,10 @@ const AdminMainPage = () => {
             }
           }
         } else {
-          console.error('Failed to fetch users information');
+          console.error("Failed to fetch users information");
         }
       } catch (error) {
-        console.error('Error fetching users:', error);
+        console.error("Error fetching users:", error);
       }
     })();
 
@@ -142,11 +155,11 @@ const AdminMainPage = () => {
   }, [authorisation, page]);
 
   const handleReportClick = () => {
-    navigate('/report');
+    navigate("/report");
   };
 
   const handleManageAccountsClick = () => {
-    navigate('/user');
+    navigate("/user");
   };
 
   const handlePrevious = async () => {
@@ -166,18 +179,41 @@ const AdminMainPage = () => {
   return (
     <div className={styles.body__admin__main__page}>
       <div className={styles.header__admin__main__page}>
-        <img src={Logo} className={styles.header__image__admin__main__page} alt="Logo" />
+        <img
+          src={Logo}
+          className={styles.header__image__admin__main__page}
+          alt="Logo"
+        />
         <div className={styles.header__paragraph__admin__main__page}>
-          <a onClick={redirectTop} className={styles.header__paragraph__admin__main__page__part}>Home</a>
-          <a onClick={handleReportClick} className={styles.header__paragraph__admin__main__page__part}>Report</a>
-          <a onClick={handleManageAccountsClick} className={styles.header__paragraph__admin__main__page__part}>Manage Accounts</a>
+          <a
+            onClick={redirectTop}
+            className={styles.header__paragraph__admin__main__page__part}
+          >
+            Home
+          </a>
+          <a
+            onClick={handleReportClick}
+            className={styles.header__paragraph__admin__main__page__part}
+          >
+            Report
+          </a>
+          <a
+            onClick={handleManageAccountsClick}
+            className={styles.header__paragraph__admin__main__page__part}
+          >
+            Manage Accounts
+          </a>
         </div>
       </div>
 
       <div className={styles.container1__admin__main__page} id="current_users">
         <div className={styles.container1__header__admin__main__page}>
-          <p className={styles.container1__header__admin__main__text}>CURRENT USERS</p>
-          <div className={styles.container1__header__admin__main__page__buttons}>
+          <p className={styles.container1__header__admin__main__text}>
+            CURRENT USERS
+          </p>
+          <div
+            className={styles.container1__header__admin__main__page__buttons}
+          >
             <button
               className={styles.container1__header__admin__main__page__before}
               onClick={handlePrevious}
@@ -198,11 +234,24 @@ const AdminMainPage = () => {
         {users.map((user, i) => (
           <div key={i} className={styles.container1__admin__main__page__square}>
             <div className={styles.container1__admin__main__page__square__icon}>
-              <p>PHOTO</p>
+              {user.profileImage && user.imageExtension ? (
+                <img
+                  src={`data:image/${user.imageExtension};base64,${user.profileImage}`}
+                  alt="Profile"
+                  className={styles.container1__admin__main__page_profile_image}
+                />
+              ) : (
+                <p>No Photo</p>
+              )}
             </div>
             <p className={styles.container1__admin__main__page__square__data}>
-              NAME: <span>{user.userLastName} {user.userFirstName}</span><br />
-              EMAIL: <span>{user.userEmail}</span><br />
+              NAME:{" "}
+              <span>
+                {user.userLastName} {user.userFirstName}
+              </span>
+              <br />
+              EMAIL: <span>{user.userEmail}</span>
+              <br />
               PHONE: <span>{user.userPhone}</span>
             </p>
           </div>
@@ -211,9 +260,27 @@ const AdminMainPage = () => {
 
       <div className={styles.container2__admin__main__page}>
         <p className={styles.container2__admin__main__page__title}></p>
-        <img src={Admin} className={styles.conatiner2__admin__main__page__image} alt="Admin" />
-        <button className={styles.container2__admin__main__page__button1} type="button" onClick={handleReportClick}>REPORT</button><br /><br />
-        <button className={styles.container2__admin__main__page__button2} type="button" onClick={handleManageAccountsClick}>MANAGE ACCOUNTS</button>
+        <img
+          src={Admin}
+          className={styles.conatiner2__admin__main__page__image}
+          alt="Admin"
+        />
+        <button
+          className={styles.container2__admin__main__page__button1}
+          type="button"
+          onClick={handleReportClick}
+        >
+          REPORT
+        </button>
+        <br />
+        <br />
+        <button
+          className={styles.container2__admin__main__page__button2}
+          type="button"
+          onClick={handleManageAccountsClick}
+        >
+          MANAGE ACCOUNTS
+        </button>
       </div>
     </div>
   );
