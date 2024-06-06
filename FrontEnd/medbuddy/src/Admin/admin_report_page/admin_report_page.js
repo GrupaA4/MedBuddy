@@ -251,7 +251,7 @@ const AdminReportPage = () => {
           alt="Megafon"
         />
         <div className={styles.container2_admin_report_page__text}>
-          Vezi ultimele raportari!
+          See latest reports!
         </div>
       </div>
     </div>

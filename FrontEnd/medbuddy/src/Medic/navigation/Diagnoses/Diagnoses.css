@@ -1,5 +1,5 @@
 .navbar-container-diagnosis {
-  width: 100%;
+ width: 100%;
   padding: 5px 0;
   border-bottom: 2px solid grey;
   border-radius: 10px;
@@ -42,14 +42,24 @@
   padding-right: 10vw;
   padding-top: 5rem;
   padding-bottom: 5rem;
-  /*     
-        .diagnoses_section__diagnose_column{
-            .diagnoses_section__diagnose_medication{
-                display: flex;
-                flex-direction: row;
-                padding-top: 0.25rem; 
-            }
-        } */
+ 
+}
+.add_new_section {
+  color: #002845;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  
+  padding-bottom: 5rem;
+
+ 
+}
+
+.new_diagnoses_section{
+  margin-top: 5rem;
+  margin-bottom: 2rem;
 }
 
 .diagnoses_section__diagnose {
@@ -67,6 +77,23 @@
   font-family: "Oswald";
 }
 
+.new_diagnoses_section__diagnose {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 40vw;
+  background-color: #def9f1;
+  color: #002845;
+  border: 0.25rem solid #069dae;
+  border-radius: 1.5rem;
+  padding: 1rem 1.5rem 1rem;
+  
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  font-family: "Oswald";
+  margin-top: -8rem;
+}
+
 .diagnoses_section__diagnose_medication {
   display: flex;
   flex-direction: row;
@@ -75,18 +102,113 @@
   font-family: "Oswald";
   width: auto;
 }
+.diagnoses_section__diagnose_column_date {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 
 .diagnoses_section__diagnose_medication_name {
   font-weight: 100;
 }
+.delete-diagnoses{
+  color: red;
+  text-align: center;
+  border: 1px solid #002845;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-family: "Oswald";
+  font-weight: 600;
+  font-size: 15px;
+  
+}
+.add-new-diagnoses-section{
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -8rem; 
+
+}
+
+.add-new-diagnoses{
+ 
+   background-color: #def9f1;
+   margin-top: 1rem;
+   border: 1px solid #002845;
+   font-size: 15px;
+   color: #002845;
+   font-weight: 600;
+   border-radius: 10px;
+   cursor: pointer;
+   padding: 0.5rem;
+   font-family: "Oswald";
+  
+   margin-bottom: 5rem;
+  
+}
+.add-new-diagnoses:hover{
+  background-color: #002845;
+  color: #def9f1;
+}
+
+.diagnoses-input{
+  
+  margin-left: 2rem;
+  color: #333; 
+  font-family: "Oswald";
+  border: none; /* Remove default border */
+    outline: none; /* Remove default outline */
+    border-radius: 5px;
+    padding: 0.6rem; /* Padding inside the wrapper */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    background: #f7f9fc; /* Light background color for the input container */
+    border-radius: 8px; 
+  
+}
+.diagnoses-input.error{
+  border:2px solid red;
+}
+.new-diagnoses-button-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Oswald";
+ 
+}
+
+.diagnoses-button{
+  background-color: #def9f1;
+  font-family: "Oswald";
+  border: 1px solid #002845;
+  font-size: 20px;
+  color: #002845;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0.8rem 2rem;
+ 
+
+}
+
+.diagnoses-button:hover{
+  background-color: #002845;
+  color: #def9f1;
+}
+
+
+@media screen and (max-width: 1000px) {
+
+  
+.new_diagnoses_section__diagnose {
+ width: 60vw;
+}
+}
 
 @media screen and (max-width: 850px) {
-  /* .introduction_section{
-        .introduction_section__text{
-            width: 43vw;
-            
-        }
-    } */
+
 
   .introduction_section__text {
     width: 43vw;
@@ -104,16 +226,11 @@
     width: 13.5rem;
     height: 13.5rem;
   }
-
-  /* .diagnoses_section{
-        .diagnoses_section__diagnose{
-            display: flex;
-            flex-direction: column;
-            width: 80vw;
-            font-size: 0.85rem;
-            
-        }
-    } */
+  .delete-diagnoses{
+   
+    width: 5rem;
+    margin-top: 1rem;
+  }
 
   .diagnoses_section__diagnose {
     display: flex;
@@ -122,12 +239,26 @@
     font-size: 0.85rem;
   }
 
-  .diagnoses_section__diagnose_column {
+  .diagnoses_section__diagnose_column_medic {
+    padding-top: 0.25rem;
+  }
+  .diagnoses_section__diagnose_column_date {
     padding-top: 0.25rem;
   }
 }
+@media screen and (max-width: 650px) {
 
+
+  .new_diagnoses_section__diagnose {
+   
+    flex-direction: column;
+    
+  }
+}
 @media screen and (max-width: 500px) {
+
+  
+
   .introduction_section {
     display: flex;
     flex-direction: column;
@@ -150,24 +281,10 @@
     height: 15rem;
   }
 
-  /* .diagnoses_section{
-        .diagnoses_section__diagnose{
-            display: flex;
-            flex-direction: column;
-            width: 80vw;
-        }
-    } */
-
   .diagnoses_section__diagnose {
     display: flex;
     flex-direction: column;
     width: 80vw;
-    /* .diagnoses_section__diagnose_column{
-            .diagnoses_section__diagnose_medication{
-                display: flex;
-                flex-direction: column;
-            }
-        } */
   }
 
   .diagnoses_section__diagnose_medication {

@@ -25,29 +25,11 @@
   border-radius: 10px;
 }
 
-/*
-@media (max-width: 1000px) {
-  .content-profile {
-    flex-direction: colums;
-  }
-
-  .general-information-profile {
-  }
-}
-@media (max-width: 800px) {
-  .content-profile {
-    flex-direction: row;
-  }
-}*/
 .body-profile {
   min-height: 100vh;
 }
 .content-profile {
-  /* height: 500px; */
-  /* width: 70%; */
   margin-top: 7.5rem;
-  /* margin-left: 50px; */
-  /* margin-bottom: 20px; */
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -58,22 +40,21 @@
   flex-direction: column;
   justify-content: space-evenly;
   width: 20rem;
-  /* height: 95%; */
 }
 
 .profile-picture-profile {
   width: 15rem;
-  height: auto;
+  height: 15rem;
   margin: auto;
-  /* margin-left: 5rem; */
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 .profile-picture-profile img {
-  width: 15rem;
-  height: auto;
+  width: 100%;
+  height: 100%;
   padding: 20px;
   background-color: #069dae;
   border-radius: 50%;
+  object-fit: cover;
 }
 .buttons-container-profile {
   display: flex;
@@ -81,6 +62,7 @@
   align-items: center;
   /* margin-left: 7rem; */
   margin: auto;
+  margin-left: 3rem;
 }
 .button-profile {
   padding: 12px;
@@ -146,6 +128,16 @@
   font-size: 20px;
   color: darkgray;
   font-family: "Oswald";
+}
+
+input[type="file"]::file-selector-button {
+  background-color: #369986;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  font-family: "Oswald";
+  margin-right: 1rem;
 }
 
 .edit-buttons-container-profile {
@@ -226,7 +218,7 @@
   font-size: 16px;
   margin: 10px;
   cursor: pointer;
-  ext-decoration: none;
+  text-decoration: none;
   color: black;
   font-family: "Oswald";
   background-color: #b8e0c6;

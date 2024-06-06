@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { Link, useLocation } from 'react-router-dom';
 import styles from './page.module.scss';
 import '../../fonts/Bebas_Neue/BebasNeue-Regular.ttf';
 import BrainVector from '../../images/brain_vector.svg';
@@ -10,45 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function Home(){
-    const [feedback, setFeedback] = useState('');
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    
-    const handleFeedbackChange = (e) => {
-        setFeedback(e.target.value);
-    };
 
-    const handleFirstNameChange = (e) => {
-        setFirstName(e.target.value);
-    };
-
-    const handleLastNameChange = (e) => {
-        setLastName(e.target.value);
-    };
-
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        //trimitere form - vor fi
-        console.log({
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            feedback: feedback
-        });
-
-        //resetare form
-        setFeedback('');
-        setFirstName('');
-        setLastName('');
-        setEmail('');
-        
-    };
     const handleBtn = () => {
         window.location.href = '/chat';
     };
@@ -89,7 +50,7 @@ export default function Home(){
                         We Can Be Trusted! 
                     </h1>
                     <p className={`${styles.motivation_section__subtitle}`}>
-                        Transform your life with artificial intelligence! Our model is created by the best engineers and enriched with the knowledge of thousands of health experts, ensuring you an extraordinary experience! 
+                        Transform your life with a virtual assistant! Discover the amazing benefits of our AI model, created to enhance your everyday experience.
                     </p>
                 </div>
                 <img className={`${styles.motivation_section__image}`} src={TechImg} alt='Beautiful'/>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./page.module.scss";
-import Header from '../../_componentsReusable/header/page';
-import Footer from '../../_componentsReusable/footer/page';
+import Header from '../common-components/Navbar';
+import Footer from '../common-components/Footer';
 
 const Section = ({ title, content }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +36,7 @@ const Container = () => {
           title="How It Works" 
           content={
             <ul>
-              <li><strong>Chat with MedBuddy:</strong> Our virtual assistant, MedBuddy, is available 24/7 to discuss your symptoms. MedBuddy can provide preliminary diagnoses based on the information you provide.</li>
+              <li><strong>Chat with MEdBuddy:</strong> Our virtual assistant, MedBuddy, is available 24/7 to discuss your symptoms. MedBuddy can provide preliminary diagnoses based on the information you provide.</li>
               <li><strong>Receive a Diagnosis:</strong> After your interaction with MedBuddy, you will receive a suggested diagnosis that helps you understand your potential health issues. After this, you can continue the discussion with the right doctor using your email.</li>
               <li><strong>Medical Review:</strong> Your diagnosis is then reviewed,verified and updated by a licensed medical professional to ensure accuracy and provide you with the best possible care.</li>
             </ul>
@@ -55,14 +55,19 @@ export default function About() {
   const [isMobileMenu, setIsMobileMenu] = useState(false);
 
   return (
+    <div className="AboutPage">
     <div className={styles.body__content}>
-      <Header setIsMobileMenu={setIsMobileMenu} />
+      <div className={styles.nav_container_about}>
+      <Header  setIsMobileMenu={setIsMobileMenu} />
+      </div>
       {!isMobileMenu && (
-        <>
+        
           <Container />
-          <Footer />
-        </>
+          
+        
       )}
+    </div>
+    <Footer/>
     </div>
   );
 }
