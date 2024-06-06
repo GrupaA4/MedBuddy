@@ -209,7 +209,7 @@ public class UserDAO {
         String sql = "SELECT userId FROM medic WHERE id = ?";
         List<String> ids = jdbcTemplate.queryForList(sql, String.class, medicId.toString());
         return switch (ids.size()) {
-            case 0 -> throw new NotFoundExceptions.UserNotFound("No medic with id " + medicId + " found");
+            case 0 -> throw new NotFoundExceptions.MedicNotFound("No medic with id " + medicId + " found");
             case 1 -> UUID.fromString(ids.get(0));
             default ->
                     throw new DatabaseExceptions.NonUniqueIdentifier("Found more medics with the same id: " + medicId);
@@ -220,7 +220,7 @@ public class UserDAO {
         String sql = "SELECT * FROM medic WHERE userId = ?";
         List<Medic> medics = jdbcTemplate.query(sql, new MedicRowMapper(), id.toString());
         return switch (medics.size()) {
-            case 0 -> throw new NotFoundExceptions.UserNotFound("No medic with the user id " + id + " found");
+            case 0 -> throw new NotFoundExceptions.MedicNotFound("No medic with the user id " + id + " found");
             case 1 -> medics.get(0);
             default -> {
                 UserWarnings.MultipleMedicsSameUserId.log(medics.get(0).getMedicId(), medics.get(1).getMedicId(), id);
