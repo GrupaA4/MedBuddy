@@ -10,9 +10,7 @@ import com.medbuddy.medbuddy.utilitaries.validators.EntityValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.jdbc.core.JdbcTemplate;
 
-import javax.xml.validation.Validator;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -31,7 +29,7 @@ public class UserService {
         UUID id = userDAO.getUserId(email);
 
         User user = userDAO.getUserById(id);
-        if(EntityValidator.validate(user)) {
+        if (EntityValidator.validate(user)) {
             return id;
         } else {
             throw new NotFoundExceptions.UserNotFound("User with email " + email + " was not found");
@@ -60,36 +58,37 @@ public class UserService {
 
         userDAO.checkIfUserWithEmailExists(medicRequest.getEmail());//will throw exceptions if that happens
 
-        medicRequest.setId(SecurityUtil.getNewId());
-        String password = medicRequest.getPassword();
-        medicRequest.setPassword(passwordEncoder.encode(password));
+            medicRequest.setId(SecurityUtil.getNewId());
+            String password = medicRequest.getPassword();
+            medicRequest.setPassword(passwordEncoder.encode(password));
 
         int imageNumber = userDAO.getMaxImageNumber() + 1;
         //add profile image to database
         ImageProcessingUtil.saveImage(imageNumber, "src\\Database\\Profiles", profileImage, medicRequest.getImageExtension());
         medicRequest.setProfileImageNumber(imageNumber);
 
-        medicRequest.setLastTimeLoggedIn(LocalDate.now());
-        medicRequest.setDeleted(false);
+            medicRequest.setLastTimeLoggedIn(LocalDate.now());
+            medicRequest.setDeleted(false);
 
-        userDAO.signupUser(medicRequest);//automatically maps to a user
+            userDAO.signupUser(medicRequest);//automatically maps to a user
 
-        medicRequest.setMedicId(SecurityUtil.getNewId());
+            medicRequest.setMedicId(SecurityUtil.getNewId());
 
         int certificateNumber = userDAO.getMaxCertificateNumber() + 1;
         //add certificate image to database
         ImageProcessingUtil.saveImage(certificateNumber, "src\\Database\\Certificates", certificateImage, medicRequest.getCertificateExtension());
         medicRequest.setProfileImageNumber(certificateNumber);
 
-        medicRequest.setApproved(false);
+            medicRequest.setApproved(false);
 
-        userDAO.signupMedic(medicRequest);
+            userDAO.signupMedic(medicRequest);
+        }
     }
 
     public User getUser(UUID userId) {
         User user = userDAO.getUserById(userId);
 
-        if(EntityValidator.validate(user)) {
+        if (EntityValidator.validate(user)) {
             return user;
         } else {
             throw new NotFoundExceptions.UserNotFound("User with id " + userId + "was not found");
@@ -101,7 +100,7 @@ public class UserService {
 
         User user = userDAO.getUserById(userId);
 
-        if(EntityValidator.validate(user)) {
+        if (EntityValidator.validate(user)) {
             return userId;
         } else {
             throw new NotFoundExceptions.UserNotFound("Medic with id " + medicId + "was not found");
@@ -111,7 +110,7 @@ public class UserService {
     public Medic getMedicProfile(UUID userId) {
         User user = userDAO.getUserById(userId);
 
-        if(!EntityValidator.validate(user)) {
+        if (!EntityValidator.validate(user)) {
             throw new NotFoundExceptions.UserNotFound("No user with this id " + userId + " was found");
         }
 
@@ -121,7 +120,7 @@ public class UserService {
     public void updateUser(UUID userId, User userRequest) {
         User user = userDAO.getUserById(userId);
 
-        if(!EntityValidator.validate(user)) {
+        if (!EntityValidator.validate(user)) {
             throw new NotFoundExceptions.UserNotFound("No user with this id " + userId + " was found");
         }
 
