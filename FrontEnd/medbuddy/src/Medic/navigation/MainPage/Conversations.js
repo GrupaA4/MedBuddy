@@ -20,9 +20,9 @@ function Conversations() {
         </div>
       
 
-          <div className="footer-container-mainpage-medic"><Footer/></div>
-          </div>
           
+          </div>
+          <div className="footer-container-mainpage-medic"><Footer/></div>
       </div>
     );
   }
