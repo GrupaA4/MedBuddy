@@ -38,6 +38,7 @@ function App() {
         <Route path="/registerPatient" element={<RegisterPatient />} />
 
         <Route path="/homeMedic" element={<HomeMedic />} />
+        <Route path="/homePatient" element={<Home />} />
         <Route path="/contactMedic" element={<ContactMedic />} />
         <Route path="/profileMedic" element={<ProfileMedic />} />
         <Route path="/diagnosesMedic/:id" element={<Diagnostic />} />

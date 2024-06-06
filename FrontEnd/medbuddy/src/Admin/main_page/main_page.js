@@ -12,7 +12,7 @@ const MainPage = () => {
     navigate('/registerPatient')
   }
   const redirectToLoginMedic = ()=>{
-    navigate('/register')
+    navigate('/registerMedic')
   }
  
   return (

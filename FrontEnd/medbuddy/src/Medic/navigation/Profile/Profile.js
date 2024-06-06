@@ -69,6 +69,7 @@ export default function Profile() {
     const [confirmPassword, setConfirmPassword] = useState('');
 
   
+  
     useEffect(() =>{
       const fetchuserId = async () => {
           try{
@@ -110,6 +111,7 @@ export default function Profile() {
       fetchuserId();
   }, [emailFromCookie]);
 
+  
   
   
   useEffect(() => {
@@ -158,6 +160,9 @@ export default function Profile() {
                 setPhone(userData.phoneNumber);
                 setSpecialization(userData.typeOfMedic);
                 setClinic(userData.clinic); 
+
+                setClinic('clinic');
+
 
                 setClinic('clinic');
 
@@ -549,6 +554,13 @@ const handleChangePassword = async (event) => {
                 <p>Country</p>
                 <p>Hospital/Work Place</p>
                 <p>Specialization</p>
+                {isEditing?(
+                  <>
+                  <p>New Profile Picture</p>
+                  </>
+                  ): (<></>)
+                }
+                
                 {isEditing?(
                   <>
                   <p>New Profile Picture</p>

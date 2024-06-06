@@ -36,7 +36,7 @@ const Container = () => {
           title="How It Works" 
           content={
             <ul>
-              <li><strong>Chat with MEdBuddy:</strong> Our virtual assistant, MedBuddy, is available 24/7 to discuss your symptoms. MedBuddy can provide preliminary diagnoses based on the information you provide.</li>
+              <li><strong>Chat with MedBuddy:</strong> Our virtual assistant, MedBuddy, is available 24/7 to discuss your symptoms. MedBuddy can provide preliminary diagnoses based on the information you provide.</li>
               <li><strong>Receive a Diagnosis:</strong> After your interaction with MedBuddy, you will receive a suggested diagnosis that helps you understand your potential health issues. After this, you can continue the discussion with the right doctor using your email.</li>
               <li><strong>Medical Review:</strong> Your diagnosis is then reviewed,verified and updated by a licensed medical professional to ensure accuracy and provide you with the best possible care.</li>
             </ul>

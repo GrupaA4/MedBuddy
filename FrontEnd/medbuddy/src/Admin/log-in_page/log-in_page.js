@@ -42,7 +42,7 @@ const LoginPage = () => {
               navigate('/homeMedic');
               break;
             case 'Patient':
-              navigate('/registerPatient');
+              navigate('/homePatient');
               break;
             default:
               setWarning('Unexpected user type.');

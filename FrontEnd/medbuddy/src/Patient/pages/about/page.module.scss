@@ -2,8 +2,7 @@
     margin: 0;
 
     .container {
-        margin-bottom: 8rem;
-        margin-top: 5rem;
+        margin-bottom: 4rem;
         display: flex;
         align-items: center;
         flex-direction: row;
@@ -11,7 +10,8 @@
         margin-top: 2rem;
         gap: 1rem;
         color: #002845;
-        padding: 3rem 10vw 1rem 10vw;
+        min-height: calc(80vh - 5rem);
+        padding: 0 10vw 1rem 10vw;
 
         .container__title {
             color: #05263d;
