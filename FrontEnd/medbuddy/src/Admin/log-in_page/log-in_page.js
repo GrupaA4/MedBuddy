@@ -39,7 +39,7 @@ const LoginPage = () => {
               navigate('/admin');
               break;
             case 'Medic':
-              navigate('/mainPageMedic');
+              navigate('/homeMedic');
               break;
             case 'Patient':
               navigate('/registerPatient');
@@ -66,7 +66,7 @@ const LoginPage = () => {
   };
 
   const handleSignUpAsDoctor = () => {
-    navigate('/register');
+    navigate('/registerMedic');
   };
 
   return (

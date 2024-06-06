@@ -33,7 +33,7 @@ const Navbar = () => {
     {
       text: "About",
       icon: <InfoIcon />,
-      path: "",
+      path: "/aboutMedic",
     },
     {
       text: "Contact",
@@ -58,7 +58,7 @@ const Navbar = () => {
             <a onClick={() => handleNavigation("/homeMedic")}>Home</a>
           </li>
           <li>
-            <a onClick={() => handleNavigation("")}>About</a>
+            <a onClick={() => handleNavigation("/aboutMedic")}>About</a>
           </li>
           <li>
             <a onClick={() => handleNavigation("/contactMedic")}>Contact</a>
