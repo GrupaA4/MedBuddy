@@ -129,7 +129,7 @@ public class NotificationsDAOTest {
     @Test
     @Order(4)
     public void approveMedic_MockUser_ChangesTheApprovalStatusToTrue() {
-        assertDoesNotThrow(() -> adminFunctionalityService.allowMedic(medicUUID));
+        assertDoesNotThrow(() -> adminFunctionalityService.allowMedic(medic.getId()));
     }
 
     @Test

@@ -270,13 +270,13 @@ public class AdminFunctionalityServiceTest {
     @Test
     @Order(14)
     public void approveMedic_ExistingMedic_ChangesTheApprovalStatusToTrue() {
-        assertDoesNotThrow(() -> adminFunctionalityService.allowMedic(medicUUID));
+        assertDoesNotThrow(() -> adminFunctionalityService.allowMedic(medic.getId()));
     }
 
     @Test
     @Order(15)
     public void approveMedic_MedicAlreadyApproved_NothingBadHappens() {
-        assertDoesNotThrow(() -> adminFunctionalityService.allowMedic(medicUUID));
+        assertDoesNotThrow(() -> adminFunctionalityService.allowMedic(medic.getId()));
     }
 
     @Test

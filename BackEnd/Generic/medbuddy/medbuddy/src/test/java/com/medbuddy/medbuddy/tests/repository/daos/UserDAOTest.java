@@ -125,7 +125,7 @@ class UserDAOTest {
     @Test
     @Order(8)
     public void approveMedic_MockUser_ChangesTheApprovalStatusToTrue() {
-        assertDoesNotThrow(() -> adminFunctionalityService.allowMedic(medicUUID));
+        assertDoesNotThrow(() -> adminFunctionalityService.allowMedic(medic.getId()));
     }
 
     @Test

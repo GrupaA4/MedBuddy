@@ -163,7 +163,7 @@ public class AdminFunctionalityDAOTest {
     @Test
     @Order(8)
     public void approveMedic_MockUser_ChangesTheApprovalStatusToTrue(){
-        assertDoesNotThrow(() -> adminFunctionalityService.allowMedic(medicUUID));
+        assertDoesNotThrow(() -> adminFunctionalityService.allowMedic(medic.getId()));
     }
     @Test
     @Order(9)
@@ -193,7 +193,7 @@ public class AdminFunctionalityDAOTest {
     @Test
     @Order(13)
     public void allowMedic_ValidMedicId_SuccessfullyAllowsMedic() {
-        assertDoesNotThrow(() -> adminFunctionalityDAO.allowMedic(medicUUID));
+        assertDoesNotThrow(() -> adminFunctionalityDAO.allowMedic(medic.getMedicId()));
     }
 
     @Test
@@ -256,7 +256,7 @@ public class AdminFunctionalityDAOTest {
         unapprovedMedic.setCertificateImageNumber(4);
         unapprovedMedic.setCertificateExtension("png");
         unapprovedMedic.setApproved(false);
-        userService.createMedic(unapprovedMedic);
+        userService.createMedic(unapprovedMedic, new byte[]{}, new byte[]{});
 
 
         List<Medic> medics = adminFunctionalityDAO.getRequestingMedics();

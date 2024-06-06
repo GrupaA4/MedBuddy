@@ -125,7 +125,7 @@ public class UserServiceTest {
     @Test
     @Order(8)
     public void approveMedic_MockUser_ChangesTheApprovalStatusToTrue(){
-        assertDoesNotThrow(() -> adminFunctionalityService.allowMedic(medicUUID));
+        assertDoesNotThrow(() -> adminFunctionalityService.allowMedic(medic.getId()));
     }
 
 //	@Test
@@ -206,14 +206,14 @@ public class UserServiceTest {
     public void createUser_NonExistingUser_CreatesUser()
     {
 
-        assertDoesNotThrow(() -> userService.createUser(user));
+        assertDoesNotThrow(() -> userService.createUser(user, new byte[]{}));
     }
 
     @Test
     @Order(19)
     public void createUser_ExistingUser_ThrowsException()
     {
-        assertThrows(UserDidSomethingWrongExceptions.UserWithEmailAlreadyExists.class, () -> userService.createUser(user));
+        assertThrows(UserDidSomethingWrongExceptions.UserWithEmailAlreadyExists.class, () -> userService.createUser(user, new byte[]{}));
     }
 
     static
@@ -253,14 +253,14 @@ public class UserServiceTest {
     @Order(20)
     public void createMedic_NonExistingMedic_CreatesMedic()
     {
-        assertDoesNotThrow(() -> userService.createMedic(medic1));
+        assertDoesNotThrow(() -> userService.createMedic(medic1, new byte[]{}, new byte[]{}));
     }
 
     @Test
     @Order(21)
     public void createMedic_ExistingMedic_ThrowsException()
     {
-        assertThrows(UserDidSomethingWrongExceptions.UserWithEmailAlreadyExists.class, () -> userService.createMedic(medic1));
+        assertThrows(UserDidSomethingWrongExceptions.UserWithEmailAlreadyExists.class, () -> userService.createMedic(medic1, new byte[]{}, new byte[]{}));
     }
 
 //	@Test

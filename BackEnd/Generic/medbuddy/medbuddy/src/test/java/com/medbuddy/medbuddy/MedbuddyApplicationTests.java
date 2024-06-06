@@ -370,7 +370,7 @@ class MedbuddyApplicationTests {
     @Test
     @Order(9)
     public void approveMedic_MockUser_ChangesTheApprovalStatusToTrue(){
-        assertDoesNotThrow(() -> adminFunctionalityService.allowMedic(medicUUID));
+        assertDoesNotThrow(() -> adminFunctionalityService.allowMedic(medic.getId()));
     }
 
     @Test

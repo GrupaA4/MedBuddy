@@ -164,7 +164,7 @@ public class MedicalHistoryDAOTest {
     @Test
     @Order(4)
     public void approveMedic_ExistingMedic_ChangesTheApprovalStatusToTrue() {
-        assertDoesNotThrow(() -> adminFunctionalityService.allowMedic(medicUUID));
+        assertDoesNotThrow(() -> adminFunctionalityService.allowMedic(userThatWillBecomeMedicUUID));
     }
 
     @Test
