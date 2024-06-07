@@ -3,6 +3,7 @@ package com.medbuddy.medbuddy.controllers.responsebodies;
 import com.medbuddy.medbuddy.models.Notification;
 import com.medbuddy.medbuddy.models.User;
 import com.medbuddy.medbuddy.services.UserService;
+import com.medbuddy.medbuddy.utilitaries.ImageProcessingUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,7 +27,6 @@ public abstract class NotificationsResponseBodies {
         private String lastName;
         private String firstName;
         private String profileImage;
-        //private MultiPartFile profileImage;
         private String imageExtension;
         private String email;
         private String diagnosis;
@@ -36,7 +36,8 @@ public abstract class NotificationsResponseBodies {
             User patient = userService.getUser(notification.getPatientId());
             lastName = patient.getLastName();
             firstName = patient.getFirstName();
-            profileImage = "placeholder";//medic.getProfileImage()
+            profileImage = ImageProcessingUtil.extractImage(patient.getProfileImageNumber(), patient.getImageExtension(),
+                    "src\\Database\\Profiles");
             imageExtension = patient.getImageExtension();
             email = patient.getEmail();
             diagnosis = notification.getDiagnosis();
