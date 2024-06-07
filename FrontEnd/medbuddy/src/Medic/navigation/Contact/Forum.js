@@ -23,8 +23,6 @@ import Cookies from 'js-cookie';
                       'Authorization': `Basic ${authorisation}`
                   }
               });
-              console.log("Email: ", emailFromCookie);
-              console.log("Parola: ", passwordFromCookie);
               if(response.status !== 200){
                   if(response.status === 418 || response.status === 500){
                       throw new Error('Internal backend error');
@@ -89,6 +87,7 @@ import Cookies from 'js-cookie';
 
         const dataRep = await response.json();
         setRepUserId(dataRep.id);
+        console.log(repUserId);
     } catch (error) {
         console.error('Error:', error);
     }

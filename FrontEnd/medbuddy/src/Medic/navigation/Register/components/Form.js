@@ -18,22 +18,18 @@ export default function Form() {
     country: "",
     city: "",
     phoneNumber: "",
-    profileImage: "",
-    imageExtension: "",
     typeOfMedic: "",
     clinic: "",
-    certificateImage: "",
-    certificateImageExtension: "",
     admin: false,
-    errors: {}
+    errors: {},
   });
 
   const [profileImage, setProfileImage] = React.useState(null);
-  const [profileImageExtension, setProfileImageExtension] = React.useState(null);
+  const [profileImageExtension, setProfileImageExtension] = React.useState("");
   const [certificateImage, setCertificateImage] = React.useState(null);
-  const [certificateImageExtension, setCertificateImageExtension] = React.useState(null);
-  const [profileImagePreview, setProfileImagePreview] = React.useState(null);
-  const [certificateImagePreview, setCertificateImagePreview] = React.useState(null);
+  const [certificateImageExtension, setCertificateImageExtension] =
+    React.useState("");
+
   const id = React.useId();
 
   function handleChange(event) {
@@ -44,8 +40,8 @@ export default function Form() {
       [name]: type === "checkbox" ? checked : value,
       errors: {
         ...prevFormData.errors,
-        [name]: false
-      }
+        [name]: false,
+      },
     }));
   }
 
@@ -56,22 +52,18 @@ export default function Form() {
 
     reader.onloadend = () => {
       setProfileImage(reader.result);
-      setProfileImagePreview(URL.createObjectURL(file));
 
-      const fileExtension = file.name.split('.').pop();
-      if (!['png', 'jpg', 'jpeg'].includes(fileExtension)) {
-        alert('Please select a PNG or JPG file.');
+      const fileExtension = file.name.split(".").pop();
+      if (!["png", "jpg", "jpeg"].includes(fileExtension)) {
+        alert("Please select a PNG or JPG file.");
         return;
       }
       setProfileImageExtension(fileExtension);
-
-
     };
 
     if (file) {
       reader.readAsDataURL(file);
     }
-
   }
 
   function handleCertificateImgChange(event) {
@@ -81,16 +73,13 @@ export default function Form() {
 
     reader.onloadend = () => {
       setCertificateImage(reader.result);
-      setCertificateImagePreview(URL.createObjectURL(file));
 
-      const fileExtension = file.name.split('.').pop();
-      if (!['png', 'jpg', 'jpeg'].includes(fileExtension)) {
-        alert('Please select a PNG or JPG file.');
+      const fileExtension = file.name.split(".").pop();
+      if (!["png", "jpg", "jpeg"].includes(fileExtension)) {
+        alert("Please select a PNG or JPG file.");
         return;
       }
       setCertificateImageExtension(fileExtension);
-
-
     };
 
     if (file) {
@@ -138,9 +127,9 @@ export default function Form() {
     }
 
     if (Object.keys(errors).length > 0) {
-      setFormData(prevFormData => ({
+      setFormData((prevFormData) => ({
         ...prevFormData,
-        errors: errors
+        errors: errors,
       }));
       return;
     }
@@ -161,9 +150,9 @@ export default function Form() {
       typeOfMedic: formData.typeOfMedic,
       clinic: formData.clinic,
       profileImage: profileImage,
-      profileImageExtension: profileImageExtension,
+      imageExtension: profileImageExtension,
       certificateImage: certificateImage,
-      certificateImageExtension: certificateImageExtension,
+      certificateExtension: certificateImageExtension,
       admin: formData.admin,
     };
 
@@ -176,17 +165,30 @@ export default function Form() {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-            'Authorization': null
+            Authorization: null,
           },
           body: JSON.stringify(formattedData),
         }
       );
-      if (!response.ok) {
-        throw new Error("Response was not ok");
+      if (response.status !== 201) {
+        if (response.status === 418 || response.status === 500) {
+          throw new Error("Internal backend error");
+        } else if (response.status === 401) {
+          throw new Error("Wrong email and password in the header");
+        } else if (response.status === 400) {
+          throw new Error(
+            "Typo in the URL or not the right path variable type"
+          );
+        } else if (response.status === 403) {
+          throw new Error("Another user with this email exists");
+        } else {
+          throw new Error("Unknown error");
+        }
+      } else {
+        console.log("Successfull authentification");
       }
+      console.log("am trecut de fetch");
 
-      const result = await response.json();
-      console.log("Success:", result);
       Cookies.set(`user_email`, formattedData.email, { expires: 7 });
       Cookies.set(`user_pass`, formattedData.password, { expires: 7 });
       setFormData({
@@ -205,12 +207,12 @@ export default function Form() {
         typeOfMedic: "",
         clinic: "",
         admin: false,
-        errors: {}
+        errors: {},
       });
       setProfileImage(null);
-      setProfileImageExtension(null);
+      // setProfileImageExtension(null);
       setCertificateImage(null);
-      setCertificateImageExtension(null);
+      // setCertificateImageExtension(null);
     } catch (error) {
       console.error("Error", error);
     }
@@ -296,8 +298,8 @@ export default function Form() {
                   id={id + "-female"}
                   name="gender"
                   value="female"
-                // checked={formData.gender === "female"}
-                // onChange={handleChange}
+                  // checked={formData.gender === "female"}
+                  // onChange={handleChange}
                 />
                 <label htmlFor={id + "-female"}>Female:</label>
 
@@ -306,8 +308,8 @@ export default function Form() {
                   id={id + "-male"}
                   name="gender"
                   value="male"
-                // checked={formData.gender === "male"}
-                // onChange={handleChange}
+                  // checked={formData.gender === "male"}
+                  // onChange={handleChange}
                 />
                 <label htmlFor={id + "-male"}>Male</label>
               </div>

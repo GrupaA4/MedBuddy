@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@mdi/react": "^1.6.1",
     "js-cookies": "^1.0.4"
   }
 }
