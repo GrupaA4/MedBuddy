@@ -223,7 +223,7 @@
   background-color: #def9f1;
   top: 15vh;
   left: 68vw;
-  height: 85vh;
+  height: 95vh;
   width: 28vw;
   bottom: 20vh;
   scroll-margin-top: 15vh;
@@ -293,6 +293,29 @@
 }
 
 .container2__admin__main__page__button2:active {
+  box-shadow: 0 7px #b8e0c6;
+  transform: translateY(8px);
+}
+.container2__admin__main__page__button3 {
+  position: absolute;
+  margin-top: 82vh;
+  width: 18vw;
+  height: 7vh;
+  border-radius: 4vh;
+  font-family: "Bebas Neue", sans-serif;
+  border: none;
+  background-color: #369986;
+  cursor: pointer;
+  font-size: 4vh;
+  color: #002845;
+  box-shadow: 5px 7px #b8e0c6;
+}
+
+.container2__admin__main__page__button3:hover {
+  scale: 1.1;
+}
+
+.container2__admin__main__page__button3:active {
   box-shadow: 0 7px #b8e0c6;
   transform: translateY(8px);
 }
