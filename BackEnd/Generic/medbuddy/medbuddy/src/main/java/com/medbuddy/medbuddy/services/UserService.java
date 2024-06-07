@@ -8,6 +8,7 @@ import com.medbuddy.medbuddy.utilitaries.ImageProcessingUtil;
 import com.medbuddy.medbuddy.utilitaries.SecurityUtil;
 import com.medbuddy.medbuddy.utilitaries.validators.EntityValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,8 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
 /*    public boolean loginUser(String email, String password) {
         return userDAO.loginUser(email, password);//throws exceptions if email doesn't exist

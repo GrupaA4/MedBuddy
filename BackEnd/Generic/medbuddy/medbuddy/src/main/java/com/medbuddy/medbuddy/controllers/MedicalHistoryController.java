@@ -42,8 +42,7 @@ public class MedicalHistoryController {
 
     @PatchMapping(value = "/verifydiagnosis/{id}")
     public void changeDiagnosis(@PathVariable UUID id, @RequestBody MedicalHistoryRequestBody body) {
-        if(userDAO.isMedic()) {
             medicalHistoryService.changeDiagnosis(id, body);
-        }
+
     }
 }
