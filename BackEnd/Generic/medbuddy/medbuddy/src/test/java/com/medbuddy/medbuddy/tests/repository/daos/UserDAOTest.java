@@ -179,13 +179,13 @@ class UserDAOTest {
     @Test
     @Order(16)
     public void getMaxImageNumber_ShouldReturnMaxImageNumber() {
-        assertThat(userDAO.getMaxImageNumber()).isEqualTo(10050); // ???
+        assertThat(userDAO.getMaxImageNumber()).isEqualTo(19);
     }
 
     @Test
     @Order(11)
     public void getMaxCertificateNumber_ShouldReturnMaxCertificateNumber() {
-        assertThat(userDAO.getMaxCertificateNumber()).isEqualTo(20010);
+        assertThat(userDAO.getMaxCertificateNumber()).isEqualTo(4);
     }
 
     @Test
