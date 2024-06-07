@@ -20,8 +20,8 @@ const getCookieValue = (name) => {
 
 export default function Profile(){
     const [userId, setUserId] = useState('');
-    const [emailFromCookie, setEmailFromCookie] = getCookieValue('user_email');
-    const [passwordFromCookie, setPasswordFromCookie] = getCookieValue('user_pass');
+    const [emailFromCookie, setEmailFromCookie] = useState('');
+    const [passwordFromCookie, setPasswordFromCookie] = useState('');
 
     const [name, setName] = useState('My Name');
     const [surname, setSurname] = useState('My Surname');
@@ -60,8 +60,11 @@ export default function Profile(){
     const [extension, setExtension] = useState("");
 
     const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
+    const [mailFlag, setEmailFlag] = useState(false);
 
     useEffect(() =>{
+        setEmailFromCookie(getCookieValue('user_email'));
+        setPasswordFromCookie(getCookieValue('user_pass'));
         const fetchuserId = async () => {
             try{
                 const response = await fetch(`http://localhost:7264/medbuddy/getuserid/${emailFromCookie}`, {
@@ -179,8 +182,7 @@ export default function Profile(){
 
     const handleEmailChange = (event) => {
         setEmail(event.target.value);
-        Cookies.set('user_email', email);
-        setEmailFromCookie(email);
+        setEmailFlag(true);
     };
 
     const handlePhoneChange = (event) => {
@@ -324,6 +326,10 @@ export default function Profile(){
         };
 
         console.log('Data to be sent:', data);
+        if(mailFlag === true){
+            Cookies.set('user_email', email);
+            setEmailFromCookie(email);
+        }
 
         try {
             const response = await fetch(`http://localhost:7264/medbuddy/changeprofile/${userId}`, {
@@ -353,6 +359,7 @@ export default function Profile(){
                 }
             }
             else{
+                setEmailFlag(false);
                 console.log('Updated profile successfully');
             }
 
@@ -360,6 +367,7 @@ export default function Profile(){
         } catch (error) {
             console.error('Error:', error);
             window.alert('An error occured.Please try again later.');
+            setEmailFlag(false);
         }
     };
 
@@ -378,6 +386,7 @@ export default function Profile(){
         setHomeAdress(initialHomeAdress);
         setProfilePicture(initialProfilePicture);
         setIsEditing(false);
+        setEmailFlag(false);
     };
 
     useEffect(() => {
@@ -455,6 +464,9 @@ export default function Profile(){
         event.preventDefault();
 
         const lastTimeLoggedOn = getCurrentDate();
+        const addressParts = homeAdress.split(', ');
+        const city = addressParts[0];
+        const country = addressParts[1];
 
         setOldPassword(getCookieValue('user_pass'));
         if(newPassword!==oldPassword && newPassword===confirmPassword){
@@ -463,7 +475,17 @@ export default function Profile(){
                 password:newPassword,
                 lastName:surname,
                 firstName:name,
+                gender:gender,
+                pronoun1:pronoun1,
+                pronoun2:pronoun2,
                 dateOfBirth:birthDate,
+                language:language,
+                country:country,
+                city:city,
+                phoneNumber:phone,
+                profileImage:profilePicture,
+                imageExtension:imageExtension,
+                admin:false,
                 lastTimeLoggedOn:lastTimeLoggedOn
             };
 
@@ -514,6 +536,14 @@ export default function Profile(){
         }
     };
 
+    const handleLogout = async (event) => {
+        event.preventDefault();
+
+        Cookies.remove('user_pass');
+        Cookies.remove('user_email');
+        window.location.href='/';
+    };
+
     const [isMobileMenu, setIsMobileMenu] = useState(false);
 
     return (
@@ -562,6 +592,7 @@ export default function Profile(){
                                 <button className={`${styles.buttons_container__delete_account} ${styles.button}`} onClick={handleDeleteAccount}>Delete Account</button><br /><br />
                             </>
                         )}
+                        <button className={`${styles.buttons_container__logout} ${styles.button}`} onClick={handleLogout}>Logout</button><br /><br />
                     </div>
                     {isChangingPassword ? (
                         <>
@@ -744,19 +775,6 @@ export default function Profile(){
                                             onChange={handleHomeAdressChange}
                                         />
                                     </div><br />
-                                    <div className={`${styles.general_information_container__section__editable_information__div}`}>
-                                        <label 
-                                            className={`${styles.general_information_container__section__editable_information__div__label}`}
-                                            htmlFor='profilePicture'>Profile Picture </label>
-                                        <input
-                                            className={`${styles.general_information_container__section__editable_information__div__input__pic}`}
-                                            type='file'
-                                            id='profilePicture'
-                                            accept="image/png, image/jpg, image/jpeg"
-                                            value={profilePicture ? profilePicture.name : ''}
-                                            onChange={handleProfilePicChange}
-                                        />
-                                    </div>
                                 </div>
                             ) : (
                                 <div className={`${styles.general_information_container__section__non_editable_information}`}>

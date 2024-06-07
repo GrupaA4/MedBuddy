@@ -88,6 +88,10 @@ $font_oswald: "Oswald_font";
             
             margin-top: 1rem;
         }
+
+        &__logout{
+            background-color: $red-color;
+        }
     }
 
     .general_information_container{
