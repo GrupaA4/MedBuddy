@@ -37,7 +37,7 @@ public class MedicalHistoryResponseBodies {
             this.diagnose = medicalHistoryEntry.getDiagnosis();
             this.treatment = medicalHistoryEntry.getTreatment();
             UUID medicId = medicalHistoryEntry.getMedicId();
-            if(medicId == UUID.fromString("a67fd0c8-4254-48d0-abde-5707390e86c3")) {
+            if(medicId == UUID.fromString("dfe6b8e7-b7a5-42bc-9fba-27dfc0b165bc")) {
                 this.name = "Medbuddy";
             } else {
                 UUID userIdOfMedic = userService.getUserIdOfMedic(medicId);
