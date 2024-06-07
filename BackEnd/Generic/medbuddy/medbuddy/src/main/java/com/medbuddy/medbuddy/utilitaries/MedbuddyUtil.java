@@ -27,10 +27,8 @@ public class MedbuddyUtil {
             while (true) {
                 WatchKey key = watcher.take();
                 List<WatchEvent<?>> events = key.pollEvents();
-                boolean done = false;
                 for (WatchEvent<?> event : events) {
                     if (event.kind() == ENTRY_MODIFY) {
-                        done = true;
                         Path modifiedFile = (Path) event.context();
                         System.out.println("File modified: " + modifiedFile);
                         FileReader reader = new FileReader("Backend" + File.separator + modifiedFile.toFile());
