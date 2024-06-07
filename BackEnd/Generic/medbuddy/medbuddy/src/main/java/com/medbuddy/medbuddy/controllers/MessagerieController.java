@@ -30,7 +30,7 @@ public class MessagerieController {
 
     @PostMapping("/send")
     public void sendMessageToMedbuddy(@RequestBody Message message) {
-        messagerieService.sendMessageToMedbuddy();
+        messagerieService.sendMessageToMedbuddy(message.getMessage());
     }
 
     /*

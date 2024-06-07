@@ -68,36 +68,35 @@ public class AdminFunctionalityService {
     public void allowMedic(UUID userId) {
         Medic medic = userRepository.getMedicSpecificInfoByUserId(userId);
         User user = userRepository.getUserById(userId);
-        if(!EntityValidator.validate(user)) {
+        if (!EntityValidator.validate(user)) {
             throw new NotFoundExceptions.MedicNotFound("No medic with id = " + userId + " was found");
         }
         adminFunctionalityRepository.allowMedic(medic.getMedicId());
     }
 
     public List<User> findUserByName(String username) {
-        if (!username.contains("+") || (username.startsWith("+") && username.endsWith("+")))
-            throw new UserDidSomethingWrongExceptions.TriedToGetAllUsers ("Invalid format, can't return all users or you forgot the +");
+        int count = username.length() - username.replace("+", "").length();
+        if (!username.contains("+") || count > 1 || ((username.startsWith("+") && username.endsWith("+"))))
+            throw new IllegalArgumentException("Invalid format, can't return all users or you forgot the +");
         String[] nameParts = username.split("\\+");
-
-        if (nameParts.length > 2)
-            throw new UserDidSomethingWrongExceptions.TooManyParts("Invalid format, should only have 2 parts.");
 
         String firstName;
         String lastName;
         List<User> users;
 
         if (nameParts.length == 1) {
-            if (username.endsWith("+")) {
-                lastName = nameParts[0];
-                users = adminFunctionalityRepository.findUserByName(null, lastName);
-            } else {
-                firstName = nameParts[0];
+            lastName = nameParts[0];
+            users = adminFunctionalityRepository.findUserByName(null, lastName);
+        } else {
+            if(username.startsWith("+")){
+                firstName = nameParts[1];
                 users = adminFunctionalityRepository.findUserByName(firstName, null);
             }
-        } else {
-            lastName = nameParts[0];
-            firstName = nameParts[1];
-            users = adminFunctionalityRepository.findUserByName(firstName, lastName);
+            else {
+                lastName = nameParts[0];
+                firstName = nameParts[1];
+                users = adminFunctionalityRepository.findUserByName(firstName, lastName);
+            }
         }
 
         users.removeIf(user -> !EntityValidator.validate(user));

@@ -40,6 +40,8 @@ public class UserController {
             throw new UserDidSomethingWrongExceptions.UserCredentialsNotFound(null);
         }
 
+        userService.updateLastTimeLoggedOn(id);
+
         Map<String, String> response = new HashMap<>();
         if (user.isAdmin()) {
             response.put("type", "Admin");

@@ -187,7 +187,7 @@ public class UserDAO {
                 medic.getTypeOfMedic(),
                 medic.getClinic(),
                 medic.getCertificateImageNumber(),
-                medic.getImageExtension(),
+                medic.getCertificateExtension(),
                 DataConvertorUtil.turnBooleanInto0or1(medic.isApproved()));
     }
 
@@ -205,7 +205,7 @@ public class UserDAO {
         String sql = "SELECT userId FROM medic WHERE id = ?";
         List<String> ids = jdbcTemplate.queryForList(sql, String.class, medicId.toString());
         return switch (ids.size()) {
-            case 0 -> throw new NotFoundExceptions.UserNotFound("No medic with id " + medicId + " found");
+            case 0 -> throw new NotFoundExceptions.MedicNotFound("No medic with id " + medicId + " found");
             case 1 -> UUID.fromString(ids.get(0));
             default ->
                     throw new DatabaseExceptions.NonUniqueIdentifier("Found more medics with the same id: " + medicId);
@@ -216,7 +216,7 @@ public class UserDAO {
         String sql = "SELECT * FROM medic WHERE userId = ?";
         List<Medic> medics = jdbcTemplate.query(sql, new MedicRowMapper(), id.toString());
         return switch (medics.size()) {
-            case 0 -> throw new NotFoundExceptions.UserNotFound("No medic with the user id " + id + " found");
+            case 0 -> throw new NotFoundExceptions.MedicNotFound("No medic with the user id " + id + " found");
             case 1 -> medics.get(0);
             default -> {
                 UserWarnings.MultipleMedicsSameUserId.log(medics.get(0).getMedicId(), medics.get(1).getMedicId(), id);
@@ -341,25 +341,60 @@ public class UserDAO {
         };
     }
 
-    public String chooseMedic(Patient patient, String typeOfMedic) {
-        //specializare
-        String sqlType = "select * from medic where typeOfMedic = ?";
-        List<Medic> medics = jdbcTemplate.query(sqlType, new MedicRowMapper(), typeOfMedic);
+    public List<Medic> chooseMedic(User patient, String typeOfMedic) {
+        //specialization
+        String sqlType = "select * from medic where UPPER(typeOfMedic) LIKE UPPER(?)";
+        List<Medic> medics = jdbcTemplate.query(sqlType, new MedicRowMapper(), "%" + typeOfMedic + "%");
         if (medics.isEmpty()) {
-            return "No medics available for the given type.";
+            return null;
         }
+        int opt = 0;
         List<Medic> optimal = new ArrayList<>();
+        List<Medic> ultraSuperMegaGamingOptimal = new ArrayList<>();
+        int ultraOpt = 0;
         for (Medic medic : medics) {
             if (!Objects.equals(medic.getCountry(), patient.getCountry())) {
-                optimal.add(medic);
                 if (Objects.equals(medic.getLanguage(), patient.getLanguage())) {
-                    return "###Diagnosis###" + medic.getTypeOfMedic() + ". Pentru mai multe informatii apelati  (" + medic.getEmail() + ") ";
+                    if (Objects.equals(medic.getCity(), patient.getCity())) {
+                        ultraOpt++;
+                        ultraSuperMegaGamingOptimal.add(medic);
+                    }
+                    opt++;
+                    optimal.add(0, medic);
+                } else {
+                    optimal.add(medic);
                 }
             }
         }
-        if (optimal.isEmpty()) {
-            return "###Diagnosis###" + medics.get(0).getTypeOfMedic() + ". Pentru mai multe informatii apelati  (" + medics.get(0).getEmail() + ") ";
+        System.out.println(ultraOpt);
+        System.out.println(opt);
+        if (ultraOpt != 0) {
+            return ultraSuperMegaGamingOptimal.subList(0, ultraOpt);
         }
-        return "###Diagnosis###" + optimal.get(0).getTypeOfMedic() + ". Pentru mai multe informatii apelati  (" + optimal.get(0).getEmail() + ") ";
+        if (opt != 0) {
+            return optimal.subList(0, opt);
+        }
+        if (optimal.isEmpty()) {
+            return medics;
+        }
+        return optimal;
+    }
+
+    public String getMedics(User patient, String typeOfMedic, String diagnosis) {
+        List<Medic> medics = chooseMedic(patient, typeOfMedic);
+
+        if (medics == null || medics.isEmpty()) {
+            return "No medics found for the specified type.";
+        }
+
+        StringBuilder statement = new StringBuilder("###Diagnosis###");
+        statement.append(statement.append(diagnosis).append(". For more information please contact: ("));
+
+        for (Medic medic : medics) {
+            statement.append(" ").append(medic.getEmail());
+        }
+
+        statement.append(") ");
+        return statement.toString();
     }
 }

@@ -33,6 +33,7 @@ public class MessagerieService {
     UserDAO userDAO;
 
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
     public void closeConversation() {
         UUID userId = userDAO.getUserId(SecurityUtil.getEmail());
         medbuddyUtil.closeConversation(userId);
@@ -55,9 +56,9 @@ public class MessagerieService {
         return medbuddyUtil.receiveMessageFromMedbuddy(userId);
     }
 
-    public void sendMessageToMedbuddy() {
+    public void sendMessageToMedbuddy(String message) {
         UUID userId = userDAO.getUserId(SecurityUtil.getEmail());
-        medbuddyUtil.sendMessageToMedbuddy(userId);
+        medbuddyUtil.sendMessageToMedbuddy(message, userId);
     }
 
     /*@Autowired

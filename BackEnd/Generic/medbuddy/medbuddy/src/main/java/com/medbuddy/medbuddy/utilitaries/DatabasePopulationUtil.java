@@ -35,7 +35,7 @@ public class DatabasePopulationUtil implements CommandLineRunner {
     private BCryptPasswordEncoder encoder;
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    private List<User> users  = new ArrayList<>();
+    private final List<User> users  = new ArrayList<>();
 
     @Override
     public void run(String... args) throws Exception {

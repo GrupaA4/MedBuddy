@@ -10,9 +10,7 @@ import com.medbuddy.medbuddy.utilitaries.validators.EntityValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.jdbc.core.JdbcTemplate;
 
-import javax.xml.validation.Validator;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -23,9 +21,9 @@ public class UserService {
     @Autowired
     private UserDAO userDAO;
 
-    public boolean loginUser(String email, String password) {
-        return userDAO.loginUser(email, password);// throws exceptions if email doesn't exist
-    }
+/*    public boolean loginUser(String email, String password) {
+        return userDAO.loginUser(email, password);//throws exceptions if email doesn't exist
+    }*/
 
     public UUID getUserIdByEmail(String email) {
         UUID id = userDAO.getUserId(email);
@@ -40,15 +38,14 @@ public class UserService {
 
     public void createUser(User userRequest, byte[] profileImage) {
 
-        userDAO.checkIfUserWithEmailExists(userRequest.getEmail());// will throw exceptions if that happens
+        userDAO.checkIfUserWithEmailExists(userRequest.getEmail());//will throw exceptions if that happens
 
         userRequest.setId(SecurityUtil.getNewId());
         String password = userRequest.getPassword();
         userRequest.setPassword(passwordEncoder.encode(password));
 
         int imageNumber = userDAO.getMaxImageNumber() + 1;
-        ImageProcessingUtil.saveImage(imageNumber, "src\\Database\\Profiles", profileImage,
-                userRequest.getImageExtension());
+        ImageProcessingUtil.saveImage(imageNumber, "src\\Database\\Profiles", profileImage, userRequest.getImageExtension());
         userRequest.setProfileImageNumber(imageNumber);
 
         userRequest.setLastTimeLoggedIn(LocalDate.now());
@@ -59,29 +56,27 @@ public class UserService {
 
     public void createMedic(Medic medicRequest, byte[] profileImage, byte[] certificateImage) {
 
-        userDAO.checkIfUserWithEmailExists(medicRequest.getEmail());// will throw exceptions if that happens
+        userDAO.checkIfUserWithEmailExists(medicRequest.getEmail());//will throw exceptions if that happens
 
         medicRequest.setId(SecurityUtil.getNewId());
         String password = medicRequest.getPassword();
         medicRequest.setPassword(passwordEncoder.encode(password));
 
         int imageNumber = userDAO.getMaxImageNumber() + 1;
-        // add profile image to database
-        ImageProcessingUtil.saveImage(imageNumber, "src\\Database\\Profiles", profileImage,
-                medicRequest.getImageExtension());
+        //add profile image to database
+        ImageProcessingUtil.saveImage(imageNumber, "src\\Database\\Profiles", profileImage, medicRequest.getImageExtension());
         medicRequest.setProfileImageNumber(imageNumber);
 
         medicRequest.setLastTimeLoggedIn(LocalDate.now());
         medicRequest.setDeleted(false);
 
-        userDAO.signupUser(medicRequest);// automatically maps to a user
+        userDAO.signupUser(medicRequest);//automatically maps to a user
 
         medicRequest.setMedicId(SecurityUtil.getNewId());
 
         int certificateNumber = userDAO.getMaxCertificateNumber() + 1;
-        // add certificate image to database
-        ImageProcessingUtil.saveImage(certificateNumber, "src\\Database\\Certificates", certificateImage,
-                medicRequest.getCertificateExtension());
+        //add certificate image to database
+        ImageProcessingUtil.saveImage(certificateNumber, "src\\Database\\Certificates", certificateImage, medicRequest.getCertificateExtension());
         medicRequest.setProfileImageNumber(certificateNumber);
 
         medicRequest.setApproved(false);
@@ -139,10 +134,10 @@ public class UserService {
         userDAO.softDeleteReportsOnUser(userId);
         userDAO.softDeleteMedicalHistoryForUser(userId);
         userDAO.deleteReportsMadeByUser(userId);
-        // delete conversations
-        // delete messages
-        // delete reports
-        // delete medical history
+        //delete conversations
+        //delete messages
+        //delete reports
+        //delete medical history
     }
 
     public void hardDeleteUser(UUID userId) {
@@ -152,4 +147,10 @@ public class UserService {
     public boolean isMedic(UUID userId) {
         return userDAO.isMedic(userId);
     }
+
+    public void updateLastTimeLoggedOn(UUID userId) {
+        userDAO.updateLastTimeLoggedOn(userId, LocalDate.now());
+    }
+
+
 }
