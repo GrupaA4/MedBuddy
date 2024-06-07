@@ -2692,3 +2692,5 @@
 2024-06-06 20:13:16 DEBUG DaoAuthenticationProvider:199 - Authenticated user
 2024-06-06 20:13:16 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
 2024-06-06 20:13:16 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewmedicprofile/18e47d63-b367-465c-817c-c5e21a0f4492
+2024-06-06 20:20:12 INFO  HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2024-06-06 20:20:12 INFO  HikariDataSource:352 - HikariPool-1 - Shutdown completed.
