@@ -15,8 +15,6 @@ function List() {
   const [imageUrl,setImageUrl]=useState("");
   const itemsPerPage = 3;
 
-  
-
   useEffect(() => {
     const fetchUserIdAndNotifications = async () => {
       const email = Cookies.get("user_email");
@@ -113,8 +111,13 @@ function List() {
     navigate(path);
   }
   const convertBase64ToUrl = (base64Image, extension) => {
-    return `data:image/${extension};base64,${base64Image}`;
-  };
+    if (!base64Image || !extension) {
+        console.error("Invalid base64 or extension:", base64Image, extension);
+        return "";
+    }
+    const url = `data:image/${extension};base64,${base64Image}`;
+    return url;
+};
 
   const displayNotifications = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
