@@ -8,6 +8,7 @@ import java.io.*;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.UUID;
 
 import static java.nio.file.StandardWatchEventKinds.*;
@@ -15,11 +16,24 @@ import static java.nio.file.StandardWatchEventKinds.*;
 @Component
 public class MedbuddyUtil {
 
-    public void closeConversation(UUID userId) {
-        //to be added
+    public static void main(String[] args) {
+        MedbuddyUtil obj = new MedbuddyUtil();
+        Scanner scanner = new Scanner(System.in);
+        String message;
+
+        while (true) {
+            message = scanner.nextLine();
+            System.out.println(message);
+            sendMessageToMedbuddy(message, UUID.randomUUID());
+            receiveMessageFromMedbuddy(UUID.randomUUID());
+        }
     }
 
-    public Message receiveMessageFromMedbuddy(UUID userId) {
+    public static void closeConversation(UUID userId) {
+        sendMessageToMedbuddy("exit", UUID.randomUUID());
+    }
+
+    public static Message receiveMessageFromMedbuddy(UUID userId) {
         try {
             WatchService watcher = FileSystems.getDefault().newWatchService();
             Path directory = Paths.get("Backend");
@@ -27,10 +41,8 @@ public class MedbuddyUtil {
             while (true) {
                 WatchKey key = watcher.take();
                 List<WatchEvent<?>> events = key.pollEvents();
-                boolean done = false;
                 for (WatchEvent<?> event : events) {
                     if (event.kind() == ENTRY_MODIFY) {
-                        done = true;
                         Path modifiedFile = (Path) event.context();
                         System.out.println("File modified: " + modifiedFile);
                         FileReader reader = new FileReader("Backend" + File.separator + modifiedFile.toFile());
@@ -47,11 +59,14 @@ public class MedbuddyUtil {
                             message = inputs.get(0);
                             if (inputs.size() > 1) {
                                 category = inputs.get(1);
-                                if (message.equalsIgnoreCase("Done") && inputs.size() > 2) {
+                                if (message.equalsIgnoreCase("Exit") && inputs.size() > 2) {
                                     diagnostic = inputs.get(2);
                                 }
                             }
                         }
+                        System.out.println(message);
+                        System.out.println(category);
+                        System.out.println(diagnostic);
                         bufferedReader.close();
                         return new Message(message);
                     }
@@ -69,7 +84,7 @@ public class MedbuddyUtil {
         //  if diagnosis, then create a MedicalHistoryEntry
     }
 
-    public void sendMessageToMedbuddy(String messageToBeSent, UUID userId) {
+    public static void sendMessageToMedbuddy(String messageToBeSent, UUID userId) {
         //send message
         try {
             File inputFile = new File("Backend" + File.separator + "medbuddyComGtoU.txt");
