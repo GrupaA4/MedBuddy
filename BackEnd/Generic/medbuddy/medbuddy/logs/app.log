@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 2024-06-06 19:57:27 INFO  MedbuddyApplication:50 - Starting MedbuddyApplication using Java 22.0.1 with PID 5128 (D:\Facultate\A2S2\IP\ProiectMare\MedBuddy\BackEnd\Generic\medbuddy\medbuddy\target\classes started by Stefan in D:\Facultate\A2S2\IP\ProiectMare\MedBuddy\BackEnd\Generic\medbuddy\medbuddy)
 2024-06-06 19:57:27 DEBUG MedbuddyApplication:51 - Running with Spring Boot v3.2.5, Spring v6.1.6
 2024-06-06 19:57:27 INFO  MedbuddyApplication:654 - No active profile set, falling back to 1 default profile: "default"
@@ -559,6 +560,138 @@
 2024-06-07 12:42:04 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getoldestusers/1/5
 2024-06-07 12:42:05 DEBUG DaoAuthenticationProvider:136 - Failed to find user 'null'
 2024-06-07 12:42:05 DEBUG BasicAuthenticationFilter:201 - Failed to process authentication request
+=======
+2024-06-07 00:22:14 INFO  MedbuddyApplication:50 - Starting MedbuddyApplication using Java 21.0.2 with PID 11148 (E:\Facultate\SemIV\IP\Project\MedBuddy\BackEnd\Generic\medbuddy\medbuddy\target\classes started by user in E:\Facultate\SemIV\IP\Project\MedBuddy\BackEnd\Generic\medbuddy\medbuddy)
+2024-06-07 00:22:14 DEBUG MedbuddyApplication:51 - Running with Spring Boot v3.2.5, Spring v6.1.6
+2024-06-07 00:22:14 INFO  MedbuddyApplication:654 - No active profile set, falling back to 1 default profile: "default"
+2024-06-07 00:22:16 INFO  TomcatWebServer:109 - Tomcat initialized with port 7264 (http)
+2024-06-07 00:22:16 INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-7264"]
+2024-06-07 00:22:16 INFO  StandardService:173 - Starting service [Tomcat]
+2024-06-07 00:22:16 INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-07 00:22:16 INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
+2024-06-07 00:22:16 INFO  ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 1733 ms
+2024-06-07 00:22:17 INFO  DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@636985df, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6f91fbda, org.springframework.security.web.context.SecurityContextHolderFilter@28be7fec, org.springframework.security.web.header.HeaderWriterFilter@5cfed0ba, org.springframework.web.filter.CorsFilter@2da99821, org.springframework.security.web.authentication.logout.LogoutFilter@12abcd1e, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@37c7766e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@34136bd1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6de7778f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@723e3c17, org.springframework.security.web.access.ExceptionTranslationFilter@de77146, org.springframework.security.web.access.intercept.AuthorizationFilter@65cc5252]
+2024-06-07 00:22:17 INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-7264"]
+2024-06-07 00:22:17 INFO  TomcatWebServer:241 - Tomcat started on port 7264 (http) with context path ''
+2024-06-07 00:22:17 INFO  MedbuddyApplication:56 - Started MedbuddyApplication in 3.684 seconds (process running for 5.144)
+2024-06-07 00:22:17 WARN  HikariConfig:1089 - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2024-06-07 00:22:17 INFO  HikariDataSource:110 - HikariPool-1 - Starting...
+2024-06-07 00:22:17 INFO  PoolBase:536 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
+2024-06-07 00:22:17 INFO  HikariPool:565 - HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@11e17893
+2024-06-07 00:22:17 INFO  HikariDataSource:123 - HikariPool-1 - Start completed.
+2024-06-07 00:23:01 INFO  [/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-07 00:23:01 INFO  DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2024-06-07 00:23:01 INFO  DispatcherServlet:554 - Completed initialization in 0 ms
+2024-06-07 00:23:01 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/login
+2024-06-07 00:23:01 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/login
+2024-06-07 00:23:01 DEBUG DaoAuthenticationProvider:87 - Failed to authenticate since password does not match stored value
+2024-06-07 00:23:01 DEBUG BasicAuthenticationFilter:201 - Failed to process authentication request
+org.springframework.security.authentication.BadCredentialsException: Bad credentials
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.additionalAuthenticationChecks(DaoAuthenticationProvider.java:89) ~[spring-security-core-6.2.4.jar:6.2.4]
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:147) ~[spring-security-core-6.2.4.jar:6.2.4]
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182) ~[spring-security-core-6.2.4.jar:6.2.4]
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:201) ~[spring-security-core-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:187) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2024-06-07 00:23:01 DEBUG DelegatingAuthenticationEntryPoint:79 - Trying to match using RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]
+2024-06-07 00:23:01 DEBUG DelegatingAuthenticationEntryPoint:87 - No match found. Using default entry point org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint@624b56b9
+2024-06-07 00:23:01 DEBUG FilterChainProxy:223 - Securing GET /error
+2024-06-07 00:23:01 DEBUG AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2024-06-07 00:23:01 DEBUG HttpSessionRequestCache:80 - Saved request http://localhost:7264/error?continue to session
+2024-06-07 00:23:01 DEBUG DelegatingAuthenticationEntryPoint:79 - Trying to match using RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]
+2024-06-07 00:23:01 DEBUG DelegatingAuthenticationEntryPoint:87 - No match found. Using default entry point org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint@624b56b9
+2024-06-07 00:23:06 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/login
+2024-06-07 00:23:06 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:06 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=yajaira.dubuque@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:06 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/login
+2024-06-07 00:23:06 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getuserid/yajaira.dubuque@hotmail.com
+2024-06-07 00:23:06 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getuserid/yajaira.dubuque@hotmail.com
+2024-06-07 00:23:06 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getuserid/yajaira.dubuque@hotmail.com
+2024-06-07 00:23:06 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:06 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=yajaira.dubuque@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:06 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getuserid/yajaira.dubuque@hotmail.com
+2024-06-07 00:23:06 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getuserid/yajaira.dubuque@hotmail.com
+2024-06-07 00:23:06 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getallnotifications/2ed88294-dcad-4278-8c17-a439c2ddfacf
+2024-06-07 00:23:06 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getallnotifications/2ed88294-dcad-4278-8c17-a439c2ddfacf
+2024-06-07 00:23:06 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:06 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=yajaira.dubuque@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:06 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getuserid/yajaira.dubuque@hotmail.com
+2024-06-07 00:23:06 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:06 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=yajaira.dubuque@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:06 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getallnotifications/2ed88294-dcad-4278-8c17-a439c2ddfacf
+2024-06-07 00:23:06 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getallnotifications/2ed88294-dcad-4278-8c17-a439c2ddfacf
+2024-06-07 00:23:07 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:07 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=yajaira.dubuque@hotmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:07 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getallnotifications/2ed88294-dcad-4278-8c17-a439c2ddfacf
+2024-06-07 00:23:29 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/login
+2024-06-07 00:23:29 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/login
+2024-06-07 00:23:29 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:29 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:29 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/login
+2024-06-07 00:23:29 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getoldestusers/1/5
+2024-06-07 00:23:29 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getoldestusers/1/5
+2024-06-07 00:23:29 DEBUG DaoAuthenticationProvider:136 - Failed to find user 'null'
+2024-06-07 00:23:29 DEBUG BasicAuthenticationFilter:201 - Failed to process authentication request
+>>>>>>> 14e680c43ab7d72ea83adf8dcc0427afbad94de6
 org.springframework.security.authentication.BadCredentialsException: Bad credentials
 	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:141) ~[spring-security-core-6.2.4.jar:6.2.4]
 	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182) ~[spring-security-core-6.2.4.jar:6.2.4]
@@ -589,6 +722,7 @@ org.springframework.security.authentication.BadCredentialsException: Bad credent
 	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.4.jar:6.2.4]
 	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
 	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.6.jar:6.1.6]
+<<<<<<< HEAD
 	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) [spring-web-6.1.6.jar:6.1.6]
 	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) [spring-web-6.1.6.jar:6.1.6]
 	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) [spring-security-config-6.2.4.jar:6.2.4]
@@ -634,6 +768,53 @@ org.springframework.security.authentication.BadCredentialsException: Bad credent
 2024-06-07 12:42:05 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getoldestusers/1/5
 2024-06-07 12:42:05 DEBUG DaoAuthenticationProvider:136 - Failed to find user 'null'
 2024-06-07 12:42:05 DEBUG BasicAuthenticationFilter:201 - Failed to process authentication request
+=======
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2024-06-07 00:23:29 DEBUG DelegatingAuthenticationEntryPoint:79 - Trying to match using RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]
+2024-06-07 00:23:29 DEBUG DelegatingAuthenticationEntryPoint:87 - No match found. Using default entry point org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint@624b56b9
+2024-06-07 00:23:29 DEBUG FilterChainProxy:223 - Securing GET /error
+2024-06-07 00:23:29 DEBUG AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2024-06-07 00:23:29 DEBUG HttpSessionRequestCache:80 - Saved request http://localhost:7264/error?continue to session
+2024-06-07 00:23:29 DEBUG DelegatingAuthenticationEntryPoint:79 - Trying to match using RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]
+2024-06-07 00:23:29 DEBUG DelegatingAuthenticationEntryPoint:87 - No match found. Using default entry point org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint@624b56b9
+2024-06-07 00:23:29 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getoldestusers/1/5
+2024-06-07 00:23:29 DEBUG DaoAuthenticationProvider:136 - Failed to find user 'null'
+2024-06-07 00:23:29 DEBUG BasicAuthenticationFilter:201 - Failed to process authentication request
+>>>>>>> 14e680c43ab7d72ea83adf8dcc0427afbad94de6
 org.springframework.security.authentication.BadCredentialsException: Bad credentials
 	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:141) ~[spring-security-core-6.2.4.jar:6.2.4]
 	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182) ~[spring-security-core-6.2.4.jar:6.2.4]
@@ -664,6 +845,7 @@ org.springframework.security.authentication.BadCredentialsException: Bad credent
 	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.4.jar:6.2.4]
 	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
 	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.6.jar:6.1.6]
+<<<<<<< HEAD
 	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) [spring-web-6.1.6.jar:6.1.6]
 	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) [spring-web-6.1.6.jar:6.1.6]
 	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) [spring-security-config-6.2.4.jar:6.2.4]
@@ -3340,3 +3522,394 @@ org.springframework.security.authentication.BadCredentialsException: Bad credent
 2024-06-07 13:00:36 INFO  HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
 2024-06-07 13:00:36 INFO  HikariDataSource:352 - HikariPool-1 - Shutdown completed.
 >>>>>>> 80cfbd93ae7bfd998bda886be1d9d438fc267aad
+=======
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2024-06-07 00:23:29 DEBUG DelegatingAuthenticationEntryPoint:79 - Trying to match using RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]
+2024-06-07 00:23:29 DEBUG DelegatingAuthenticationEntryPoint:87 - No match found. Using default entry point org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint@624b56b9
+2024-06-07 00:23:29 DEBUG FilterChainProxy:223 - Securing GET /error
+2024-06-07 00:23:29 DEBUG AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2024-06-07 00:23:29 DEBUG HttpSessionRequestCache:80 - Saved request http://localhost:7264/error?continue to session
+2024-06-07 00:23:29 DEBUG DelegatingAuthenticationEntryPoint:79 - Trying to match using RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]
+2024-06-07 00:23:29 DEBUG DelegatingAuthenticationEntryPoint:87 - No match found. Using default entry point org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint@624b56b9
+2024-06-07 00:23:32 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getoldestusers/1/5
+2024-06-07 00:23:32 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:32 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:32 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getoldestusers/1/5
+2024-06-07 00:23:32 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getoldestusers/1/5
+2024-06-07 00:23:32 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:32 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:32 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getoldestusers/1/5
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/973d3e37-a2c3-4350-bc81-da3d1e987df6
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/ad7e6db1-76b5-470b-addb-e4e8cfa703c4
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/678e95b0-ab55-4ff5-99d5-6ff16d260fa6
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/50f9d44e-de99-4c85-8432-a9969533f9b5
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/a5c5992c-2281-4047-93d7-0a76935a5f10
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/973d3e37-a2c3-4350-bc81-da3d1e987df6
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/ad7e6db1-76b5-470b-addb-e4e8cfa703c4
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/50f9d44e-de99-4c85-8432-a9969533f9b5
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/678e95b0-ab55-4ff5-99d5-6ff16d260fa6
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/a5c5992c-2281-4047-93d7-0a76935a5f10
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/678e95b0-ab55-4ff5-99d5-6ff16d260fa6
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/973d3e37-a2c3-4350-bc81-da3d1e987df6
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/50f9d44e-de99-4c85-8432-a9969533f9b5
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/ad7e6db1-76b5-470b-addb-e4e8cfa703c4
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/a5c5992c-2281-4047-93d7-0a76935a5f10
+2024-06-07 00:23:33 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:33 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:33 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/973d3e37-a2c3-4350-bc81-da3d1e987df6
+2024-06-07 00:23:33 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:33 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:33 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/50f9d44e-de99-4c85-8432-a9969533f9b5
+2024-06-07 00:23:33 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:33 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:33 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/678e95b0-ab55-4ff5-99d5-6ff16d260fa6
+2024-06-07 00:23:33 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:33 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:33 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/ad7e6db1-76b5-470b-addb-e4e8cfa703c4
+2024-06-07 00:23:33 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:33 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:33 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/a5c5992c-2281-4047-93d7-0a76935a5f10
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/678e95b0-ab55-4ff5-99d5-6ff16d260fa6
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/973d3e37-a2c3-4350-bc81-da3d1e987df6
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/50f9d44e-de99-4c85-8432-a9969533f9b5
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/a5c5992c-2281-4047-93d7-0a76935a5f10
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/ad7e6db1-76b5-470b-addb-e4e8cfa703c4
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getoldestusers/6/10
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getoldestusers/6/10
+2024-06-07 00:23:33 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:33 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:33 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/678e95b0-ab55-4ff5-99d5-6ff16d260fa6
+2024-06-07 00:23:33 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:33 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:33 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/ad7e6db1-76b5-470b-addb-e4e8cfa703c4
+2024-06-07 00:23:33 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:33 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:33 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/973d3e37-a2c3-4350-bc81-da3d1e987df6
+2024-06-07 00:23:33 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:33 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:33 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/50f9d44e-de99-4c85-8432-a9969533f9b5
+2024-06-07 00:23:33 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:33 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:33 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/a5c5992c-2281-4047-93d7-0a76935a5f10
+2024-06-07 00:23:33 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:33 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:33 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getoldestusers/6/10
+2024-06-07 00:23:33 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getoldestusers/6/10
+2024-06-07 00:23:33 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:33 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:33 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getoldestusers/6/10
+2024-06-07 00:23:34 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getoldestusers/6/10
+2024-06-07 00:23:34 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:34 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:34 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getoldestusers/6/10
+2024-06-07 00:23:34 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/9c3920a8-54a7-4f74-a255-f435da6c443f
+2024-06-07 00:23:34 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/25aa0908-cfd9-4803-9f7a-6a169f40de31
+2024-06-07 00:23:34 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/8db38434-3776-40c3-bd3a-d3c6eecdbb0f
+2024-06-07 00:23:34 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/9126e2bf-f8df-4d3f-8a90-e4438363542f
+2024-06-07 00:23:34 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/18e47d63-b367-465c-817c-c5e21a0f4492
+2024-06-07 00:23:34 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/9c3920a8-54a7-4f74-a255-f435da6c443f
+2024-06-07 00:23:34 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/8db38434-3776-40c3-bd3a-d3c6eecdbb0f
+2024-06-07 00:23:34 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/9126e2bf-f8df-4d3f-8a90-e4438363542f
+2024-06-07 00:23:34 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/18e47d63-b367-465c-817c-c5e21a0f4492
+2024-06-07 00:23:34 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/25aa0908-cfd9-4803-9f7a-6a169f40de31
+2024-06-07 00:23:35 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:35 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:35 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:35 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:35 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/8db38434-3776-40c3-bd3a-d3c6eecdbb0f
+2024-06-07 00:23:35 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/25aa0908-cfd9-4803-9f7a-6a169f40de31
+2024-06-07 00:23:35 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:35 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:35 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/9c3920a8-54a7-4f74-a255-f435da6c443f
+2024-06-07 00:23:35 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:35 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:35 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/18e47d63-b367-465c-817c-c5e21a0f4492
+2024-06-07 00:23:35 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:35 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:35 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/9126e2bf-f8df-4d3f-8a90-e4438363542f
+2024-06-07 00:23:35 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getoldestusers/11/15
+2024-06-07 00:23:35 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getoldestusers/11/15
+2024-06-07 00:23:35 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:35 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:35 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getoldestusers/11/15
+2024-06-07 00:23:35 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getoldestusers/6/10
+2024-06-07 00:23:35 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:35 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:35 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getoldestusers/6/10
+2024-06-07 00:23:35 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/9126e2bf-f8df-4d3f-8a90-e4438363542f
+2024-06-07 00:23:35 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/9c3920a8-54a7-4f74-a255-f435da6c443f
+2024-06-07 00:23:35 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/8db38434-3776-40c3-bd3a-d3c6eecdbb0f
+2024-06-07 00:23:35 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/18e47d63-b367-465c-817c-c5e21a0f4492
+2024-06-07 00:23:35 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/25aa0908-cfd9-4803-9f7a-6a169f40de31
+2024-06-07 00:23:35 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:35 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:35 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:35 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:35 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:35 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:35 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/9c3920a8-54a7-4f74-a255-f435da6c443f
+2024-06-07 00:23:35 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/25aa0908-cfd9-4803-9f7a-6a169f40de31
+2024-06-07 00:23:35 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/18e47d63-b367-465c-817c-c5e21a0f4492
+2024-06-07 00:23:35 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:35 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:35 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/9126e2bf-f8df-4d3f-8a90-e4438363542f
+2024-06-07 00:23:35 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:35 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:35 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/8db38434-3776-40c3-bd3a-d3c6eecdbb0f
+2024-06-07 00:23:35 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getoldestusers/11/15
+2024-06-07 00:23:35 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:35 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:35 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getoldestusers/11/15
+2024-06-07 00:23:35 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getoldestusers/1/5
+2024-06-07 00:23:35 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getoldestusers/1/5
+2024-06-07 00:23:35 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:35 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:35 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getoldestusers/1/5
+2024-06-07 00:23:35 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/678e95b0-ab55-4ff5-99d5-6ff16d260fa6
+2024-06-07 00:23:35 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/50f9d44e-de99-4c85-8432-a9969533f9b5
+2024-06-07 00:23:35 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/973d3e37-a2c3-4350-bc81-da3d1e987df6
+2024-06-07 00:23:35 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/a5c5992c-2281-4047-93d7-0a76935a5f10
+2024-06-07 00:23:35 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/ad7e6db1-76b5-470b-addb-e4e8cfa703c4
+2024-06-07 00:23:36 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:36 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:36 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/ad7e6db1-76b5-470b-addb-e4e8cfa703c4
+2024-06-07 00:23:36 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:36 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:36 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:36 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/973d3e37-a2c3-4350-bc81-da3d1e987df6
+2024-06-07 00:23:36 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:36 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/a5c5992c-2281-4047-93d7-0a76935a5f10
+2024-06-07 00:23:36 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:36 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:36 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/50f9d44e-de99-4c85-8432-a9969533f9b5
+2024-06-07 00:23:36 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:36 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:36 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/678e95b0-ab55-4ff5-99d5-6ff16d260fa6
+2024-06-07 00:23:36 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getoldestusers/6/10
+2024-06-07 00:23:36 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:36 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:36 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getoldestusers/6/10
+2024-06-07 00:23:36 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getoldestusers/1/5
+2024-06-07 00:23:36 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:36 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:36 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getoldestusers/1/5
+2024-06-07 00:23:36 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/973d3e37-a2c3-4350-bc81-da3d1e987df6
+2024-06-07 00:23:36 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/678e95b0-ab55-4ff5-99d5-6ff16d260fa6
+2024-06-07 00:23:36 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/a5c5992c-2281-4047-93d7-0a76935a5f10
+2024-06-07 00:23:36 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/ad7e6db1-76b5-470b-addb-e4e8cfa703c4
+2024-06-07 00:23:36 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/50f9d44e-de99-4c85-8432-a9969533f9b5
+2024-06-07 00:23:36 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:36 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:36 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/50f9d44e-de99-4c85-8432-a9969533f9b5
+2024-06-07 00:23:36 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:36 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:36 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/a5c5992c-2281-4047-93d7-0a76935a5f10
+2024-06-07 00:23:36 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:36 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:36 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/ad7e6db1-76b5-470b-addb-e4e8cfa703c4
+2024-06-07 00:23:36 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:36 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:36 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:36 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:36 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/678e95b0-ab55-4ff5-99d5-6ff16d260fa6
+2024-06-07 00:23:36 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/973d3e37-a2c3-4350-bc81-da3d1e987df6
+2024-06-07 00:23:36 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getoldestusers/6/10
+2024-06-07 00:23:36 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:36 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:36 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getoldestusers/6/10
+2024-06-07 00:23:36 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getreports/1/5
+2024-06-07 00:23:36 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getreports/1/5
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getreports/1/5
+2024-06-07 00:23:37 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:37 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:37 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getreports/1/5
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getreports/1/5
+2024-06-07 00:23:37 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:37 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:37 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getreports/1/5
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/886f2182-04e9-4553-a2fc-7c37c12b0a9d
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/2ed88294-dcad-4278-8c17-a439c2ddfacf
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/7ac4aecb-bf7b-4191-9c73-85d570c7ec71
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/800343c9-b82a-4f52-952d-532efa50375d
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/a17a045c-1f45-4c48-aac2-22cc8204997d
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/7ac4aecb-bf7b-4191-9c73-85d570c7ec71
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/886f2182-04e9-4553-a2fc-7c37c12b0a9d
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/800343c9-b82a-4f52-952d-532efa50375d
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/a17a045c-1f45-4c48-aac2-22cc8204997d
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/2ed88294-dcad-4278-8c17-a439c2ddfacf
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/886f2182-04e9-4553-a2fc-7c37c12b0a9d
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/7ac4aecb-bf7b-4191-9c73-85d570c7ec71
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/a17a045c-1f45-4c48-aac2-22cc8204997d
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/800343c9-b82a-4f52-952d-532efa50375d
+2024-06-07 00:23:37 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:37 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:37 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/886f2182-04e9-4553-a2fc-7c37c12b0a9d
+2024-06-07 00:23:37 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:37 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:37 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:37 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:37 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/800343c9-b82a-4f52-952d-532efa50375d
+2024-06-07 00:23:37 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/a17a045c-1f45-4c48-aac2-22cc8204997d
+2024-06-07 00:23:37 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/800343c9-b82a-4f52-952d-532efa50375d
+2024-06-07 00:23:37 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:37 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/2ed88294-dcad-4278-8c17-a439c2ddfacf
+2024-06-07 00:23:37 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:37 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:37 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/7ac4aecb-bf7b-4191-9c73-85d570c7ec71
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/a17a045c-1f45-4c48-aac2-22cc8204997d
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/886f2182-04e9-4553-a2fc-7c37c12b0a9d
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/2ed88294-dcad-4278-8c17-a439c2ddfacf
+2024-06-07 00:23:37 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/7ac4aecb-bf7b-4191-9c73-85d570c7ec71
+2024-06-07 00:23:37 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:37 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:37 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/800343c9-b82a-4f52-952d-532efa50375d
+2024-06-07 00:23:37 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:37 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:37 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/886f2182-04e9-4553-a2fc-7c37c12b0a9d
+2024-06-07 00:23:37 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:37 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:37 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/7ac4aecb-bf7b-4191-9c73-85d570c7ec71
+2024-06-07 00:23:37 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:37 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:37 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/a17a045c-1f45-4c48-aac2-22cc8204997d
+2024-06-07 00:23:37 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:37 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:37 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/2ed88294-dcad-4278-8c17-a439c2ddfacf
+2024-06-07 00:23:38 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getreports/6/10
+2024-06-07 00:23:38 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/getreports/6/10
+2024-06-07 00:23:38 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getreports/6/10
+2024-06-07 00:23:38 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:38 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:38 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getreports/6/10
+2024-06-07 00:23:38 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getreports/6/10
+2024-06-07 00:23:38 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:38 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:38 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getreports/6/10
+2024-06-07 00:23:39 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/softdeleteuser/886f2182-04e9-4553-a2fc-7c37c12b0a9d
+2024-06-07 00:23:39 DEBUG FilterChainProxy:223 - Securing PATCH /medbuddy/softdeleteuser/886f2182-04e9-4553-a2fc-7c37c12b0a9d
+2024-06-07 00:23:39 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:39 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:39 DEBUG FilterChainProxy:227 - Secured PATCH /medbuddy/softdeleteuser/886f2182-04e9-4553-a2fc-7c37c12b0a9d
+2024-06-07 00:23:39 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getreports/1/5
+2024-06-07 00:23:39 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:39 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:39 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getreports/1/5
+2024-06-07 00:23:39 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/2ed88294-dcad-4278-8c17-a439c2ddfacf
+2024-06-07 00:23:39 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/800343c9-b82a-4f52-952d-532efa50375d
+2024-06-07 00:23:39 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewprofile/79616910-3dc4-4db4-868b-5c80afb298b3
+2024-06-07 00:23:39 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/7ac4aecb-bf7b-4191-9c73-85d570c7ec71
+2024-06-07 00:23:39 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/a17a045c-1f45-4c48-aac2-22cc8204997d
+2024-06-07 00:23:39 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewprofile/79616910-3dc4-4db4-868b-5c80afb298b3
+2024-06-07 00:23:40 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:40 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:40 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/2ed88294-dcad-4278-8c17-a439c2ddfacf
+2024-06-07 00:23:40 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:40 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:40 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:40 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:40 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/79616910-3dc4-4db4-868b-5c80afb298b3
+2024-06-07 00:23:40 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/800343c9-b82a-4f52-952d-532efa50375d
+2024-06-07 00:23:40 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:40 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:40 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/7ac4aecb-bf7b-4191-9c73-85d570c7ec71
+2024-06-07 00:23:40 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:40 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:40 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewprofile/a17a045c-1f45-4c48-aac2-22cc8204997d
+2024-06-07 00:23:40 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/getreports/6/10
+2024-06-07 00:23:40 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:40 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:40 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/getreports/6/10
+2024-06-07 00:23:43 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/seerequestingmedics
+2024-06-07 00:23:43 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/seerequestingmedics
+2024-06-07 00:23:43 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/seerequestingmedics
+2024-06-07 00:23:43 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:43 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:43 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/seerequestingmedics
+2024-06-07 00:23:43 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/seerequestingmedics
+2024-06-07 00:23:43 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewmedicprofile/761cef03-54e4-47f7-8477-9fcf2ee327e3
+2024-06-07 00:23:43 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewmedicprofile/a17a045c-1f45-4c48-aac2-22cc8204997d
+2024-06-07 00:23:43 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewmedicprofile/18e47d63-b367-465c-817c-c5e21a0f4492
+2024-06-07 00:23:43 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/viewmedicprofile/286f175d-c4dc-461f-88e3-656588ef8aa7
+2024-06-07 00:23:43 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewmedicprofile/286f175d-c4dc-461f-88e3-656588ef8aa7
+2024-06-07 00:23:43 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewmedicprofile/761cef03-54e4-47f7-8477-9fcf2ee327e3
+2024-06-07 00:23:43 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewmedicprofile/a17a045c-1f45-4c48-aac2-22cc8204997d
+2024-06-07 00:23:43 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewmedicprofile/18e47d63-b367-465c-817c-c5e21a0f4492
+2024-06-07 00:23:43 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:43 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:43 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewmedicprofile/761cef03-54e4-47f7-8477-9fcf2ee327e3
+2024-06-07 00:23:43 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:43 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:43 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/seerequestingmedics
+2024-06-07 00:23:43 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:43 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:43 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewmedicprofile/a17a045c-1f45-4c48-aac2-22cc8204997d
+2024-06-07 00:23:43 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:43 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:43 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewmedicprofile/286f175d-c4dc-461f-88e3-656588ef8aa7
+2024-06-07 00:23:43 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:43 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:43 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewmedicprofile/18e47d63-b367-465c-817c-c5e21a0f4492
+2024-06-07 00:23:43 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewmedicprofile/a17a045c-1f45-4c48-aac2-22cc8204997d
+2024-06-07 00:23:43 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewmedicprofile/761cef03-54e4-47f7-8477-9fcf2ee327e3
+2024-06-07 00:23:44 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewmedicprofile/286f175d-c4dc-461f-88e3-656588ef8aa7
+2024-06-07 00:23:44 DEBUG FilterChainProxy:223 - Securing GET /medbuddy/viewmedicprofile/18e47d63-b367-465c-817c-c5e21a0f4492
+2024-06-07 00:23:44 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:44 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:44 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:44 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:44 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewmedicprofile/761cef03-54e4-47f7-8477-9fcf2ee327e3
+2024-06-07 00:23:44 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewmedicprofile/a17a045c-1f45-4c48-aac2-22cc8204997d
+2024-06-07 00:23:44 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:44 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:44 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewmedicprofile/18e47d63-b367-465c-817c-c5e21a0f4492
+2024-06-07 00:23:44 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:44 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:44 DEBUG FilterChainProxy:227 - Secured GET /medbuddy/viewmedicprofile/286f175d-c4dc-461f-88e3-656588ef8aa7
+2024-06-07 00:23:48 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/allowmedic/a17a045c-1f45-4c48-aac2-22cc8204997d
+2024-06-07 00:23:48 DEBUG FilterChainProxy:223 - Securing PATCH /medbuddy/allowmedic/a17a045c-1f45-4c48-aac2-22cc8204997d
+2024-06-07 00:23:48 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:48 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:48 DEBUG FilterChainProxy:227 - Secured PATCH /medbuddy/allowmedic/a17a045c-1f45-4c48-aac2-22cc8204997d
+2024-06-07 00:23:49 DEBUG FilterChainProxy:223 - Securing OPTIONS /medbuddy/softdeleteuser/761cef03-54e4-47f7-8477-9fcf2ee327e3
+2024-06-07 00:23:49 DEBUG FilterChainProxy:223 - Securing PATCH /medbuddy/softdeleteuser/761cef03-54e4-47f7-8477-9fcf2ee327e3
+2024-06-07 00:23:50 DEBUG DaoAuthenticationProvider:199 - Authenticated user
+2024-06-07 00:23:50 DEBUG BasicAuthenticationFilter:192 - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=admin@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[]]
+2024-06-07 00:23:50 DEBUG FilterChainProxy:227 - Secured PATCH /medbuddy/softdeleteuser/761cef03-54e4-47f7-8477-9fcf2ee327e3
+2024-06-07 00:56:27 INFO  HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2024-06-07 00:56:27 INFO  HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+>>>>>>> 14e680c43ab7d72ea83adf8dcc0427afbad94de6
