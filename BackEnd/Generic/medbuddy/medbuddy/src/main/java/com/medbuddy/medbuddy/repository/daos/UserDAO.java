@@ -341,7 +341,7 @@ public class UserDAO {
         };
     }
 
-    public List<Medic> chooseMedic(Patient patient, String typeOfMedic) {
+    public List<Medic> chooseMedic(User patient, String typeOfMedic) {
         //specialization
         String sqlType = "select * from medic where typeOfMedic = ?";
         List<Medic> medics = jdbcTemplate.query(sqlType, new MedicRowMapper(), typeOfMedic);
@@ -378,7 +378,7 @@ public class UserDAO {
         return optimal;
     }
 
-    public String getMedics(Patient patient, String typeOfMedic) {
+    public String getMedics(User patient, String typeOfMedic, String diagnosis) {
         List<Medic> medics = chooseMedic(patient, typeOfMedic);
 
         if (medics == null || medics.isEmpty()) {
@@ -386,7 +386,7 @@ public class UserDAO {
         }
 
         StringBuilder statement = new StringBuilder("###Diagnosis###");
-        statement.append(medics.get(0).getTypeOfMedic()).append(". For more informations plese contact: (");
+        statement.append(medics.get(0).getTypeOfMedic()).append(diagnosis).append(". For more informations plese contact: (");
 
         for (Medic medic : medics) {
             statement.append(" ").append(medic.getEmail());

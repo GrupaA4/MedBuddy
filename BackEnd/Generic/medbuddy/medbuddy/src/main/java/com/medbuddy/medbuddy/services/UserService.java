@@ -151,4 +151,6 @@ public class UserService {
     public void updateLastTimeLoggedOn(UUID userId) {
         userDAO.updateLastTimeLoggedOn(userId, LocalDate.now());
     }
+
+
 }
