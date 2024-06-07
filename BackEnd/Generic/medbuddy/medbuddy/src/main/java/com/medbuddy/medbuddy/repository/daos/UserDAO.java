@@ -343,8 +343,8 @@ public class UserDAO {
 
     public List<Medic> chooseMedic(User patient, String typeOfMedic) {
         //specialization
-        String sqlType = "select * from medic where typeOfMedic = ?";
-        List<Medic> medics = jdbcTemplate.query(sqlType, new MedicRowMapper(), typeOfMedic);
+        String sqlType = "select * from medic where UPPER(typeOfMedic) LIKE UPPER(?)";
+        List<Medic> medics = jdbcTemplate.query(sqlType, new MedicRowMapper(), "%" + typeOfMedic + "%");
         if (medics.isEmpty()) {
             return null;
         }
@@ -366,6 +366,8 @@ public class UserDAO {
                 }
             }
         }
+        System.out.println(ultraOpt);
+        System.out.println(opt);
         if (ultraOpt != 0) {
             return ultraSuperMegaGamingOptimal.subList(0, ultraOpt);
         }
@@ -386,7 +388,7 @@ public class UserDAO {
         }
 
         StringBuilder statement = new StringBuilder("###Diagnosis###");
-        statement.append(medics.get(0).getTypeOfMedic()).append(diagnosis).append(". For more informations plese contact: (");
+        statement.append(statement.append(diagnosis).append(". For more information please contact: ("));
 
         for (Medic medic : medics) {
             statement.append(" ").append(medic.getEmail());
