@@ -161,7 +161,10 @@ const AdminMainPage = () => {
   const handleManageAccountsClick = () => {
     navigate("/user");
   };
-
+  const handleLogOut = async (event) => {
+    event.preventDefault();
+    window.location.href='/';
+};
   const handlePrevious = async () => {
     if (page > 1) {
       await fetchUsers(page - 1);
@@ -280,6 +283,15 @@ const AdminMainPage = () => {
           onClick={handleManageAccountsClick}
         >
           MANAGE ACCOUNTS
+        </button>
+        <br />
+        <br />
+        <button
+          className={styles.container2__admin__main__page__button3}
+          type="button"
+          onClick={handleLogOut}
+        >
+          LOGOUT
         </button>
       </div>
     </div>

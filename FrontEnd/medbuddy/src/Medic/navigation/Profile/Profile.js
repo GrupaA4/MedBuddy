@@ -69,7 +69,6 @@ export default function Profile() {
     const [confirmPassword, setConfirmPassword] = useState('');
 
   
-  
     useEffect(() =>{
       const fetchuserId = async () => {
           try{
@@ -79,8 +78,6 @@ export default function Profile() {
                       'Authorization': `Basic ${authorisation}`
                   }
               });
-              console.log("Email: ", emailFromCookie);
-              console.log("Parola: ", passwordFromCookie);
               if(response.status !== 200){
                   if(response.status === 418 || response.status === 500){
                       throw new Error('Internal backend error');
@@ -111,7 +108,6 @@ export default function Profile() {
       fetchuserId();
   }, [emailFromCookie]);
 
-  
   
   
   useEffect(() => {
@@ -160,12 +156,6 @@ export default function Profile() {
                 setPhone(userData.phoneNumber);
                 setSpecialization(userData.typeOfMedic);
                 setClinic(userData.clinic); 
-
-                setClinic('clinic');
-
-
-                setClinic('clinic');
-
                 setProfilePicture(userData.profileImage);
                 setExtension(userData.imageExtension);
                 
@@ -195,6 +185,7 @@ export default function Profile() {
 }, [userId]);
 
 useEffect(() => {
+  
     setImageUrl(`data:image/${imageExtension};base64,${profilePicture}`);
   }, [profilePicture, imageExtension]);
 
@@ -354,6 +345,7 @@ const handleSaveChanges = async (event) => {
           }
       }
       else{
+        Cookies.set('user_email', email, { expires: 7 });
           console.log('Updated profile successfully');
       }
 
@@ -552,15 +544,8 @@ const handleChangePassword = async (event) => {
                 <p>Work Phone</p>
                 <p>City</p>
                 <p>Country</p>
-                <p>Hospital/Work Place</p>
+                <p>Workplace</p>
                 <p>Specialization</p>
-                {isEditing?(
-                  <>
-                  <p>New Profile Picture</p>
-                  </>
-                  ): (<></>)
-                }
-                
                 {isEditing?(
                   <>
                   <p>New Profile Picture</p>
@@ -650,3 +635,5 @@ const handleChangePassword = async (event) => {
     </div>
   );
 }
+
+

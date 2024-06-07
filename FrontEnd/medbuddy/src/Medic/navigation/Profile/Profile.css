@@ -3,7 +3,7 @@
   padding: 0;
   font-family: "Oswald";
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   background-size: cover;
   background-position: center;
   background-color: aliceblue;
@@ -14,9 +14,10 @@
 
 .body-profile {
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  margin-bottom: 10vh;
 }
 .navbar-container-profile {
   width: 100%;
@@ -49,8 +50,8 @@
   margin-bottom: 4rem;
 }
 .profile-picture-profile img {
-  width: 100%;
-  height: 100%;
+  width: 15rem;
+  height: 15rem;
   padding: 20px;
   background-color: #069dae;
   border-radius: 50%;
@@ -284,5 +285,26 @@ input[type="file"]::file-selector-button {
   .edit-buttons-container-profile {
     margin: auto;
     margin-left: 1rem;
+  }
+
+  .input_field {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 372px) {
+  .general-information-profile h2 {
+    margin-left: 0.5rem;
+    font-size: 30px;
+  }
+  .list-1-profile p {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+
+  .list-2-profile p {
+    font-size: 16px;
+  }
+  .input_field {
+    font-size: 14px;
   }
 }
