@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import "./List.css";
 import Avatar from "./avatar.png";
 
 function List() {
   const [currentPage, setCurrentPage] = useState(1);
+  const [userId, setUserId] = useState();
   const [searchTerm, setSearchTerm] = useState("");
   const [notifications, setNotifications] = useState([]);
+  const [profilePicture, setProfilePicture] = useState("");
+  const [imageExtension, setImageExtension] = useState("");
+  const [imageUrl,setImageUrl]=useState("");
   const itemsPerPage = 3;
 
   useEffect(() => {
@@ -17,10 +22,6 @@ function List() {
 
       console.log("Email: ", email);
       console.log("Parola: ", password);
-      // if (!email || !password) {
-      //   console.error("Missing credentials");
-      //   return;
-      // }
 
       const credentials = btoa(`${email}:${password}`);
 
@@ -40,6 +41,7 @@ function List() {
         }
         const userIdData = await userIdResponse.json();
         const userId = userIdData.id;
+        setUserId(userId);
 
         // A doua cerere: obține notificările pe baza userId-ului
         const notificationsResponse = await fetch(
@@ -58,6 +60,7 @@ function List() {
         }
         const notificationsData = await notificationsResponse.json();
         setNotifications(notificationsData.notifications);
+        console.log("NOTIFICARI PRIMITE: ", notifications);
       } catch (error) {
         console.error("Error fetching notifications:", error);
       }
@@ -66,13 +69,55 @@ function List() {
     fetchUserIdAndNotifications();
   }, []);
 
-  console.log("NOTIFICATIONS: ", notifications);
+  const deleteNotification = async (notificationId) => {
+    const email = Cookies.get("user_email");
+    const password = Cookies.get("user_pass");
+    const credentials = btoa(`${email}:${password}`);
+
+    try {
+      const response = await fetch(
+        `http://localhost:7264/medbuddy/deletenotification/${notificationId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Basic ${credentials}`,
+          },
+        }
+      );
+      if (response.ok) {
+        setNotifications((prevNotifications) =>
+          prevNotifications.filter(
+            (notification) => notification.id !== notificationId
+          )
+        );
+      } else {
+        console.error("Error deleting notification:", response.status);
+      }
+    } catch (error) {
+      console.error("Error deleting notification:", error);
+    }
+  };
 
   const filteredNotifications = notifications.filter((notification) =>
     `${notification.firstName} ${notification.lastName}`
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
   );
+
+  let path = "/diagnosesMedic/" + userId;
+  let navigate = useNavigate();
+  function routeChange(event) {
+    event.preventDefault();
+    navigate(path);
+  }
+  const convertBase64ToUrl = (base64Image, extension) => {
+    if (!base64Image || !extension) {
+        console.error("Invalid base64 or extension:", base64Image, extension);
+        return "";
+    }
+    const url = `data:image/${extension};base64,${base64Image}`;
+    return url;
+};
 
   const displayNotifications = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -81,7 +126,13 @@ function List() {
       .slice(startIndex, endIndex)
       .map((notification) => (
         <div key={notification.id} className="item-conv">
-          <img src={Avatar} alt="" />
+          <img
+            src={convertBase64ToUrl(
+              notification.profileImage,
+              notification.imageExtension
+            )}
+            alt="profileImg"
+          />
           <div className="texts-conv">
             <span>
               <span className="userName-conv">
@@ -95,7 +146,17 @@ function List() {
               </div>
             </a>
           </div>
-          <div className="diagnoses-conv">See diagnoses</div>
+          <div className="buttons-section-conv">
+            <a className="see-diagnoses-link" href={path} onClick={routeChange}>
+              <div className="diagnoses-conv">See diagnoses</div>
+            </a>
+            <button
+              onClick={() => deleteNotification(notification.id)}
+              className="delete-conv"
+            >
+              Delete
+            </button>
+          </div>
         </div>
       ));
   };
@@ -128,7 +189,7 @@ function List() {
           />
         </div>
       </div>
-      <div className="items">{displayNotifications()}</div>
+      <div className="items-conv">{displayNotifications()}</div>
       <div className="buttons-container-conv">
         <button
           onClick={previousPage}

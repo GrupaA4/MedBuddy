@@ -7,23 +7,11 @@ import Cookies from "js-cookie";
 
 const AdminReportPage = () => {
   const [reports, setReports] = useState([]);
-  const [reportToStartWith, setReportToStartWith] = useState([]);
-  const [reportToEndLoad, setReportToEndLoad] = useState([]);
-  const [reportedUserId, setReportedUserId] = useState([]);
-  const [reporterUserId, setReporterUserId] = useState([]);
-  const [message, setMessage] = useState([]);
-
-  const [reportedUserEmail, setReportedUserEmail] = useState([]);
-  const [reportedUserFirstName, setReportedUserFirstName] = useState([]);
-  const [reportedUserLastName, setReportedUserLastName] = useState([]);
-  const [reporterUserFirstName, setReporterUserFirstName] = useState([]);
-  const [reporterUserLastName, setReporterUserLastName] = useState([]);
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isLastPage, setIsLastPage] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const usersPerPage = 5;
   const navigate = useNavigate();
-
-  const redirectTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   const getCookieValue = (name) => {
     const cookies = document.cookie.split(";").map((cookie) => cookie.trim());
@@ -39,56 +27,126 @@ const AdminReportPage = () => {
   const passwordFromCookie = getCookieValue("user_pass");
   const authorisation = btoa(`${emailFromCookie}:${passwordFromCookie}`);
 
-  //am nevoie de un cookie cu email si parola la admin ca sa pot sa fac fetchurile
-
-  useEffect(() => {
-    const fetchReports = async () => {
-      try {
-        const start = 1;
-        const end = 10;
-        const response = await fetch(
-          `http://localhost:7264/medbuddy/getreports/${start}/${end}`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Basic ${authorisation}`,
-            },
-          }
-        );
-        if (response.ok) {
-          const data = await response.json();
-          setReports(data.reports);
-        } else {
-          console.error("Failed to fetch reports");
-        }
-      } catch (error) {
-        console.error("Error fetching reports:", error);
-      }
-    };
-
-    fetchReports();
-  }, [authorisation]);
-
-  const handleReport = async (userId) => {
+  const fetchReports = async (page) => {
+    setIsLoading(true);
     try {
+      const start = (page - 1) * usersPerPage + 1;
+      const end = page * usersPerPage;
       const response = await fetch(
-        `http://localhost:7264/medbuddy/softdeleteuser/${userId}`,
+        `http://localhost:7264/medbuddy/getreports/${start}/${end}`,
         {
-          method: "DELETE",
+          method: "GET",
           headers: {
             Authorization: `Basic ${authorisation}`,
           },
         }
       );
 
-      if (!response.ok) {
+      if (response.status === 200) {
+        const data = await response.json();
+        const userReportedPromises = data.reports.map(async (report) => {
+          const reportedResponse = await fetch(
+            `http://localhost:7264/medbuddy/viewprofile/${report.reportedUserId}`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Basic ${authorisation}`,
+              },
+            }
+          );
+
+          if (reportedResponse.status === 200) {
+            const userData = await reportedResponse.json();
+            return {
+              ...report,
+              ...userData,
+            };
+          }
+          return null;
+        });
+
+        const reportedDetails = await Promise.all(userReportedPromises);
+        const filteredReports = reportedDetails.filter(
+          (report) => report !== null
+        );
+        setReports(filteredReports);
+
+        // Check if this is the last page
+        if (filteredReports.length < usersPerPage) {
+          setIsLastPage(true);
+        } else {
+          // Check if there are more reports beyond the current page
+          const nextStart = end + 1;
+          const nextEnd = nextStart + usersPerPage - 1;
+          const nextResponse = await fetch(
+            `http://localhost:7264/medbuddy/getreports/${nextStart}/${nextEnd}`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Basic ${authorisation}`,
+              },
+            }
+          );
+
+          if (nextResponse.status === 200) {
+            const nextData = await nextResponse.json();
+            setIsLastPage(nextData.reports.length === 0);
+          } else {
+            setIsLastPage(true);
+          }
+        }
+      } else {
+        console.error("Failed to fetch reports");
+      }
+    } catch (error) {
+      console.error("Error fetching reports:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchReports(currentPage);
+  }, [currentPage, authorisation]);
+
+  const handleReport = async (userId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:7264/medbuddy/softdeleteuser/${userId}`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Basic ${authorisation}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        setReports((prevReports) =>
+          prevReports.filter((report) => report.reportedUserId !== userId)
+        );
+        // Re-fetch reports to update the list
+        fetchReports(currentPage);
+      } else {
         console.error("Failed to delete reported account");
       }
     } catch (error) {
       console.error("Error deleting report:", error);
     }
   };
-  
+
+  const handleNextPage = () => {
+    if (!isLastPage && !isLoading) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1 && !isLoading) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+
   return (
     <div className={styles.body_admin_report_page}>
       <div className={styles.header}>
@@ -101,7 +159,7 @@ const AdminReportPage = () => {
             Home
           </a>
           <a
-            onClick={redirectTop}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className={styles.header__paragraph__part}
             style={{
               textDecoration: "underline",
@@ -125,61 +183,75 @@ const AdminReportPage = () => {
             Reported accounts
           </p>
           <div className={styles.container1_admin_report_page__buttons}>
-            <button className={styles.container1_admin_report_page__before}>
+            <button
+              className={styles.container1_admin_report_page__before}
+              onClick={handlePreviousPage}
+              disabled={currentPage === 1 || isLoading}
+            >
               &#8678;
             </button>
-            <button className={styles.container1_admin_report_page__next}>
+            <button
+              className={styles.container1_admin_report_page__next}
+              onClick={handleNextPage}
+              disabled={isLastPage || isLoading}
+            >
               &#8680;
             </button>
           </div>
         </div>
 
-        {reports.map((report, i) => (
-          <div key={i} className={styles.container1_admin_report_page__square}>
-            <div className={styles.container1_admin_report_page__square__icon}>
-              <p>PHOTO</p>
-            </div>
-            <p className={styles.container1_admin_report_page__square__data}>
-              Person reported:{" "}
-              <span>
-                {report.reportedLastName} {report.reportedFirstName} {i + 1}
-              </span>
-              <br />
-              Email person reported: <span>{report.reportedEmail}</span>
-              <br />
-              Reporter:{" "}
-              <span>
-                {report.reporterLastName} {report.reporterFirstName}
-              </span>
-              <br />
-              Message: <span>{report.message}</span>
-              <br />
-              <button
-                className={styles.container1_admin_report_page__button1}
-                type="button"
-                onClick={() => handleReport(report.reportedUserId)}
+        {reports.map((report) => {
+          return (
+            <div
+              key={report.reportedUserId}
+              className={styles.container1_admin_report_page__square}
+            >
+              <div
+                className={styles.container1_admin_report_page__square__icon}
               >
-                Report
-              </button>
-            </p>
-          </div>
-        ))}
+                {report.profileImage && report.imageExtension ? (
+                  <img
+                    src={`data:image/${report.imageExtension};base64,${report.profileImage}`}
+                    alt="Profile"
+                    className={
+                      styles.container1_admin_report_page_profile_image
+                    }
+                  />
+                ) : (
+                  <p>No Photo</p>
+                )}
+              </div>
+              <p className={styles.container1_admin_report_page__square__data}>
+                Person reported:{" "}
+                <span>
+                  {report.lastName} {report.firstName}{" "}
+                </span>
+                <br />
+                Email person reported: <span>{report.email}</span>
+                <br />
+                Message: <span>{report.message}</span>
+                <br />
+                <button
+                  className={styles.container1_admin_report_page__button1}
+                  type="button"
+                  onClick={() => handleReport(report.reportedUserId)}
+                >
+                  Report
+                </button>
+              </p>
+            </div>
+          );
+        })}
       </div>
 
       <div className={styles.container2_admin_report_page}>
-        <div className={styles.icon__and__text}>
-          <div className={styles.container2_admin_report_page__square1__icon}>
-            <img
-              src={Megafon}
-              className={
-                styles.container2_admin_report_page__square1__icon__image
-              }
-              alt="Megafon"
-            />
-          </div>
-          <div className={styles.container2_admin_report_page__text}>
-            Vezi ultimele raportari!
-          </div>
+        <img
+          src={Megafon}
+          className={styles.container2_admin_report_page__square1__icon__image}
+          alt="Megafon"
+        />
+        <div className={styles.container2_admin_report_page__text}>
+          See latest reports!
         </div>
       </div>
     </div>

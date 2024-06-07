@@ -29,27 +29,27 @@ public class UserController {
         this.userService = userService;
     }
 
-    //works
+    // works
     @GetMapping("/login")
     public Map<String, String> login() {
         String email = SecurityUtil.getEmail();
         UUID id = userService.getUserIdByEmail(email);
         User user = userService.getUser(id);
 
-        if(!EntityValidator.validate(user)) {
+        if (!EntityValidator.validate(user)) {
             throw new UserDidSomethingWrongExceptions.UserCredentialsNotFound(null);
         }
 
         userService.updateLastTimeLoggedOn(id);
 
         Map<String, String> response = new HashMap<>();
-        if(user.isAdmin()) {
+        if (user.isAdmin()) {
             response.put("type", "Admin");
             return response;
         }
-        if(userService.isMedic(id)) {
+        if (userService.isMedic(id)) {
             Medic medic = userService.getMedicProfile(id);
-            if(!medic.isApproved()) {
+            if (!medic.isApproved()) {
                 throw new UserDidSomethingWrongExceptions.UserCredentialsNotFound(null);
             }
             response.put("type", "Medic");
@@ -59,7 +59,7 @@ public class UserController {
         return response;
     }
 
-    //works
+    // works
     @GetMapping("/getuserid/{email}")
     public ResponseEntity<Map<String, UUID>> getUserId(@PathVariable String email) {
         UUID userId = userService.getUserIdByEmail(email);
@@ -68,7 +68,7 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    //works
+    // works
     @PutMapping("/signup")
     public ResponseEntity<Void> signUp(@RequestBody UserRequestBodies.UserSignup userRequest) {
         User user = new User(userRequest);
@@ -76,7 +76,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    //works mostly (certificate image number is not right)
+    // works mostly (certificate image number is not right)
     @PutMapping("/signupmedic")
     public ResponseEntity<Void> signUpMedic(@RequestBody UserRequestBodies.MedicSignup medicRequest) {
         Medic medic = new Medic(medicRequest);
@@ -86,23 +86,25 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    //works
+    // works
     @GetMapping("/viewprofile/{userId}")
     public UserResponseBodies.UserProfile viewProfile(@PathVariable UUID userId) {
         User user = userService.getUser(userId);
         return new UserResponseBodies.UserProfile(user,
-                ImageProcessingUtil.extractImage(user.getProfileImageNumber(), user.getImageExtension(), "src\\Database\\Profiles"));
+                ImageProcessingUtil.extractImage(user.getProfileImageNumber(), user.getImageExtension(),
+                        "src\\Database\\Profiles"));
     }
 
-    //works
+    // works
     @GetMapping("/getbasicinfo/{userId}")
     public UserResponseBodies.UserBasicInfo getBasicInfo(@PathVariable UUID userId) {
         User user = userService.getUser(userId);
         return new UserResponseBodies.UserBasicInfo(user,
-                ImageProcessingUtil.extractImage(user.getProfileImageNumber(), user.getImageExtension(), "src\\Database\\Profiles"));
+                ImageProcessingUtil.extractImage(user.getProfileImageNumber(), user.getImageExtension(),
+                        "src\\Database\\Profiles"));
     }
 
-    //works
+    // works
     @GetMapping("/getuseridofmedic/{medicId}")
     public ResponseEntity<Map<String, UUID>> getUserIdOfMedic(@PathVariable UUID medicId) {
         Map<String, UUID> idResponse = new HashMap<>();
@@ -110,34 +112,36 @@ public class UserController {
         return ResponseEntity.ok(idResponse);
     }
 
-    //works
+    // works
     @GetMapping("/viewmedicprofile/{userId}")
     public UserResponseBodies.MedicProfile viewMedicProfile(@PathVariable UUID userId) {
         Medic medic = userService.getMedicProfile(userId);
         return new UserResponseBodies.MedicProfile(medic,
-                ImageProcessingUtil.extractImage(medic.getProfileImageNumber(), medic.getImageExtension(), "src\\Database\\Profiles"),
-                ImageProcessingUtil.extractImage(medic.getCertificateImageNumber(), medic.getCertificateExtension(), "src\\Database\\Certificates"));
+                ImageProcessingUtil.extractImage(medic.getProfileImageNumber(), medic.getImageExtension(),
+                        "src\\Database\\Profiles"),
+                ImageProcessingUtil.extractImage(medic.getCertificateImageNumber(), medic.getCertificateExtension(),
+                        "src\\Database\\Certificates"));
     }
 
-    //works (mostly, image problems)
+    // works (mostly, image problems)
     @PatchMapping("/changeprofile/{userId}")
     public void changeProfile(@PathVariable UUID userId, @RequestBody UserRequestBodies.UserChange newUserInfo) {
         userService.updateUser(userId, new User(newUserInfo));
     }
 
-    //works
+    // works
     @PatchMapping("/softdeleteuser/{userId}")
     public void softDeleteUser(@PathVariable UUID userId) {
         userService.softDeleteUser(userId);
     }
 
-    //works
+    // works
     @DeleteMapping("/harddeleteuser/{userId}")
     public void hardDeleteUser(@PathVariable UUID userId) {
         userService.hardDeleteUser(userId);
     }
 
-    //works
+    // works
     @GetMapping("/ismedic/{userId}")
     public UserResponseBodies.IsMedic isMedic(@PathVariable UUID userId) {
         return new UserResponseBodies.IsMedic(userService.isMedic(userId));

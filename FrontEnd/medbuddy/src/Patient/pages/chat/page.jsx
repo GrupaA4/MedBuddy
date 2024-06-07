@@ -152,6 +152,18 @@ export default function ChatPage() {
         scrollToBottom();
     }, [userMessages, responseMessages]);
 
+    useEffect(() => {
+        const handleBeforeUnload = async (event) => {
+            await sendCloseConversation();
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
+
     const scrollToBottom = () => {
         if (messageContainerRef.current) {
             messageContainerRef.current.scrollTop = messageContainerRef.current.scrollHeight;
@@ -160,7 +172,7 @@ export default function ChatPage() {
 
     const handleBackToHomepage = async () => {
         await sendCloseConversation();
-        window.location.href = '/';
+        window.location.href = '/homePatient';
     };
 
     const handleSeeDiagnoses = async () => {
