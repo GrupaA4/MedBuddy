@@ -9,6 +9,7 @@ import com.medbuddy.medbuddy.models.Patient;
 import com.medbuddy.medbuddy.models.User;
 import com.medbuddy.medbuddy.repository.rowmappers.MedicRowMapper;
 import com.medbuddy.medbuddy.repository.rowmappers.UserRowMapper;
+import com.medbuddy.medbuddy.services.NotificationsService;
 import com.medbuddy.medbuddy.utilitaries.DataConvertorUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -344,10 +345,16 @@ public class UserDAO {
     public List<Medic> chooseMedic(User patient, String typeOfMedic) {
         //specialization
         String sqlType = "select * from medic where UPPER(typeOfMedic) LIKE UPPER(?)";
-        List<Medic> medics = jdbcTemplate.query(sqlType, new MedicRowMapper(), "%" + typeOfMedic + "%");
-        if (medics.isEmpty()) {
+        List<Medic> partialMedics = jdbcTemplate.query(sqlType, new MedicRowMapper(), "%" + typeOfMedic + "%");
+        if (partialMedics.isEmpty()) {
             return null;
         }
+        List<Medic> medics = new ArrayList<>();
+        for(var medic: partialMedics) {
+            User user = getUserById(medic.getId());
+            medics.add(new Medic(user, medic));
+        }
+        System.out.println("Medics: " + medics);
         int opt = 0;
         List<Medic> optimal = new ArrayList<>();
         List<Medic> ultraSuperMegaGamingOptimal = new ArrayList<>();
@@ -380,21 +387,8 @@ public class UserDAO {
         return optimal;
     }
 
-    public String getMedics(User patient, String typeOfMedic, String diagnosis) {
-        List<Medic> medics = chooseMedic(patient, typeOfMedic);
+    public List<Medic> getMedics(User patient, String typeOfMedic, String diagnosis) {
 
-        if (medics == null || medics.isEmpty()) {
-            return "No medics found for the specified type.";
-        }
-
-        StringBuilder statement = new StringBuilder("###Diagnosis###");
-        statement.append(statement.append(diagnosis).append(". For more information please contact: ("));
-
-        for (Medic medic : medics) {
-            statement.append(" ").append(medic.getEmail());
-        }
-
-        statement.append(") ");
-        return statement.toString();
+        return chooseMedic(patient, typeOfMedic);
     }
 }
