@@ -1,20 +1,20 @@
-2024-06-07 04:07:19 INFO  MedbuddyApplication:50 - Starting MedbuddyApplication using Java 22.0.1 with PID 7224 (C:\UNIVERSITY STUFF\II-II Ingineria Programarii\Project\MedBuddy\BackEnd\Generic\medbuddy\medbuddy\target\classes started by vladm in C:\UNIVERSITY STUFF\II-II Ingineria Programarii\Project\MedBuddy\BackEnd\Generic\medbuddy\medbuddy)
-2024-06-07 04:07:19 DEBUG MedbuddyApplication:51 - Running with Spring Boot v3.2.5, Spring v6.1.6
-2024-06-07 04:07:19 INFO  MedbuddyApplication:654 - No active profile set, falling back to 1 default profile: "default"
-2024-06-07 04:07:21 INFO  TomcatWebServer:109 - Tomcat initialized with port 7264 (http)
-2024-06-07 04:07:21 INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-7264"]
-2024-06-07 04:07:21 INFO  StandardService:173 - Starting service [Tomcat]
-2024-06-07 04:07:21 INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.20]
-2024-06-07 04:07:21 INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
-2024-06-07 04:07:21 INFO  ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 1190 ms
-2024-06-07 04:07:21 INFO  DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3457cc8d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7a66c35a, org.springframework.security.web.context.SecurityContextHolderFilter@132e3594, org.springframework.security.web.header.HeaderWriterFilter@212fafd1, org.springframework.web.filter.CorsFilter@750a04ec, org.springframework.security.web.authentication.logout.LogoutFilter@5d850a25, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1b8aaeab, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@28d739f1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c5d3a37, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7994a0d1, org.springframework.security.web.access.ExceptionTranslationFilter@581c9bb7, org.springframework.security.web.access.intercept.AuthorizationFilter@4def7d36]
-2024-06-07 04:07:21 INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-7264"]
-2024-06-07 04:07:21 INFO  TomcatWebServer:241 - Tomcat started on port 7264 (http) with context path ''
-2024-06-07 04:07:21 INFO  MedbuddyApplication:56 - Started MedbuddyApplication in 2.456 seconds (process running for 3.378)
-2024-06-07 04:07:21 WARN  HikariConfig:1089 - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
-2024-06-07 04:07:21 INFO  HikariDataSource:110 - HikariPool-1 - Starting...
-2024-06-07 04:07:22 INFO  PoolBase:536 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
-2024-06-07 04:07:22 INFO  HikariPool:565 - HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@3c16528d
-2024-06-07 04:07:22 INFO  HikariDataSource:123 - HikariPool-1 - Start completed.
-2024-06-07 04:08:47 INFO  HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
-2024-06-07 04:08:47 INFO  HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2024-06-07 12:09:24 INFO  MedbuddyApplication:50 - Starting MedbuddyApplication using Java 22.0.1 with PID 1868 (C:\UNIVERSITY STUFF\II-II Ingineria Programarii\Project\MedBuddy\BackEnd\Generic\medbuddy\medbuddy\target\classes started by vladm in C:\UNIVERSITY STUFF\II-II Ingineria Programarii\Project\MedBuddy\BackEnd\Generic\medbuddy\medbuddy)
+2024-06-07 12:09:24 DEBUG MedbuddyApplication:51 - Running with Spring Boot v3.2.5, Spring v6.1.6
+2024-06-07 12:09:24 INFO  MedbuddyApplication:654 - No active profile set, falling back to 1 default profile: "default"
+2024-06-07 12:09:26 INFO  TomcatWebServer:109 - Tomcat initialized with port 7264 (http)
+2024-06-07 12:09:26 INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-7264"]
+2024-06-07 12:09:26 INFO  StandardService:173 - Starting service [Tomcat]
+2024-06-07 12:09:26 INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-07 12:09:26 INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
+2024-06-07 12:09:26 INFO  ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 1516 ms
+2024-06-07 12:09:26 INFO  DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5cff729b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@10d18696, org.springframework.security.web.context.SecurityContextHolderFilter@5d7dd549, org.springframework.security.web.header.HeaderWriterFilter@4a2bf50f, org.springframework.web.filter.CorsFilter@16132f21, org.springframework.security.web.authentication.logout.LogoutFilter@28d739f1, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@3b4ef59f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6459f4ea, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@740b9a50, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6b8b5020, org.springframework.security.web.access.ExceptionTranslationFilter@1a914089, org.springframework.security.web.access.intercept.AuthorizationFilter@6f50d55c]
+2024-06-07 12:09:27 INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-7264"]
+2024-06-07 12:09:27 INFO  TomcatWebServer:241 - Tomcat started on port 7264 (http) with context path ''
+2024-06-07 12:09:27 INFO  MedbuddyApplication:56 - Started MedbuddyApplication in 3.102 seconds (process running for 4.22)
+2024-06-07 12:09:27 WARN  HikariConfig:1089 - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2024-06-07 12:09:27 INFO  HikariDataSource:110 - HikariPool-1 - Starting...
+2024-06-07 12:09:27 INFO  PoolBase:536 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
+2024-06-07 12:09:27 INFO  HikariPool:565 - HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@6fb22ae3
+2024-06-07 12:09:27 INFO  HikariDataSource:123 - HikariPool-1 - Start completed.
+2024-06-07 12:09:57 INFO  HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2024-06-07 12:09:57 INFO  HikariDataSource:352 - HikariPool-1 - Shutdown completed.

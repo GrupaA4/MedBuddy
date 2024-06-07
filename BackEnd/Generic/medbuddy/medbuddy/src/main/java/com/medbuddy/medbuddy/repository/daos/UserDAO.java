@@ -187,7 +187,7 @@ public class UserDAO {
                 medic.getTypeOfMedic(),
                 medic.getClinic(),
                 medic.getCertificateImageNumber(),
-                medic.getImageExtension(),
+                medic.getCertificateExtension(),
                 DataConvertorUtil.turnBooleanInto0or1(medic.isApproved()));
     }
 
