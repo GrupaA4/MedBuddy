@@ -47,7 +47,7 @@ public class MedbuddyUtil {
     public Message receiveMessageFromMedbuddy(UUID userId) {
         try {
             WatchService watcher = FileSystems.getDefault().newWatchService();
-            Path directory = Paths.get("C:\\UNIVERSITY STUFF\\II-II Ingineria Programarii\\Project\\MedBuddy\\BackEnd\\Generic\\medbuddy\\medbuddy\\src\\main\\java\\com\\medbuddy\\medbuddy\\utilitaries\\communication\\frommedbuddy");
+            Path directory = Paths.get("D:\\Facultate\\A2S2\\IP\\ProiectMare\\MedBuddy\\BackEnd\\Generic\\medbuddy\\medbuddy\\src\\main\\java\\com\\medbuddy\\medbuddy\\utilitaries\\communication\\frommedbuddy");
             directory.register(watcher, ENTRY_CREATE, ENTRY_MODIFY, ENTRY_DELETE);
             while (true) {
                 WatchKey key = watcher.take();
@@ -56,7 +56,7 @@ public class MedbuddyUtil {
                     if (event.kind() == ENTRY_MODIFY) {
                         Path modifiedFile = (Path) event.context();
                         System.out.println("File modified: " + modifiedFile);
-                        FileReader reader = new FileReader("C:\\UNIVERSITY STUFF\\II-II Ingineria Programarii\\Project\\MedBuddy\\BackEnd\\Generic\\medbuddy\\medbuddy\\src\\main\\java\\com\\medbuddy\\medbuddy\\utilitaries\\communication\\frommedbuddy" + File.separator + modifiedFile.toFile());
+                        FileReader reader = new FileReader("D:\\Facultate\\A2S2\\IP\\ProiectMare\\MedBuddy\\BackEnd\\Generic\\medbuddy\\medbuddy\\src\\main\\java\\com\\medbuddy\\medbuddy\\utilitaries\\communication\\frommedbuddy" + File.separator + modifiedFile.toFile());
                         BufferedReader bufferedReader = new BufferedReader(reader);
                         String line;
                         List<String> inputs = new ArrayList<>();
@@ -97,7 +97,7 @@ public class MedbuddyUtil {
     public void sendMessageToMedbuddy(String messageToBeSent, UUID userId) {
         //send message
         try {
-            File inputFile = new File("C:\\UNIVERSITY STUFF\\II-II Ingineria Programarii\\Project\\MedBuddy\\BackEnd\\Generic\\medbuddy\\medbuddy\\src\\main\\java\\com\\medbuddy\\medbuddy\\utilitaries\\communication\\tomedbuddy" + File.separator + "medbuddyComGtoU.txt");
+            File inputFile = new File("D:\\Facultate\\A2S2\\IP\\ProiectMare\\MedBuddy\\BackEnd\\Generic\\medbuddy\\medbuddy\\src\\main\\java\\com\\medbuddy\\medbuddy\\utilitaries\\communication\\tomedbuddy" + File.separator + "medbuddyComGtoU.txt");
             FileWriter writer = new FileWriter(inputFile);
             writer.write(messageToBeSent);
             writer.close();

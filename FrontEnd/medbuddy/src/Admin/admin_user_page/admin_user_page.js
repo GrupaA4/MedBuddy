@@ -103,25 +103,25 @@ const UserPage = () => {
       console.error("Invalid medic object");
       return;
     }
-  
+
     console.log(`Checking license for medic with ID: ${medic.medicId}`);
-  
+
     const { certificateExtension, certificateImage } = medic;
-  
+
     if (!certificateExtension || !certificateImage) {
       console.error("Missing certificate extension or image");
       return;
     }
-  
+
     const mimeType = `image/${certificateExtension}`;
-  
+
     if (!/^data:image\/[a-zA-Z]*;base64,/.test(`data:${mimeType};base64,`)) {
       console.error("Invalid MIME type for the image");
       return;
     }
-  
+
     const licenseURL = `data:${mimeType};base64,${certificateImage}`;
-  
+
     try {
       const newTab = window.open();
       if (newTab) {
@@ -144,8 +144,8 @@ const UserPage = () => {
                 background-color: #f0f0f0;
               }
               .centered-image-license {
-                max-width: 50%;
-                max-height: 50%;
+                max-width: 100%;
+                max-height: 100%;
                 object-fit: contain;
                 border: 1px solid #ccc;
                 box-shadow: 0 0 10px rgba(0,0,0,0.5);
